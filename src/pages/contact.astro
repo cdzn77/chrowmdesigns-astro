@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Contact — ChrowmDesigns"
+  description="Get in touch with Angelo Manzano, an independent product designer available for UX, brand strategy, and campaign design projects worldwide."
+  ogImage="/images/og-contact.webp"
+>
+  <!-- Page Header -->
+  <section class="contact-header" aria-labelledby="contact-heading">
+    <div class="contact-header__inner">
+      <span class="contact-header__eyebrow">Contact</span>
+      <h1 class="contact-header__h1" id="contact-heading">Found your way here, huh?</h1>
+      <p class="contact-header__sub">You made it this far — let's talk.</p>
+    </div>
+  </section>
+
+  <!-- Two-column contact layout -->
+  <section class="contact-body" aria-label="Contact information and form">
+    <div class="contact-body__inner">
+
+      <!-- Left: intro + links -->
+      <div class="contact-body__info">
+        <p class="contact-body__tagline">Let's design something that matters.</p>
+
+        <div class="contact-body__links">
+          <a href="mailto:chile@chrowmdesigns.com" class="contact-body__link">
+            <span class="contact-body__link-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4L8 9L14 4M2 4H14V12H2V4Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            chile@chrowmdesigns.com
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/angelomanzano"
+            class="contact-body__link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="contact-body__link-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.25"/>
+                <path d="M5.5 7V11M5.5 5.5V5.51" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8 11V8.5C8 7.67 8.67 7 9.5 7C10.33 7 11 7.67 11 8.5V11" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            LinkedIn
+            <svg class="contact-body__ext-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <a href="/resume.pdf" class="contact-body__link" target="_blank" rel="noopener noreferrer">
+            <span class="contact-body__link-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 2H10L13 5V14H4V2Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 2V5H13" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 9H10M6 11H9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              </svg>
+            </span>
+            Download Resume
+            <svg class="contact-body__ext-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="contact-body__availability">
+          <span class="contact-body__avail-dot" aria-hidden="true"></span>
+          <span>Available for new projects</span>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="contact-body__form">
+        <ContactForm />
+      </div>
+
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<style>
+  /* ── Page header ──────────────────────────────────── */
+  .contact-header {
+    padding: calc(80px + clamp(3rem, 6vw, 6rem)) clamp(1.5rem, 5vw, 5rem) clamp(2.5rem, 4vw, 4rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .contact-header__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .contact-header__eyebrow {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .contact-header__h1 {
+    font-family: var(--font-sans);
+    font-size: clamp(2.4rem, 5vw, 5rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: var(--color-white);
+    margin: 0 0 1.25rem;
+    max-width: 820px;
+  }
+
+  .contact-header__sub {
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    max-width: 520px;
+  }
+
+  /* ── Two-column body ──────────────────────────────── */
+  .contact-body {
+    padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 5rem);
+  }
+
+  .contact-body__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: clamp(3rem, 6vw, 8rem);
+    align-items: start;
+  }
+
+  /* ── Left column ─────────────────────────────────── */
+  .contact-body__info {
+    position: sticky;
+    top: calc(80px + 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .contact-body__tagline {
+    font-family: var(--font-sans);
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  .contact-body__links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-body__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .contact-body__link:hover {
+    color: var(--color-accent);
+  }
+
+  .contact-body__link-icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
+  .contact-body__ext-icon {
+    opacity: 0.5;
+    margin-left: 0.1rem;
+  }
+
+  .contact-body__link:hover .contact-body__ext-icon {
+    opacity: 1;
+  }
+
+  /* Availability badge */
+  .contact-body__availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .contact-body__avail-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    flex-shrink: 0;
+    animation: pulse-dot 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(96, 211, 184, 0.4); }
+    50%       { box-shadow: 0 0 0 5px rgba(96, 211, 184, 0); }
+  }
+
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    .contact-body__inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .contact-body__info {
+      position: static;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-body__avail-dot {
+      animation: none;
+    }
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseHero from '../../components/CaseHero.astro';
+import CasePrevNext from '../../components/CasePrevNext.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Malibu Rum — Pernod Ricard" description="200+ branded assets. 60M impressions. One unified creative system delivered across 101 consecutive days that became Malibu's internal model for brand consistency." ogImage="/images/malibu-rum_hero.webp" ogType="article">
+  <CaseHero logo="/images/malibu-rum_logo.webp" logoAlt="Malibu Rum / Pernod Ricard" title="Malibu Rum — Pernod Ricard" category="Creative Systems & Campaign Design" meta={[{label:'Client',value:'Malibu Rum / Pernod Ricard USA'},{label:'Role',value:'Senior UX Strategist and Creative Lead'},{label:'Agency',value:'Pocket Made'},{label:'Technology',value:'Photoshop, After Effects, Social Media'}]} heroImage="/images/malibu-rum_hero.webp" heroAlt="Malibu Rum summer campaign — 101 Days of Because Summer" />
+  <div class="case-body">
+    <section class="case-section">
+      <h2 class="case-h2">The Problem</h2>
+      <p>Malibu Rum's social presence had an execution problem, not a brand problem. Multiple agencies were producing summer content simultaneously, and the output was inconsistent. Assets varied in color treatment, typography, and tone depending on which team produced them. Across a 101-day campaign with content publishing daily across Facebook, Instagram, and the main website, that inconsistency was visible and cumulative.</p>
+      <p>The brief was to create a centralized creative system that multiple teams and animators could work from without producing content that looked like it came from different brands. The system also had to be flexible enough to support content types that ranged from recipe graphics to live activation overlays to Snapchat lenses, all within a single visual language.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/malibu01.webp" alt="Malibu Rum — campaign overview" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section">
+      <h2 class="case-h2">Research & Discovery</h2>
+      <p>I audited Malibu's existing social archive across two prior summer seasons, cataloguing the specific points where brand consistency broke down: which asset types showed the most drift, which color treatments diverged most from the core palette, and which content categories generated the highest engagement despite being produced inconsistently. High-performing content clustered around authenticity signals: real ingredients, real settings, low-production-value moments that felt unscripted.</p>
+      <p>I reviewed the brand guidelines in detail, then stress-tested them against the asset types the campaign required. Several gaps in the guidelines became apparent immediately: there were no rules for dark backgrounds, no motion treatment principles, and no defined hierarchy for co-branding moments. The toolkit I built addressed those gaps explicitly.</p>
+    </section>
+    <div class="case-grid-2">
+      <img src="/images/malibu02.webp" alt="Malibu — brand audit findings" loading="lazy" decoding="async" width="760" height="520" />
+      <img src="/images/malibu03.webp" alt="Malibu — visual language system" loading="lazy" decoding="async" width="760" height="520" />
+    </div>
+    <section class="case-section">
+      <h2 class="case-h2">Visual Language System</h2>
+      <p>The design language centered on one idea: summer as a physical sensation. Aqua teals, sun-bleached oranges, and natural textures — woodgrain, lime peel, grill marks — were built into every asset category. Bold hand-painted headline fonts paired with rounded sans-serif body copy kept the tone friendly and unhurried. Texture and depth layering used composited photography and vector overlays to simulate handcrafted quality at production speed.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/malibu04.webp" alt="Malibu — visual language examples" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section">
+      <h2 class="case-h2">Toolkit Architecture</h2>
+      <p>I delivered over 200 branded elements: logos, stickers, icons, and typographic treatments, all built as layered PSDs and vector assets that animation teams could work from directly. Export templates covered 16:9, 1:1, and 9:16 aspect ratios. Integrated grid systems handled both static and carousel posts. Every asset in the toolkit was built so a designer unfamiliar with the campaign could pick it up and produce on-brand content within 30 minutes.</p>
+    </section>
+    <div class="case-grid-2">
+      <img src="/images/malibu05.webp" alt="Malibu — toolkit asset library" loading="lazy" decoding="async" width="760" height="520" />
+      <img src="/images/malibu06.webp" alt="Malibu — campaign execution examples" loading="lazy" decoding="async" width="760" height="520" />
+    </div>
+    <section class="case-section">
+      <h2 class="case-h2">Campaign Execution</h2>
+      <p>Over 101 consecutive days I worked closely with the motion team on storyboard-to-final-cut consistency and coordinated with content strategists on the release schedule. The Bean Cam and #Shellfies activations were the most technically complex deliverables, requiring live-stream overlays and Snapchat lens integration respectively. Both maintained full brand consistency with the static asset library.</p>
+    </section>
+    <section class="case-section case-section--results">
+      <h2 class="case-h2">Results & Impact</h2>
+      <ul class="case-results">
+        <li><strong>Social engagement:</strong> 25% increase over prior summer campaign baseline</li>
+        <li><strong>Impressions:</strong> 60M combined across organic and paid placements over 101 days</li>
+        <li><strong>Toolkit adoption:</strong> Creative system adopted by regional marketing teams in 4 international markets</li>
+        <li><strong>Content volume:</strong> 200+ branded elements produced without a single brand consistency escalation</li>
+        <li><strong>Campaign continuity:</strong> 101 consecutive days of on-brand content across three platforms, zero missed publishing dates</li>
+      </ul>
+    </section>
+    <section class="case-section">
+      <h2 class="case-h2">My Contribution</h2>
+      <p>I led the creative direction and UX strategy for this campaign, which in practice meant building the system that held the work together across teams, agencies, and time zones. The individual asset production was a collaboration between ChrowmDesigns and the animation and content teams at Pocket Made. What I owned specifically was the visual language definition, the toolkit architecture, and the quality review process that kept the campaign consistent from day one through day 101.</p>
+      <p>If I were approaching this again, I'd advocate for a pre-campaign brand consistency audit with all participating agencies before the toolkit was finalized, which would have surfaced some of the interpretation gaps earlier.</p>
+    </section>
+  </div>
+  <CasePrevNext currentSlug="malibu-rum" />
+  <CTABanner />
+  <Footer />
+</BaseLayout>

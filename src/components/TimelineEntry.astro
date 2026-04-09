@@ -1,0 +1,112 @@
+---
+export interface Props {
+  company: string;
+  role: string;
+  period: string;
+  /** Whether this is the current/first entry (renders accent dot) */
+  current?: boolean;
+  /** Whether this is the last entry (hides the connecting line) */
+  last?: boolean;
+}
+
+const { company, role, period, current = false, last = false } = Astro.props;
+---
+
+<li class:list={['timeline-entry', { 'timeline-entry--current': current, 'timeline-entry--last': last }]}>
+  <!-- Dot + line -->
+  <div class="timeline-entry__track" aria-hidden="true">
+    <span class="timeline-entry__dot"></span>
+    {!last && <span class="timeline-entry__line"></span>}
+  </div>
+
+  <!-- Content -->
+  <div class="timeline-entry__content">
+    <div class="timeline-entry__period">{period}</div>
+    <h3 class="timeline-entry__company">{company}</h3>
+    <div class="timeline-entry__role">{role}</div>
+  </div>
+</li>
+
+<style>
+  .timeline-entry {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 0 1.5rem;
+    list-style: none;
+    position: relative;
+  }
+
+  /* Track (dot + line) */
+  .timeline-entry__track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.3rem; /* align dot with first text line */
+  }
+
+  .timeline-entry__dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .timeline-entry--current .timeline-entry__dot {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(96, 211, 184, 0.15);
+  }
+
+  .timeline-entry__line {
+    display: block;
+    flex: 1;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    margin-top: 6px;
+    min-height: 3rem;
+  }
+
+  /* Content */
+  .timeline-entry__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-bottom: 3rem;
+  }
+
+  .timeline-entry--last .timeline-entry__content {
+    padding-bottom: 0;
+  }
+
+  .timeline-entry__period {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.15rem;
+  }
+
+  .timeline-entry__company {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  .timeline-entry__role {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+</style>

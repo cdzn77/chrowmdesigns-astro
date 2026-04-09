@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseCard from '../../components/CaseCard.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+import cases from '../../data/cases.json';
+
+const allTags = ['Design', 'UX/UI', 'Strategy', 'Consulting'];
+---
+
+<BaseLayout
+  title="Case Stories"
+  description="8 case studies across enterprise UX, brand strategy, campaign design, and mobile product — work for Marriott, Disney, P&G, Beat Games, Malibu Rum, and more."
+>
+
+  <!-- Page Header -->
+  <section class="page-header" aria-labelledby="page-heading">
+    <div class="page-header__inner">
+      <span class="page-header__eyebrow">Case Stories</span>
+      <h1 class="page-header__heading" id="page-heading">WORKS</h1>
+      <p class="page-header__sub">
+        Designing experiences that solve, connect, and inspire.
+      </p>
+
+      <!-- Filter tags -->
+      <div class="page-header__filters" role="group" aria-label="Filter cases by discipline">
+        <button
+          class="filter-tag filter-tag--active"
+          data-filter="all"
+          aria-pressed="true"
+        >All</button>
+        {allTags.map((tag) => (
+          <button
+            class="filter-tag"
+            data-filter={tag}
+            aria-pressed="false"
+          >{tag}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cases Grid -->
+  <section class="cases-grid" aria-labelledby="cases-grid-heading">
+    <h2 class="visually-hidden" id="cases-grid-heading">All Case Studies</h2>
+
+    <div class="cases-grid__inner" id="cases-grid">
+      {cases.map((c, i) => (
+        <div
+          class="cases-grid__cell"
+          data-tags={c.tags.join(',')}
+        >
+          <CaseCard
+            title={c.title}
+            category={c.category}
+            thumbnail={c.thumbnail}
+            href={c.url}
+            description={c.description}
+            offset={i % 2 === 1}
+            loading={i < 2 ? 'eager' : 'lazy'}
+          />
+        </div>
+      ))}
+    </div>
+
+    <!-- Empty state (shown when no filter matches) -->
+    <p class="cases-grid__empty" id="cases-empty" hidden>
+      No cases match that filter.
+    </p>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner />
+
+  <!-- Footer -->
+  <Footer />
+
+</BaseLayout>
+
+<!-- Filter interaction -->
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-tag');
+  const cells      = document.querySelectorAll<HTMLElement>('.cases-grid__cell');
+  const empty      = document.getElementById('cases-empty');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter ?? 'all';
+
+      // Update button state
+      filterBtns.forEach((b) => {
+        b.classList.toggle('filter-tag--active', b === btn);
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+
+      // Show/hide cards
+      let visible = 0;
+      cells.forEach((cell) => {
+        const tags = (cell.dataset.tags ?? '').split(',');
+        const show = filter === 'all' || tags.includes(filter);
+        cell.classList.toggle('is-hidden', !show);
+        if (show) visible++;
+      });
+
+      // Empty state
+      if (empty) empty.hidden = visible > 0;
+    });
+  });
+</script>
+
+<style>
+  /* ── Page Header ─────────────────────────────────── */
+  .page-header {
+    padding: calc(80px + clamp(4rem, 8vw, 7rem)) clamp(1.5rem, 5vw, 5rem) clamp(3rem, 5vw, 5rem);
+    background-color: var(--color-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .page-header__inner {
+    max-width: 900px;
+  }
+
+  .page-header__eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .page-header__heading {
+    font-family: var(--font-sans);
+    font-size: clamp(4rem, 10vw, 10rem);
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+    color: var(--color-white);
+    margin: 0 0 1.5rem;
+  }
+
+  .page-header__sub {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 2.5rem;
+    max-width: 520px;
+  }
+
+  /* Filter tags */
+  .page-header__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .filter-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 1.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .filter-tag:hover {
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .filter-tag--active {
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .filter-tag--active:hover {
+    color: var(--color-primary);
+    background-color: #7de0cb;
+    border-color: #7de0cb;
+  }
+
+  /* ── Cases Grid ──────────────────────────────────── */
+  .cases-grid {
+    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
+    background-color: var(--color-primary);
+  }
+
+  .cases-grid__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+  }
+
+  /* Hide/show via filter */
+  .cases-grid__cell {
+    transition: opacity 0.3s ease;
+  }
+
+  .cases-grid__cell.is-hidden {
+    display: none;
+  }
+
+  .cases-grid__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 640px) {
+    .cases-grid__inner {
+      grid-template-columns: 1fr;
+    }
+
+    /* Remove masonry offset on single column */
+    :global(.case-card--offset) {
+      margin-top: 0;
+    }
+  }
+</style>

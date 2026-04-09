@@ -1,0 +1,201 @@
+---
+// Hero renders a full-viewport video background.
+// Drop cdzn_showreel.mp4 into /public/video/ to activate the video layer.
+// Falls back gracefully to the dark brand background if the file is absent.
+---
+
+<section class="hero" aria-label="Introduction">
+
+  <!-- Video layer — autoplay, muted, loop, no controls -->
+  <div class="hero__video-wrap" aria-hidden="true">
+    <video
+      class="hero__video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="none"
+      poster="/images/marriott_tablet_home.webp"
+    >
+      <source src="/video/cdzn_showreel.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="hero__content">
+    <h1 class="hero__heading">
+      Designed to Connect.<br />Built to Perform.
+    </h1>
+
+    <p class="hero__sub">
+      I'm a{' '}
+      <a href="/cases" class="hero__sub-link">Senior UX Strategist</a>
+      {' '}with 20 years of experience designing digital products that
+      inspire users and advance the brands behind them.
+    </p>
+
+    <a href="/contact" class="hero__cta">
+      Let's Talk Design
+      <span class="hero__cta-arrow" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 9H15M15 9L9 3M15 9L9 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll" aria-hidden="true">
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 clamp(1.5rem, 5vw, 5rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+    overflow: hidden;
+    background-color: var(--color-primary);
+  }
+
+  /* Video */
+  .hero__video-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(27, 27, 27, 0.3) 0%,
+      rgba(27, 27, 27, 0.2) 40%,
+      rgba(27, 27, 27, 0.75) 80%,
+      rgba(27, 27, 27, 1) 100%
+    );
+  }
+
+  /* Content */
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .hero__heading {
+    font-family: var(--font-sans);
+    font-size: clamp(3rem, 7vw, 7rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  .hero__sub {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 540px;
+    margin: 0;
+  }
+
+  .hero__sub-link {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: color 0.2s ease;
+  }
+
+  .hero__sub-link:hover {
+    color: #7de0cb;
+  }
+
+  /* CTA button */
+  .hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    align-self: flex-start;
+    padding: 0.85rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease, gap 0.2s ease;
+  }
+
+  .hero__cta:hover {
+    background-color: #7de0cb;
+    transform: translateY(-2px);
+    gap: 0.9rem;
+  }
+
+  .hero__cta-arrow {
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+  }
+
+  .hero__cta:hover .hero__cta-arrow {
+    transform: translateX(2px);
+  }
+
+  /* Scroll indicator */
+  .hero__scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    right: clamp(1.5rem, 5vw, 5rem);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__scroll-line {
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50%       { opacity: 1;   transform: scaleY(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__scroll-line { animation: none; }
+    /* Pause decorative video for vestibular/motion sensitivity */
+    .hero__video { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .hero__heading { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+    .hero__scroll  { display: none; }
+  }
+</style>

@@ -1,0 +1,409 @@
+---
+// Replace YOUR_FORMSPREE_ID with your Formspree form ID.
+// Get one free at https://formspree.io — create a form, copy the 8-char ID.
+// Example: if your endpoint is https://formspree.io/f/xyzabc12, use "xyzabc12"
+const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+const action = `https://formspree.io/f/${FORMSPREE_ID}`;
+
+const budgetOptions = [
+  { value: '',                label: 'Select a range…' },
+  { value: 'under-5k',        label: 'Under $5,000' },
+  { value: '5k-15k',          label: '$5,000 – $15,000' },
+  { value: '15k-30k',         label: '$15,000 – $30,000' },
+  { value: '30k-50k',         label: '$30,000 – $50,000' },
+  { value: '50k-plus',        label: '$50,000+' },
+  { value: 'lets-discuss',    label: "Let's Discuss" },
+];
+
+const subjectOptions = [
+  { value: '',              label: 'Select a subject…' },
+  { value: 'ux-design',     label: 'UX Design' },
+  { value: 'brand-strategy',label: 'Brand Strategy' },
+  { value: 'campaign',      label: 'Campaign Design' },
+  { value: 'consulting',    label: 'Consulting' },
+  { value: 'general',       label: 'General Inquiry' },
+];
+---
+
+<form
+  id="contact-form"
+  class="contact-form"
+  action={action}
+  method="POST"
+  novalidate
+  aria-label="Contact form"
+>
+  <!-- Formspree honeypot — leave empty, bots fill it -->
+  <input type="text" name="_gotcha" class="contact-form__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <!-- Row 1: Full Name + Email -->
+  <div class="contact-form__row">
+    <div class="contact-form__field">
+      <label class="contact-form__label" for="cf-name">
+        Full Name <span class="contact-form__req" aria-hidden="true">*</span>
+      </label>
+      <input
+        class="contact-form__input"
+        type="text"
+        id="cf-name"
+        name="name"
+        autocomplete="name"
+        required
+        aria-required="true"
+      />
+    </div>
+    <div class="contact-form__field">
+      <label class="contact-form__label" for="cf-email">
+        Email Address <span class="contact-form__req" aria-hidden="true">*</span>
+      </label>
+      <input
+        class="contact-form__input"
+        type="email"
+        id="cf-email"
+        name="email"
+        autocomplete="email"
+        required
+        aria-required="true"
+      />
+    </div>
+  </div>
+
+  <!-- Row 2: Phone + Company -->
+  <div class="contact-form__row">
+    <div class="contact-form__field">
+      <label class="contact-form__label" for="cf-phone">Phone Number</label>
+      <input
+        class="contact-form__input"
+        type="tel"
+        id="cf-phone"
+        name="phone"
+        autocomplete="tel"
+      />
+    </div>
+    <div class="contact-form__field">
+      <label class="contact-form__label" for="cf-company">Company Name</label>
+      <input
+        class="contact-form__input"
+        type="text"
+        id="cf-company"
+        name="company"
+        autocomplete="organization"
+      />
+    </div>
+  </div>
+
+  <!-- Row 3: Budget + Subject -->
+  <div class="contact-form__row">
+    <div class="contact-form__field">
+      <label class="contact-form__label" for="cf-budget">Project Budget</label>
+      <div class="contact-form__select-wrap">
+        <select class="contact-form__select" id="cf-budget" name="budget">
+          {budgetOptions.map(({ value, label }) => (
+            <option value={value}>{label}</option>
+          ))}
+        </select>
+        <span class="contact-form__select-arrow" aria-hidden="true">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div class="contact-form__field">
+      <label class="contact-form__label" for="cf-subject">Subject</label>
+      <div class="contact-form__select-wrap">
+        <select class="contact-form__select" id="cf-subject" name="subject">
+          {subjectOptions.map(({ value, label }) => (
+            <option value={value}>{label}</option>
+          ))}
+        </select>
+        <span class="contact-form__select-arrow" aria-hidden="true">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message -->
+  <div class="contact-form__field contact-form__field--full">
+    <label class="contact-form__label" for="cf-message">
+      Your Message <span class="contact-form__req" aria-hidden="true">*</span>
+    </label>
+    <textarea
+      class="contact-form__textarea"
+      id="cf-message"
+      name="message"
+      rows="6"
+      required
+      aria-required="true"
+    ></textarea>
+  </div>
+
+  <!-- Submit -->
+  <div class="contact-form__footer">
+    <p class="contact-form__note">
+      Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.
+    </p>
+    <button class="contact-form__submit" type="submit" id="cf-submit">
+      <span class="contact-form__submit-text">Send Message</span>
+      <span class="contact-form__submit-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </button>
+  </div>
+
+  <!-- Status messages (shown via JS) -->
+  <div class="contact-form__status" id="cf-status" role="status" aria-live="polite" hidden></div>
+</form>
+
+<style>
+  .contact-form__honeypot {
+    display: none !important;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Two-column rows */
+  .contact-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .contact-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contact-form__field--full {
+    grid-column: 1 / -1;
+  }
+
+  /* Labels */
+  .contact-form__label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+  }
+
+  .contact-form__req {
+    color: var(--color-accent);
+    margin-left: 0.15em;
+  }
+
+  /* Inputs + textarea */
+  .contact-form__input,
+  .contact-form__textarea,
+  .contact-form__select {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .contact-form__input,
+  .contact-form__select {
+    height: 48px;
+    padding: 0 1rem;
+  }
+
+  .contact-form__textarea {
+    padding: 0.875rem 1rem;
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  .contact-form__input:focus,
+  .contact-form__textarea:focus,
+  .contact-form__select:focus {
+    border-color: var(--color-accent);
+    background-color: rgba(96, 211, 184, 0.04);
+    box-shadow: 0 0 0 3px rgba(96, 211, 184, 0.1);
+  }
+
+  /* Invalid state (after attempted submit) */
+  .contact-form__input:invalid:not(:placeholder-shown),
+  .contact-form__textarea:invalid:not(:placeholder-shown) {
+    border-color: rgba(255, 100, 100, 0.5);
+  }
+
+  /* Select wrapper (custom arrow) */
+  .contact-form__select-wrap {
+    position: relative;
+  }
+
+  .contact-form__select {
+    cursor: pointer;
+    padding-right: 2.5rem;
+  }
+
+  /* Style the select options — dark bg */
+  .contact-form__select option {
+    background-color: #1B1B1B;
+    color: var(--color-white);
+  }
+
+  .contact-form__select-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-muted);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Footer row */
+  .contact-form__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-form__note {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin: 0;
+  }
+
+  /* Submit button */
+  .contact-form__submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, gap 0.2s ease, opacity 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .contact-form__submit:hover:not(:disabled) {
+    background-color: #7de0cb;
+    transform: translateY(-2px);
+    gap: 0.9rem;
+  }
+
+  .contact-form__submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Status message */
+  .contact-form__status {
+    padding: 1rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .contact-form__status--success {
+    background-color: rgba(96, 211, 184, 0.1);
+    border: 1px solid rgba(96, 211, 184, 0.3);
+    color: var(--color-accent);
+  }
+
+  .contact-form__status--error {
+    background-color: rgba(255, 80, 80, 0.08);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+    color: rgba(255, 140, 140, 0.9);
+  }
+
+  @media (max-width: 560px) {
+    .contact-form__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const form     = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submit   = document.getElementById('cf-submit') as HTMLButtonElement | null;
+  const statusEl = document.getElementById('cf-status') as HTMLElement | null;
+
+  function showStatus(msg: string, type: 'success' | 'error') {
+    if (!statusEl) return;
+    statusEl.textContent = msg;
+    statusEl.className = `contact-form__status contact-form__status--${type}`;
+    statusEl.hidden = false;
+    statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form || !submit) return;
+
+    // Client-side validity check
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Guard against double-submit
+    submit.disabled = true;
+    const originalText = submit.querySelector('.contact-form__submit-text');
+    if (originalText) originalText.textContent = 'Sending…';
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        form.reset();
+        showStatus(
+          "Message sent — I'll be in touch soon.",
+          'success'
+        );
+      } else {
+        const json = await res.json().catch(() => ({}));
+        const msg  = (json as { error?: string }).error ?? 'Something went wrong. Please try again or email directly.';
+        showStatus(msg, 'error');
+        submit.disabled = false;
+        if (originalText) originalText.textContent = 'Send Message';
+      }
+    } catch {
+      showStatus(
+        'Network error — please check your connection and try again.',
+        'error'
+      );
+      submit.disabled = false;
+      if (originalText) originalText.textContent = 'Send Message';
+    }
+  });
+</script>

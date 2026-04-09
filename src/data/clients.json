@@ -1,0 +1,16 @@
+[
+  { "name": "Marriott Vacation Club", "logo": "/images/client-01.webp" },
+  { "name": "Walt Disney World",      "logo": "/images/client-02.webp" },
+  { "name": "Beat Saber",             "logo": "/images/client-03.webp" },
+  { "name": "ZzzQuil",                "logo": "/images/client-04.webp" },
+  { "name": "Malibu Rum",             "logo": "/images/client-05.webp" },
+  { "name": "Carrabba's Italian Grill","logo": "/images/client-06.webp" },
+  { "name": "Taco Bueno",             "logo": "/images/client-07.webp" },
+  { "name": "Penn Entertainment",     "logo": "/images/client-08.webp" },
+  { "name": "Grounded",               "logo": "/images/client-09.webp" },
+  { "name": "Pocket Made",            "logo": "/images/client-10.webp" },
+  { "name": "Voce Communications",    "logo": "/images/client-11.webp" },
+  { "name": "Client 12",              "logo": "/images/client-12.webp" },
+  { "name": "Client 13",              "logo": "/images/client-13.webp" },
+  { "name": "Client 14",              "logo": "/images/client-14.webp" }
+]

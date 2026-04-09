@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseHero from '../../components/CaseHero.astro';
+import CasePrevNext from '../../components/CasePrevNext.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="ZzzQuil — Procter & Gamble" description="Redesigned P&G's sleep brand from packaging to pixels — native app, e-commerce site, and dark mode design system built for the one moment screens should get out of the way." ogImage="/images/zzzquil_hero.webp" ogType="article">
+  <CaseHero logo="/images/zzzquil_logo.webp" logoAlt="ZzzQuil / Procter & Gamble" title="ZzzQuil — Procter & Gamble" category="Product Strategy & Mobile UX" meta={[{label:'Client',value:'Procter & Gamble — ZzzQuil'},{label:'Role',value:'Senior UX Strategist'},{label:'Agency',value:'Pocket Made'},{label:'Technology',value:'Figma, Photoshop'}]} heroImage="/images/zzzquil_hero.webp" heroAlt="ZzzQuil mobile app — dark mode sleep experience" />
+  <div class="case-body">
+    <section class="case-section">
+      <h2 class="case-h2">The Problem</h2>
+      <p>ZzzQuil's packaging worked. The brand's purple palette had strong shelf recognition. But that same palette, when translated directly to a mobile screen, created a high-saturation, high-contrast experience that was genuinely uncomfortable to look at in a dark bedroom.</p>
+      <p>The app required functioning as a content platform — with meditations, soundscapes, sleep stories, and insights — while minimizing user friction during pre-sleep states.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/zzzquil01.webp" alt="ZzzQuil — color system audit" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section">
+      <h2 class="case-h2">Research & Discovery</h2>
+      <p>Analysis covered color contrast ratios for pre-sleep screen usage, dark mode accessibility standards, and competitor app audits across 14 comparable sleep and wellness apps. User journey mapping identified critical handoff moments between platforms.</p>
+    </section>
+    <div class="case-grid-2">
+      <img src="/images/zzzquil02.webp" alt="ZzzQuil — competitor audit" loading="lazy" decoding="async" width="760" height="520" />
+      <img src="/images/zzzquil03.webp" alt="ZzzQuil — journey mapping" loading="lazy" decoding="async" width="760" height="520" />
+    </div>
+    <section class="case-section">
+      <h2 class="case-h2">Dark Mode as Design Philosophy</h2>
+      <p>Rather than treating dark mode as a color swap, I rebuilt the ZzzQuil color system from the base saturation values up. The goal was a palette that maintained brand recognition while becoming genuinely comfortable for extended pre-sleep use — a fundamentally different design brief than most dark mode implementations.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/zzzquil04.webp" alt="ZzzQuil — dark mode color system" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section">
+      <h2 class="case-h2">Content-First Architecture</h2>
+      <p>The app's navigation was designed to recede as users engaged with content. The soundscape mixer became the most-used feature post-launch — a direct result of surfacing it in the primary interaction layer rather than burying it in a sub-menu.</p>
+    </section>
+    <div class="case-grid-3">
+      <img src="/images/zzzquil05.webp" alt="ZzzQuil — soundscape mixer interface" loading="lazy" decoding="async" width="500" height="360" />
+      <img src="/images/zzzquil06.webp" alt="ZzzQuil — sleep stories UI" loading="lazy" decoding="async" width="500" height="360" />
+      <img src="/images/zzzquil_phones-01.webp" alt="ZzzQuil — multi-screen overview" loading="lazy" decoding="async" width="500" height="360" />
+    </div>
+    <section class="case-section">
+      <h2 class="case-h2">Cross-Platform Design System</h2>
+      <p>I built a modular design system that maintained brand integrity across mobile and web while respecting the different technical constraints and user expectations of each platform. Single design system deployed across iOS, Android, and responsive web.</p>
+    </section>
+    <section class="case-section case-section--results">
+      <h2 class="case-h2">Results & Impact</h2>
+      <ul class="case-results">
+        <li><strong>App engagement:</strong> Soundscape mixer became most-used feature within 30 days of launch</li>
+        <li><strong>Dark mode adoption:</strong> System-default dark mode usage exceeded projections</li>
+        <li><strong>Platform consistency:</strong> Single design system deployed across iOS, Android, and responsive web</li>
+        <li><strong>Accessibility:</strong> WCAG 2.1 AA compliant across all breakpoints</li>
+        <li><strong>Cross-timezone delivery:</strong> Multi-coast team with structured async protocols</li>
+      </ul>
+    </section>
+  </div>
+  <CasePrevNext currentSlug="zzzquil" />
+  <CTABanner />
+  <Footer />
+</BaseLayout>

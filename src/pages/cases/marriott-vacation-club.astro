@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseHero from '../../components/CaseHero.astro';
+import CasePrevNext from '../../components/CasePrevNext.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Marriott Vacation Club" description="Resolved 47 friction points across a fragmented enterprise. Multi-year transformation turning a transactional booking platform into an aspirational lifestyle ecosystem." ogImage="/images/marriott_hero.webp" ogType="article">
+  <CaseHero logo="/images/marriott_logo.webp" logoAlt="Marriott Vacation Club" title="Marriott Vacation Club" category="Enterprise UX & Digital Transformation" meta={[{label:'Client',value:'Marriott Vacation Club (Marriott International)'},{label:'Role',value:'Lead UX Brand Strategist and UX Designer'},{label:'Agency',value:'Pocket Made'},{label:'Duration',value:'Multi-year engagement'}]} heroImage="/images/marriott_hero.webp" heroAlt="Marriott Vacation Club digital platform on mobile" />
+  <div class="case-body">
+    <section class="case-section">
+      <h2 class="case-h2">The Problem</h2>
+      <p>Over 60% of Marriott Vacation Club's browsing sessions happened on mobile. Mobile conversion rates were 40% lower than desktop. The existing mobile experience compressed desktop design with 47 friction points identified across core member journeys. Navigation contained 12 top-level categories organized by business units rather than user intent. Members struggled understanding benefits, causing underutilization and refund request spikes.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/marriott01.webp" alt="Marriott Vacation Club — mobile navigation audit" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section">
+      <h2 class="case-h2">Research & Discovery</h2>
+      <p>Heuristic audits, stakeholder workshops, and behavioral analytics revealed journey breakdowns. Usability testing involved three user groups: prospects, new members, and established owners. Members who understood their benefits booked more. The redesign had to make benefit comprehension the first job of the experience.</p>
+    </section>
+    <div class="case-grid-2">
+      <img src="/images/marriott02.webp" alt="Marriott — user research sessions" loading="lazy" decoding="async" width="760" height="520" />
+      <img src="/images/marriott03.webp" alt="Marriott — journey mapping workshop" loading="lazy" decoding="async" width="760" height="520" />
+    </div>
+    <section class="case-section">
+      <h2 class="case-h2">Navigation Simplification</h2>
+      <p>Primary navigation reduced from 12 to 3 categories: Explore Destinations, Manage Membership, Book Your Stay. Category names reflected user goals rather than business structure. C-suite stakeholder alignment positioned UX clarity as a revenue strategy, not a design preference.</p>
+    </section>
+    <div class="case-grid-3">
+      <img src="/images/marriott04.webp" alt="Marriott — wireframe navigation" loading="lazy" decoding="async" width="500" height="360" />
+      <img src="/images/marriott05.webp" alt="Marriott — card-based UI" loading="lazy" decoding="async" width="500" height="360" />
+      <img src="/images/marriott06.webp" alt="Marriott — mobile prototype" loading="lazy" decoding="async" width="500" height="360" />
+    </div>
+    <section class="case-section">
+      <h2 class="case-h2">Mobile-First Design System</h2>
+      <p>Gesture-driven interface built for thumb-zone accessibility and one-handed use. Progressive disclosure through card-based UI revealed complexity gradually. Components covered iOS, Android, and web with WCAG 2.1 AA standards compliance.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/marriott07.webp" alt="Marriott — design system components" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section">
+      <h2 class="case-h2">Brand Unification</h2>
+      <p>Engagement spanned four brands: Marriott Vacation Club, Hyatt, Sheraton, and ILG. A unified design language created experiential consistency while preserving brand distinctions. Design system training and governance documentation ensured quality post-engagement.</p>
+    </section>
+    <div class="case-grid-2">
+      <img src="/images/marriott08.webp" alt="Marriott — brand unification across four properties" loading="lazy" decoding="async" width="760" height="520" />
+      <img src="/images/marriott09.webp" alt="Marriott — design system governance" loading="lazy" decoding="async" width="760" height="520" />
+    </div>
+    <div class="case-grid-2">
+      <img src="/images/marriott10.webp" alt="Marriott — final mobile screens" loading="lazy" decoding="async" width="760" height="520" />
+      <img src="/images/marriott11.webp" alt="Marriott — responsive web implementation" loading="lazy" decoding="async" width="760" height="520" />
+    </div>
+    <section class="case-section case-section--results">
+      <h2 class="case-h2">Results & Impact</h2>
+      <ul class="case-results">
+        <li><strong>Mobile conversion gap:</strong> 40% delta between mobile and desktop identified; redesign targeted parity</li>
+        <li><strong>Navigation:</strong> Reduced from 12 categories to 3, organized by user intent not business structure</li>
+        <li><strong>Friction points:</strong> 47 mapped across member journeys; addressed through IA restructure and progressive disclosure</li>
+        <li><strong>Accessibility:</strong> Full WCAG 2.1 AA compliance across iOS, Android, and responsive web</li>
+        <li><strong>Scope:</strong> Design system deployed across 4 brands with internal team training and governance documentation</li>
+      </ul>
+    </section>
+    <section class="case-section">
+      <h2 class="case-h2">My Contribution</h2>
+      <p>Ownership of research strategy, information architecture, interaction design, and design system. Visual identity collaboration with individual brand teams on component architecture and accessibility frameworks. If I were approaching this again, I'd push for longitudinal research with members over a 90-day period rather than relying on point-in-time usability testing.</p>
+    </section>
+  </div>
+  <CasePrevNext currentSlug="marriott-vacation-club" />
+  <CTABanner />
+  <Footer />
+</BaseLayout>

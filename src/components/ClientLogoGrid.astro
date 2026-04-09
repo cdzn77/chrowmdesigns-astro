@@ -1,0 +1,173 @@
+---
+// Client names matched to logo filenames from the live site.
+// Order matches chrowmdesigns.com/about.
+const clients = [
+  { name: 'Marriott Vacation Club',      logo: '/images/client-01.webp' },
+  { name: 'Malibu Rum',                  logo: '/images/client-02.webp' },
+  { name: 'PlayStation',                 logo: '/images/client-03.webp' },
+  { name: 'ABC Network',                 logo: '/images/client-04.webp' },
+  { name: 'Procter & Gamble',            logo: '/images/client-05.webp' },
+  { name: 'MTV',                         logo: '/images/client-06.webp' },
+  { name: 'VH1',                         logo: '/images/client-07.webp' },
+  { name: 'World Wrestling Entertainment', logo: '/images/client-08.webp' },
+  { name: 'Warner Brothers Records',     logo: '/images/client-09.webp' },
+  { name: 'The Walt Disney Company',     logo: '/images/client-10.webp' },
+  { name: 'Square-Enix',                 logo: '/images/client-11.webp' },
+  { name: 'Penn Entertainment',          logo: '/images/client-12.webp' },
+  { name: 'Beat Games',                  logo: '/images/client-13.webp' },
+  { name: 'Carrabba\'s Italian Grill',   logo: '/images/client-14.webp' },
+];
+---
+
+<section class="client-logos" aria-labelledby="clients-heading">
+  <div class="client-logos__header">
+    <span class="client-logos__eyebrow">Clients</span>
+    <h2 class="client-logos__heading" id="clients-heading">
+      Brands I've had the pleasure of working with
+    </h2>
+  </div>
+
+  <ul class="client-logos__grid" role="list" aria-label="Client logos">
+    {clients.map(({ name, logo }) => (
+      <li class="client-logos__item">
+        <img
+          src={logo}
+          alt={name}
+          class="client-logos__img"
+          loading="lazy"
+          decoding="async"
+          width="160"
+          height="80"
+        />
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .client-logos {
+    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
+    background-color: var(--color-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Header */
+  .client-logos__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+  }
+
+  .client-logos__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .client-logos__heading {
+    font-family: var(--font-sans);
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--color-white);
+    margin: 0;
+    max-width: 500px;
+  }
+
+  /* 7-column grid, wraps to smaller columns on mobile */
+  .client-logos__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+  }
+
+  .client-logos__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    transition: background-color 0.25s ease;
+  }
+
+  /* Remove right border on last in each row */
+  .client-logos__item:nth-child(7n) {
+    border-right: none;
+  }
+
+  /* Remove bottom border on last row */
+  .client-logos__item:nth-last-child(-n+7) {
+    border-bottom: none;
+  }
+
+  .client-logos__item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  .client-logos__img {
+    width: 100%;
+    max-width: 120px;
+    height: 48px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.45;
+    transition: opacity 0.25s ease, filter 0.25s ease;
+    display: block;
+  }
+
+  .client-logos__item:hover .client-logos__img {
+    opacity: 0.9;
+    filter: brightness(0) invert(1);
+  }
+
+  @media (max-width: 900px) {
+    .client-logos__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .client-logos__item:nth-child(7n) {
+      border-right: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .client-logos__item:nth-child(4n) {
+      border-right: none;
+    }
+
+    .client-logos__item:nth-last-child(-n+7) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .client-logos__item:nth-last-child(-n+4) {
+      border-bottom: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .client-logos__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .client-logos__item:nth-child(4n) {
+      border-right: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .client-logos__item:nth-child(3n) {
+      border-right: none;
+    }
+
+    .client-logos__item:nth-last-child(-n+4) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .client-logos__item:nth-last-child(-n+3) {
+      border-bottom: none;
+    }
+  }
+</style>

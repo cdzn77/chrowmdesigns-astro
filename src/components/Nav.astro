@@ -1,0 +1,245 @@
+---
+const navLinks = [
+  { label: 'Index',   href: '/' },
+  { label: 'About',   href: '/about' },
+  { label: 'Cases',   href: '/cases' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header" id="site-header" role="banner">
+  <nav class="nav-inner" aria-label="Primary navigation">
+
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="ChrowmDesigns — home">
+      <img
+        src="/images/logo-1.webp"
+        alt="ChrowmDesigns"
+        width="140"
+        height="36"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="nav-links" role="list">
+      {navLinks.map(({ label, href }) => (
+        <li>
+          <a
+            href={href}
+            class={`nav-link${currentPath === href || (href !== '/' && currentPath.startsWith(href)) ? ' nav-link--active' : ''}`}
+            aria-current={currentPath === href ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA + Hamburger -->
+    <div class="nav-actions">
+      <a href="/contact" class="nav-cta">Let's Talk</a>
+      <button
+        class="hamburger"
+        id="hamburger-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="fullscreen-menu"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 clamp(1.5rem, 5vw, 5rem);
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+  }
+
+  /* Scrolled state — applied via JS */
+  .site-header.scrolled {
+    background-color: rgba(27, 27, 27, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    gap: 2rem;
+  }
+
+  /* Logo */
+  .nav-logo img {
+    display: block;
+    height: 32px;
+    width: auto;
+  }
+
+  /* Desktop links */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.25s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link--active {
+    color: var(--color-white);
+  }
+
+  .nav-link:hover::after,
+  .nav-link--active::after {
+    width: 100%;
+  }
+
+  /* Actions */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  /* CTA button */
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover {
+    background-color: #7de0cb;
+    transform: translateY(-1px);
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background-color: var(--color-white);
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    transform-origin: center;
+  }
+
+  /* Hamburger open state */
+  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+  .hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* Mobile breakpoint */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const btn    = document.getElementById('hamburger-btn');
+
+  // Scroll shadow
+  const onScroll = () => {
+    if (!header) return;
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Hamburger → fullscreen menu
+  btn?.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isOpen));
+
+    const menu = document.getElementById('fullscreen-menu');
+    if (!menu) return;
+    if (!isOpen) {
+      menu.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    } else {
+      menu.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  });
+</script>

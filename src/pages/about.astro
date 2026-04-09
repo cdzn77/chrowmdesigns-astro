@@ -1,0 +1,697 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ApproachSteps from '../components/ApproachSteps.astro';
+import ClientLogoGrid from '../components/ClientLogoGrid.astro';
+import TimelineEntry from '../components/TimelineEntry.astro';
+import CTABanner from '../components/CTABanner.astro';
+import Footer from '../components/Footer.astro';
+
+const timeline = [
+  {
+    company: 'Chrowm Designs',
+    role: 'Senior UX Designer',
+    period: '1999 — Present',
+    current: true,
+  },
+  {
+    company: 'Penn Entertainment',
+    role: 'Art Director',
+    period: '2021 — 2023',
+  },
+  {
+    company: 'Pocket Made',
+    role: 'Senior UX Designer',
+    period: '2015 — 2021',
+  },
+  {
+    company: 'Voce Communications',
+    role: 'Senior Visual Designer',
+    period: '2011 — 2015',
+    last: true,
+  },
+];
+
+const stats = [
+  { value: 20, suffix: '+', label: 'Years of Skill' },
+  { value: 147, suffix: '%', label: 'Design Impact Increase' },
+  { value: 7,   suffix: '',  label: 'Industries Served' },
+  { value: 15,  suffix: '+', label: 'Design Systems Built' },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="Angelo Manzano Jr. — Senior UX Strategist with 20 years of experience building digital products for Marriott, Disney, P&G, PlayStation, and more."
+>
+
+  <!-- 1. Page Header -->
+  <section class="page-header" aria-labelledby="page-heading">
+    <div class="page-header__inner">
+      <span class="page-header__label">About</span>
+      <h1 class="page-header__heading" id="page-heading">
+        From dial-up to design
+      </h1>
+      <p class="page-header__sub">
+        I am a Senior UX Strategist based in Central Florida, with over 18&nbsp;years
+        of experience in creating dynamic, user-centered design solutions.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. Bio Section -->
+  <section class="bio" aria-labelledby="bio-heading">
+    <div class="bio__inner">
+
+      <!-- Left: text -->
+      <div class="bio__text">
+        <div class="bio__name-block">
+          <h2 class="bio__name" id="bio-heading">Angelo Manzano Jr</h2>
+          <span class="bio__title">Senior UX Strategist</span>
+        </div>
+
+        <p class="bio__para">
+          I'm Angelo Manzano, a Senior UX Strategist and designer with over 20&nbsp;years
+          of experience supporting brands such as Marriott Vacation Club, The Walt Disney
+          Company, P&amp;G, and PlayStation in building digital products that users value.
+          My expertise combines strategy, systems thinking, and human-centered design.
+          This includes co-authoring five-year digital transformation roadmaps with
+          C-suite stakeholders, rebuilding enterprise platforms, and designing mobile
+          experiences that align user behavior with product expectations.
+        </p>
+
+        <p class="bio__para">
+          My career began in branding and print, progressed through agencies and enterprise
+          studios, and for the past decade, I have led UX at the product strategy level.
+          I work closely with clients, product teams, and developers because effective
+          collaboration consistently delivers the best results. If you are developing a
+          product that must excel in both usability and performance, I welcome the
+          opportunity to contribute. Let's get it on!
+        </p>
+
+        <div class="bio__links">
+          <a
+            href="https://www.linkedin.com/in/angelomanzano"
+            class="bio__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Angelo Manzano on LinkedIn (opens in new tab)"
+          >
+            LinkedIn
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a
+            href="/resume.pdf"
+            class="bio__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Download Angelo Manzano resume PDF (opens in new tab)"
+          >
+            Download Resume
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 1v7M6 8L3.5 5.5M6 8L8.5 5.5M2 10h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: portrait -->
+      <div class="bio__portrait">
+        <div class="bio__portrait-wrap glitch-img">
+          <img
+            src="/images/about_bio.webp"
+            alt="Angelo Manzano Jr. — portrait with RGB glitch effect"
+            class="bio__img"
+            width="720"
+            height="900"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. Approach Section -->
+  <ApproachSteps />
+
+  <!-- 4. Stats Block -->
+  <section class="stats-block" aria-labelledby="stats-heading">
+    <h2 class="visually-hidden" id="stats-heading">Key statistics</h2>
+    <ul class="stats-block__grid" role="list">
+      {stats.map(({ value, suffix, label }) => (
+        <li class="stats-block__item">
+          <div class="stats-block__number" aria-live="polite">
+            <span
+              class="stats-counter"
+              data-target={value}
+              data-suffix={suffix}
+            >0{suffix}</span>
+          </div>
+          <div class="stats-block__label">{label}</div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- 5. Client Logo Grid -->
+  <ClientLogoGrid />
+
+  <!-- 6. Collaboration CTA -->
+  <section class="collab" aria-labelledby="collab-heading">
+    <div class="collab__inner">
+      <div class="collab__img-wrap">
+        <img
+          src="/images/about_collab.webp"
+          alt="Collaborative design work — Angelo Manzano at work"
+          class="collab__img"
+          width="760"
+          height="520"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div class="collab__text">
+        <h2 class="collab__heading" id="collab-heading">
+          Crafting bold ideas through UX, design, and strategy.
+        </h2>
+        <p class="collab__body">
+          As a one-person creative studio, I dive deep into every idea blending
+          strategy, artistry, and storytelling to bring it to life. My clients
+          aren't just customers; they're creative partners in the pursuit of
+          something timeless, bold, and beautifully crafted.
+        </p>
+        <a href="/contact" class="collab__btn">
+          Let's Collaborate
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 7H12M12 7L7 2M12 7L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Work History Timeline -->
+  <section class="timeline" aria-labelledby="timeline-heading">
+    <div class="timeline__inner">
+      <div class="timeline__header">
+        <span class="timeline__eyebrow">Experience</span>
+        <h2 class="timeline__heading" id="timeline-heading">Work History</h2>
+      </div>
+      <ul class="timeline__list" role="list">
+        {timeline.map((entry, i) => (
+          <TimelineEntry
+            company={entry.company}
+            role={entry.role}
+            period={entry.period}
+            current={entry.current ?? false}
+            last={i === timeline.length - 1}
+          />
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8. CTA Banner -->
+  <CTABanner />
+
+  <!-- 9. Footer -->
+  <Footer />
+
+</BaseLayout>
+
+<!-- Intersection Observer counter animation -->
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function showFinalValue(el: HTMLElement) {
+    el.textContent = (el.dataset.target ?? '0') + (el.dataset.suffix ?? '');
+  }
+
+  function animateCounter(el: HTMLElement) {
+    if (prefersReducedMotion) {
+      showFinalValue(el);
+      return;
+    }
+    const target = parseInt(el.dataset.target ?? '0', 10);
+    const suffix = el.dataset.suffix ?? '';
+    const duration = 1800;
+    const start = performance.now();
+
+    function step(now: number) {
+      const elapsed = Math.min(now - start, duration);
+      // easeOutExpo
+      const progress = elapsed === duration
+        ? 1
+        : 1 - Math.pow(2, -10 * elapsed / duration);
+      const current = Math.floor(progress * target);
+      el.textContent = current + suffix;
+      if (elapsed < duration) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  const counters = document.querySelectorAll<HTMLElement>('.stats-counter');
+
+  if (prefersReducedMotion) {
+    // Show final values immediately — no animation
+    counters.forEach(showFinalValue);
+  } else if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target as HTMLElement);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    counters.forEach((c) => observer.observe(c));
+  } else {
+    // Fallback: just show the final value
+    counters.forEach(showFinalValue);
+  }
+</script>
+
+<style>
+  /* ── Page Header ──────────────────────────────────── */
+  .page-header {
+    padding: calc(80px + clamp(4rem, 8vw, 7rem)) clamp(1.5rem, 5vw, 5rem) clamp(4rem, 6vw, 6rem);
+    background-color: var(--color-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .page-header__inner {
+    max-width: 800px;
+  }
+
+  .page-header__label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .page-header__heading {
+    font-family: var(--font-sans);
+    font-size: clamp(3rem, 7vw, 7rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    color: var(--color-white);
+    margin: 0 0 1.5rem;
+  }
+
+  .page-header__sub {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 620px;
+    margin: 0;
+  }
+
+  /* ── Bio Section ──────────────────────────────────── */
+  .bio {
+    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
+    background-color: var(--color-primary);
+  }
+
+  .bio__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 7rem);
+    align-items: start;
+  }
+
+  .bio__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .bio__name-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .bio__name {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  .bio__title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .bio__para {
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+  }
+
+  .bio__links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .bio__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .bio__link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Portrait */
+  .bio__portrait {
+    position: sticky;
+    top: calc(80px + 2rem);
+  }
+
+  .bio__portrait-wrap {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .bio__img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Glitch effect on portrait */
+  .glitch-img {
+    position: relative;
+  }
+
+  .glitch-img::before,
+  .glitch-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: inherit;
+    background-size: cover;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .glitch-img::before {
+      background-image: url('/images/about_bio.webp');
+      background-size: cover;
+      background-position: center;
+      animation: glitch-channel-1 6s steps(1) infinite;
+      opacity: 0;
+    }
+
+    .glitch-img::after {
+      background-image: url('/images/about_bio.webp');
+      background-size: cover;
+      background-position: center;
+      animation: glitch-channel-2 7s steps(1) infinite 0.5s;
+      opacity: 0;
+    }
+  }
+
+  @keyframes glitch-channel-1 {
+    0%,  88%, 100% { opacity: 0; }
+    90%  { opacity: 0.35; clip-path: inset(15% 0 60% 0); transform: translate(-6px, 0); filter: hue-rotate(90deg) saturate(3); }
+    92%  { opacity: 0.3;  clip-path: inset(55% 0 20% 0); transform: translate(4px, 0);  filter: hue-rotate(180deg) saturate(4); }
+    94%  { opacity: 0; }
+  }
+
+  @keyframes glitch-channel-2 {
+    0%,  92%, 100% { opacity: 0; }
+    94%  { opacity: 0.3;  clip-path: inset(30% 0 45% 0); transform: translate(6px, 0);  filter: hue-rotate(270deg) saturate(3); }
+    96%  { opacity: 0.25; clip-path: inset(70% 0 5% 0);  transform: translate(-3px, 0); filter: hue-rotate(320deg) saturate(4); }
+    98%  { opacity: 0; }
+  }
+
+  @media (max-width: 860px) {
+    .bio__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .bio__portrait {
+      position: static;
+      max-width: 480px;
+    }
+  }
+
+  /* ── Stats Block ──────────────────────────────────── */
+  .stats-block {
+    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
+    background-color: var(--color-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .stats-block__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .stats-block__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0 2rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .stats-block__item:first-child {
+    padding-left: 0;
+  }
+
+  .stats-block__item:last-child {
+    border-right: none;
+  }
+
+  .stats-block__number {
+    font-family: var(--font-sans);
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    color: var(--color-white);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stats-counter {
+    display: inline-block;
+  }
+
+  .stats-block__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 768px) {
+    .stats-block__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem 0;
+    }
+
+    .stats-block__item:nth-child(2) {
+      border-right: none;
+    }
+
+    .stats-block__item:nth-child(3) {
+      padding-left: 0;
+    }
+
+    .stats-block__item:nth-child(odd) {
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  @media (max-width: 400px) {
+    .stats-block__grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .stats-block__item,
+    .stats-block__item:nth-child(odd) {
+      padding-left: 0;
+      border-right: none;
+    }
+  }
+
+  /* ── Collaboration CTA ────────────────────────────── */
+  .collab {
+    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
+    background-color: var(--color-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .collab__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 7rem);
+    align-items: center;
+  }
+
+  .collab__img-wrap {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .collab__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .collab__img-wrap:hover .collab__img {
+    transform: scale(1.03);
+  }
+
+  .collab__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .collab__heading {
+    font-family: var(--font-sans);
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  .collab__body {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+
+  .collab__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    align-self: flex-start;
+    padding: 0.85rem 2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease, gap 0.2s ease;
+  }
+
+  .collab__btn:hover {
+    background-color: #7de0cb;
+    transform: translateY(-2px);
+    gap: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .collab__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── Timeline ─────────────────────────────────────── */
+  .timeline {
+    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
+    background-color: var(--color-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .timeline__inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: clamp(3rem, 6vw, 8rem);
+    align-items: start;
+  }
+
+  .timeline__header {
+    position: sticky;
+    top: calc(80px + 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .timeline__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .timeline__heading {
+    font-family: var(--font-sans);
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  .timeline__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 768px) {
+    .timeline__inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .timeline__header {
+      position: static;
+    }
+  }
+</style>

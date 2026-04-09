@@ -1,0 +1,206 @@
+---
+const navLinks = [
+  { label: 'Index',      href: '/' },
+  { label: 'About',      href: '/about' },
+  { label: 'Cases',      href: '/cases' },
+  { label: 'Get In Touch', href: '/contact' },
+];
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+
+    <!-- Left column: logo + tagline -->
+    <div class="footer-brand">
+      <a href="/" aria-label="ChrowmDesigns — home" class="footer-logo-link">
+        <img
+          src="/images/logo-1.webp"
+          alt="ChrowmDesigns"
+          width="140"
+          height="36"
+          loading="lazy"
+        />
+      </a>
+      <p class="footer-tagline">
+        CHROWM<sup>®</sup> — An independent design studio,<br />
+        based in Central Florida.
+      </p>
+    </div>
+
+    <!-- Right column: nav + contact -->
+    <div class="footer-right">
+
+      <!-- Navigation -->
+      <nav aria-label="Footer navigation">
+        <ul class="footer-nav" role="list">
+          {navLinks.map(({ label, href }) => (
+            <li>
+              <a href={href} class="footer-nav-link">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Contact -->
+      <div class="footer-contact">
+        <a
+          href="mailto:chile@chrowmdesigns.com"
+          class="footer-contact-link"
+          aria-label="Send email to chile@chrowmdesigns.com"
+        >
+          chile@chrowmdesigns.com
+        </a>
+        <a
+          href="https://www.linkedin.com/in/angelomanzano"
+          class="footer-contact-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Angelo Manzano on LinkedIn (opens in new tab)"
+        >
+          LinkedIn
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <p class="footer-copyright">
+      &copy; 2025 CHROWM | CHR&Oslash;WM DESIGNS &mdash; All Rights Reserved
+    </p>
+    <p class="footer-location">Central Florida</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 5rem clamp(1.5rem, 5vw, 5rem) 2.5rem;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    align-items: start;
+  }
+
+  /* Brand column */
+  .footer-logo-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-logo-link img {
+    height: 32px;
+    width: auto;
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin: 0;
+  }
+
+  /* Right column */
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2.5rem;
+  }
+
+  /* Nav */
+  .footer-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+
+  .footer-nav-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Contact */
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .footer-contact-link {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-contact-link:hover {
+    color: var(--color-accent);
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-copyright,
+  .footer-location {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin: 0;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .footer-right {
+      align-items: flex-start;
+    }
+
+    .footer-nav {
+      align-items: flex-start;
+    }
+
+    .footer-contact {
+      align-items: flex-start;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

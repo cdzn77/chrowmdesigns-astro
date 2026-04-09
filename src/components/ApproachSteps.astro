@@ -1,0 +1,211 @@
+---
+const steps = [
+  {
+    id: 'insight',
+    label: '01',
+    heading: 'Insight Discovery',
+    bullets: [
+      'User Research & Interviews',
+      'Usability Testing',
+      'Stakeholder Alignment',
+      'Competitive Analysis',
+      'Insight Synthesis',
+      'Journey Mapping',
+    ],
+  },
+  {
+    id: 'concept',
+    label: '02',
+    heading: 'Concept Development',
+    bullets: [
+      'Information Architecture',
+      'User Flow Mapping',
+      'Wireframing & Prototyping',
+      'Design System Planning',
+      'Interaction Strategy',
+      'Concept Validation',
+    ],
+  },
+  {
+    id: 'execution',
+    label: '03',
+    heading: 'Design Execution',
+    bullets: [
+      'High-Fidelity Design & Prototyping',
+      'UI Systems & Components',
+      'Accessibility & WCAG Compliance',
+      'Responsive Design Implementation',
+      'Visual Refinement & Brand Integration',
+      'Developer Handoff & Collaboration',
+    ],
+  },
+];
+---
+
+<section class="approach" aria-labelledby="approach-heading">
+  <div class="approach__header">
+    <span class="approach__eyebrow">Process</span>
+    <h2 class="approach__heading" id="approach-heading">
+      Creating Measurable Impact
+    </h2>
+  </div>
+
+  <div class="approach__flow">
+    {steps.map((step, i) => (
+      <>
+        <article class="approach__step" aria-labelledby={`step-heading-${step.id}`}>
+          <div class="approach__step-meta">
+            <span class="approach__step-num" aria-hidden="true">{step.label}</span>
+            <h3 class="approach__step-heading" id={`step-heading-${step.id}`}>
+              {step.heading}
+            </h3>
+          </div>
+          <ul class="approach__bullets" role="list">
+            {step.bullets.map((b) => (
+              <li class="approach__bullet">{b}</li>
+            ))}
+          </ul>
+        </article>
+
+        {i < steps.length - 1 && (
+          <div class="approach__arrow" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 16H26M26 16L18 8M26 16L18 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        )}
+      </>
+    ))}
+  </div>
+</section>
+
+<style>
+  .approach {
+    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
+    background-color: var(--color-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Header */
+  .approach__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: clamp(3rem, 5vw, 5rem);
+    max-width: 600px;
+  }
+
+  .approach__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .approach__heading {
+    font-family: var(--font-sans);
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  /* Flow: 3 columns + 2 arrows */
+  .approach__flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+  }
+
+  /* Arrow connector */
+  .approach__arrow {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 3.5rem; /* align with bullet list start */
+    color: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+  }
+
+  /* Step card */
+  .approach__step {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .approach__step-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .approach__step-num {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+  }
+
+  .approach__step-heading {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  /* Bullets */
+  .approach__bullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .approach__bullet {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-muted);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .approach__bullet::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: rgba(96, 211, 184, 0.4);
+    font-size: 0.7rem;
+    top: 0.2em;
+  }
+
+  /* Tablet: stack vertically */
+  @media (max-width: 900px) {
+    .approach__flow {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .approach__arrow {
+      padding-top: 0;
+      padding-bottom: 0;
+      justify-content: center;
+      transform: rotate(90deg);
+      margin: 1rem auto;
+    }
+
+    .approach__step {
+      border-left: 1px solid rgba(255, 255, 255, 0.06);
+      padding-left: 1.5rem;
+      padding-bottom: 2rem;
+    }
+  }
+</style>

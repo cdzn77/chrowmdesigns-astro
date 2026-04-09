@@ -1,0 +1,103 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import FullscreenMenu from '../components/FullscreenMenu.astro';
+import BackToTop from '../components/BackToTop.astro';
+import ClientRouter from 'astro/components/ClientRouter.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title,
+  description = 'Angelo Manzano Jr. — Senior Product Designer with 20 years of experience crafting digital experiences that connect, engage, and inspire.',
+  ogImage = '/images/og-default.webp',
+  ogType = 'website',
+  canonicalURL = Astro.url.href,
+} = Astro.props;
+
+const siteName = 'ChrowmDesigns';
+const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Primary Meta -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site ?? Astro.url.origin).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site ?? Astro.url.origin).href} />
+
+    <!-- View Transitions (Astro client-side router) -->
+    <ClientRouter />
+
+    <!-- Per-page head extensions (schema, preloads, etc.) -->
+    <slot name="head" />
+
+    <!-- Skip to content (accessibility) -->
+    <!-- rendered as inline style to avoid FOUC -->
+    <style>
+      #skip-to-content {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        background: #60D3B8;
+        color: #1B1B1B;
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        z-index: 9999;
+        border-radius: 0 0 4px 4px;
+        transition: top 0.2s;
+      }
+      #skip-to-content:focus {
+        top: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Accessibility: skip nav -->
+    <a id="skip-to-content" href="#main-content">Skip to content</a>
+
+    <Nav />
+    <FullscreenMenu />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <slot name="footer" />
+
+    <BackToTop />
+  </body>
+</html>

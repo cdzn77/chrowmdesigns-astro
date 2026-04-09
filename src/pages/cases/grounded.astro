@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseHero from '../../components/CaseHero.astro';
+import CasePrevNext from '../../components/CasePrevNext.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Grounded Climate Solutions Summit" description="Turned climate anxiety into a community. 300% increase in webinar registrations and 10x content engagement driven entirely by strategic visual storytelling." ogImage="/images/grounded_hero.webp" ogType="article">
+  <CaseHero logo="/images/grounded_logo.webp" logoAlt="Grounded Climate Solutions Summit" title="Grounded Climate Solutions Summit" category="UX Strategy & Behavioral Design" meta={[{label:'Client',value:'Grounded'},{label:'Role',value:'Senior UX Strategist'},{label:'Agency',value:'Pocket Made'},{label:'Technology',value:'Figma, Photoshop, WordPress'}]} heroImage="/images/grounded_hero.webp" heroAlt="Grounded climate summit — editorial visual design" />
+  <div class="case-body">
+    <section class="case-section">
+      <h2 class="case-h2">The Problem</h2>
+      <p>Climate platforms often trigger anxiety through crisis-focused design. Grounded's previous site had low engagement and minimal event registrations. The goal was converting urgency into actionable solutions rather than despair — a fundamentally different emotional register from most environmental communication.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/grounded_01.webp" alt="Grounded — visual language exploration" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section">
+      <h2 class="case-h2">Research & Discovery</h2>
+      <p>Analysis of behavioral research revealed audiences exposed to solution-framing alongside problem acknowledgment demonstrate measurably higher intent to act. The team audited 10 environmental nonprofit sites and benchmarked against editorial platforms like TED. The consistent finding: design that emphasized community and achievable action consistently outperformed crisis-led visual approaches.</p>
+    </section>
+    <div class="case-grid-2">
+      <img src="/images/grounded_02.webp" alt="Grounded — competitor audit" loading="lazy" decoding="async" width="760" height="520" />
+      <img src="/images/grounded_03.webp" alt="Grounded — behavioral research findings" loading="lazy" decoding="async" width="760" height="520" />
+    </div>
+    <section class="case-section">
+      <h2 class="case-h2">Visual Language Built for Emotional Regulation</h2>
+      <p>The visual system used icy neutrals, misty greens, and calm blues instead of high-contrast crisis colors. Typography balanced authority with warmth. Photography guidelines prioritized human connection and solution-oriented imagery over disaster documentation.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/grounded_04.webp" alt="Grounded — final visual system" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section">
+      <h2 class="case-h2">Content Architecture</h2>
+      <p>Modular story components required no developer support, enabling the small Grounded team to update content independently. Navigation was structured around action categories rather than issue categories — meeting users at their intent rather than the organization's taxonomy.</p>
+      <div class="case-2col">
+        <img src="/images/grounded_julia.webp" alt="Grounded — speaker profile component" loading="lazy" decoding="async" width="760" height="520" />
+        <img src="/images/grounded_05.webp" alt="Grounded — content grid layout" loading="lazy" decoding="async" width="760" height="520" />
+      </div>
+    </section>
+    <section class="case-section">
+      <h2 class="case-h2">CMS for Long-Term Scalability</h2>
+      <p>WordPress CMS was designed for small teams to maintain independently. Component documentation was written for non-technical users. The system was handed off with full editorial guidelines.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/grounded_web_01.webp" alt="Grounded — full website on desktop" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section case-section--results">
+      <h2 class="case-h2">Results & Impact</h2>
+      <ul class="case-results">
+        <li><strong>Webinar registrations:</strong> 300% increase in first quarter post-launch</li>
+        <li><strong>Content engagement:</strong> 10x increase versus previous site</li>
+        <li><strong>Community recognition:</strong> Recognized by three environmental organizations</li>
+        <li><strong>CMS adoption:</strong> Full team self-sufficient within two weeks, zero support requests</li>
+        <li><strong>Performance:</strong> Sub-3 second load times maintained across all pages</li>
+      </ul>
+    </section>
+  </div>
+  <CasePrevNext currentSlug="grounded" />
+  <CTABanner />
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,169 @@
+---
+export interface Props {
+  title: string;
+  category: string;
+  thumbnail: string;
+  href: string;
+  description?: string;
+  /** Optional: stagger the card downward for masonry feel */
+  offset?: boolean;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  title,
+  category,
+  thumbnail,
+  href,
+  description,
+  offset = false,
+  loading = 'lazy',
+} = Astro.props;
+---
+
+<article class:list={['case-card', { 'case-card--offset': offset }]}>
+  <a href={href} class="case-card__link" aria-label={`View case study: ${title}`}>
+
+    <!-- Thumbnail -->
+    <div class="case-card__img-wrap">
+      <img
+        src={thumbnail}
+        alt={title}
+        class="case-card__img"
+        loading={loading}
+        decoding="async"
+        width="760"
+        height="520"
+      />
+      <!-- Hover overlay -->
+      <div class="case-card__hover-overlay" aria-hidden="true">
+        <span class="case-card__view-label">View Case</span>
+      </div>
+    </div>
+
+    <!-- Meta -->
+    <div class="case-card__meta">
+      <h3 class="case-card__title">{title}</h3>
+      <span class="case-card__category">{category}</span>
+      {description && (
+        <p class="case-card__desc">{description}</p>
+      )}
+    </div>
+
+  </a>
+</article>
+
+<style>
+  .case-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Staggered offset — second card in each row nudges down */
+  .case-card--offset {
+    margin-top: clamp(2rem, 4vw, 4rem);
+  }
+
+  .case-card__link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    gap: 1.25rem;
+  }
+
+  /* Image wrapper */
+  .case-card__img-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    aspect-ratio: 4 / 3;
+  }
+
+  .case-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.55s ease;
+    will-change: transform;
+  }
+
+  .case-card__link:hover .case-card__img {
+    transform: scale(1.04);
+    opacity: 0.85;
+  }
+
+  /* Hover overlay */
+  .case-card__hover-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(27, 27, 27, 0.45);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .case-card__link:hover .case-card__hover-overlay {
+    opacity: 1;
+  }
+
+  .case-card__view-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+    border-radius: 100px;
+    transform: translateY(8px);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .case-card__link:hover .case-card__view-label {
+    transform: translateY(0);
+  }
+
+  /* Meta */
+  .case-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .case-card__title {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--color-white);
+    margin: 0;
+    transition: color 0.2s ease;
+  }
+
+  .case-card__link:hover .case-card__title {
+    color: var(--color-accent);
+  }
+
+  .case-card__category {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .case-card__desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0.5rem 0 0;
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+// Items from live site — duplicated in markup for seamless CSS-only loop.
+// The animation translates -50%, so two copies = one seamless loop.
+const items = [
+  '20 Years of Design That Performs',
+  '44% Decrease in Exit Rate',
+  '300% Increase in Registrations',
+  '60M Impressions Delivered',
+  '147% Engagement Lift',
+  'Enterprise UX Strategy',
+  '40% Faster Path to Content',
+];
+
+// Separator glyph between items
+const sep = '✦';
+---
+
+<div class="stats-marquee" aria-hidden="true">
+  <div class="stats-marquee__track">
+    <!-- Two identical sets so -50% translate loops invisibly -->
+    {[0, 1].map(() => (
+      <div class="stats-marquee__set" role="presentation">
+        {items.map((item) => (
+          <>
+            <span class="stats-marquee__item">{item}</span>
+            <span class="stats-marquee__sep" aria-hidden="true">{sep}</span>
+          </>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .stats-marquee {
+    overflow: hidden;
+    background-color: var(--color-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: var(--marquee-padding, 7rem 0);
+    /* Fade edges */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+
+  .stats-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: crd-marquee-scroll var(--marquee-speed, 40s) linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stats-marquee__track {
+      animation: none;
+    }
+  }
+
+  .stats-marquee__set {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .stats-marquee__item {
+    font-family: var(--marquee-font-family, var(--font-sans));
+    font-size: var(--marquee-font-size, 12rem);
+    font-weight: 400;
+    letter-spacing: var(--marquee-letter-spacing, -0.07em);
+    color: var(--color-white);
+    white-space: nowrap;
+    line-height: 1;
+    padding: 0 var(--marquee-gap, 2rem);
+  }
+
+  .stats-marquee__sep {
+    font-size: calc(var(--marquee-font-size, 12rem) * 0.4);
+    color: var(--color-accent);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  @keyframes crd-marquee-scroll {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+  }
+</style>

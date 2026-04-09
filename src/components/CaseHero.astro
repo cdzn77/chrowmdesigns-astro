@@ -1,0 +1,202 @@
+---
+export interface MetaRow {
+  label: string;
+  value: string;
+}
+
+export interface Props {
+  logo: string;
+  logoAlt: string;
+  title: string;
+  category: string;
+  meta: MetaRow[];
+  heroImage: string;
+  heroAlt: string;
+}
+
+const { logo, logoAlt, title, category, meta, heroImage, heroAlt } = Astro.props;
+---
+
+<section class="case-hero" aria-labelledby="case-title">
+  <!-- Header: logo + meta -->
+  <div class="case-hero__header">
+    <div class="case-hero__logo-wrap">
+      <img
+        src={logo}
+        alt={logoAlt}
+        class="case-hero__logo"
+        width="200"
+        height="80"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+
+    <div class="case-hero__text">
+      <span class="case-hero__category">{category}</span>
+      <h1 class="case-hero__title" id="case-title">{title}</h1>
+    </div>
+
+    <div class="case-hero__meta">
+      <dl class="case-hero__meta-table">
+        {meta.map(({ label, value }) => (
+          <div class="case-hero__meta-row">
+            <dt class="case-hero__meta-label">{label}</dt>
+            <dd class="case-hero__meta-value">{value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+
+  <!-- Full-width hero image -->
+  <div class="case-hero__img-wrap">
+    <img
+      src={heroImage}
+      alt={heroAlt}
+      class="case-hero__img"
+      width="1620"
+      height="860"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </div>
+</section>
+
+<style>
+  .case-hero {
+    background-color: var(--color-primary);
+    padding-top: 80px; /* nav height */
+  }
+
+  /* Header */
+  .case-hero__header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 3rem;
+    align-items: start;
+    padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 5rem) clamp(2rem, 4vw, 4rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Logo */
+  .case-hero__logo-wrap {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0.25rem;
+  }
+
+  .case-hero__logo {
+    height: 48px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+    display: block;
+  }
+
+  /* Title block */
+  .case-hero__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .case-hero__category {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .case-hero__title {
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  /* Meta table */
+  .case-hero__meta {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0.25rem;
+  }
+
+  .case-hero__meta-table {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    min-width: 220px;
+  }
+
+  .case-hero__meta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .case-hero__meta-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .case-hero__meta-value {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+  }
+
+  /* Hero image */
+  .case-hero__img-wrap {
+    width: 100%;
+    overflow: hidden;
+    max-height: 80vh;
+  }
+
+  .case-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Tablet */
+  @media (max-width: 900px) {
+    .case-hero__header {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .case-hero__meta {
+      padding-top: 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem;
+    }
+
+    .case-hero__meta-table {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1.5rem 3rem;
+      min-width: unset;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .case-hero__meta-table {
+      flex-direction: column;
+    }
+  }
+</style>

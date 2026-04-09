@@ -1,0 +1,306 @@
+---
+const navLinks = [
+  { label: 'Index',   href: '/' },
+  { label: 'About',   href: '/about' },
+  { label: 'Cases',   href: '/cases' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<div
+  id="fullscreen-menu"
+  class="fullscreen-menu"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation menu"
+  hidden
+>
+  <div class="fullscreen-menu__inner">
+
+    <!-- Close button -->
+    <button
+      class="fullscreen-menu__close"
+      id="menu-close-btn"
+      aria-label="Close navigation menu"
+    >
+      <span class="close-line"></span>
+      <span class="close-line"></span>
+    </button>
+
+    <!-- Nav links -->
+    <nav aria-label="Mobile navigation">
+      <ul class="fullscreen-menu__links" role="list">
+        {navLinks.map(({ label, href }, i) => (
+          <li class="fullscreen-menu__item" style={`--i: ${i}`}>
+            <a href={href} class="fullscreen-menu__link">
+              <span class="link-index">0{i + 1}</span>
+              <span class="link-label">{label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Footer strip inside menu -->
+    <div class="fullscreen-menu__footer">
+      <a href="mailto:chile@chrowmdesigns.com" class="menu-footer-link">
+        chile@chrowmdesigns.com
+      </a>
+      <a
+        href="https://www.linkedin.com/in/angelomanzano"
+        class="menu-footer-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LinkedIn
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .fullscreen-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.5rem, 5vw, 5rem);
+
+    /* Closed state */
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s cubic-bezier(0.76, 0, 0.24, 1),
+      visibility 0.4s ease;
+  }
+
+  /* hidden attr used for initial render; remove via JS before animating */
+  .fullscreen-menu[hidden] {
+    display: flex; /* override browser hidden to allow animation */
+  }
+
+  .fullscreen-menu.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .fullscreen-menu__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 2rem;
+  }
+
+  /* Close button */
+  .fullscreen-menu__close {
+    position: absolute;
+    top: clamp(1.5rem, 5vw, 2.5rem);
+    right: clamp(1.5rem, 5vw, 5rem);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .fullscreen-menu__close:hover {
+    border-color: var(--color-accent);
+    transform: rotate(90deg);
+  }
+
+  .close-line {
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background-color: var(--color-white);
+  }
+
+  .close-line:nth-child(1) { transform: rotate(45deg); }
+  .close-line:nth-child(2) { transform: rotate(-45deg); }
+
+  /* Nav links list */
+  .fullscreen-menu__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .fullscreen-menu__item {
+    overflow: hidden;
+    transform: translateY(40px);
+    opacity: 0;
+    transition:
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i) * 0.07s + 0.1s),
+      opacity 0.5s ease calc(var(--i) * 0.07s + 0.1s);
+  }
+
+  .fullscreen-menu.is-open .fullscreen-menu__item {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .fullscreen-menu__link {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: color 0.2s ease;
+  }
+
+  .fullscreen-menu__link:hover .link-label {
+    color: var(--color-accent);
+  }
+
+  .link-index {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    flex-shrink: 0;
+  }
+
+  .link-label {
+    font-size: clamp(2.5rem, 9vw, 5rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    line-height: 1.1;
+    transition: color 0.2s ease;
+  }
+
+  /* Footer strip */
+  .fullscreen-menu__footer {
+    display: flex;
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: auto;
+  }
+
+  .menu-footer-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .menu-footer-link:hover {
+    color: var(--color-accent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fullscreen-menu {
+      transition: opacity 0.15s ease, visibility 0.15s ease;
+      transform: none !important;
+    }
+
+    .fullscreen-menu__item {
+      transition: none;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .fullscreen-menu__close {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const menu     = document.getElementById('fullscreen-menu');
+  const closeBtn = document.getElementById('menu-close-btn');
+  const openBtn  = document.getElementById('hamburger-btn');
+
+  // Remove hidden attribute so CSS transitions can work
+  menu?.removeAttribute('hidden');
+
+  const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  function getFocusable() {
+    return menu ? Array.from(menu.querySelectorAll<HTMLElement>(FOCUSABLE)) : [];
+  }
+
+  function openMenu() {
+    menu?.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    openBtn?.setAttribute('aria-expanded', 'true');
+    // Move focus into menu
+    const first = getFocusable()[0];
+    first?.focus();
+  }
+
+  function closeMenu() {
+    menu?.classList.remove('is-open');
+    document.body.style.overflow = '';
+    openBtn?.setAttribute('aria-expanded', 'false');
+    openBtn?.focus();
+  }
+
+  closeBtn?.addEventListener('click', closeMenu);
+
+  // Close on link click
+  menu?.querySelectorAll('.fullscreen-menu__link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on Escape; trap Tab inside menu
+  document.addEventListener('keydown', (e) => {
+    if (!menu?.classList.contains('is-open')) return;
+
+    if (e.key === 'Escape') {
+      closeMenu();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusable = getFocusable();
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+  });
+
+  // Wire hamburger open (the hamburger script also calls addClass but doesn't focus)
+  openBtn?.addEventListener('click', () => {
+    if (openBtn.getAttribute('aria-expanded') === 'true') {
+      const first = getFocusable()[0];
+      first?.focus();
+    }
+  });
+</script>

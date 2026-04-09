@@ -1,0 +1,78 @@
+---
+// Items from live site hire marquee strip.
+const items = [
+  'Product Designer Available for Hire',
+  'UX Strategy & Design Systems',
+  'Remote & Worldwide',
+  '20 Years of Experience',
+];
+
+const sep = '/';
+---
+
+<div class="hire-marquee" aria-hidden="true">
+  <div class="hire-marquee__track">
+    {[0, 1].map(() => (
+      <div class="hire-marquee__set" role="presentation">
+        {items.map((item) => (
+          <>
+            <span class="hire-marquee__item">{item}</span>
+            <span class="hire-marquee__sep" aria-hidden="true">{sep}</span>
+          </>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .hire-marquee {
+    overflow: hidden;
+    background-color: var(--color-accent);
+    padding: 1.1rem 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  }
+
+  .hire-marquee__track {
+    display: flex;
+    width: max-content;
+    /* Slightly faster + reverse direction for visual contrast from stats marquee */
+    animation: crd-marquee-scroll-reverse 25s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hire-marquee__track {
+      animation: none;
+    }
+  }
+
+  .hire-marquee__set {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .hire-marquee__item {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    white-space: nowrap;
+    padding: 0 1.5rem;
+  }
+
+  .hire-marquee__sep {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(27, 27, 27, 0.4);
+    flex-shrink: 0;
+  }
+
+  @keyframes crd-marquee-scroll-reverse {
+    from { transform: translate3d(-50%, 0, 0); }
+    to   { transform: translate3d(0, 0, 0); }
+  }
+</style>

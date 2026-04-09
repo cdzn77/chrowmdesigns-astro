@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseHero from '../../components/CaseHero.astro';
+import CasePrevNext from '../../components/CasePrevNext.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Carrabba's Italian Grill" description="Reduced recipe access time by 40% and grew mobile engagement 28% by designing a content platform that taught people to cook instead of trying to sell them a reservation." ogImage="/images/carrabbas_hero.webp" ogType="article">
+  <CaseHero logo="/images/carrabbas-logo.webp" logoAlt="Carrabba's Italian Grill" title="Carrabba's Italian Grill" category="Content Strategy & UX Architecture" meta={[{label:'Client',value:"Carrabba's Italian Grill (Bloomin' Brands)"},{label:'Role',value:'Senior UX Strategist'},{label:'Agency',value:'Voice Communications | Porter Novelli'},{label:'Technology',value:'Sketch, Invision, WordPress'}]} heroImage="/images/carrabbas_hero.webp" heroAlt="Carrabba's Italian Grill — culinary content platform" />
+  <div class="case-body">
+    <section class="case-section">
+      <h2 class="case-h2">The Problem</h2>
+      <p>Carrabba's sought to build relationships with food enthusiasts through a culinary blog called "Secrets from Carrabba's Kitchen." The core tension: promotional restaurant content and genuinely useful culinary resources require different UX approaches. The design needed to earn trust first and allow brand recognition to follow naturally.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/carrabbas01.webp" alt="Carrabba's — culinary platform overview" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section">
+      <h2 class="case-h2">Research & Discovery</h2>
+      <p>Usability testing with 12 home cooks across skill levels revealed that experienced cooks browse by technique and ingredient, while novices browse by desired outcome. Audits of eight food platforms and three restaurant blogs showed successful examples separated discovery browsing from recipe execution layouts.</p>
+    </section>
+    <div class="case-grid-2">
+      <img src="/images/carrabbas02.webp" alt="Carrabba's — usability testing findings" loading="lazy" decoding="async" width="760" height="520" />
+      <img src="/images/carrabbas03.webp" alt="Carrabba's — content audit" loading="lazy" decoding="async" width="760" height="520" />
+    </div>
+    <section class="case-section">
+      <h2 class="case-h2">Content-First Information Architecture</h2>
+      <p>Content was organized around technique and ingredient categories rather than promotional themes. Navigation paths for Popular, Recent, and topical filters provided multiple entry points without forcing linear journeys. Action-oriented titles like "How to Boil the Perfect Pot of Pasta" set explicit expectations and drove higher click-through than descriptive headlines.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/carrabbas04.webp" alt="Carrabba's — information architecture" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section">
+      <h2 class="case-h2">Mobile-First Reading Experience</h2>
+      <p>Article layouts used scroll-optimized vertical flow with ingredient lists and instructions in clear hierarchy. The reading experience was designed for a kitchen context: large touch targets, minimal chrome, and easy scroll-back for reference while cooking.</p>
+    </section>
+    <div class="case-grid-3">
+      <img src="/images/carrabbas05.webp" alt="Carrabba's — mobile recipe layout" loading="lazy" decoding="async" width="500" height="360" />
+      <img src="/images/carrabbas06.webp" alt="Carrabba's — ingredient list design" loading="lazy" decoding="async" width="500" height="360" />
+      <img src="/images/carrabbas07.webp" alt="Carrabba's — navigation design" loading="lazy" decoding="async" width="500" height="360" />
+    </div>
+    <section class="case-section">
+      <h2 class="case-h2">Visual System</h2>
+      <p>The design balanced Carrabba's brand warmth with functional clarity. Rich food photography led the visual hierarchy, using "Carrabba's Tableside" custom serif for brand moments paired with clean sans-serif for body text readable at small mobile sizes.</p>
+    </section>
+    <div class="case-full-img"><img src="/images/carrabbas08.webp" alt="Carrabba's — final design system" loading="lazy" decoding="async" width="1620" height="860" /></div>
+    <section class="case-section case-section--results">
+      <h2 class="case-h2">Results & Impact</h2>
+      <ul class="case-results">
+        <li><strong>Path to content:</strong> 40% faster time-to-recipe vs. prior site (measured via task timing, n=12 usability sessions)</li>
+        <li><strong>Mobile engagement:</strong> 28% increase in mobile session depth following launch</li>
+        <li><strong>Brand perception:</strong> Post-launch survey showed 78% of first-time visitors cited "inviting" and "easy to use"</li>
+        <li><strong>Editorial adoption:</strong> Content team producing on-spec articles independently within 3 weeks of handoff</li>
+        <li><strong>Navigation efficiency:</strong> 3-step browsing path replacing 6+ click sequences for core content discovery</li>
+      </ul>
+    </section>
+    <section class="case-section">
+      <h2 class="case-h2">My Contribution</h2>
+      <p>Led UX strategy, information architecture, and visual design. Established shared design system with external agency. Wrote editorial guidelines aligning content creation with UX strategy — a critical addition preventing design quality degradation as real content was added.</p>
+    </section>
+  </div>
+  <CasePrevNext currentSlug="carrabbas" />
+  <CTABanner />
+  <Footer />
+</BaseLayout>
