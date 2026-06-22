@@ -22,14 +22,15 @@
   /* ────────────────────────────────────────────────────────
      COLOR PALETTE (React Creative Studio Design)
      ──────────────────────────────────────────────────────── */
-  --color-primary: #e02b10;
-  --color-secondary: #d41d00;
-  --color-accent: #ff6b4a;
+  --color-primary: #1B1B1B;
+  --color-secondary: #555555;
+  --color-accent: #60D3B8;
   --color-white: #FFFFFF;
   --color-dark: #1a1a1a;
-  --color-bg: #e02b10;
+  --color-bg: #1B1B1B;
   --color-text: #FFFFFF;
   --color-muted: #999999;
+  --color-hero-bg: #e02b10;
 
   /* Semantic color roles */
   --color-background: var(--color-bg);
