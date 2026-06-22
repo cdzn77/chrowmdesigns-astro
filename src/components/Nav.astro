@@ -181,24 +181,24 @@ const currentPath = Astro.url.pathname;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 4px;
-  color: var(--color-text);
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a1a;
   text-decoration: none;
   font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  transition: background 200ms var(--transition-base), border-color 200ms var(--transition-base), color 200ms var(--transition-base);
+  transition: background 200ms var(--transition-base), color 200ms var(--transition-base);
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .nav-cta:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-bg);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 /* Hamburger button — hidden on desktop */
