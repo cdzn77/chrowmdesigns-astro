@@ -1,57 +1,42 @@
 ---
-const text = 'Product Designer Available for Hire + UX Strategy & Design Systems + Remote & Worldwide + 20 Years of Experience +';
 ---
 
-<div class="hire-marquee" aria-hidden="true">
-  <div class="hire-marquee__track">
-    {[0, 1].map(() => (
-      <span class="hire-marquee__item">{text}</span>
-    ))}
+<section class="hire-section">
+  <div class="hire-section__content">
+    <h2 class="hire-section__title">Product Designer Available for Hire</h2>
   </div>
-</div>
+</section>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
 
-  .hire-marquee {
-    overflow: hidden;
-    background-color: #ffffff;
+  .hire-section {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    position: relative;
+    background-color: #ffffff;
+    padding: clamp(60px, 15vw, 120px) clamp(16px, 5vw, 60px);
   }
 
-  .hire-marquee__track {
-    display: flex;
-    width: max-content;
-    animation: marquee 24s linear infinite;
+  .hire-section__content {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  .hire-marquee__item {
+  .hire-section__title {
     font-family: 'Manrope', sans-serif;
-    font-size: 170px;
-    font-weight: 400;
+    font-size: clamp(48px, 12vw, 120px);
+    font-weight: 700;
     color: #000000;
-    white-space: nowrap;
-    line-height: 1;
-    padding: 40px 0;
-    margin-right: 0;
+    margin: 0;
+    line-height: 1.1;
     text-transform: none;
-    letter-spacing: 0;
+    letter-spacing: -0.02em;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .hire-marquee__track {
-      animation: none;
+  @media (max-width: 768px) {
+    .hire-section__title {
+      font-size: clamp(32px, 10vw, 80px);
     }
   }
 </style>
