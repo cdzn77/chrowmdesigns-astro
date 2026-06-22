@@ -208,17 +208,32 @@ const subjectOptions = [
   .contact-form__textarea,
   .contact-form__select {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
     color: var(--color-white);
     font-family: var(--font-sans);
     font-size: 0.95rem;
     line-height: 1.5;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     outline: none;
     appearance: none;
     -webkit-appearance: none;
+  }
+
+  .contact-form__input:hover,
+  .contact-form__textarea:hover,
+  .contact-form__select:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .contact-form__input:focus,
+  .contact-form__textarea:focus,
+  .contact-form__select:focus {
+    border-color: var(--color-accent);
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(96, 211, 184, 0.1);
   }
 
   .contact-form__input,
