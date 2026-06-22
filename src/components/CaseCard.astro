@@ -57,10 +57,12 @@ const {
   .case-card {
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
     height: 100%;
   }
 
-  /* No offset in masonry layout */
   .case-card--offset {
     margin-top: 0;
   }
@@ -70,15 +72,18 @@ const {
     flex-direction: column;
     text-decoration: none;
     gap: 0;
+    margin: 0;
+    padding: 0;
     height: 100%;
   }
 
-  /* Image wrapper - React creative agency design */
   .case-card__img-wrap {
     position: relative;
     overflow: hidden;
-    border-radius: 0;
-    background-color: #f0f0f0;
+    width: 100%;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
     flex: 1;
   }
 
@@ -87,67 +92,39 @@ const {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-                opacity 0.55s ease;
-    will-change: transform;
+    transition: transform 0.4s ease;
   }
 
   .case-card__link:hover .case-card__img {
-    transform: scale(1.04);
-    opacity: 0.85;
+    transform: scale(1.05);
   }
 
-  /* Hover overlay */
   .case-card__hover-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(27, 27, 27, 0.45);
-    opacity: 0;
-    transition: opacity 0.35s ease;
-  }
-
-  .case-card__link:hover .case-card__hover-overlay {
-    opacity: 1;
+    display: none;
   }
 
   .case-card__view-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.4rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    background-color: var(--color-accent);
-    border-radius: 100px;
-    transform: translateY(8px);
-    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    display: none;
   }
 
-  .case-card__link:hover .case-card__view-label {
-    transform: translateY(0);
-  }
-
-  /* Meta */
   .case-card__meta {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 6px;
+    padding: 16px;
+    background: #ffffff;
+    margin: 0;
   }
 
   .case-card__title {
-    font-family: var(--font-sans);
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: #1a1a1a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: #000000;
     margin: 0;
-    transition: color 0.2s ease;
+    line-height: 1.4;
   }
 
   .case-card__link:hover .case-card__title {
@@ -155,17 +132,15 @@ const {
   }
 
   .case-card__category {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
     text-transform: uppercase;
-    color: #999999;
+    color: #888888;
+    margin: 0;
   }
 
   .case-card__desc {
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: rgba(0, 0, 0, 0.55);
-    margin: 0.5rem 0 0;
+    display: none;
   }
 </style>
