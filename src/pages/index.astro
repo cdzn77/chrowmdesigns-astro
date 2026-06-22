@@ -395,17 +395,32 @@ const skills = [
   }
 
   .cases-grid__inner {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
     width: 100%;
   }
 
-  .cases-grid__inner > :nth-child(-n+2) {
-    width: 50%;
+  /* First 2 cards span 2 columns each - large cards */
+  .cases-grid__inner > :nth-child(1),
+  .cases-grid__inner > :nth-child(2) {
+    grid-column: span 2;
   }
 
+  /* First 2 cards have 3:2 aspect ratio */
+  .cases-grid__inner > :nth-child(1) .case-card__img-wrap,
+  .cases-grid__inner > :nth-child(2) .case-card__img-wrap {
+    aspect-ratio: 3 / 2;
+  }
+
+  /* Remaining 4 cards span 1 column each - small cards */
   .cases-grid__inner > :nth-child(n+3) {
-    width: 25%;
+    grid-column: span 1;
+  }
+
+  /* Last 4 cards have 1:1 aspect ratio */
+  .cases-grid__inner > :nth-child(n+3) .case-card__img-wrap {
+    aspect-ratio: 1 / 1;
   }
 
   .cases-grid__footer {
