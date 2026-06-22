@@ -330,18 +330,20 @@ const skills = [
     flex-direction: row;
     gap: clamp(40px, 8vw, 80px);
     justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 -40px;
+    padding: 0 40px;
   }
 
   .cases-header__description-left {
-    flex: 1;
+    flex: 0 0 auto;
     text-align: left;
+    max-width: calc(50% - 20px);
   }
 
   .cases-header__description-right {
-    flex: 1;
+    flex: 0 0 auto;
     text-align: right;
+    max-width: calc(50% - 20px);
   }
 
   .cases-header__label {
