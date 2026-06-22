@@ -57,11 +57,12 @@ const {
   .case-card {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
-  /* Staggered offset — second card in each row nudges down */
+  /* No offset in masonry layout */
   .case-card--offset {
-    margin-top: clamp(2rem, 4vw, 4rem);
+    margin-top: 0;
   }
 
   .case-card__link {
@@ -75,9 +76,18 @@ const {
   .case-card__img-wrap {
     position: relative;
     overflow: hidden;
-    border-radius: 16px;  /* React design value */
-    background-color: #2a2a2a;
+    border-radius: 0;
+    background-color: #f0f0f0;
     aspect-ratio: 4 / 3;
+  }
+
+  /* Masonry layout: large cards 2:3, small cards 1:1 */
+  :nth-child(-n+2) .case-card__img-wrap {
+    aspect-ratio: 3 / 2;
+  }
+
+  :nth-child(n+3) .case-card__img-wrap {
+    aspect-ratio: 1 / 1;
   }
 
   .case-card__img {
