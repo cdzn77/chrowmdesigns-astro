@@ -312,3 +312,148 @@ Each needs its content transcribed into an Astro page:
 - **Fonts**: Inspect the live site's CSS to identify font families. Self-host or use CDN.
 - **Responsive**: The current site is responsive. Match all breakpoints.
 - **Performance target**: Lighthouse 95+ across all categories.
+
+---
+
+## Figma MCP Integration Rules
+
+These rules define how to translate Figma designs (ChrowmDesigns Neo-Brutalist Design System) into production-ready Astro components for this project. Follow for every Figma-driven change.
+
+### Required Workflow (do not skip)
+
+1. Call `get_design_context` with the node's fileKey and nodeId first
+2. If the response is truncated or too large, call `get_metadata` for the high-level node map, then re-fetch only the needed node(s)
+3. Call `get_screenshot` for a visual reference of the exact variant being implemented
+4. Download any assets returned (images, SVGs) before starting implementation
+5. Translate the Figma output (React + Tailwind reference) into this project's Astro + custom CSS conventions
+6. Validate against the Figma screenshot for 1:1 visual parity before marking complete
+
+### Framework & File Conventions
+
+- **Output format:** `.astro` files only — no React, Vue, or other framework components
+- **Component location:** `src/components/` — PascalCase filenames (e.g., `HeroCard.astro`)
+- **Page location:** `src/pages/` or `src/pages/cases/`
+- **Reuse first:** Always check `src/components/` for an existing component before creating a new one
+- **No path aliases** — use relative imports (e.g., `../components/Nav.astro`)
+
+### Component Structure Template
+
+```astro
+---
+export interface Props {
+  title: string;
+  // add typed props here
+}
+const { title } = Astro.props;
+---
+
+<article class="component-name">
+  <h3>{title}</h3>
+</article>
+
+<style>
+  /* Scoped BEM CSS — do not use Tailwind utility classes here */
+  .component-name { }
+  .component-name__element { }
+  .component-name__element--modifier { }
+</style>
+
+<script>
+  /* Vanilla JS only — no framework needed */
+</script>
+```
+
+### Design Token Rules
+
+- IMPORTANT: Never hardcode hex colors — always use CSS custom properties from `src/styles/global.css`
+- IMPORTANT: `--color-accent: #60D3B8` must only appear on dark backgrounds (`--color-bg: #1B1B1B`) — never on white
+- Use token variables for all color, spacing, and typography values:
+
+```css
+/* Colors */
+--color-primary: #1B1B1B
+--color-secondary: #555555
+--color-accent: #60D3B8
+--color-white: #FFFFFF
+--color-bg: #1B1B1B
+--color-text: #FFFFFF
+--color-muted: #999999
+
+/* Typography */
+--font-sans: 'sequel-sans-roman', system-ui, sans-serif
+--font-size-sm: 13px
+--font-size-md: 20px
+--font-size-lg: 36px
+--font-size-xl: 42px
+
+/* Spacing (fluid) */
+--section-padding-x: clamp(1.5rem, 5vw, 5rem)
+--section-padding-y: clamp(4rem, 8vw, 8rem)
+
+/* Transitions */
+--transition-base: 0.3s ease
+--transition-slow: 0.6s ease
+```
+
+- New tokens belong in `src/styles/global.css` under `:root` — do not scatter them in components
+
+### Styling Rules
+
+- **Primary approach:** Scoped `<style>` blocks per component using BEM class naming
+- **Tailwind:** Imported globally via `@import "tailwindcss"` in `global.css` but used minimally — prefer custom CSS for components
+- IMPORTANT: Do not add Tailwind utility classes inside component templates; write scoped CSS in the `<style>` block instead
+- **Fluid sizing:** Use `clamp(min, preferred, max)` for responsive font sizes and spacing
+- **Responsive breakpoints:**
+  - Desktop: default (no media query)
+  - Tablet: `max-width: 900px`
+  - Mobile: `max-width: 768px`, `max-width: 640px`, `max-width: 480px`
+- **Reduced motion:** Always add `@media (prefers-reduced-motion: reduce)` for animations
+- **Global utility classes** (defined in `global.css`, use these instead of reinventing):
+  - `.accent` — teal accent color
+  - `.text-muted` — muted text
+  - `.section-padding` — standard section padding
+  - `.visually-hidden` — accessible hide
+  - `.case-section`, `.case-h2`, `.case-grid-2`, `.case-grid-3` — case study layout helpers
+
+### Asset Rules
+
+- IMPORTANT: If the Figma MCP returns a `localhost` URL for an image or SVG asset, use that source directly — do not substitute a placeholder
+- IMPORTANT: Do not install new icon packages — use inline SVGs embedded directly in components (project convention)
+- Store downloaded image assets in `public/images/` as `.webp` format
+- Image naming convention:
+  - Thumbnails: `{case-name}-case_thumb.webp`
+  - Case content: `{case-name}_{descriptor}.webp`
+  - Client logos: `client-{nn}.webp`
+- Always include `width`, `height`, `loading="lazy"` (or `"eager"` for above-fold), and `decoding="async"` on `<img>` tags
+- Icons: inline SVG only — no sprite sheets, no icon fonts, no external icon libraries
+
+### Typography Rules
+
+- Font family: Sequel Sans (self-hosted in `public/fonts/`) — reference via `--font-sans`
+- Use `--font-size-*` tokens, not arbitrary values
+- For marquee/display text, use `--marquee-font-size: 12rem` with `letter-spacing: -0.07em`
+
+### Interactivity Rules
+
+- Vanilla JS only in `<script>` blocks — no React/Vue/Svelte
+- Use `Intersection Observer` for scroll-triggered animations and counters
+- Use `{ passive: true }` on scroll event listeners
+- Animations: CSS `@keyframes` preferred over JS-driven animation libraries
+
+### Data & Content Rules
+
+- Case study metadata lives in `src/data/cases.json`
+- Client logo list lives in `src/data/clients.json`
+- Do not hardcode lists of cases or clients in components — always import from data files
+
+### What to Map from Figma Output
+
+| Figma/React output | This project's equivalent |
+|---|---|
+| `className="bg-[#1B1B1B]"` | `var(--color-bg)` in scoped CSS |
+| `className="text-[#60D3B8]"` | `var(--color-accent)` (dark bg only) |
+| `style={{ fontFamily: '...' }}` | `font-family: var(--font-sans)` |
+| `<div className="flex gap-4">` | CSS Grid or Flexbox in `<style>` block |
+| React component JSX | Astro component `.astro` file |
+| `import { Icon }` | Inline SVG in template |
+| Tailwind spacing utilities | `clamp()` values or `--section-padding-*` tokens |
