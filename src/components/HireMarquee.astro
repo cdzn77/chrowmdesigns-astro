@@ -1,10 +1,9 @@
 ---
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
 ---
 
 <section class="hire-section">
-  <div class="hire-section__content">
-    <h2 class="hire-section__title">Product Designer Available for Hire</h2>
-  </div>
+  <h2 class="hire-section__title">Product Designer Available for Hire</h2>
 </section>
 
 <style>
@@ -13,31 +12,21 @@
   .hire-section {
     width: 100%;
     background-color: #ffffff;
-    padding: clamp(80px, 15vw, 140px) clamp(16px, 5vw, 60px);
-  }
-
-  .hire-section__content {
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: clamp(16px, 5vw, 60px);
-    padding-right: clamp(16px, 5vw, 60px);
+    padding: clamp(100px, 18vw, 160px) clamp(16px, 5vw, 60px);
+    margin: 0;
   }
 
   .hire-section__title {
     font-family: 'Manrope', sans-serif;
-    font-size: clamp(56px, 14vw, 140px);
+    font-size: clamp(48px, 12vw, 140px);
     font-weight: 700;
     color: #000000;
     margin: 0;
-    line-height: 1.05;
+    line-height: 1;
     text-transform: none;
     letter-spacing: -0.02em;
-  }
-
-  @media (max-width: 768px) {
-    .hire-section__title {
-      font-size: clamp(32px, 10vw, 80px);
-    }
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>
