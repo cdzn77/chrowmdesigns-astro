@@ -102,10 +102,10 @@
 
   .hero__heading {
     font-family: var(--font-sans);
-    font-size: clamp(3.5rem, 9vw, 8rem);
-    font-weight: 600;
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 700;  /* React: bold */
     letter-spacing: -0.04em;
-    line-height: 0.95;
+    line-height: 0.9;
     color: var(--color-white);
     margin: 0;
     text-transform: lowercase;
@@ -132,22 +132,23 @@
     color: #7de0cb;
   }
 
-  /* CTA button */
+  /* CTA button - React creative agency pill-shape */
   .hero__cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.6rem;
     align-self: flex-start;
-    padding: 1rem 2.5rem;
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 0.8rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--color-primary);
     background-color: var(--color-white);
-    border-radius: 8px;
+    border-radius: 20px;  /* React design: pill-shaped */
+    border: none;
     text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease, gap 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   }
 
@@ -155,7 +156,7 @@
     background-color: rgba(255, 255, 255, 0.95);
     transform: translateY(-3px);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-    gap: 1.1rem;
+    gap: 0.9rem;
   }
 
   .hero__cta-arrow {

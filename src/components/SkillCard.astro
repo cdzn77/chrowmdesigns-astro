@@ -37,19 +37,19 @@ const { number, title, description, image, imageAlt = title } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 2.25rem;
+    padding: 2rem;
+    /* React creative agency glassmorphism design */
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: none;  /* React design: no border */
+    border-radius: 16px;  /* React design value */
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .skill-card:hover {
     background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(96, 211, 184, 0.4);
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
   }
 

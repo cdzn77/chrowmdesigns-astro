@@ -304,30 +304,31 @@ const subjectOptions = [
     margin: 0;
   }
 
-  /* Submit button */
+  /* Submit button - React creative agency pill-shape */
   .contact-form__submit {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    padding: 0.85rem 2rem;
+    padding: 0.8rem 2rem;
     font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    font-weight: 700;  /* React design: bold */
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--color-primary);
     background-color: var(--color-accent);
     border: none;
-    border-radius: 100px;
+    border-radius: 20px;  /* React design: pill-shaped */
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease, gap 0.2s ease, opacity 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     white-space: nowrap;
   }
 
   .contact-form__submit:hover:not(:disabled) {
     background-color: #7de0cb;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     gap: 0.9rem;
+    box-shadow: 0 8px 24px rgba(96, 211, 184, 0.3);
   }
 
   .contact-form__submit:disabled {
