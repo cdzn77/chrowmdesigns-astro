@@ -1,11 +1,11 @@
 ---
-// Hero renders a full-viewport video background with React creative studio design.
-// Orange background with video overlay, white text, modern layout.
+// Hero renders a full-viewport video background matching React creative studio design exactly.
+// Orange background with video overlay, white text, structured layout.
 ---
 
-<section class="hero" aria-label="Introduction">
+<div class="hero" aria-label="Introduction">
 
-  <!-- Video layer — autoplay, muted, loop, no controls -->
+  <!-- Background Video -->
   <div class="hero__video-wrap" aria-hidden="true">
     <video
       class="hero__video"
@@ -18,74 +18,89 @@
     >
       <source src="/video/cdzn_showreel.mp4" type="video/mp4" />
     </video>
-    <div class="hero__overlay"></div>
   </div>
 
-  <!-- Content: Two-section layout (top info, bottom headline+stats) -->
+  <!-- Navbar -->
+  <nav class="hero__nav" aria-label="Primary navigation">
+    <!-- Left: Logo + Nav Items -->
+    <div class="hero__nav-left">
+      <!-- Logo -->
+      <svg class="hero__logo" width="30" height="22" viewBox="0 0 30 22" fill="none" aria-hidden="true">
+        <path d="M2 4C2 4 8 1 15 6C22 11 28 8 28 8" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M2 16C2 16 8 13 15 18C22 23 28 20 28 20" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+
+      <!-- Nav Items -->
+      <div class="hero__nav-items">
+        <a href="/" class="hero__nav-link hero__nav-link--active">HOME</a>
+        <a href="/cases" class="hero__nav-link">WORK</a>
+        <a href="/about" class="hero__nav-link">ABOUT</a>
+      </div>
+    </div>
+
+    <!-- Right: CTA -->
+    <div class="hero__nav-right">
+      <a href="/contact" class="hero__nav-cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
   <div class="hero__content">
-    <!-- Top Section: About + Byline -->
+    <!-- Top Section: Info columns -->
     <div class="hero__top-section">
       <div class="hero__info-left">
         <p class="hero__label">Senior Product Designer</p>
-        <p class="hero__tagline">20 years crafting digital products that connect and perform</p>
+        <p class="hero__tagline">20 years crafting digital products that connect and inspire</p>
       </div>
+
       <div class="hero__info-right">
-        <p class="hero__description">I design end-to-end digital experiences that balance user needs with bold brand expression. Strategic thinking meets creative excellence.</p>
+        <p class="hero__description">
+          I design end-to-end digital experiences that balance user needs with bold brand expression. Strategic design for products and brands that own their category.
+        </p>
       </div>
     </div>
 
     <!-- Bottom Section: Headline + CTA + Stats -->
     <div class="hero__bottom-section">
+      <!-- Left: Headline + CTA -->
       <div class="hero__cta-block">
         <h1 class="hero__heading">Designed to<br />Connect.</h1>
         <p class="hero__sub">Strategic design for digital products and brands that inspire.</p>
-        <a href="/contact" class="hero__cta">
-          Let's Talk Design
-          <span class="hero__cta-arrow" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 9H15M15 9L9 3M15 9L9 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-        </a>
+        <a href="/contact" class="hero__cta">Let's Talk Design</a>
       </div>
 
-      <!-- Stat Cards: Glassmorphism design -->
+      <!-- Right: Stat Cards -->
       <div class="hero__stats">
         <div class="hero__stat-card">
           <p class="hero__stat-value">20+</p>
-          <p class="hero__stat-label">Years Experience</p>
+          <p class="hero__stat-label">Years</p>
         </div>
         <div class="hero__stat-card">
           <p class="hero__stat-value">50+</p>
-          <p class="hero__stat-label">Projects Delivered</p>
+          <p class="hero__stat-label">Projects</p>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Scroll indicator -->
-  <div class="hero__scroll" aria-hidden="true">
-    <span class="hero__scroll-line"></span>
-  </div>
-</section>
+</div>
 
 <style>
+  /* Root container - React design: orange background with video */
   .hero {
     position: relative;
     width: 100%;
-    min-height: 100svh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem clamp(1.5rem, 5vw, 5rem);
+    min-height: 100vh;
+    background-color: #e02b10;
     overflow: hidden;
-    background-color: var(--color-hero-bg);
   }
 
-  /* Video */
+  /* Background Video */
   .hero__video-wrap {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
   }
 
@@ -96,77 +111,148 @@
     object-position: center;
   }
 
-  .hero__overlay {
+  /* Navigation Bar - React design exact styling */
+  .hero__nav {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.25) 0%,
-      rgba(0, 0, 0, 0.15) 100%
-    );
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 16px;
+    background-color: rgba(0, 0, 0, 0.15);
   }
 
-  /* Content: Full-width flex layout */
+  .hero__nav-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .hero__logo {
+    height: 22px;
+    width: 30px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .hero__nav-items {
+    display: flex;
+    gap: 8px;
+  }
+
+  .hero__nav-link {
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-weight: 400;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .hero__nav-link--active {
+    background-color: white;
+    color: black;
+    border: none;
+    font-weight: 700;
+  }
+
+  .hero__nav-link:hover {
+    border-color: white;
+  }
+
+  .hero__nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero__nav-cta {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .hero__nav-cta:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Main Content */
   .hero__content {
     position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 1400px;
+    z-index: 20;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    padding: 16px;
+    padding-top: 72px;
   }
 
-  /* Top Section: Two-column info layout */
+  /* Top Section: Info columns */
   .hero__top-section {
     display: flex;
     justify-content: space-between;
-    gap: 4rem;
+    gap: 32px;
+    margin-bottom: 32px;
+    flex: 1;
     align-items: flex-start;
   }
 
   .hero__info-left {
-    flex: 0 0 auto;
-    max-width: 280px;
+    max-width: 260px;
   }
 
   .hero__label {
-    font-size: 0.75rem;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: white;
-    margin: 0 0 0.5rem 0;
     line-height: 1.3;
+    margin-bottom: 8px;
+    color: white;
+    margin: 0 0 8px 0;
   }
 
   .hero__tagline {
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.8;
+    color: white;
     margin: 0;
     font-weight: 400;
   }
 
   .hero__info-right {
-    flex: 1;
-    max-width: 380px;
+    max-width: 320px;
   }
 
   .hero__description {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: white;
     margin: 0;
     font-weight: 400;
   }
 
-  /* Bottom Section: Headline + CTA on left, stats on right */
+  /* Bottom Section: Headline + CTA + Stats */
   .hero__bottom-section {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 3rem;
+    gap: 32px;
   }
 
   .hero__cta-block {
@@ -175,72 +261,55 @@
 
   .hero__heading {
     font-family: var(--font-sans);
-    font-size: clamp(3.5rem, 11vw, 7.5rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 0.85;
+    font-weight: 600;
+    font-size: clamp(56px, 13vw, 155px);
+    letter-spacing: -0.04em;
+    line-height: 0.78;
     color: white;
-    margin: 0 0 1.5rem 0;
-    text-transform: capitalize;
+    margin: 0 0 24px 0;
+    width: fit-content;
   }
 
   .hero__sub {
-    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0 0 1.5rem 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: white;
+    margin-bottom: 16px;
+    margin: 0 0 16px 0;
     font-weight: 400;
-    max-width: 500px;
   }
 
-  /* CTA button - React design: pill-shaped white button */
   .hero__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.9rem 2.2rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #1a1a1a;
+    display: inline-block;
     background-color: white;
-    border-radius: 20px;
+    color: black;
     border: none;
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 16px 48px;
     cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s;
+    text-decoration: none;
   }
 
   .hero__cta:hover {
-    background-color: #f5f5f5;
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-    gap: 0.9rem;
+    background-color: #f3f4f6;
   }
 
-  .hero__cta-arrow {
-    display: flex;
-    align-items: center;
-    transition: transform 0.2s ease;
-  }
-
-  .hero__cta:hover .hero__cta-arrow {
-    transform: translateX(2px);
-  }
-
-  /* Stat Cards: Glassmorphism */
+  /* Stat Cards: React glassmorphism design */
   .hero__stats {
     display: flex;
-    gap: 1.2rem;
+    gap: 16px;
     flex-shrink: 0;
   }
 
   .hero__stat-card {
-    min-width: 140px;
-    min-height: 140px;
-    padding: 1.5rem;
+    min-width: 150px;
+    min-height: 150px;
+    padding: 20px;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
@@ -248,70 +317,36 @@
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .hero__stat-value {
     font-family: var(--font-sans);
-    font-size: clamp(1.8rem, 4vw, 2.4rem);
-    font-weight: 700;
-    color: #1a1a1a;
+    font-size: clamp(2rem, 6vw, 2.6rem);
+    color: #111;
     line-height: 1;
     margin: 0;
+    font-weight: 700;
   }
 
   .hero__stat-label {
-    font-size: 0.7rem;
+    font-size: 12px;
     color: #888;
     margin: 0;
     margin-top: auto;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-weight: 400;
   }
 
-  /* Scroll indicator */
-  .hero__scroll {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero__scroll-line {
-    display: block;
-    width: 1px;
-    height: 50px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%);
-    animation: scroll-pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scroll-pulse {
-    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
-    50%       { opacity: 1;   transform: scaleY(1); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero__scroll-line { animation: none; }
-    .hero__video { display: none; }
-  }
-
+  /* Responsive */
   @media (max-width: 768px) {
-    .hero {
-      padding: 3rem 1.5rem;
+    .hero__content {
+      padding: 16px;
+      padding-top: 72px;
     }
 
     .hero__top-section {
       flex-direction: column;
       gap: 2rem;
-    }
-
-    .hero__info-right {
-      max-width: 100%;
+      margin-bottom: 2rem;
     }
 
     .hero__bottom-section {
@@ -321,19 +356,13 @@
 
     .hero__stats {
       width: 100%;
-      gap: 1rem;
     }
 
     .hero__stat-card {
       flex: 1;
-      min-height: 120px;
     }
 
-    .hero__heading {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-    }
-
-    .hero__scroll {
+    .hero__nav-items {
       display: none;
     }
   }
