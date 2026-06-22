@@ -213,6 +213,7 @@ const skills = [
 <style>
   /* ── Featured Image ─────────────────────────────── */
   .featured-image {
+    display: none;  /* Hidden in React design */
     background-color: var(--color-primary);
   }
 
@@ -270,7 +271,7 @@ const skills = [
   /* ── Cases Grid ──────────────────────────────────── */
   .cases-grid {
     padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
-    background-color: var(--color-primary);
+    background-color: #ffffff;
   }
 
   .cases-grid__inner {
@@ -294,17 +295,17 @@ const skills = [
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-white);
+    color: #1a1a1a;
     text-decoration: none;
     padding: 0.8rem 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 100px;
     transition: border-color 0.2s ease, color 0.2s ease, gap 0.2s ease;
   }
 
   .cases-grid__all-link:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    border-color: #e02b10;
+    color: #e02b10;
     gap: 0.8rem;
   }
 
@@ -419,7 +420,7 @@ const skills = [
   /* ── Skills ──────────────────────────────────────── */
   .skills {
     padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
-    background-color: var(--color-primary);
+    background-color: #0f0f0f;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 

@@ -1,78 +1,57 @@
 ---
-// Items from live site hire marquee strip.
-const items = [
-  'Product Designer Available for Hire',
-  'UX Strategy & Design Systems',
-  'Remote & Worldwide',
-  '20 Years of Experience',
-];
-
-const sep = '/';
+const text = 'Product Designer Available for Hire + UX Strategy & Design Systems + Remote & Worldwide + 20 Years of Experience +';
 ---
 
 <div class="hire-marquee" aria-hidden="true">
   <div class="hire-marquee__track">
     {[0, 1].map(() => (
-      <div class="hire-marquee__set" role="presentation">
-        {items.map((item) => (
-          <>
-            <span class="hire-marquee__item">{item}</span>
-            <span class="hire-marquee__sep" aria-hidden="true">{sep}</span>
-          </>
-        ))}
-      </div>
+      <span class="hire-marquee__item">{text}</span>
     ))}
   </div>
 </div>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
   .hire-marquee {
     overflow: hidden;
-    background-color: var(--color-accent);
-    padding: 1.1rem 0;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    background-color: #ffffff;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
   }
 
   .hire-marquee__track {
     display: flex;
     width: max-content;
-    /* Slightly faster + reverse direction for visual contrast from stats marquee */
-    animation: crd-marquee-scroll-reverse 25s linear infinite;
+    animation: marquee 24s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .hire-marquee__item {
+    font-family: 'Manrope', sans-serif;
+    font-size: 170px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+    line-height: 1;
+    padding: 40px 0;
+    margin-right: 0;
+    text-transform: none;
+    letter-spacing: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
     .hire-marquee__track {
       animation: none;
     }
-  }
-
-  .hire-marquee__set {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-  }
-
-  .hire-marquee__item {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    white-space: nowrap;
-    padding: 0 1.5rem;
-  }
-
-  .hire-marquee__sep {
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: rgba(27, 27, 27, 0.4);
-    flex-shrink: 0;
-  }
-
-  @keyframes crd-marquee-scroll-reverse {
-    from { transform: translate3d(-50%, 0, 0); }
-    to   { transform: translate3d(0, 0, 0); }
   }
 </style>

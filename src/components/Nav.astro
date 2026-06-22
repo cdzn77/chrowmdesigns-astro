@@ -1,448 +1,146 @@
 ---
 const navLinks = [
-  { label: 'Work',    href: '/cases' },
-  { label: 'About',   href: '/about' },
+  { label: 'Index',   href: '/' },
+  { label: 'Info',    href: '/about' },
+  { label: 'Cases',   href: '/cases' },
   { label: 'Contact', href: '/contact' },
 ];
 
 const currentPath = Astro.url.pathname;
+const logoSrc = 'https://cdzn2026stg.wpenginepowered.com/wp-content/uploads/2026/05/logo.svg';
+
+// Determine variant based on current page
+const isLightPage = currentPath !== '/' && !currentPath.startsWith('/cases');
+const variant = isLightPage ? 'light' : 'dark';
+const bgColor = variant === 'light' ? '#ffffff' : '#0f0f0f';
+const textColor = variant === 'light' ? '#1a1a1a' : '#ffffff';
+const borderColor = variant === 'light' ? '#f0f0f0' : '#333333';
+const btnBg = variant === 'light' ? '#000' : '#ffffff';
+const btnText = variant === 'light' ? '#fff' : '#000';
+const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
 ---
 
-<header class="site-header" id="site-header" role="banner">
-  <nav class="nav-wrap" aria-label="Primary navigation">
+<nav
+  class="site-nav"
+  style={{
+    backgroundColor: bgColor,
+    borderBottomColor: borderColor
+  }}
+  role="navigation"
+  aria-label="Primary navigation"
+>
+  <!-- Logo -->
+  <a href="/" class="nav-logo-link" aria-label="ChrowmDesigns home">
+    <img
+      src={logoSrc}
+      alt="ChrowmDesigns"
+      class="nav-logo"
+      style={{ filter: logoFilter }}
+    />
+  </a>
 
-    <!-- Logo + Wordmark -->
-    <a href="/" class="nav-lockup" aria-label="ChrowmDesigns home">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" class="nav-logo" aria-hidden="true">
-        <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5" fill="none"/>
-        <path d="M14 4v20M4 14h20" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-      </svg>
-      <span class="wordmark">CHRØWM</span>
-    </a>
-
-    <!-- Desktop links -->
-    <div class="nav-inline" aria-label="Site pages">
-      {navLinks.map(({ label, href }) => (
-        <a
-          href={href}
-          class={`nav-link${currentPath === href || (href !== '/' && currentPath.startsWith(href)) ? ' is-active' : ''}`}
-          aria-current={currentPath === href ? 'page' : undefined}
-        >
-          {label}
-        </a>
-      ))}
-    </div>
-
-    <!-- CTA + Hamburger -->
-    <div class="nav-actions">
-      <a href="/contact" class="nav-cta">Let's Talk</a>
-      <button
-        class="hamburger"
-        id="hamburger-btn"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
+  <!-- Nav Links -->
+  <div class="nav-links">
+    {navLinks.map(({ label, href }) => (
+      <a
+        href={href}
+        class={`nav-link${currentPath === href ? ' is-active' : ''}`}
+        style={{ color: textColor }}
+        aria-current={currentPath === href ? 'page' : undefined}
       >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-
-  </nav>
-</header>
-
-<!-- Mobile menu overlay -->
-<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
-  <div class="mobile-menu-inner">
-    <nav class="mobile-nav" aria-label="Mobile pages">
-      {navLinks.map(({ label, href }) => (
-        <a
-          href={href}
-          class={`mobile-nav-link${currentPath === href || (href !== '/' && currentPath.startsWith(href)) ? ' is-active' : ''}`}
-        >
-          {label}
-        </a>
-      ))}
-      <a href="/contact" class="mobile-nav-link">Contact</a>
-    </nav>
-    <div class="mobile-menu-footer">
-      <a href="mailto:chile@chrowmdesigns.com" class="mobile-menu-email">chile@chrowmdesigns.com</a>
-      <span class="mobile-menu-meta">© 2026 ChrowmDesigns · Miami, FL</span>
-    </div>
+        {label}
+      </a>
+    ))}
   </div>
-</div>
 
-<style is:global>
-/* ────────────────────────────────
-   Top Navigation
-   ──────────────────────────────── */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 200;
-  padding: 12px 0;
-  background: var(--color-bg);
-  border-bottom: 1px solid transparent;
-  transition: border-color 300ms var(--transition-base);
-}
+  <!-- CTA Button -->
+  <a
+    href="/contact"
+    class="nav-cta"
+    style={{
+      backgroundColor: btnBg,
+      color: btnText
+    }}
+  >
+    Let's Talk
+  </a>
+</nav>
 
-.site-header.scrolled {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
+<style define:vars={{ bgColor, textColor, borderColor, btnBg, btnText }}>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-.nav-wrap {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 5vw, 5rem);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 32px;
-  box-sizing: border-box;
-}
-
-/* Logo lockup with wordmark */
-.nav-lockup {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: var(--color-text);
-  overflow: hidden;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.nav-logo {
-  height: 28px;
-  width: 28px;
-  display: block;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 10;
-  color: var(--color-accent);
-}
-
-.wordmark {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  color: var(--color-text);
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-  max-width: var(--wordmark-w, 140px);
-  transition: max-width 300ms var(--transition-base);
-  will-change: max-width;
-}
-
-.site-header.scrolled .wordmark {
-  max-width: 0;
-}
-
-/* Desktop navigation links */
-.nav-inline {
-  display: inline-flex;
-  justify-content: center;
-  gap: 32px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.nav-link {
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition: color 200ms var(--transition-base), border-color 200ms var(--transition-base);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.nav-link:hover,
-.nav-link.is-active {
-  color: var(--color-text);
-  border-color: var(--color-accent);
-}
-
-/* Actions — CTA + Hamburger */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-.nav-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
-  border: none;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #1a1a1a;
-  text-decoration: none;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  transition: background 200ms var(--transition-base), color 200ms var(--transition-base);
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.nav-cta:hover {
-  background: rgba(255, 255, 255, 0.95);
-}
-
-/* Hamburger button — hidden on desktop */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-  z-index: 210;
-  position: relative;
-  flex-direction: column;
-  gap: 5px;
-  width: 24px;
-}
-
-.hamburger span {
-  display: block;
-  height: 2px;
-  width: 100%;
-  background: var(--color-text);
-  border-radius: 1px;
-  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms var(--transition-base);
-  transform-origin: center;
-}
-
-.hamburger[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.hamburger[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* ────────────────────────────────
-   Mobile Menu Overlay
-   ──────────────────────────────── */
-.mobile-menu {
-  position: fixed;
-  top: 57px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 190;
-  background: var(--color-bg);
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  transform: translateY(calc(-100% - 57px));
-  transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-
-.mobile-menu.is-open {
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.mobile-menu-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: clamp(40px, 8vw, 64px) clamp(1.5rem, 5vw, 5rem);
-  flex: 1;
-}
-
-.mobile-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-bottom: 40px;
-}
-
-.mobile-nav-link {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: clamp(36px, 10vw, 64px);
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  text-transform: uppercase;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: color 200ms var(--transition-base);
-}
-
-.mobile-nav-link:first-child {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.mobile-nav-link:hover,
-.mobile-nav-link.is-active {
-  color: var(--color-text);
-}
-
-.mobile-nav-link.is-active {
-  color: var(--color-accent);
-}
-
-.mobile-menu-footer {
-  margin-top: auto;
-  padding-top: 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.mobile-menu-email {
-  font-size: 13px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-  transition: color 200ms var(--transition-base);
-}
-
-.mobile-menu-email:hover {
-  color: var(--color-accent);
-}
-
-.mobile-menu-meta {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.28);
-}
-
-/* Focus styles */
-.nav-lockup:focus-visible,
-.nav-link:focus-visible,
-.nav-cta:focus-visible,
-.hamburger:focus-visible,
-.mobile-nav-link:focus-visible,
-.mobile-menu-email:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-/* Prevent body scroll when mobile menu open */
-body.mobile-menu-open {
-  overflow: hidden;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .nav-wrap {
-    grid-template-columns: auto auto;
-    gap: 16px;
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px clamp(16px, 5vw, 60px);
+    border-bottom: 1px solid var(--borderColor);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
-  .nav-inline {
-    display: none;
+  .nav-logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-logo {
+    height: 20px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: clamp(20px, 5vw, 40px);
+    align-items: center;
+  }
+
+  .nav-link {
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s ease-out;
+    cursor: pointer;
+  }
+
+  .nav-link:hover {
+    color: #e02b10;
+  }
+
+  .nav-link.is-active {
+    color: #e02b10;
   }
 
   .nav-cta {
-    display: none;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
   }
 
-  .hamburger {
-    display: flex;
+  .nav-cta:hover {
+    opacity: 0.85;
   }
-}
-</style>
 
-<script>
-  const header = document.querySelector('.site-header') as HTMLElement;
-  const toggle = document.querySelector('.hamburger') as HTMLButtonElement;
-  const menu = document.querySelector('.mobile-menu') as HTMLElement;
-  const mobileLinks = menu?.querySelectorAll('.mobile-nav-link, .mobile-menu-email');
-
-  // Scroll listener: add border when scrolled
-  function updateScrollState() {
-    if (window.scrollY > 60) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+  @media (max-width: 640px) {
+    .nav-links {
+      display: none;
     }
   }
-  window.addEventListener('scroll', updateScrollState, { passive: true });
-  updateScrollState();
-
-  // Wordmark width measurement and animation setup
-  const initWordmarkAnimation = () => {
-    const lockup = document.querySelector('.nav-lockup') as HTMLElement;
-    const wordmark = document.querySelector('.wordmark') as HTMLElement;
-
-    if (!lockup || !wordmark) return;
-
-    const measureWordmark = () => {
-      const savedMaxWidth = wordmark.style.maxWidth;
-      wordmark.style.maxWidth = 'none';
-      const width = Math.ceil(wordmark.getBoundingClientRect().width);
-      wordmark.style.maxWidth = savedMaxWidth;
-      if (width > 0) {
-        document.documentElement.style.setProperty('--wordmark-w', `${width}px`);
-      }
-    };
-
-    measureWordmark();
-    window.addEventListener('resize', measureWordmark, { passive: true });
-  };
-
-  // Mobile menu toggle
-  function openMenu() {
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close menu');
-    menu.classList.add('is-open');
-    menu.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('mobile-menu-open');
-  }
-
-  function closeMenu() {
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open menu');
-    menu.classList.remove('is-open');
-    menu.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('mobile-menu-open');
-  }
-
-  toggle?.addEventListener('click', () => {
-    toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
-  });
-
-  // Close menu on link click
-  mobileLinks?.forEach(link => link.addEventListener('click', closeMenu));
-
-  // Close menu on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
-  });
-
-  // Initialize wordmark animation
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initWordmarkAnimation);
-  } else {
-    initWordmarkAnimation();
-  }
-</script>
+</style>

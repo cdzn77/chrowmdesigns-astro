@@ -1,86 +1,124 @@
 ---
-// Items from live site — duplicated in markup for seamless CSS-only loop.
-// The animation translates -50%, so two copies = one seamless loop.
-const items = [
-  '20 Years of Design That Performs',
-  '44% Decrease in Exit Rate',
-  '300% Increase in Registrations',
-  '60M Impressions Delivered',
-  '147% Engagement Lift',
-  'Enterprise UX Strategy',
-  '40% Faster Path to Content',
+const stats = [
+  { value: '44%', label: 'Decrease in\nExit Rate', description: 'Exit Rate Decrease' },
+  { value: '300%', label: 'Increase in\nRegistrations', description: 'Registration Growth' },
+  { value: '60M', label: 'Impressions\nDelivered', description: 'Total Impressions' },
+  { value: '147%', label: 'Engagement\nLift', description: 'Engagement Increase' },
+  { value: '40%', label: 'Faster Path\nto Content', description: 'Performance Gain' }
 ];
-
-// Separator glyph between items
-const sep = '✦';
 ---
 
-<div class="stats-marquee" aria-hidden="true">
-  <div class="stats-marquee__track">
-    <!-- Two identical sets so -50% translate loops invisibly -->
-    {[0, 1].map(() => (
-      <div class="stats-marquee__set" role="presentation">
-        {items.map((item) => (
-          <>
-            <span class="stats-marquee__item">{item}</span>
-            <span class="stats-marquee__sep" aria-hidden="true">{sep}</span>
-          </>
-        ))}
-      </div>
-    ))}
+<section class="stats-section">
+  <div class="stats-container">
+    <div class="stats-grid">
+      {stats.map((stat) => (
+        <div class="stat-item">
+          <div class="stat-label-wrap">
+            <p class="stat-label">{stat.label}</p>
+          </div>
+          <p class="stat-value">{stat.value}</p>
+          <p class="stat-description">{stat.description}</p>
+        </div>
+      ))}
+    </div>
   </div>
-</div>
+</section>
 
 <style>
-  .stats-marquee {
-    overflow: hidden;
-    background-color: var(--color-primary);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: var(--marquee-padding, 7rem 0);
-    /* Fade edges */
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+  .stats-section {
+    width: 100%;
+    background-color: #ffffff;
+    padding-top: clamp(60px, 12vw, 120px);
+    padding-bottom: clamp(60px, 12vw, 120px);
+    padding-left: clamp(16px, 5vw, 60px);
+    padding-right: clamp(16px, 5vw, 60px);
   }
 
-  .stats-marquee__track {
+  .stats-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 80px;
+    align-items: flex-start;
+  }
+
+  .stat-item {
     display: flex;
-    width: max-content;
-    animation: crd-marquee-scroll var(--marquee-speed, 40s) linear infinite;
+    flex-direction: column;
+    gap: 24px;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .stats-marquee__track {
-      animation: none;
+  .stat-label-wrap {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #d0d0d0;
+    height: 40px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    line-height: 20px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    max-width: 100%;
+  }
+
+  .stat-value {
+    font-size: 72px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0 0 4px 0;
+    font-family: 'Manrope', sans-serif;
+    line-height: 1;
+  }
+
+  .stat-description {
+    font-size: 12px;
+    font-weight: 400;
+    color: #666666;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    max-width: 180px;
+  }
+
+  @media (max-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
     }
   }
 
-  .stats-marquee__set {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+  @media (max-width: 640px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .stat-value {
+      font-size: 48px;
+    }
   }
 
-  .stats-marquee__item {
-    font-family: var(--marquee-font-family, var(--font-sans));
-    font-size: var(--marquee-font-size, 12rem);
-    font-weight: 400;
-    letter-spacing: var(--marquee-letter-spacing, -0.07em);
-    color: var(--color-white);
-    white-space: nowrap;
-    line-height: 1;
-    padding: 0 var(--marquee-gap, 2rem);
-  }
-
-  .stats-marquee__sep {
-    font-size: calc(var(--marquee-font-size, 12rem) * 0.4);
-    color: var(--color-accent);
-    flex-shrink: 0;
-    line-height: 1;
-  }
-
-  @keyframes crd-marquee-scroll {
-    from { transform: translate3d(0, 0, 0); }
-    to   { transform: translate3d(-50%, 0, 0); }
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
