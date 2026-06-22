@@ -7,6 +7,7 @@ export interface Props {
   description?: string;
   /** Optional: stagger the card downward for masonry feel */
   offset?: boolean;
+  size?: 'large' | 'small';
   loading?: 'lazy' | 'eager';
 }
 
@@ -17,11 +18,12 @@ const {
   href,
   description,
   offset = false,
+  size = 'large',
   loading = 'lazy',
 } = Astro.props;
 ---
 
-<article class:list={['case-card', { 'case-card--offset': offset }]}>
+<article class:list={['case-card', { 'case-card--offset': offset }, `case-card--${size}`]}>
   <a href={href} class="case-card__link" aria-label={`View case study: ${title}`}>
 
     <!-- Thumbnail -->
@@ -142,5 +144,13 @@ const {
 
   .case-card__desc {
     display: none;
+  }
+
+  .case-card--large .case-card__img-wrap {
+    aspect-ratio: 16 / 10;
+  }
+
+  .case-card--small .case-card__img-wrap {
+    aspect-ratio: 1 / 1;
   }
 </style>

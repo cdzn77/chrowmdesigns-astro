@@ -150,14 +150,16 @@ const skills = [
           category={c.category}
           thumbnail={c.thumbnail}
           href={c.url}
+          size={i < 2 ? 'large' : 'small'}
           offset={i % 2 === 1}
           loading={i < 2 ? 'eager' : 'lazy'}
         />
       ))}
     </div>
     <div class="cases-grid__footer">
+      <p class="cases-grid__tagline">Florida-based, freelance, multidisciplinary designer studio</p>
       <a href="/cases" class="cases-grid__all-link">
-        View all case studies
+        Explore more work
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M2 7H12M12 7L7 2M12 7L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -387,57 +389,53 @@ const skills = [
     padding: 0;
   }
 
-  /* First 2 cards: 50% width each (full-bleed, no gap) */
-  .cases-grid__inner > :nth-child(1),
-  .cases-grid__inner > :nth-child(2) {
+  /* Large cards: 50% width */
+  :global(.case-card--large) {
     width: 50%;
     border-right: 1px solid #f0f0f0;
-  }
-
-  .cases-grid__inner > :nth-child(2) {
-    border-right: none;
-  }
-
-  .cases-grid__inner > :nth-child(1) .case-card__img-wrap,
-  .cases-grid__inner > :nth-child(2) .case-card__img-wrap {
-    aspect-ratio: 16 / 10;
     border-radius: 0;
   }
 
-  /* Remaining 4 cards: 25% width each (full-bleed) */
-  .cases-grid__inner > :nth-child(3),
-  .cases-grid__inner > :nth-child(4),
-  .cases-grid__inner > :nth-child(5),
-  .cases-grid__inner > :nth-child(6) {
+  :global(.case-card--large:last-of-type) {
+    border-right: none;
+  }
+
+  /* Small cards: 25% width */
+  :global(.case-card--small) {
     width: 25%;
     border-right: 1px solid #f0f0f0;
     border-top: 1px solid #f0f0f0;
-  }
-
-  .cases-grid__inner > :nth-child(4),
-  .cases-grid__inner > :nth-child(8) {
-    border-right: none;
-  }
-
-  .cases-grid__inner > :nth-child(3) .case-card__img-wrap,
-  .cases-grid__inner > :nth-child(4) .case-card__img-wrap,
-  .cases-grid__inner > :nth-child(5) .case-card__img-wrap,
-  .cases-grid__inner > :nth-child(6) .case-card__img-wrap {
-    aspect-ratio: 1 / 1;
     border-radius: 0;
   }
 
+  :global(.case-card--small:nth-of-type(4n)) {
+    border-right: none;
+  }
+
   .cases-grid__footer {
-    margin-top: 4rem;
+    padding: clamp(40px, 8vw, 60px) clamp(16px, 5vw, 60px);
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cases-grid__tagline {
+    font-size: 13px;
+    font-weight: 400;
+    color: #555555;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
   }
 
   .cases-grid__all-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.8rem;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -447,6 +445,7 @@ const skills = [
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 100px;
     transition: border-color 0.2s ease, color 0.2s ease, gap 0.2s ease;
+    white-space: nowrap;
   }
 
   .cases-grid__all-link:hover {
