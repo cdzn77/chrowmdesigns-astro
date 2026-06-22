@@ -390,35 +390,34 @@ const skills = [
 
   /* ── Cases Grid ──────────────────────────────────── */
   .cases-grid {
-    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
+    padding: clamp(60px, 10vw, 100px) clamp(1.5rem, 5vw, 5rem);
     background-color: #ffffff;
+    width: 100%;
   }
 
   .cases-grid__inner {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 0;
     width: 100%;
   }
 
-  /* First 2 cards span 2 columns each - large cards */
+  /* First 2 cards: 50% width each with 3:2 aspect ratio */
   .cases-grid__inner > :nth-child(1),
   .cases-grid__inner > :nth-child(2) {
-    grid-column: span 2;
+    width: 50%;
   }
 
-  /* First 2 cards have 3:2 aspect ratio */
   .cases-grid__inner > :nth-child(1) .case-card__img-wrap,
   .cases-grid__inner > :nth-child(2) .case-card__img-wrap {
     aspect-ratio: 3 / 2;
   }
 
-  /* Remaining 4 cards span 1 column each - small cards */
+  /* Remaining 4 cards: 25% width each with 1:1 aspect ratio */
   .cases-grid__inner > :nth-child(n+3) {
-    grid-column: span 1;
+    width: 25%;
   }
 
-  /* Last 4 cards have 1:1 aspect ratio */
   .cases-grid__inner > :nth-child(n+3) .case-card__img-wrap {
     aspect-ratio: 1 / 1;
   }
@@ -463,13 +462,15 @@ const skills = [
 
   /* ── Studio ──────────────────────────────────────── */
   .studio {
-    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
-    background-color: var(--color-primary);
+    padding: clamp(80px, 12vw, 120px) clamp(1.5rem, 5vw, 5rem);
+    background-color: #1B1B1B;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .studio__inner {
-    max-width: 800px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .studio__label {
@@ -518,7 +519,7 @@ const skills = [
   /* ── Portrait ────────────────────────────────────── */
   .portrait {
     position: relative;
-    background-color: var(--color-primary);
+    background-color: #1B1B1B;
     overflow: hidden;
   }
 
@@ -561,13 +562,16 @@ const skills = [
 
   /* ── Skills ──────────────────────────────────────── */
   .skills {
-    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
+    padding: clamp(80px, 12vw, 120px) clamp(1.5rem, 5vw, 5rem);
     background-color: #0f0f0f;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .skills__header {
-    margin-bottom: clamp(3rem, 5vw, 5rem);
+    margin-bottom: clamp(3rem, 8vw, 6rem);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .skills__heading {
@@ -583,6 +587,9 @@ const skills = [
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: clamp(1.5rem, 3vw, 2.5rem);
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @media (max-width: 1024px) {
