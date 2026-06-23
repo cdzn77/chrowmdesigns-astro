@@ -434,24 +434,25 @@ const skills = [
   .cases-grid__all-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 11px;
+    gap: 8px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.6px;
     text-transform: uppercase;
-    color: #1a1a1a;
+    color: #000000;
     text-decoration: none;
-    padding: 0.8rem 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 100px;
-    transition: border-color 0.2s ease, color 0.2s ease, gap 0.2s ease;
+    padding: 12px 24px;
+    border: 1px solid #000000;
+    border-radius: 0;
+    transition: all 0.2s ease;
     white-space: nowrap;
+    font-family: 'JetBrains Mono', monospace;
   }
 
   .cases-grid__all-link:hover {
-    border-color: #e02b10;
-    color: #e02b10;
-    gap: 0.8rem;
+    background-color: #000000;
+    color: #ffffff;
+    gap: 12px;
   }
 
   @media (max-width: 640px) {
