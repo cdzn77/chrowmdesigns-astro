@@ -70,17 +70,25 @@
 </style>
 
 <script>
-  const btn = document.getElementById('back-to-top');
+  function initBackToTop() {
+    const btn = document.getElementById('back-to-top');
 
-  if (btn) {
-    btn.removeAttribute('hidden');
+    if (btn) {
+      btn.removeAttribute('hidden');
 
-    window.addEventListener('scroll', () => {
-      btn.classList.toggle('is-visible', window.scrollY > 400);
-    }, { passive: true });
+      const handleScroll = () => {
+        btn.classList.toggle('is-visible', window.scrollY > 400);
+      };
 
-    btn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+      const handleClick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      btn.addEventListener('click', handleClick);
+    }
   }
+
+  initBackToTop();
+  document.addEventListener('astro:after-swap', initBackToTop);
 </script>
