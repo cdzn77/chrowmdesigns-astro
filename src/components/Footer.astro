@@ -1,110 +1,72 @@
 ---
-const navLinks = [
-  { label: 'Index',      href: '/' },
-  { label: 'About',      href: '/about' },
-  { label: 'Cases',      href: '/cases' },
-  { label: 'Get In Touch', href: '/contact' },
-];
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="site-footer" role="contentinfo">
-  <!-- Top section - "Let's start something bold" -->
+  <!-- Dark top section -->
   <div class="footer-top-section">
     <h2 class="footer-top-heading">Let's start<br />something bold</h2>
     <p class="footer-top-tagline">CHROWM<sup>®</sup> — An independent design studio,<br />based in Central Florida.</p>
   </div>
 
-  <div class="footer-inner">
+  <!-- White middle section -->
+  <div class="footer-content">
+    <!-- Navigation -->
+    <nav class="footer-nav-grid" aria-label="Footer navigation">
+      <a href="/" class="footer-nav-link">INDEX</a>
+      <a href="/about" class="footer-nav-link">INFO</a>
+      <a href="/cases" class="footer-nav-link">CASES</a>
+      <a href="/contact" class="footer-nav-link">CONTACT</a>
+    </nav>
 
-    <!-- Left column: logo + tagline -->
-    <div class="footer-brand">
-      <a href="/" aria-label="ChrowmDesigns — home" class="footer-logo-link">
-        <svg width="40" height="40" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-          <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          <path d="M14 4v20M4 14h20" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-        </svg>
-      </a>
-      <p class="footer-tagline">
-        CHROWM<sup>®</sup> — An independent design studio,<br />
-        based in Central Florida.
-      </p>
-    </div>
-
-    <!-- Right column: nav + contact -->
-    <div class="footer-right">
-
-      <!-- Navigation -->
-      <nav aria-label="Footer navigation">
-        <ul class="footer-nav" role="list">
-          {navLinks.map(({ label, href }) => (
-            <li>
-              <a href={href} class="footer-nav-link">{label}</a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <!-- Contact -->
-      <div class="footer-contact">
-        <a
-          href="mailto:chile@chrowmdesigns.com"
-          class="footer-contact-link"
-          aria-label="Send email to chile@chrowmdesigns.com"
-        >
-          chile@chrowmdesigns.com
-        </a>
-        <a
-          href="https://www.linkedin.com/in/angelomanzano"
-          class="footer-contact-link"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Angelo Manzano on LinkedIn (opens in new tab)"
-        >
-          LinkedIn
-        </a>
+    <!-- Contact info and copyright -->
+    <div class="footer-info-grid">
+      <div class="footer-info-left">
+        <p class="footer-info-text">CHILE@CHROWMDESIGNS.COM</p>
+        <p class="footer-info-text">CENTRAL FLORIDA STUDIO</p>
       </div>
-
+      <div class="footer-info-right">
+        <p class="footer-info-text">©{currentYear}</p>
+        <p class="footer-info-text">COPYRIGHT CHROWMDESIGNS. ALL RIGHTS RESERVED</p>
+      </div>
     </div>
-  </div>
 
-  <!-- Bottom bar -->
-  <div class="footer-bottom">
-    <p class="footer-copyright">
-      &copy; 2026 CHROWM | CHR&Oslash;WM DESIGNS &mdash; All Rights Reserved
-    </p>
-    <p class="footer-location">Central Florida</p>
+    <!-- Large logo -->
+    <div class="footer-logo">
+      <img
+        src="https://cdzn2026stg.wpenginepowered.com/wp-content/uploads/2026/05/logo.svg"
+        alt="Chrowm Logo"
+        class="footer-logo-img"
+      />
+    </div>
+
+    <!-- Social links -->
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/angelomanzano" target="_blank" rel="noopener noreferrer" class="footer-social-link">LINKEDIN</a>
+      <a href="https://www.behance.net/angelomanzano" target="_blank" rel="noopener noreferrer" class="footer-social-link">BEHANCE</a>
+    </div>
   </div>
 </footer>
 
 <style is:global>
 footer {
   background: #000000;
-  color: #ffffff;
   margin: 0;
   padding: 0;
 }
 
 .site-footer {
-  padding-bottom: 60px;
-  padding-left: clamp(16px, 5vw, 60px);
-  padding-right: clamp(16px, 5vw, 60px);
-  max-width: 1400px;
-  margin: 0 auto;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
 }
 
-/* Top section - "Let's start something bold" */
+/* Dark top section */
 .footer-top-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(40px, 10vw, 80px);
   align-items: center;
-  padding-top: clamp(60px, 10vw, 80px);
-  padding-bottom: clamp(60px, 10vw, 80px);
-  padding-left: clamp(16px, 5vw, 64px);
-  padding-right: clamp(16px, 5vw, 64px);
-  margin: 0 auto;
-  max-width: 1400px;
+  padding: clamp(60px, 10vw, 80px) clamp(16px, 5vw, 64px);
+  background: #000000;
 }
 
 .footer-top-heading {
@@ -123,150 +85,112 @@ footer {
   font-weight: 400;
   color: #888888;
   margin: 0;
-  text-transform: none;
-  letter-spacing: 0px;
   line-height: 1.4;
-  align-self: flex-end;
+  text-transform: none;
 }
 
 .footer-top-tagline sup {
   font-size: 0.6em;
 }
 
-.footer-inner {
+/* White section */
+.footer-content {
+  background: #ffffff;
+  padding: clamp(60px, 10vw, 80px) clamp(16px, 5vw, 64px);
+  color: #1a1a1a;
+}
+
+/* Navigation grid */
+.footer-nav-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  padding-bottom: 60px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  align-items: start;
-  margin: 0;
-}
-
-/* Brand column */
-.footer-brand {
-  margin: 0;
-  padding: 0;
-}
-
-.footer-logo-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 20px;
-  color: #60D3B8;
-  text-decoration: none;
-}
-
-.footer-logo-link svg {
-  height: 40px;
-  width: 40px;
-  display: block;
-}
-
-.footer-tagline {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  font-size: clamp(16px, 2vw, 24px);
-  letter-spacing: -0.01em;
-  line-height: 1.4;
-  color: #ffffff;
-  max-width: 20ch;
-  margin: 0;
-  padding: 0;
-}
-
-.footer-tagline sup {
-  font-size: 0.6em;
-}
-
-/* Right column */
-.footer-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 40px;
-}
-
-/* Nav */
-.footer-nav {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-auto-flow: row;
-  gap: 0;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  color: rgba(242, 239, 232, 0.65);
-}
-
-.footer-nav li {
-  margin: 0;
-  padding: 0;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(80px, 20vw, 120px), 1fr));
+  gap: clamp(24px, 5vw, 40px);
+  margin-bottom: clamp(60px, 10vw, 90px);
+  padding-bottom: clamp(60px, 10vw, 90px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .footer-nav-link {
-  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
   font-weight: 400;
-  color: rgba(242, 239, 232, 0.65);
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   text-decoration: none;
-  transition: color 200ms var(--transition-base);
-  display: block;
-  padding: 0;
+  text-align: center;
+  transition: color 200ms ease;
 }
 
 .footer-nav-link:hover {
-  color: var(--color-accent);
+  color: #e02b10;
 }
 
-/* Contact */
-.footer-contact {
+/* Contact info grid */
+.footer-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 10vw, 80px);
+  align-items: flex-start;
+  margin-bottom: clamp(60px, 10vw, 80px);
+}
+
+.footer-info-left,
+.footer-info-right {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 0;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  color: rgba(242, 239, 232, 0.65);
+  gap: 12px;
+}
+
+.footer-info-right {
   text-align: right;
 }
 
-.footer-contact-link {
-  font-size: 13px;
-  color: rgba(242, 239, 232, 0.65);
-  text-decoration: none;
-  transition: color 200ms var(--transition-base);
-  padding: 0;
-}
-
-.footer-contact-link:hover {
-  color: var(--color-accent);
-}
-
-/* Bottom bar */
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 32px;
-  gap: 24px;
-  flex-wrap: wrap;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding-left: clamp(1.5rem, 5vw, 5rem);
-  padding-right: clamp(1.5rem, 5vw, 5rem);
-}
-
-.footer-copyright,
-.footer-location {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  letter-spacing: 0.18em;
+.footer-info-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #1a1a1a;
   text-transform: uppercase;
-  color: rgba(242, 239, 232, 0.6);
+  letter-spacing: 0.3px;
   margin: 0;
-  padding: 0;
+}
+
+/* Logo */
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(60px, 10vw, 80px);
+  overflow: hidden;
+}
+
+.footer-logo-img {
+  height: clamp(180px, 30vw, 280px);
+  width: 100%;
+  object-fit: contain;
+  max-height: clamp(180px, 30vw, 280px);
+}
+
+/* Social links */
+.footer-social {
+  display: flex;
+  gap: clamp(24px, 5vw, 40px);
+  flex-wrap: wrap;
+}
+
+.footer-social-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.footer-social-link:hover {
+  color: #e02b10;
 }
 
 /* Mobile */
@@ -276,22 +200,12 @@ footer {
     gap: 40px;
   }
 
-  .footer-top-tagline {
-    align-self: auto;
-  }
-
-  .footer-inner {
+  .footer-info-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
   }
 
-  .footer-right {
-    align-items: flex-start;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
+  .footer-info-right {
+    text-align: left;
   }
 }
 </style>
