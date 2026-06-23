@@ -119,14 +119,14 @@ const {
   }
 
   .case-card__title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
     font-weight: 600;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
+    letter-spacing: normal;
+    text-transform: none;
     color: #000000;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.3;
   }
 
   .case-card__link:hover .case-card__title {
@@ -134,16 +134,23 @@ const {
   }
 
   .case-card__category {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 400;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     color: #888888;
     margin: 0;
+    font-family: 'JetBrains Mono', monospace;
   }
 
   .case-card__desc {
-    display: none;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666666;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
   }
 
   .case-card--large .case-card__img-wrap {
