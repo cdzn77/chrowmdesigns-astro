@@ -190,16 +190,17 @@ const subjectOptions = [
 
   /* Labels */
   .contact-form__label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    color: #666666;
     cursor: pointer;
+    font-family: JetBrains Mono, monospace;
   }
 
   .contact-form__req {
-    color: var(--color-accent);
+    color: #e02b10;
     margin-left: 0.15em;
   }
 
@@ -208,12 +209,12 @@ const subjectOptions = [
   .contact-form__textarea,
   .contact-form__select {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    color: var(--color-white);
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
+    color: #000000;
+    font-family: JetBrains Mono, monospace;
+    font-size: 12px;
     line-height: 1.5;
     transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     outline: none;
@@ -224,16 +225,16 @@ const subjectOptions = [
   .contact-form__input:hover,
   .contact-form__textarea:hover,
   .contact-form__select:hover {
-    border-color: rgba(255, 255, 255, 0.18);
-    background-color: rgba(255, 255, 255, 0.08);
+    border-color: #d0d0d0;
+    background-color: #ffffff;
   }
 
   .contact-form__input:focus,
   .contact-form__textarea:focus,
   .contact-form__select:focus {
-    border-color: var(--color-accent);
-    background-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 3px rgba(96, 211, 184, 0.1);
+    border-color: #e02b10;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(224, 43, 16, 0.1);
   }
 
   .contact-form__input,
@@ -251,15 +252,15 @@ const subjectOptions = [
   .contact-form__input:focus,
   .contact-form__textarea:focus,
   .contact-form__select:focus {
-    border-color: var(--color-accent);
-    background-color: rgba(96, 211, 184, 0.04);
-    box-shadow: 0 0 0 3px rgba(96, 211, 184, 0.1);
+    border-color: #e02b10;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(224, 43, 16, 0.1);
   }
 
   /* Invalid state (after attempted submit) */
   .contact-form__input:invalid:not(:placeholder-shown),
   .contact-form__textarea:invalid:not(:placeholder-shown) {
-    border-color: rgba(255, 100, 100, 0.5);
+    border-color: #d00000;
   }
 
   /* Select wrapper (custom arrow) */
@@ -272,10 +273,10 @@ const subjectOptions = [
     padding-right: 2.5rem;
   }
 
-  /* Style the select options — dark bg */
+  /* Style the select options */
   .contact-form__select option {
-    background-color: #1B1B1B;
-    color: var(--color-white);
+    background-color: #ffffff;
+    color: #000000;
   }
 
   .contact-form__select-arrow {
@@ -283,7 +284,7 @@ const subjectOptions = [
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--color-muted);
+    color: #999999;
     pointer-events: none;
     display: flex;
     align-items: center;
@@ -299,26 +300,29 @@ const subjectOptions = [
   }
 
   .contact-form__note {
-    font-size: 0.75rem;
-    color: var(--color-muted);
+    font-size: 12px;
+    color: #999999;
     margin: 0;
+    font-family: JetBrains Mono, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
   }
 
-  /* Submit button - React creative agency pill-shape */
+  /* Submit button */
   .contact-form__submit {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
     padding: 0.8rem 2rem;
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    font-weight: 700;  /* React design: bold */
-    letter-spacing: 0.04em;
+    font-family: JetBrains Mono, monospace;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: var(--color-primary);
-    background-color: var(--color-accent);
+    color: #ffffff;
+    background-color: #e02b10;
     border: none;
-    border-radius: 20px;  /* React design: pill-shaped */
+    border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     white-space: nowrap;
@@ -328,7 +332,7 @@ const subjectOptions = [
     background-color: #c41f0a;
     transform: translateY(-3px);
     gap: 0.9rem;
-    box-shadow: 0 8px 24px rgba(96, 211, 184, 0.3);
+    box-shadow: 0 8px 24px rgba(224, 43, 16, 0.3);
   }
 
   .contact-form__submit:disabled {
@@ -341,20 +345,23 @@ const subjectOptions = [
   .contact-form__status {
     padding: 1rem 1.25rem;
     border-radius: 4px;
-    font-size: 0.9rem;
+    font-size: 12px;
     line-height: 1.5;
+    font-family: JetBrains Mono, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
   }
 
   .contact-form__status--success {
-    background-color: rgba(96, 211, 184, 0.1);
-    border: 1px solid rgba(96, 211, 184, 0.3);
-    color: var(--color-accent);
+    background-color: rgba(224, 43, 16, 0.1);
+    border: 1px solid rgba(224, 43, 16, 0.3);
+    color: #e02b10;
   }
 
   .contact-form__status--error {
     background-color: rgba(255, 80, 80, 0.08);
     border: 1px solid rgba(255, 80, 80, 0.25);
-    color: rgba(255, 140, 140, 0.9);
+    color: #d00000;
   }
 
   @media (max-width: 560px) {
