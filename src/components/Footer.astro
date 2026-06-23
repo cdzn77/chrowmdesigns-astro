@@ -8,6 +8,12 @@ const navLinks = [
 ---
 
 <footer class="site-footer" role="contentinfo">
+  <!-- Top section - "Let's start something bold" -->
+  <div class="footer-top-section">
+    <h2 class="footer-top-heading">Let's start<br />something bold</h2>
+    <p class="footer-top-tagline">CHROWM<sup>®</sup> — An independent design studio,<br />based in Central Florida.</p>
+  </div>
+
   <div class="footer-inner">
 
     <!-- Left column: logo + tagline -->
@@ -79,13 +85,52 @@ footer {
 }
 
 .site-footer {
-  padding-top: 80px;
   padding-bottom: 60px;
   padding-left: clamp(16px, 5vw, 60px);
   padding-right: clamp(16px, 5vw, 60px);
   max-width: 1400px;
   margin: 0 auto;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Top section - "Let's start something bold" */
+.footer-top-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 10vw, 80px);
+  align-items: center;
+  padding-top: clamp(60px, 10vw, 80px);
+  padding-bottom: clamp(60px, 10vw, 80px);
+  padding-left: clamp(16px, 5vw, 64px);
+  padding-right: clamp(16px, 5vw, 64px);
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.footer-top-heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(48px, 12vw, 90px);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.0;
+  text-transform: none;
+}
+
+.footer-top-tagline {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(16px, 4vw, 22px);
+  font-weight: 400;
+  color: #888888;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: 0px;
+  line-height: 1.4;
+  align-self: flex-end;
+}
+
+.footer-top-tagline sup {
+  font-size: 0.6em;
 }
 
 .footer-inner {
@@ -226,6 +271,15 @@ footer {
 
 /* Mobile */
 @media (max-width: 768px) {
+  .footer-top-section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-top-tagline {
+    align-self: auto;
+  }
+
   .footer-inner {
     grid-template-columns: 1fr;
     gap: 40px;
