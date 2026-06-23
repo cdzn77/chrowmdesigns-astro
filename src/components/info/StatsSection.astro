@@ -1,0 +1,215 @@
+---
+---
+
+<section id="stats-section" style="padding-top: clamp(100px, 15vw, 140px); padding-bottom: clamp(100px, 15vw, 160px); padding-left: clamp(16px, 5vw, 60px); padding-right: clamp(16px, 5vw, 60px); background-color: #0a0a0a; color: #fff; width: 100%;">
+  <div id="stats-grid" style="display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: auto; row-gap: 2.4rem; column-gap: 2rem; margin-bottom: 0; position: relative; width: 100%; max-width: 100%;">
+    <!-- Stats will be rendered here -->
+  </div>
+</section>
+
+<script>
+  function initStatsSection() {
+    const container = document.getElementById('stats-section');
+    const gridEl = document.getElementById('stats-grid');
+    if (!container || !gridEl) return;
+
+    const stats = [
+      { rawValue: 20, displayValue: '20+', label: 'YEARS OF PRACTICE', position: 'above' },
+      { rawValue: 60, displayValue: '60M', label: 'IMPRESSIONS DELIVERED', position: 'below' },
+      { rawValue: 300, displayValue: '300%', label: 'ENGAGEMENT LIFT', position: 'above' },
+      { rawValue: 44, displayValue: '44%', label: 'AVG EXIT RATE REDUCTION', position: 'below' },
+      { rawValue: 8, displayValue: '8+', label: 'ENTERPRISE CLIENTS', position: 'above' }
+    ];
+
+    let hasAnimated = false;
+    let animationFrameId = null;
+    let startTime = null;
+    let displayValues = [20, 60, 300, 44, 8];
+
+    function easeOutQuart(t) {
+      const t2 = t - 1;
+      return 1 - t2 * t2 * t2 * t2;
+    }
+
+    function formatValue(i, num) {
+      let formatted = String(num);
+      if (i === 1) formatted = num + 'M';
+      if (i === 2) formatted = num + '%';
+      if (i === 3) formatted = num + '%';
+      if (i === 0 || i === 4) formatted = num + '+';
+      return formatted;
+    }
+
+    function getGridPosition(index) {
+      const isDesktop = window.innerWidth >= 1024;
+      const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+      const isMobile = window.innerWidth < 768;
+
+      if (isMobile) {
+        const positions = [
+          { col: '1 / span 2', row: 'auto' },
+          { col: '1 / span 1', row: 'auto' },
+          { col: '2 / span 1', row: 'auto' },
+          { col: '1 / span 2', row: 'auto' },
+          { col: '1 / span 2', row: 'auto' }
+        ];
+        return positions[index];
+      } else if (isTablet) {
+        const positions = [
+          { col: '1 / span 2', row: 'auto' },
+          { col: '3 / span 1', row: 'auto' },
+          { col: '4 / span 1', row: 'auto' },
+          { col: '1 / span 1', row: 'auto' },
+          { col: '2 / span 3', row: 'auto' }
+        ];
+        return positions[index];
+      } else {
+        const positions = [
+          { col: '1 / span 3', row: 'auto' },
+          { col: '4 / span 2', row: 'auto' },
+          { col: '6 / span 1', row: '1 / span 2' },
+          { col: '1 / span 2', row: 'auto' },
+          { col: '3 / span 3', row: 'auto' }
+        ];
+        return positions[index];
+      }
+    }
+
+    function getCardHeight(i) {
+      const isDesktop = window.innerWidth >= 1024;
+      const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+      const isMobile = window.innerWidth < 768;
+
+      if (isMobile) {
+        if (i === 0 || i === 4) return 'clamp(200px, 45vw, 280px)';
+        if (i === 3) return 'clamp(180px, 40vw, 240px)';
+        return 'clamp(160px, 35vw, 220px)';
+      } else if (isTablet) {
+        if (i === 0) return 'clamp(240px, 30vw, 300px)';
+        if (i === 4) return 'clamp(200px, 25vw, 280px)';
+        if (i === 1 || i === 2) return 'clamp(160px, 20vw, 220px)';
+        return 'clamp(140px, 18vw, 200px)';
+      } else {
+        if (i === 0) return 'clamp(300px, 32vw, 380px)';
+        if (i === 2) return 'clamp(360px, 38vw, 440px)';
+        if (i === 1) return 'clamp(220px, 24vw, 280px)';
+        if (i === 3) return 'clamp(200px, 22vw, 260px)';
+        return 'clamp(200px, 22vw, 260px)';
+      }
+    }
+
+    function getFontSize(i) {
+      const isDesktop = window.innerWidth >= 1024;
+      const isMobile = window.innerWidth < 768;
+
+      if (i === 0 || i === 2 || (i === 4 && !isMobile)) {
+        return 'clamp(3.5rem, 10vw, 8.5rem)';
+      }
+      return 'clamp(2.5rem, 7vw, 5rem)';
+    }
+
+    function renderStats(values) {
+      gridEl.innerHTML = stats.map((stat, i) => {
+        const gridPos = getGridPosition(i);
+        const cardHeight = getCardHeight(i);
+        const fontSize = getFontSize(i);
+        const formattedValue = formatValue(i, values[i]);
+
+        return `
+          <div style="
+            grid-column: ${gridPos.col};
+            grid-row: ${gridPos.row};
+            position: relative;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            min-height: ${cardHeight};
+            height: ${cardHeight};
+            border: 1px solid #b0b0b0;
+            background-color: #0a0a0a;
+            z-index: 1;
+          ">
+            <div style="position: absolute; top: -0.5px; left: -0.5px; width: 8px; height: 8px; background-color: #fff; z-index: 2;"></div>
+            <div style="position: absolute; top: -0.5px; right: -0.5px; width: 8px; height: 8px; background-color: #fff; z-index: 2;"></div>
+            <div style="position: absolute; bottom: -0.5px; left: -0.5px; width: 8px; height: 8px; background-color: #fff; z-index: 2;"></div>
+            <div style="position: absolute; bottom: -0.5px; right: -0.5px; width: 8px; height: 8px; background-color: #fff; z-index: 2;"></div>
+
+            <p style="
+              font-size: ${fontSize};
+              font-weight: 300;
+              margin: 0;
+              font-family: Manrope, sans-serif;
+              color: #fff;
+              line-height: 1.0;
+              text-align: left;
+            ">${formattedValue}</p>
+
+            <p style="
+              font-size: ${i === 0 || (i === 2 && window.innerWidth >= 1024) ? '11px' : '10px'};
+              font-weight: 400;
+              margin: 0;
+              font-family: JetBrains Mono, monospace;
+              color: #888;
+              letter-spacing: 0.5px;
+              text-transform: uppercase;
+              text-align: left;
+              max-width: 100%;
+              line-height: 1.3;
+            ">${stat.label}</p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function animate(timestamp) {
+      if (startTime === null) {
+        startTime = timestamp;
+      }
+
+      const elapsed = timestamp - startTime;
+      const duration = 2000;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutQuart(progress);
+
+      displayValues = stats.map((stat) => Math.floor(stat.rawValue * easedProgress));
+      renderStats(displayValues);
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        animationFrameId = null;
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          startTime = null;
+          animationFrameId = requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(container);
+
+    // Initial render
+    renderStats(displayValues);
+
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      observer.disconnect();
+    };
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStatsSection);
+  } else {
+    initStatsSection();
+  }
+</script>
