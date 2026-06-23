@@ -231,6 +231,34 @@ const skills = [
     </div>
   </section>
 
+  <!-- Editorial Section with Center Image -->
+  <section class="editorial" aria-label="Editorial statement">
+    <div class="editorial__grid">
+      <!-- Left quote -->
+      <div class="editorial__quote editorial__quote--left">
+        <p>
+          ChrowmDesigns sits at the intersection of strategy and craft. The work isn't about aesthetics for their own sake. It's about understanding what a business needs to communicate, who needs to hear it, and building the experience that closes that gap. That's what the last 20 years have been about.
+        </p>
+      </div>
+
+      <!-- Center image -->
+      <div class="editorial__image-wrap">
+        <img
+          src="/images/editorial-center.webp"
+          alt="ChrowmDesigns"
+          class="editorial__image"
+        />
+      </div>
+
+      <!-- Right quote -->
+      <div class="editorial__quote editorial__quote--right">
+        <p>
+          Awards are a byproduct, not a benchmark. The real measure is whether the work actually moved something. A conversion rate, a user's confidence, a brand's clarity in a crowded market. That's the part worth chasing.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Banner -->
   <CTABanner />
 
@@ -640,5 +668,107 @@ const skills = [
     font-family: 'JetBrains Mono', monospace;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+  }
+
+  /* ── Editorial Section ──────────────────────────────── */
+  .editorial {
+    background-color: #ffffff;
+    padding-top: clamp(60px, 12vw, 140px);
+    padding-bottom: clamp(60px, 12vw, 140px);
+    padding-left: clamp(16px, 5vw, 64px);
+    padding-right: clamp(16px, 5vw, 64px);
+    width: 100%;
+  }
+
+  .editorial__grid {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: minmax(clamp(200px, 30vw, 280px), 1fr) clamp(280px, 40vw, 400px) minmax(clamp(200px, 30vw, 280px), 1fr);
+    gap: clamp(40px, 10vw, 80px);
+    align-items: center;
+    justify-items: center;
+  }
+
+  .editorial__quote {
+    width: 100%;
+  }
+
+  .editorial__quote--left {
+    justify-self: end;
+    align-self: flex-end;
+    padding-right: 40px;
+  }
+
+  .editorial__quote--right {
+    justify-self: start;
+    align-self: flex-start;
+    padding-left: 40px;
+  }
+
+  .editorial__quote p {
+    font-size: 12px;
+    font-weight: 400;
+    color: #333333;
+    margin: 0;
+    padding-top: 24px;
+    border-top: 1px solid #e0e0e0;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  .editorial__quote--left p {
+    text-align: right;
+    margin-left: auto;
+  }
+
+  .editorial__quote--right p {
+    text-align: left;
+  }
+
+  .editorial__image-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .editorial__image {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 1024px) {
+    .editorial__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .editorial__quote--left,
+    .editorial__quote--right {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    .editorial__quote p {
+      text-align: center;
+      margin-left: 0;
+      max-width: 100%;
+    }
+
+    .editorial__image {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .editorial__image {
+      width: 200px;
+      height: 200px;
+    }
   }
 </style>
