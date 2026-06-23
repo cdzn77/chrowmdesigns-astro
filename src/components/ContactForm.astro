@@ -320,19 +320,21 @@ const subjectOptions = [
     letter-spacing: 0.5px;
     text-transform: uppercase;
     color: #ffffff;
-    background-color: #e02b10;
-    border: none;
-    border-radius: 20px;
+    background-color: #000000;
+    border: 1px solid #000000;
+    border-radius: 0;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     white-space: nowrap;
   }
 
   .contact-form__submit:hover:not(:disabled) {
-    background-color: #c41f0a;
-    transform: translateY(-3px);
-    gap: 0.9rem;
-    box-shadow: 0 8px 24px rgba(224, 43, 16, 0.3);
+    background-color: transparent;
+    color: #000000;
+    border-color: #000000;
+    transform: none;
+    gap: 0.6rem;
+    box-shadow: none;
   }
 
   .contact-form__submit:disabled {
