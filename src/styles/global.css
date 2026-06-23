@@ -119,12 +119,16 @@
   --shadow-2xl: 0 16px 40px rgba(0, 0, 0, 0.3);
 
   /* ────────────────────────────────────────────────────────
-     TRANSITIONS & ANIMATIONS
+     TRANSITIONS & ANIMATIONS (motion-patterns)
+     Principles: enter/exit always paired, stagger 0.08s (not 0.2s),
+     no `transition: all`, respect reduced-motion, explicit properties
      ──────────────────────────────────────────────────────── */
   --duration-fast: 150ms;
   --duration-base: 200ms;
   --duration-slow: 300ms;
   --duration-slower: 600ms;
+
+  --stagger-interval: 0.08s;
 
   --easing-in: cubic-bezier(0.4, 0, 0.2, 1);
   --easing-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -328,6 +332,17 @@ a {
 /* ============================================================
    PAGE TRANSITIONS (Astro View Transitions)
    ============================================================ */
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }

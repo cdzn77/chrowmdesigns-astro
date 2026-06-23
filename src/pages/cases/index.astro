@@ -32,6 +32,7 @@ const allTags = ['Design', 'UX/UI', 'Strategy', 'Consulting'];
         <div
           class="cases-grid__cell"
           data-tags={c.tags.join(',')}
+          style={`--card-index: ${i}`}
         >
           <CaseCard
             title={c.title}
