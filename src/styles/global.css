@@ -240,23 +240,6 @@ a {
   text-decoration: none;
 }
 
-/* ============================================================
-   FOCUS STYLES (WCAG 2.4.7 - Focus Visible)
-   Enhanced keyboard navigation indicator for accessibility
-   ============================================================ */
-:focus-visible {
-  outline: 2px solid #e02b10;
-  outline-offset: 2px;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid #e02b10;
-  outline-offset: 2px;
-}
 
 /* ============================================================
    MARQUEE ANIMATION
