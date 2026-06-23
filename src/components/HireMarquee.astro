@@ -1,31 +1,77 @@
 ---
+// Items from hire marquee
+const items = [
+  'Product Designer Available for Hire',
+  'UX Strategy & Design Systems',
+  'Remote & Worldwide',
+  '20 Years of Experience',
+];
+
+const sep = '/';
 ---
 
-<section class="hire-section">
-  <h2 class="hire-section__title">Product Designer Available for Hire</h2>
-</section>
+<div class="hire-marquee" aria-hidden="true">
+  <div class="hire-marquee__track">
+    {[0, 1].map(() => (
+      <div class="hire-marquee__set" role="presentation">
+        {items.map((item) => (
+          <>
+            <span class="hire-marquee__item">{item}</span>
+            <span class="hire-marquee__sep" aria-hidden="true">{sep}</span>
+          </>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
-
-  .hire-section {
-    width: 100%;
+  .hire-marquee {
+    overflow: hidden;
     background-color: #ffffff;
-    padding: clamp(100px, 18vw, 160px) clamp(16px, 5vw, 60px);
-    margin: 0;
+    padding: 2rem 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
   }
 
-  .hire-section__title {
+  .hire-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: crd-marquee-scroll-reverse 25s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hire-marquee__track {
+      animation: none;
+    }
+  }
+
+  .hire-marquee__set {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .hire-marquee__item {
     font-family: 'Manrope', sans-serif;
-    font-size: clamp(48px, 12vw, 140px);
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
     color: #000000;
-    margin: 0;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: -0.02em;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    white-space: nowrap;
+    padding: 0 24px;
+  }
+
+  .hire-marquee__sep {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+  }
+
+  @keyframes crd-marquee-scroll-reverse {
+    from { transform: translate3d(-50%, 0, 0); }
+    to   { transform: translate3d(0, 0, 0); }
   }
 </style>
