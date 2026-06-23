@@ -1,4 +1,10 @@
 /* ============================================================
+   GOOGLE FONTS (CONSOLIDATED)
+   All fonts loaded once here, not in individual components.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+/* ============================================================
    SELF-HOSTED FONTS
    Place font files in /public/fonts/ and update paths below.
    Sequel Sans Roman is a licensed font from Bold Monday.
