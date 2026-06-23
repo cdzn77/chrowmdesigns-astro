@@ -14,6 +14,9 @@
 
     if (!svgEl || !container) return;
 
+    // Clear any existing content
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+
     // Configuration
     const STROKE_COLOR = '#1B1B1B';
     const LINE_SPACING = 0.95;
@@ -236,9 +239,18 @@
     };
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initWaveAnimation);
-  } else {
-    initWaveAnimation();
+  function setupWaveAnimation() {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initWaveAnimation);
+    } else {
+      initWaveAnimation();
+    }
   }
+
+  setupWaveAnimation();
+
+  // Handle Astro View Transitions - reinitialize animation on page navigation
+  document.addEventListener('astro:after-swap', () => {
+    initWaveAnimation();
+  });
 </script>
