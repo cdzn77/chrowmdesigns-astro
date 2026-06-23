@@ -15,27 +15,11 @@ const allTags = ['Design', 'UX/UI', 'Strategy', 'Consulting'];
   <!-- Page Header -->
   <section class="page-header" aria-labelledby="page-heading">
     <div class="page-header__inner">
-      <span class="page-header__eyebrow">Case Stories</span>
-      <h1 class="page-header__heading" id="page-heading">WORKS</h1>
+      <h1 class="page-header__heading" id="page-heading">CASE STORIES</h1>
       <p class="page-header__sub">
-        Designing experiences that solve, connect, and inspire.
+        We will delve into the importance of UX design in creating compelling digital experiences. Through carefully curated case studies, we will illustrate how effective design can bridge the gap between user needs and business objectives.
       </p>
 
-      <!-- Filter tags -->
-      <div class="page-header__filters" role="group" aria-label="Filter cases by discipline">
-        <button
-          class="filter-tag filter-tag--active"
-          data-filter="all"
-          aria-pressed="true"
-        >All</button>
-        {allTags.map((tag) => (
-          <button
-            class="filter-tag"
-            data-filter={tag}
-            aria-pressed="false"
-          >{tag}</button>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -110,40 +94,31 @@ const allTags = ['Design', 'UX/UI', 'Strategy', 'Consulting'];
   /* ── Page Header ─────────────────────────────────── */
   .page-header {
     padding: calc(80px + clamp(4rem, 8vw, 7rem)) clamp(1.5rem, 5vw, 5rem) clamp(3rem, 5vw, 5rem);
-    background-color: var(--color-primary);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .page-header__inner {
     max-width: 900px;
   }
 
-  .page-header__eyebrow {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 1.25rem;
-  }
-
   .page-header__heading {
-    font-family: var(--font-sans);
-    font-size: clamp(4rem, 10vw, 10rem);
-    font-weight: 400;
-    letter-spacing: -0.05em;
-    line-height: 0.95;
-    color: var(--color-white);
-    margin: 0 0 1.5rem;
+    font-family: Manrope, sans-serif;
+    font-size: clamp(32px, 8vw, 56px);
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: 1.2;
+    color: #000;
+    margin: 0 0 24px 0;
   }
 
   .page-header__sub {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-size: clamp(14px, 2.2vw, 16px);
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.55);
-    margin: 0 0 2.5rem;
-    max-width: 520px;
+    color: #666;
+    margin: 0 0 2.5rem 0;
+    max-width: 800px;
+    font-family: JetBrains Mono, monospace;
   }
 
   /* Filter tags */
@@ -190,7 +165,7 @@ const allTags = ['Design', 'UX/UI', 'Strategy', 'Consulting'];
   /* ── Cases Grid ──────────────────────────────────── */
   .cases-grid {
     padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
-    background-color: var(--color-primary);
+    background-color: #ffffff;
   }
 
   .cases-grid__inner {
