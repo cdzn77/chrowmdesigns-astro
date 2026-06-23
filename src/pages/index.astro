@@ -173,6 +173,19 @@ const skills = [
     </div>
   </section>
 
+  <!-- About ChrowmDesigns Section -->
+  <section class="about-studio" aria-labelledby="about-studio-heading">
+    <div class="about-studio__inner">
+      <p class="about-studio__label">[CD® — 02]</p>
+      <h2 class="about-studio__heading" id="about-studio-heading">
+        ChrowmDesigns is an independent UX consultancy built on one principle: design that performs.
+      </h2>
+      <p class="about-studio__description">
+        Twenty years of work across gaming, hospitality, entertainment, and CPG means the studio has seen what separates a good-looking product from one that actually moves the numbers.
+      </p>
+    </div>
+  </section>
+
   <!-- 5. Hire Marquee -->
   <HireMarquee />
 
@@ -464,6 +477,49 @@ const skills = [
     :global(.case-card--offset) {
       margin-top: 0;
     }
+  }
+
+  /* ── About Studio ────────────────────────────────── */
+  .about-studio {
+    padding: clamp(80px, 15vw, 120px) 40px;
+    background-color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .about-studio__inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .about-studio__label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #888888;
+    margin: 0 0 24px 0;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .about-studio__heading {
+    font-family: 'Manrope', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    color: #000000;
+    margin: 0 0 24px 0;
+  }
+
+  .about-studio__description {
+    font-size: 12px;
+    font-weight: 400;
+    color: #555555;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.7;
+    letter-spacing: 0.3px;
   }
 
   /* ── Studio ──────────────────────────────────────── */
