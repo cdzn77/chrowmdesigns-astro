@@ -1,55 +1,81 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseHero from '../../components/CaseHero.astro';
+import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
+
+const metadata = {
+  title: 'Taco Bueno | ChrowmDesigns',
+  description: 'Rebuilt a legacy Tex-Mex brand from the ground up. Real-time OOH and a viral campaign drove 147% higher engagement across test locations.',
+};
 ---
-<BaseLayout title="Taco Bueno" description="Rebuilt a legacy Tex-Mex brand from the ground up. Real-time OOH and a viral campaign drove 147% higher engagement across test locations." ogImage="/images/taco_bueno_intro.webp" ogType="article">
-  <CaseHero logo="/images/taco_bueno_logo.webp" logoAlt="Taco Bueno Restaurants" title="Taco Bueno" category="Brand Strategy & Integrated Campaign UX" meta={[{label:'Client',value:'Taco Bueno Restaurants'},{label:'Role',value:'Senior UX Strategist and Creative Lead'},{label:'Agency',value:'Pocket Made'},{label:'Scope',value:'Brand strategy, digital UX, OOH, social, email, website, microsite, in-store'}]} heroImage="/images/taco_bueno_intro.webp" heroAlt="Taco Bueno — Bueno Means Better brand campaign" />
-  <div class="case-body">
-    <section class="case-section">
-      <h2 class="case-h2">The Problem</h2>
-      <p>Taco Bueno faced a positioning challenge masked as messaging confusion. Operating 160+ Southwest locations since 1967, they made food fresh daily — a genuine differentiator — yet their communications mirrored competitors, diluting distinctiveness. User testing confirmed customers valued authenticity over novelty; the brand's strength was sincerity, not trend-chasing.</p>
-    </section>
-    <div class="case-full-img"><img src="/images/taco_bueno01.webp" alt="Taco Bueno — brand positioning analysis" loading="lazy" decoding="async" width="1620" height="860" /></div>
-    <section class="case-section">
-      <h2 class="case-h2">Research & Discovery</h2>
-      <p>Analysis of three years of marketing revealed a consistent pattern: borrowing competitor language while falling behind. Moderated sessions with 18 current and lapsed customers across three Southwest markets showed current patrons cited freshness and made-from-scratch preparation as primary reasons for loyalty. Lapsed customers said the brand felt interchangeable.</p>
-      <p>Secondary research indicated transparency activations — showing kitchen operations rather than finished products — consistently outperformed standard promotional content in the QSR category.</p>
-    </section>
-    <div class="case-grid-2">
-      <img src="/images/taco_bueno02.webp" alt="Taco Bueno — customer research insights" loading="lazy" decoding="async" width="760" height="520" />
-      <img src="/images/taco_bueno03.webp" alt="Taco Bueno — brand strategy platform" loading="lazy" decoding="async" width="760" height="520" />
-    </div>
-    <section class="case-section">
-      <h2 class="case-h2">Brand Strategy & Messaging Platform</h2>
-      <p>"Bueno Means Better" positioned the brand around one provable claim: Taco Bueno makes food fresh daily. Every campaign element demonstrated rather than asserted this claim. Voice pillars balanced humor, honesty, and appetite appeal distinctly rather than borrowing from standard playbooks. The strategy separated Taco Bueno from competitor speed-and-value framing through sincerity as differentiator and freshness as proof point.</p>
-    </section>
-    <div class="case-full-img"><img src="/images/taco_bueno04-1.webp" alt="Taco Bueno — brand messaging examples" loading="lazy" decoding="async" width="1620" height="860" /></div>
-    <section class="case-section">
-      <h2 class="case-h2">Digital UX & Campaign Execution</h2>
-      <p>Website and microsite redesigns organized content around the freshness narrative. The Bean Cam — live streaming real beans being made from actual ingredients — anchored the digital experience, directly derived from research insights about kitchen visibility. Email design employed a conversational tone matching brand voice: direct, self-aware, never corporate. The #Shellfies social campaign invited customers to share their taco experience via Snapchat, generating user-created content extending campaign reach without additional media spend.</p>
-    </section>
-    <section class="case-section">
-      <h2 class="case-h2">OOH & In-Store System</h2>
-      <p>Billboards featured real-time freshness proof: "Making our first batch of guacamole 6:47 AM" — specific, verifiable claims avoiding advertising language. In-store menu boards and promotional cards used bold typography and texture extending the handcrafted visual language into physical environments, creating consistency between digital and counter experiences.</p>
-    </section>
-    <div class="case-full-img"><img src="/images/taco_bueno05.webp" alt="Taco Bueno — in-store and OOH applications" loading="lazy" decoding="async" width="1620" height="860" /></div>
-    <section class="case-section case-section--results">
-      <h2 class="case-h2">Results & Impact</h2>
-      <ul class="case-results">
-        <li><strong>Social engagement:</strong> 147% increase across interactive ads and social activations vs. prior campaign baseline</li>
-        <li><strong>Check growth:</strong> 3% increase in average check across 12 pilot restaurants during campaign period</li>
-        <li><strong>Brand sentiment:</strong> Significant improvement in 'fresh,' 'authentic,' and 'made from scratch' perception scores across all three test markets</li>
-        <li><strong>User-generated content:</strong> #Shellfies drove measurable UGC volume, extending campaign reach without additional paid media</li>
-      </ul>
-    </section>
-    <section class="case-section">
-      <h2 class="case-h2">My Contribution</h2>
-      <p>Led brand strategy, messaging platform development, and UX design across all digital touchpoints. OOH and print production executed collaboratively with Pocket Made's creative team using the established positioning platform and voice guidelines. The "Bueno Means Better" platform and transparency-first strategic direction were driven by user research findings.</p>
-      <p>If I were approaching this again, I'd advocate earlier for a phased rollout plan with defined scale criteria to build an explicit business case for full-chain deployment rather than leaving that decision as a follow-on conversation.</p>
-    </section>
-  </div>
+
+<BaseLayout title={metadata.title} description={metadata.description}>
+  <CaseStudyEditorial
+    client="Taco Bueno Restaurants"
+    projectTitle="Taco Bueno"
+    projectSubtitle="Brand Strategy & Integrated Campaign UX"
+    year={2019}
+    introRightText="Brand repositioning through transparency as differentiator. 'Bueno Means Better' proved the brand's commitment to fresh-daily preparation through live streaming and user-generated content, driving 147% higher engagement and 3% check increase across pilot locations."
+    role="Senior UX Strategist & Creative Lead"
+
+    heroImage="/images/taco_bueno_intro.webp"
+    heroImageAlt="Taco Bueno — Bueno Means Better brand campaign"
+
+    section3Title="Research & Brand Differentiation"
+    section3LeftText="Analysis of three years of marketing revealed a consistent pattern: borrowing competitor language while falling behind. Moderated sessions with 18 current and lapsed customers across three Southwest markets showed current patrons cited freshness and made-from-scratch preparation as primary reasons for loyalty."
+    section3RightText="Lapsed customers said the brand felt interchangeable. Secondary research indicated transparency activations—showing kitchen operations rather than finished products—consistently outperformed standard promotional content in the QSR category. This insight became the strategic foundation."
+    section3Image1="/images/taco_bueno01.webp"
+    section3Image1Alt="Taco Bueno — brand positioning analysis"
+    section3Image2="/images/taco_bueno02.webp"
+    section3Image2Alt="Taco Bueno — customer research insights"
+    section3Image3="/images/taco_bueno03.webp"
+    section3Image3Alt="Taco Bueno — brand strategy platform"
+
+    section4Image="/images/taco_bueno04-1.webp"
+    section4ImageAlt="Taco Bueno — brand messaging examples"
+
+    section5Title="Bueno Means Better: Messaging Platform"
+    section5LeftText="'Bueno Means Better' positioned the brand around one provable claim: Taco Bueno makes food fresh daily. Every campaign element demonstrated rather than asserted this claim. Voice pillars balanced humor, honesty, and appetite appeal distinctly rather than borrowing from standard playbooks."
+    section5RightText="The strategy separated Taco Bueno from competitor speed-and-value framing through sincerity as differentiator and freshness as proof point. This wasn't aspirational messaging—it was operational reality translated into brand language."
+    section5Image1="/images/taco_bueno02.webp"
+    section5Image1Alt="Customer insights and feedback"
+    section5Image2="/images/taco_bueno03.webp"
+    section5Image2Alt="Brand strategy documentation"
+    section5Image3="/images/taco_bueno04-1.webp"
+    section5Image3Alt="Messaging examples"
+
+    section6Items={[
+      { image: '/images/taco_bueno01.webp', alt: 'Brand positioning analysis' },
+      { image: '/images/taco_bueno03.webp', alt: 'Brand strategy platform' },
+      { image: '/images/taco_bueno04-1.webp', alt: 'Messaging examples' },
+    ]}
+
+    section7Image="/images/taco_bueno05.webp"
+    section7ImageAlt="Taco Bueno — in-store and OOH applications"
+    section7Text="Omnichannel Execution: Digital to Physical"
+
+    section8Title="Digital UX & Transparency-First Campaign"
+    section8LeftText="Website and microsite redesigns organized content around the freshness narrative. The Bean Cam—live streaming real beans being made from actual ingredients—anchored the digital experience, directly derived from research insights about kitchen visibility."
+    section8RightText="Email design employed a conversational tone matching brand voice: direct, self-aware, never corporate. The #Shellfies social campaign invited customers to share their taco experience via Snapchat, generating user-created content extending campaign reach without additional media spend."
+    section8Image1="/images/taco_bueno02.webp"
+    section8Image1Alt="Campaign insights and execution"
+    section8Image2="/images/taco_bueno03.webp"
+    section8Image2Alt="Brand strategy application"
+    section8Image3="/images/taco_bueno04-1.webp"
+    section8Image3Alt="Campaign messaging examples"
+
+    section9Title="Results & Market Performance"
+    section9LeftText="147% increase in social engagement across interactive ads and social activations versus prior campaign baseline. 3% increase in average check across 12 pilot restaurants during campaign period. #Shellfies drove measurable UGC volume, extending campaign reach without additional paid media."
+    section9RightText="Significant improvement in 'fresh,' 'authentic,' and 'made from scratch' perception scores across all three test markets. The campaign validated that transparency-first positioning could differentiate a legacy regional brand in a competitive QSR landscape."
+    section9Image1="/images/taco_bueno01.webp"
+    section9Image1Alt="Brand positioning results"
+    section9Image2="/images/taco_bueno05.webp"
+    section9Image2Alt="In-store implementation"
+
+    section10Image="/images/taco_bueno05.webp"
+    section10ImageAlt="Taco Bueno — complete implementation across channels"
+  />
   <CasePrevNext currentSlug="taco-bueno" />
   <Footer />
 </BaseLayout>

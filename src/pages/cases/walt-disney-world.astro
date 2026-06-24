@@ -1,54 +1,79 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseHero from '../../components/CaseHero.astro';
+import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
+
+const metadata = {
+  title: 'Walt Disney World Public Affairs | ChrowmDesigns',
+  description: '77% bounce rate. A research-led redesign that cut exits by 44% and made Disney\'s community impact finally visible.',
+};
 ---
-<BaseLayout title="Walt Disney World Public Affairs" description="77% bounce rate. A research-led redesign that cut exits by 44% and made Disney's community impact finally visible." ogImage="/images/disney_hero.webp" ogType="article">
-  <CaseHero logo="/images/disney_logo.webp" logoAlt="Walt Disney World" title="Walt Disney World Public Affairs Digital Transformation" category="Research-Led UX & Information Architecture" meta={[{label:'Client',value:'Walt Disney World Public Affairs'},{label:'Role',value:'Senior UX Strategist — research, IA, and interface design'},{label:'Agency',value:'Voce Communications / Porter Novelli'},{label:'Technology',value:'Sketch, Adobe Creative Suite, Google Analytics, heatmap testing'}]} heroImage="/images/disney_hero.webp" heroAlt="Walt Disney World Public Affairs — digital platform redesign" />
-  <div class="case-body">
-    <section class="case-section">
-      <h2 class="case-h2">The Problem</h2>
-      <p>The site had poor visibility for community organizations — 43% of engaged traffic — seeking donations through a 5+ step process buried in navigation. Press releases were undifferentiated in a single feed, causing journalist abandonment. A 77% category-page bounce rate confirmed usability failures that analytics alone couldn't explain.</p>
-    </section>
-    <div class="case-full-img"><img src="/images/disney01.webp" alt="Disney Public Affairs — site audit findings" loading="lazy" decoding="async" width="1620" height="860" /></div>
-    <section class="case-section">
-      <h2 class="case-h2">Research & Discovery</h2>
-      <p>Competitive audit across 12 Fortune 500 Public Affairs sites and theme park properties. Heatmap analysis identified navigation invisibility issues. Moderated sessions with 8 participants showed users couldn't distinguish Public Affairs content from the main resort site — a fundamental positioning failure that no amount of copy optimization could fix.</p>
-    </section>
-    <div class="case-grid-2">
-      <img src="/images/disney02.webp" alt="Disney — heatmap analysis" loading="lazy" decoding="async" width="760" height="520" />
-      <img src="/images/disney03-1.webp" alt="Disney — user research sessions" loading="lazy" decoding="async" width="760" height="520" />
-    </div>
-    <section class="case-section">
-      <h2 class="case-h2">Information Architecture</h2>
-      <p>Restructured hierarchy for three distinct user journeys: media professionals, community organizations, and general stakeholders. Each audience received a dedicated entry point with content organized around their specific tasks rather than Disney's internal communication structure.</p>
-    </section>
-    <div class="case-full-img"><img src="/images/disney04.webp" alt="Disney — information architecture redesign" loading="lazy" decoding="async" width="1620" height="860" /></div>
-    <section class="case-section">
-      <h2 class="case-h2">Wireframes & Flow Optimization</h2>
-      <p>Donation flow reduced from 5+ steps to 2 interactions with 5/5 task success in testing. Press content separated into categorized feeds by topic and audience type, eliminating the single undifferentiated stream. Navigation language replaced internal Disney terminology with user-facing task descriptions.</p>
-    </section>
-    <div class="case-grid-2">
-      <img src="/images/disney05-1.webp" alt="Disney — wireframe flows" loading="lazy" decoding="async" width="760" height="520" />
-      <img src="/images/disney06.webp" alt="Disney — donation flow redesign" loading="lazy" decoding="async" width="760" height="520" />
-    </div>
-    <section class="case-section">
-      <h2 class="case-h2">Visual Design & Responsive Implementation</h2>
-      <p>Visual design established clear distinction between Disney Public Affairs and the main resort brand while maintaining the organizational credibility required for media and community audiences. Fully responsive implementation across all breakpoints, replacing a desktop-only experience that had failed mobile visitors entirely.</p>
-    </section>
-    <div class="case-full-img"><img src="/images/disney07.webp" alt="Disney Public Affairs — final responsive design" loading="lazy" decoding="async" width="1620" height="860" /></div>
-    <section class="case-section case-section--results">
-      <h2 class="case-h2">Results & Impact</h2>
-      <ul class="case-results">
-        <li><strong>Exit rate:</strong> 44% decrease site-wide</li>
-        <li><strong>Bounce rate:</strong> 24% decrease across category pages</li>
-        <li><strong>Session duration:</strong> 26% increase</li>
-        <li><strong>Donation flow:</strong> Reduced from 5+ steps to 2 interactions</li>
-        <li><strong>Mobile usability:</strong> Rebuilt to fully operational across all breakpoints</li>
-      </ul>
-    </section>
-  </div>
+
+<BaseLayout title={metadata.title} description={metadata.description}>
+  <CaseStudyEditorial
+    client="Walt Disney World"
+    projectTitle="Public Affairs Digital Transformation"
+    projectSubtitle="Research-Led UX & Information Architecture"
+    year={2018}
+    introRightText="Public affairs information architecture redesign that made Disney's community impact finally visible. Restructured navigation for three distinct user journeys, cut site-wide exit rates by 44%, and streamlined donation flow from 5+ steps to 2 interactions."
+    role="Senior UX Strategist"
+
+    heroImage="/images/disney_hero.webp"
+    heroImageAlt="Walt Disney World Public Affairs — digital platform redesign"
+
+    section3Title="Research & Discovery: Three User Journeys"
+    section3LeftText="Competitive audit across 12 Fortune 500 Public Affairs sites and theme park properties. Heatmap analysis identified navigation invisibility issues. Moderated sessions with 8 participants showed users couldn't distinguish Public Affairs content from the main resort site."
+    section3RightText="This wasn't a copy or visual design problem—it was a fundamental positioning failure. Users arriving to donate or find media information couldn't tell they were in the right place. No amount of optimization could fix architecture-level confusion."
+    section3Image1="/images/disney01.webp"
+    section3Image1Alt="Disney Public Affairs — site audit findings"
+    section3Image2="/images/disney02.webp"
+    section3Image2Alt="Disney — heatmap analysis"
+    section3Image3="/images/disney03-1.webp"
+    section3Image3Alt="Disney — user research sessions"
+
+    section4Image="/images/disney04.webp"
+    section4ImageAlt="Disney — information architecture redesign"
+
+    section5Title="Information Architecture Restructuring"
+    section5LeftText="Restructured hierarchy for three distinct user journeys: media professionals, community organizations, and general stakeholders. Each audience received a dedicated entry point with content organized around their specific tasks rather than Disney's internal communication structure."
+    section5RightText="Navigation language was replaced with user-facing task descriptions. Press professionals found press releases organized by topic and date. Community organizations found donation information prominently at the top level. General stakeholders found company impact stories and community programs."
+    section5Image1="/images/disney04.webp"
+    section5Image1Alt="IA documentation"
+    section5Image2="/images/disney05-1.webp"
+    section5Image2Alt="Wireframe flows"
+    section5Image3="/images/disney06.webp"
+    section5Image3Alt="Donation flow redesign"
+
+    section6Items={[
+      { image: '/images/disney01.webp', alt: 'Site audit findings' },
+      { image: '/images/disney02.webp', alt: 'Heatmap analysis' },
+      { image: '/images/disney04.webp', alt: 'IA redesign' },
+    ]}
+
+    section7Image="/images/disney07.webp"
+    section7ImageAlt="Disney Public Affairs — final responsive design"
+    section7Text="Mobile-First Responsive Implementation"
+
+    section8Title="Flow Optimization & Visual Design"
+    section8LeftText="Donation flow was reduced from 5+ steps to 2 interactions with 5/5 task success in testing. Press content was separated into categorized feeds by topic and audience type, eliminating the single undifferentiated stream that had caused journalist abandonment."
+    section8RightText="Visual design established clear distinction between Disney Public Affairs and the main resort brand while maintaining the organizational credibility required for media and community audiences. Fully responsive implementation across all breakpoints replaced a desktop-only experience that had failed mobile visitors entirely."
+    section8Image1="/images/disney05-1.webp"
+    section8Image1Alt="Wireframe flows documentation"
+    section8Image2="/images/disney06.webp"
+    section8Image2Alt="Donation flow simplified"
+    section8Image3="/images/disney07.webp"
+    section8Image3Alt="Final responsive design"
+
+    section9Title="Results & Impact Metrics"
+    section9LeftText="44% decrease in site-wide exit rate. 24% decrease in bounce rate across category pages. 26% increase in session duration. These improvements came directly from fixing the information architecture—users could finally find what they came for."
+    section9RightText="Donation flow success was now 5/5 in testing where it had previously been buried and invisible. Mobile usability improved from non-functional to fully operational across all breakpoints. The platform now properly represented Disney's commitment to community engagement."
+    section9Image1="/images/disney07.webp"
+    section9Image1Alt="Responsive implementation"
+
+    section10Image="/images/disney04.webp"
+    section10ImageAlt="Complete IA redesign documentation"
+  />
   <CasePrevNext currentSlug="walt-disney-world" />
   <Footer />
 </BaseLayout>

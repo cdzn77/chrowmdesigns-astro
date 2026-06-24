@@ -1,0 +1,1268 @@
+---
+export interface Props {
+  // Case header info
+  client: string;
+  projectTitle: string;
+  projectSubtitle: string;
+  year: number;
+  role: string;
+
+  // Section 1: Intro text (optional)
+  introText?: string;
+  introRightText?: string;
+
+  // Section 2: Hero image
+  heroImage: string;
+  heroImageAlt: string;
+
+  // Section 3: Section heading + text columns + sticky gallery
+  section3Title: string;
+  section3LeftText: string;
+  section3RightText: string;
+  section3Image1?: string;
+  section3Image1Alt?: string;
+  section3Image2?: string;
+  section3Image2Alt?: string;
+  section3Image3?: string;
+  section3Image3Alt?: string;
+
+  // Section 4: Image or visual
+  section4Image: string;
+  section4ImageAlt: string;
+
+  // Section 5: Two-column text + sticky gallery (3 images)
+  section5Title: string;
+  section5LeftText: string;
+  section5RightText: string;
+  section5Image?: string;
+  section5ImageAlt?: string;
+  section5Image1?: string;
+  section5Image1Alt?: string;
+  section5Image2?: string;
+  section5Image2Alt?: string;
+  section5Image3?: string;
+  section5Image3Alt?: string;
+
+  // Section 6: Icons/badges grid
+  section6Items: Array<{
+    image: string;
+    alt: string;
+  }>;
+
+  // Section 7: Dark image with overlay text
+  section7Image: string;
+  section7ImageAlt: string;
+  section7Text: string;
+
+  // Section 8: Sticky text left + scrolling gallery right
+  section8Title: string;
+  section8LeftText: string;
+  section8RightText: string;
+  section8Image?: string;
+  section8ImageAlt?: string;
+  section8Image1?: string;
+  section8Image1Alt?: string;
+  section8Image2?: string;
+  section8Image2Alt?: string;
+  section8Image3?: string;
+  section8Image3Alt?: string;
+
+  // Section 9: Text + stacked images
+  section9Title: string;
+  section9LeftText: string;
+  section9RightText: string;
+  section9Image1: string;
+  section9Image1Alt: string;
+  section9Image2?: string;
+  section9Image2Alt?: string;
+
+  // Section 10: Full-width image mockup
+  section10Image: string;
+  section10ImageAlt: string;
+
+  // Section 11: Testimonial quote (optional)
+  section11Quote?: string;
+  section11Author?: string;
+  section11Title?: string;
+  section11Image?: string;
+}
+
+const {
+  client,
+  projectTitle,
+  projectSubtitle,
+  year,
+  role,
+  introText = undefined,
+  introRightText,
+  heroImage,
+  heroImageAlt,
+  section3Title,
+  section3LeftText,
+  section3RightText,
+  section3Image1,
+  section3Image1Alt,
+  section3Image2,
+  section3Image2Alt,
+  section3Image3,
+  section3Image3Alt,
+  section4Image,
+  section4ImageAlt,
+  section5Title,
+  section5LeftText,
+  section5RightText,
+  section5Image,
+  section5ImageAlt,
+  section5Image1,
+  section5Image1Alt,
+  section5Image2,
+  section5Image2Alt,
+  section5Image3,
+  section5Image3Alt,
+  section6Items,
+  section7Image,
+  section7ImageAlt,
+  section7Text,
+  section8Title,
+  section8LeftText,
+  section8RightText,
+  section8Image,
+  section8ImageAlt,
+  section8Image1,
+  section8Image1Alt,
+  section8Image2,
+  section8Image2Alt,
+  section8Image3,
+  section8Image3Alt,
+  section9Title,
+  section9LeftText,
+  section9RightText,
+  section9Image1,
+  section9Image1Alt,
+  section9Image2,
+  section9Image2Alt,
+  section10Image,
+  section10ImageAlt,
+  section11Quote,
+  section11Author,
+  section11Title,
+  section11Image,
+} = Astro.props;
+---
+
+<article class="case-study-editorial">
+  <!-- HEADER: Case metadata (3-column layout) -->
+  <header class="case-header">
+    <div class="case-header__container">
+      <!-- Left column: Title & subtitle -->
+      <div class="case-header__left">
+        <span class="case-header__label">Case</span>
+        <h1 class="case-header__title">{projectTitle}</h1>
+        <p class="case-header__subtitle">{projectSubtitle}</p>
+      </div>
+
+      <!-- Middle column: Metadata items -->
+      <div class="case-header__middle">
+        <div class="case-header__meta-item">
+          <span class="case-header__meta-label">Client</span>
+          <p class="case-header__meta-value">{client}</p>
+        </div>
+        <div class="case-header__meta-item">
+          <span class="case-header__meta-label">Role</span>
+          <p class="case-header__meta-value">{role}</p>
+        </div>
+        <div class="case-header__meta-item">
+          <span class="case-header__meta-label">Year</span>
+          <p class="case-header__meta-value">{year}</p>
+        </div>
+      </div>
+
+      <!-- Right column: Large descriptive text -->
+      <div class="case-header__right">
+        <p class="case-header__description">{introRightText || projectSubtitle}</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: Intro text (left only) -->
+  {introText && (
+    <section class="intro-section">
+      <div class="intro-section__container">
+        <div class="intro-section__left">
+          <p class="intro-section__text">{introText}</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- SECTION 2: Hero image (full-width) -->
+  <section class="hero-section">
+    <img
+      src={heroImage}
+      alt={heroImageAlt}
+      class="hero-section__image"
+      loading="eager"
+      decoding="async"
+    />
+  </section>
+
+  <!-- SECTION 3: Section heading + two-column text (left sticky) + scrolling gallery (right) -->
+  <section class="text-section text-section--with-gallery">
+    <div class="text-section__container text-section__container--gallery">
+      <div class="text-section__left-half text-section__left-half--sticky">
+        <h2 class="text-section__heading">{section3Title}</h2>
+        <div class="text-section__columns">
+          <div class="text-section__column">
+            <p class="text-section__text">{section3LeftText}</p>
+          </div>
+          <div class="text-section__column">
+            <p class="text-section__text">{section3RightText}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-section__right-gallery">
+        {section3Image1 && (
+          <div class="gallery-image">
+            <img
+              src={section3Image1}
+              alt={section3Image1Alt || 'Gallery image'}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+        {section3Image2 && (
+          <div class="gallery-image">
+            <img
+              src={section3Image2}
+              alt={section3Image2Alt || 'Gallery image'}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+        {section3Image3 && (
+          <div class="gallery-image">
+            <img
+              src={section3Image3}
+              alt={section3Image3Alt || 'Gallery image'}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Image (right-aligned or full-width) -->
+  <section class="image-section">
+    <div class="image-section__container">
+      <img
+        src={section4Image}
+        alt={section4ImageAlt}
+        class="image-section__image"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <!-- SECTION 5: Image gallery left + Text sticky right -->
+  <section class="split-section split-section--with-gallery split-section--flipped">
+    <div class="split-section__container split-section__container--gallery">
+      <div class="split-section__gallery">
+        {section5Image1 && (
+          <div class="gallery-image">
+            <img
+              src={section5Image1}
+              alt={section5Image1Alt || 'Gallery image'}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+        {section5Image2 && (
+          <div class="gallery-image">
+            <img
+              src={section5Image2}
+              alt={section5Image2Alt || 'Gallery image'}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+        {section5Image3 && (
+          <div class="gallery-image">
+            <img
+              src={section5Image3}
+              alt={section5Image3Alt || 'Gallery image'}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+      </div>
+      <div class="split-section__text split-section__text--sticky">
+        <h2 class="split-section__heading">{section5Title}</h2>
+        <div class="split-section__columns">
+          <div class="split-section__column">
+            <p class="split-section__paragraph">{section5LeftText}</p>
+          </div>
+          <div class="split-section__column">
+            <p class="split-section__paragraph">{section5RightText}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: Icon/badge grid -->
+  {section6Items && section6Items.length > 0 && (
+    <section class="badges-section">
+      <div class="badges-section__container">
+        <div class="badges-grid">
+          {section6Items.map((item) => (
+            <div class="badge-item">
+              <img
+                src={item.image}
+                alt={item.alt}
+                class="badge-item__image"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- SECTION 7: Dark image with overlay text -->
+  <section class="dark-overlay-section" style={`background-image: url('${section7Image}')`}>
+    <div class="dark-overlay-section__overlay"></div>
+    <div class="dark-overlay-section__content">
+      <h2 class="dark-overlay-section__text">{section7Text}</h2>
+    </div>
+  </section>
+
+  <!-- SECTION 8: Text sticky left + Image gallery right -->
+  <section class="text-section-8 text-section-8--with-gallery">
+    <div class="text-section-8__container text-section-8__container--gallery">
+      <div class="text-section-8__left text-section-8__left--sticky">
+        <h2 class="text-section-8__heading">{section8Title}</h2>
+        <div class="text-section-8__columns">
+          <div class="text-section-8__column">
+            <p class="text-section-8__text">{section8LeftText}</p>
+          </div>
+          <div class="text-section-8__column">
+            <p class="text-section-8__text">{section8RightText}</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-section-8__gallery">
+        {section8Image1 && (
+          <div class="gallery-image">
+            <img
+              src={section8Image1}
+              alt={section8Image1Alt || 'Gallery image'}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+        {section8Image2 && (
+          <div class="gallery-image">
+            <img
+              src={section8Image2}
+              alt={section8Image2Alt || 'Gallery image'}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+        {section8Image3 && (
+          <div class="gallery-image">
+            <img
+              src={section8Image3}
+              alt={section8Image3Alt || 'Gallery image'}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: Text + stacked images -->
+  <section class="stacked-section">
+    <div class="stacked-section__container">
+      <div class="stacked-section__text">
+        <h2 class="stacked-section__heading">{section9Title}</h2>
+        <p class="stacked-section__paragraph">{section9LeftText}</p>
+        <p class="stacked-section__paragraph">{section9RightText}</p>
+      </div>
+      <div class="stacked-section__images">
+        <img
+          src={section9Image1}
+          alt={section9Image1Alt}
+          class="stacked-section__image"
+          loading="lazy"
+          decoding="async"
+        />
+        {section9Image2 && (
+          <img
+            src={section9Image2}
+            alt={section9Image2Alt}
+            class="stacked-section__image"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: Full-width mockup image -->
+  <section class="mockup-section">
+    <img
+      src={section10Image}
+      alt={section10ImageAlt}
+      class="mockup-section__image"
+      loading="lazy"
+      decoding="async"
+    />
+  </section>
+
+  <!-- SECTION 11: Testimonial quote (optional) -->
+  {section11Quote && (
+    <section class="quote-section">
+      <div class="quote-section__container">
+        {section11Image && (
+          <img
+            src={section11Image}
+            alt={section11Author}
+            class="quote-section__image"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        <blockquote class="quote-section__quote">{section11Quote}</blockquote>
+        <div class="quote-section__attribution">
+          <p class="quote-section__author">{section11Author}</p>
+          <p class="quote-section__title">{section11Title}</p>
+        </div>
+      </div>
+    </section>
+  )}
+</article>
+
+<style>
+  :root {
+    /* Colors */
+    --color-ember: #C83C28;
+    --color-ember-light: #E04830;
+    --color-parchment: #EDE8E3;
+    --color-linen: #F5F1ED;
+    --color-volcanic: #1C1614;
+    --color-charcoal: #4A4340;
+    --color-slag: #7A726C;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+  }
+
+  /* ============================================================
+     BASE STYLES
+     ============================================================ */
+  .case-study-editorial {
+    background-color: var(--color-white);
+    color: var(--color-charcoal);
+  }
+
+  /* ============================================================
+     CASE HEADER
+     ============================================================ */
+  .case-header {
+    padding: 80px 40px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: var(--color-white);
+  }
+
+  .case-header__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.8fr;
+    gap: 80px;
+    align-items: flex-start;
+  }
+
+  /* Left column: Title & subtitle */
+  .case-header__left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .case-header__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-slag);
+    margin: 0;
+  }
+
+  .case-header__title {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--color-volcanic);
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .case-header__subtitle {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-charcoal);
+    margin: 0;
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+
+  /* Middle column: Metadata */
+  .case-header__middle {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .case-header__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .case-header__meta-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-slag);
+  }
+
+  .case-header__meta-value {
+    font-size: 15px;
+    color: var(--color-volcanic);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Right column: Large descriptive text */
+  .case-header__right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 4px;
+  }
+
+  .case-header__description {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-volcanic);
+    margin: 0;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ============================================================
+     SECTION 1: INTRO
+     ============================================================ */
+  .intro-section {
+    padding: 80px 40px;
+    background-color: var(--color-white);
+  }
+
+  .intro-section__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+  }
+
+  .intro-section__left {
+    padding-top: 12px;
+  }
+
+  .intro-section__text {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-charcoal);
+    line-height: 1.8;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .intro-section__text--large {
+    font-size: 24px;
+    line-height: 1.6;
+    color: var(--color-volcanic);
+    font-weight: 600;
+  }
+
+  /* ============================================================
+     SECTION 2: HERO IMAGE
+     ============================================================ */
+  .hero-section {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .hero-section__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    min-height: 400px;
+    object-fit: cover;
+  }
+
+  /* ============================================================
+     SECTION 3: TEXT SECTION
+     ============================================================ */
+  .text-section {
+    padding: 80px 40px;
+  }
+
+  .text-section__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .text-section__container--gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .text-section__left-half {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .text-section__left-half--sticky {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+
+  .text-section__right-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .gallery-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+
+  .gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .text-section__heading {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Manrope, sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--color-volcanic);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .text-section__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .text-section__column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .text-section__text {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-charcoal);
+    line-height: 1.8;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  /* ============================================================
+     SECTION 4: IMAGE (Full-width, no gutters)
+     ============================================================ */
+  .image-section {
+    padding: 60px 0;
+    margin: 0;
+  }
+
+  .image-section__container {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+
+  .image-section__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ============================================================
+     SECTION 5: SPLIT (Text + Image)
+     ============================================================ */
+  .split-section {
+    padding: 80px 40px;
+    background-color: transparent;
+  }
+
+  .split-section__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .split-section__text {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .split-section__heading {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Manrope, sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--color-volcanic);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .split-section__paragraph {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-charcoal);
+    line-height: 1.8;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .split-section__text--sticky {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .split-section__text--sticky .split-section__heading {
+    grid-column: 1;
+  }
+
+  .split-section__text--sticky .split-section__paragraph {
+    grid-column: 1;
+  }
+
+  .split-section__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .split-section__column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .split-section__image {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .split-section__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .split-section__container--gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .split-section__text--sticky {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+
+  .split-section__gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .split-section--flipped .split-section__container--gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .split-section--flipped .split-section__gallery {
+    order: -1;
+  }
+
+  /* ============================================================
+     SECTION 6: BADGES GRID
+     ============================================================ */
+  .badges-section {
+    padding: 80px 40px;
+  }
+
+  .badges-section__container {
+    width: 100%;
+  }
+
+  .badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .badge-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  .badge-item__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ============================================================
+     SECTION 7: DARK OVERLAY
+     ============================================================ */
+  .dark-overlay-section {
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+  }
+
+  .dark-overlay-section__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  .dark-overlay-section__content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  .dark-overlay-section__text {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Manrope, sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 700;
+    color: var(--color-white);
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -2px;
+  }
+
+  /* ============================================================
+     SECTION 8: TEXT STICKY LEFT + GALLERY RIGHT
+     ============================================================ */
+  .text-section-8 {
+    padding: 80px 40px;
+    background-color: var(--color-white);
+  }
+
+  .text-section-8__container--gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .text-section-8__left--sticky {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .text-section-8__heading {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--color-volcanic);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .text-section-8__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .text-section-8__column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .text-section-8__text {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-charcoal);
+    line-height: 1.8;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .text-section-8__gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* ============================================================
+     SECTION 9: STACKED
+     ============================================================ */
+  .stacked-section {
+    padding: 80px 40px;
+  }
+
+  .stacked-section__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .stacked-section__text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .stacked-section__heading {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--color-volcanic);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .stacked-section__paragraph {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-charcoal);
+    line-height: 1.8;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .stacked-section__images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .stacked-section__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ============================================================
+     SECTION 10: MOCKUP
+     ============================================================ */
+  .mockup-section {
+    padding: 60px 40px;
+  }
+
+  .mockup-section__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ============================================================
+     SECTION 11: QUOTE
+     ============================================================ */
+  .quote-section {
+    padding: 100px 40px;
+    background-color: var(--color-parchment);
+  }
+
+  .quote-section__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .quote-section__image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .quote-section__quote {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Manrope, sans-serif;
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: 600;
+    color: var(--color-volcanic);
+    margin: 0 0 20px 0;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+  }
+
+  .quote-section__attribution {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .quote-section__author {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-volcanic);
+    margin: 0;
+  }
+
+  .quote-section__title {
+    font-size: 12px;
+    color: var(--color-slag);
+    margin: 0;
+  }
+
+  /* ============================================================
+     RESPONSIVE: TABLET (768px - 1024px)
+     ============================================================ */
+  @media (max-width: 1024px) {
+    .case-header {
+      padding: 60px 40px;
+    }
+
+    .case-header__container {
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .case-header__right {
+      grid-column: 1 / -1;
+    }
+
+    .case-header__title {
+      font-size: clamp(32px, 4vw, 44px);
+    }
+
+    .case-header__description {
+      font-size: clamp(18px, 2vw, 24px);
+    }
+
+    .intro-section__container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .text-section__columns {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .split-section__container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .banner-section__container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .stacked-section__container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* ============================================================
+     RESPONSIVE: MOBILE (max-width 768px)
+     ============================================================ */
+  @media (max-width: 768px) {
+    .case-header {
+      padding: 40px 40px;
+    }
+
+    .case-header__container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .case-header__title {
+      font-size: 28px;
+    }
+
+    .case-header__description {
+      font-size: 18px;
+    }
+
+    .case-header__middle {
+      gap: 32px;
+    }
+
+    .intro-section {
+      padding: 40px 40px;
+    }
+
+    .intro-section__container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .text-section {
+      padding: 40px 40px;
+    }
+
+    .text-section__heading {
+      font-size: 24px;
+    }
+
+    .text-section__columns {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .image-section {
+      padding: 40px 40px;
+    }
+
+    .split-section {
+      padding: 40px 40px;
+    }
+
+    .split-section__container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .split-section__heading {
+      font-size: 24px;
+    }
+
+    .badges-section {
+      padding: 40px 40px;
+    }
+
+    .badges-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .dark-overlay-section {
+      min-height: 300px;
+      padding: 40px 40px;
+    }
+
+    .dark-overlay-section__text {
+      font-size: 32px;
+    }
+
+    .banner-section {
+      padding: 40px 40px;
+    }
+
+    .banner-section__container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .banner-section__title {
+      font-size: 32px;
+    }
+
+    .stacked-section {
+      padding: 40px 40px;
+    }
+
+    .stacked-section__container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .stacked-section__heading {
+      font-size: 24px;
+    }
+
+    .mockup-section {
+      padding: 40px 40px;
+    }
+
+    .quote-section {
+      padding: 60px 40px;
+    }
+
+    .quote-section__quote {
+      font-size: 18px;
+    }
+  }
+</style>

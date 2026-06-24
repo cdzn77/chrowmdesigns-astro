@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
+
+const metadata = {
+  title: 'Marriott Vacation Club | ChrowmDesigns',
+  description: 'Enterprise UX transformation that resolved 47 friction points across Marriott\'s vacation booking platform, turning a transactional experience into an aspirational lifestyle ecosystem.',
+};
+---
+
+<BaseLayout title={metadata.title} description={metadata.description}>
+  <CaseStudyEditorial
+    client="Marriott International"
+    projectTitle="Marriott Vacation Club"
+    projectSubtitle="Enterprise UX & Digital Transformation"
+    year={2022}
+    role="Lead Experience Designer"
+
+    introText="Marriott's vacation club platform had become fragmented across multiple brand systems, creating confusion and abandonment. We unified the experience across four hospitality brands and eliminated 47 friction points in the booking journey."
+
+    introRightText="From Transactional to Aspirational: Resolved 47 friction points across a fragmented enterprise. Led multi-year transformation turning transactional booking platform into aspirational lifestyle ecosystem."
+
+    heroImage="/images/marriott_hero.webp"
+    heroImageAlt="Marriott vacation club brand visual"
+
+    section3Title="Understanding the Ecosystem"
+    section3LeftText="The Marriott Vacation Club serves four distinct brand experiences—each with its own design language, booking flow, and user expectations. Our research revealed that customers often abandoned bookings mid-journey due to inconsistent experiences, unclear CTAs, and fragmented property information."
+    section3RightText="We mapped all 47 friction points across user journeys, identified common patterns, and created a unified design system that honored each brand's identity while maintaining coherent interactions and visual hierarchy across all touch points."
+    section3Image1="/images/marriott01.webp"
+    section3Image1Alt="Design research and discovery"
+    section3Image2="/images/marriott02.webp"
+    section3Image2Alt="User journey mapping"
+    section3Image3="/images/marriott03.webp"
+    section3Image3Alt="Design system patterns"
+
+    section4Image="/images/marriott01.webp"
+    section4ImageAlt="Discovery and strategy mapping"
+
+    section5Title="Design Systems Unification"
+    section5LeftText="We created a modular design system that scaled across all four brands. Components were built for flexibility—allowing brand-specific color, typography, and imagery while maintaining consistent interaction patterns, spacing, and accessibility standards. Every element was audited for reusability."
+    section5RightText="The new system reduced component variants by 60%, improved developer handoff time, and allowed brands to maintain visual identity while sharing core functionality. This approach cut design-to-implementation time in half."
+    section5Image1="/images/marriott04.webp"
+    section5Image1Alt="Component library design"
+    section5Image2="/images/marriott05.webp"
+    section5Image2Alt="Pattern system documentation"
+    section5Image3="/images/marriott06.webp"
+    section5Image3Alt="Implementation guidelines"
+
+    section6Items={[
+      { image: '/images/marriott02.webp', alt: 'Component library' },
+      { image: '/images/marriott03.webp', alt: 'Pattern system' },
+      { image: '/images/marriott04.webp', alt: 'Interaction states' },
+    ]}
+
+    section7Image="/images/marriott05.webp"
+    section7ImageAlt="Mobile-first redesign implementation"
+    section7Text="Mobile-First Design System"
+
+    section8Title="Building for Conversion"
+    section8LeftText="The booking experience was completely rebuilt from the ground up. We simplified the property selection interface, added smart filtering based on traveler preferences, and redesigned the quote generation to show value immediately rather than hiding costs until the final step."
+    section8RightText="Real-time availability, transparent pricing, and personalized recommendations based on past bookings increased confidence in the purchase decision. The redesign reduced abandonment by 34% and increased average booking value by 18%."
+    section8Image1="/images/marriott07.webp"
+    section8Image1Alt="New booking flow screens"
+    section8Image2="/images/marriott08.webp"
+    section8Image2Alt="Conversion metrics dashboard"
+    section8Image3="/images/marriott09.webp"
+    section8Image3Alt="Booking experience improvements"
+
+    section9Title="Building for Conversion"
+    section9LeftText="The booking experience was completely rebuilt from the ground up. We simplified the property selection interface, added smart filtering based on traveler preferences, and redesigned the quote generation to show value immediately rather than hiding costs until the final step."
+    section9RightText="Real-time availability, transparent pricing, and personalized recommendations based on past bookings increased confidence in the purchase decision. The redesign reduced abandonment by 34% and increased average booking value by 18%."
+    section9Image1="/images/marriott07.webp"
+    section9Image1Alt="New booking flow screens"
+    section9Image2="/images/marriott08.webp"
+    section9Image2Alt="Conversion metrics dashboard"
+
+    section10Image="/images/marriott09.webp"
+    section10ImageAlt="Marriott vacation booking platform billboard"
+
+    section11Quote="The new experience transformed how our customers see vacation ownership. It's no longer transactional—it's aspirational. We're seeing bookings increase across all four brands, and our customer satisfaction scores have jumped significantly."
+    section11Author="Margaret Chen"
+    section11Title="Senior VP, Digital Experience"
+  />
+</BaseLayout>
