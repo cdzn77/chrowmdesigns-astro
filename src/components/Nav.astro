@@ -122,6 +122,31 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
       >
         Let's Talk
       </a>
+
+      <!-- Footer Section -->
+      <div class="nav-mobile-menu__footer">
+        <!-- Social & Contact Links -->
+        <div class="nav-mobile-menu__footer-links">
+          <a href="mailto:chile@chrowmdesigns.com" class="nav-mobile-footer-link" style={{ color: textColor }}>
+            EMAIL
+          </a>
+          <a href="https://www.linkedin.com/in/angelomanzano" target="_blank" rel="noopener noreferrer" class="nav-mobile-footer-link" style={{ color: textColor }}>
+            LINKEDIN
+          </a>
+          <a href="https://chrowmdesigns.com/cv.pdf" download class="nav-mobile-footer-link" style={{ color: textColor }}>
+            RESUME
+          </a>
+        </div>
+
+        <!-- Logo -->
+        <div class="nav-mobile-menu__footer-logo">
+          <img
+            src={logoSrc}
+            alt="ChrowmDesigns"
+            style={{ filter: logoFilter }}
+          />
+        </div>
+      </div>
     </div>
   </div>
 </nav>
@@ -338,14 +363,14 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
 
   .nav-mobile-menu__close {
     position: fixed;
-    top: 16px;
-    right: clamp(16px, 5vw, 60px);
+    top: clamp(12px, 3vw, 20px);
+    right: clamp(12px, 3vw, 20px);
     z-index: 103;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 56px;
     background: none;
     border: none;
     cursor: pointer;
@@ -359,16 +384,18 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
   }
 
   .nav-mobile-menu__close svg {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   .nav-mobile-menu__inner {
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding: 80px 20px 20px 20px;
+    padding: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 60px) clamp(40px, 8vw, 80px) clamp(20px, 5vw, 60px);
     overflow-y: auto;
     height: 100vh;
   }
@@ -408,11 +435,53 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     transition: color 0.2s ease;
     display: inline-block;
     text-align: center;
-    margin-top: 12px;
+    margin-top: clamp(40px, 8vw, 80px);
+    width: 100%;
   }
 
   .nav-mobile-cta:hover {
     opacity: 0.85;
+  }
+
+  .nav-mobile-menu__footer {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 8vw, 80px);
+    margin-top: auto;
+    padding-top: clamp(40px, 8vw, 80px);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-mobile-menu__footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 4vw, 32px);
+  }
+
+  .nav-mobile-footer-link {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease-out;
+  }
+
+  .nav-mobile-footer-link:hover {
+    color: #e02b10;
+  }
+
+  .nav-mobile-menu__footer-logo {
+    display: flex;
+    justify-content: center;
+    padding-bottom: clamp(20px, 5vw, 40px);
+  }
+
+  .nav-mobile-menu__footer-logo img {
+    height: clamp(60px, 15vw, 120px);
+    width: auto;
   }
 
   @media (max-width: 900px) {
