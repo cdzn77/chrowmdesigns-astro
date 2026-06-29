@@ -376,6 +376,37 @@ const {
     align-items: center;
   }
 
+  @media (max-width: 1024px) {
+    .hero-intro {
+      height: auto;
+      padding: var(--spacing-lg) 0;
+    }
+
+    .hero-intro__container {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-intro__title {
+      font-size: 32px;
+      letter-spacing: -1px;
+    }
+
+    .hero-intro__subtitle {
+      font-size: 16px;
+    }
+
+    .hero-intro__text {
+      font-size: 14px;
+    }
+
+    .hero-intro__image-wrap {
+      height: 300px;
+    }
+  }
+
   .hero-intro__content {
     z-index: 2;
     position: relative;
@@ -502,6 +533,7 @@ const {
     grid-template-columns: repeat(3, 200px);
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-xl);
+    justify-content: center;
   }
 
   .icon-box {
@@ -511,6 +543,40 @@ const {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: 1024px) {
+    .icon-grid {
+      grid-template-columns: repeat(2, 160px);
+      gap: var(--spacing-md);
+    }
+
+    .icon-box {
+      width: 160px;
+      height: 160px;
+    }
+
+    .icon-box__icon {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .icon-grid {
+      grid-template-columns: repeat(2, 120px);
+      gap: var(--spacing-sm);
+    }
+
+    .icon-box {
+      width: 120px;
+      height: 120px;
+    }
+
+    .icon-box__icon {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   .icon-box--ember {
