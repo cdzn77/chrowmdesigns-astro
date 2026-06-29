@@ -479,13 +479,34 @@ const skills = [
     gap: 12px;
   }
 
-  @media (max-width: 640px) {
-    .cases-grid__inner {
-      grid-template-columns: 1fr;
+  @media (max-width: 1024px) {
+    :global(.case-card--large) {
+      width: 50%;
     }
+
+    :global(.case-card--small) {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cases-grid {
+      padding: 0 20px;
+    }
+
+    :global(.case-card--large),
+    :global(.case-card--small) {
+      width: 100%;
+    }
+
     /* Reset offset on single column */
     :global(.case-card--offset) {
       margin-top: 0;
+    }
+
+    .cases-grid__footer {
+      flex-direction: column;
+      gap: 1rem;
     }
   }
 

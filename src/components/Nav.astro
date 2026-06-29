@@ -39,7 +39,7 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     />
   </a>
 
-  <!-- Nav Links -->
+  <!-- Nav Links (Desktop) -->
   <div class="nav-links">
     {navLinks.map(({ label, href }) => (
       <a
@@ -53,7 +53,7 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     ))}
   </div>
 
-  <!-- CTA Button -->
+  <!-- CTA Button (Desktop) -->
   <a
     href="/contact"
     class="nav-cta"
@@ -64,13 +64,82 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
   >
     Let's Talk
   </a>
+
+  <!-- Mobile Menu Toggle -->
+  <button
+    class="nav-mobile-toggle"
+    id="mobile-menu-toggle"
+    aria-label="Toggle navigation menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    style={{ color: textColor }}
+  >
+    <span class="nav-mobile-toggle__line"></span>
+    <span class="nav-mobile-toggle__line"></span>
+    <span class="nav-mobile-toggle__line"></span>
+  </button>
+
+  <!-- Mobile Menu -->
+  <div
+    class="nav-mobile-menu"
+    id="mobile-menu"
+    style={{
+      backgroundColor: bgColor,
+      borderTopColor: borderColor
+    }}
+  >
+    <div class="nav-mobile-menu__inner">
+      {navLinks.map(({ label, href }) => (
+        <a
+          href={href}
+          class={`nav-mobile-link${currentPath === href ? ' is-active' : ''}`}
+          style={{ color: textColor }}
+          aria-current={currentPath === href ? 'page' : undefined}
+        >
+          {label}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="nav-mobile-cta"
+        style={{
+          backgroundColor: btnBg,
+          color: btnText
+        }}
+      >
+        Let's Talk
+      </a>
+    </div>
+  </div>
 </nav>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !isExpanded);
+      menu.classList.toggle('is-open');
+    });
+
+    // Close menu when a link is clicked
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('is-open');
+      });
+    });
+  }
+</script>
 
 <style define:vars={{ bgColor, textColor, borderColor, btnBg, btnText }}>
   .site-nav {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 102;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -136,9 +205,178 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     opacity: 0.85;
   }
 
-  @media (max-width: 640px) {
+  .nav-mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .nav-mobile-toggle__line {
+    width: 24px;
+    height: 2px;
+    background-color: currentColor;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+  }
+
+  .nav-mobile-toggle[aria-expanded="true"] .nav-mobile-toggle__line:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .nav-mobile-toggle[aria-expanded="true"] .nav-mobile-toggle__line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  .nav-mobile-toggle[aria-expanded="true"] .nav-mobile-toggle__line:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+  }
+
+  @keyframes slideInMenu {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInOverlay {
+    from {
+      opacity: 0;
+      backdrop-filter: blur(0px);
+    }
+    to {
+      opacity: 1;
+      backdrop-filter: blur(4px);
+    }
+  }
+
+  @keyframes slideOutMenu {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeOutOverlay {
+    from {
+      opacity: 1;
+      backdrop-filter: blur(4px);
+    }
+    to {
+      opacity: 0;
+      backdrop-filter: blur(0px);
+    }
+  }
+
+  .nav-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 101;
+    background-color: var(--bgColor);
+    flex-direction: column;
+    animation: slideOutMenu 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    backdrop-filter: blur(0px);
+  }
+
+  .nav-mobile-menu::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0);
+    z-index: -1;
+    animation: fadeOutOverlay 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .nav-mobile-menu.is-open {
+    display: flex;
+    animation: slideInMenu 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .nav-mobile-menu.is-open::before {
+    animation: fadeInOverlay 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .nav-mobile-menu__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 80px 20px 20px 20px;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  .nav-mobile-link {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s ease-out;
+    cursor: pointer;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-mobile-link:hover {
+    color: #e02b10;
+  }
+
+  .nav-mobile-link.is-active {
+    color: #e02b10;
+  }
+
+  .nav-mobile-cta {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    display: inline-block;
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  .nav-mobile-cta:hover {
+    opacity: 0.85;
+  }
+
+  @media (max-width: 900px) {
     .nav-links {
       display: none;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    .nav-mobile-toggle {
+      display: flex !important;
     }
   }
 </style>

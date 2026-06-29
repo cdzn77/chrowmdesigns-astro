@@ -11,8 +11,7 @@
    ============================================================ */
 @font-face {
   font-family: 'sequel-sans-roman';
-  src: url('/fonts/sequel-sans-roman.woff2') format('woff2'),
-       url('/fonts/sequel-sans-roman.woff') format('woff');
+  src: url('/fonts/Sequel Sans Roman Body.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
