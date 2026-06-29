@@ -88,6 +88,19 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
       borderTopColor: borderColor
     }}
   >
+    <!-- Close Button -->
+    <button
+      class="nav-mobile-menu__close"
+      id="mobile-menu-close"
+      aria-label="Close navigation menu"
+      style={{ color: textColor }}
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
     <div class="nav-mobile-menu__inner">
       {navLinks.map(({ label, href }) => (
         <a
@@ -116,6 +129,12 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
 <script>
   const toggle = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
+  const closeButton = document.getElementById('mobile-menu-close');
+
+  function closeMenu() {
+    toggle.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('is-open');
+  }
 
   if (toggle && menu) {
     toggle.addEventListener('click', () => {
@@ -124,13 +143,15 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
       menu.classList.toggle('is-open');
     });
 
+    // Close menu when close button is clicked
+    if (closeButton) {
+      closeButton.addEventListener('click', closeMenu);
+    }
+
     // Close menu when a link is clicked
-    const links = menu.querySelectorAll('a');
+    const links = menu.querySelectorAll('a:not(.nav-mobile-menu__close)');
     links.forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        menu.classList.remove('is-open');
-      });
+      link.addEventListener('click', closeMenu);
     });
   }
 </script>
@@ -313,6 +334,34 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
 
   .nav-mobile-menu.is-open::before {
     animation: fadeInOverlay 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .nav-mobile-menu__close {
+    position: fixed;
+    top: 16px;
+    right: clamp(16px, 5vw, 60px);
+    z-index: 103;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: inherit;
+    transition: opacity 0.2s ease-out;
+  }
+
+  .nav-mobile-menu__close:hover {
+    opacity: 0.7;
+  }
+
+  .nav-mobile-menu__close svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
   }
 
   .nav-mobile-menu__inner {
