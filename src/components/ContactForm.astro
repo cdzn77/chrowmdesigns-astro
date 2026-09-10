@@ -490,8 +490,9 @@ const subjectOptions = [
           action: 'contact',
           callback: () => { form!.dataset.verificationState = 'ready'; },
           'expired-callback': () => { form!.dataset.verificationState = 'expired'; },
-          'error-callback': () => {
+          'error-callback': (code: string) => {
             form!.dataset.verificationState = 'error';
+            form!.dataset.verificationError = code;
             showStatus('The security check could not finish. Try again or', 'error', true);
           },
           'timeout-callback': () => {
