@@ -38,6 +38,8 @@ const thumbnailSizes = `(max-width: 640px) calc(100vw - 40px), (max-width: 1024p
 
     <!-- Thumbnail -->
     <div class="case-card__img-wrap">
+      <picture>
+        {responsiveStem && <source type="image/avif" srcset={[400, 800, 900].map((width) => `/images/responsive/${responsiveStem}-${width}.avif ${width}w`).join(', ')} sizes={thumbnailSizes} />}
       <img
         src={thumbnail}
         srcset={thumbnailSrcset}
@@ -49,6 +51,7 @@ const thumbnailSizes = `(max-width: 640px) calc(100vw - 40px), (max-width: 1024p
         width="760"
         height="520"
       />
+      </picture>
       <!-- Hover overlay -->
       <div class="case-card__hover-overlay" aria-hidden="true">
         <span class="case-card__view-label">View Case</span>
