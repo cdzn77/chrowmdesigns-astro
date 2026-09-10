@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import BackToTop from '../components/BackToTop.astro';
 import ClientRouter from 'astro/components/ClientRouter.astro';
+import AnalyticsConsent from '../components/AnalyticsConsent.astro';
 import { SITE_URL, normalizePath, canonicalFor, caseForPath, isIndexable, structuredData } from '../lib/site-seo';
 
 export interface Props {
@@ -115,5 +116,6 @@ const schema = structuredData(path, fullTitle, description, socialImage);
     <slot name="footer" />
 
     <BackToTop />
+    <AnalyticsConsent />
   </body>
 </html>

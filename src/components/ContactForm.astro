@@ -544,6 +544,8 @@ const subjectOptions = [
         attempted = false;
         fields.forEach(field => { field.removeAttribute('aria-invalid'); field.removeAttribute('aria-describedby'); });
         showStatus("Message sent — I'll be in touch soon.", 'success');
+        // No form values are attached; analytics records only confirmed delivery.
+        document.dispatchEvent(new Event('chrowm:inquiry-sent'));
       } catch (error) {
         if (signal.aborted) return;
         const message = request.signal.aborted ? 'Delivery could not be confirmed before the connection timed out. Your details are still here. Check before resending, or' : error instanceof Error && error.message === 'rate-limit' ? 'The form is receiving too many requests. Your details are still here. Please wait a few minutes or' : 'Your message could not be sent. Your details are still here. Try again or';
