@@ -1,8 +1,7 @@
-/* ============================================================
-   GOOGLE FONTS (CONSOLIDATED)
-   All fonts loaded once here, not in individual components.
-   ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+/* Locally served fonts avoid a render-blocking third-party stylesheet. */
+@font-face { font-family: 'Manrope'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('/fonts/optimized/manrope-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Geist'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/fonts/optimized/geist-latin.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 100 800; font-display: swap; src: url('/fonts/optimized/jetbrainsmono-latin.woff2') format('woff2'); }
 
 /* ============================================================
    SELF-HOSTED FONTS
@@ -11,7 +10,7 @@
    ============================================================ */
 @font-face {
   font-family: 'sequel-sans-roman';
-  src: url('/fonts/Sequel Sans Roman Body.otf') format('opentype');
+  src: url('/fonts/optimized/sequel-sans-roman.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

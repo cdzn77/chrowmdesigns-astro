@@ -1,4 +1,6 @@
 ---
+import cases from '../data/cases.json';
+
 export interface Props {
   title: string;
   category: string;
@@ -21,6 +23,14 @@ const {
   size = 'large',
   loading = 'lazy',
 } = Astro.props;
+// Only known local case thumbnails have generated responsive variants.
+const responsiveStem = cases.some((item) => item.thumbnail === thumbnail)
+  ? thumbnail.split('/').pop()!.replace(/\.webp$/, '') : undefined;
+const thumbnailSrcset = responsiveStem
+  ? [400, 800].map((width) => `/images/responsive/${responsiveStem}-${width}.webp ${width}w`).join(', ') + `, ${thumbnail} 900w`
+  : undefined;
+const thumbnailSizes = `(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(50vw - 48px), ${size === 'small' ? '25vw' : '50vw'}`;
+
 ---
 
 <article class:list={['case-card', { 'case-card--offset': offset }, `case-card--${size}`]}>
@@ -30,6 +40,8 @@ const {
     <div class="case-card__img-wrap">
       <img
         src={thumbnail}
+        srcset={thumbnailSrcset}
+        sizes={thumbnailSrcset ? thumbnailSizes : undefined}
         alt={title}
         class="case-card__img"
         loading={loading}
