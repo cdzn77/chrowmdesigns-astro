@@ -28,7 +28,7 @@ function fixture({ host = 'chrowmdesigns.com', stored = null, noindex = false, s
       return accept;
     },
     querySelectorAll() { return [setting]; },
-    getElementById(id) { return id === 'analytics-consent' ? banner : main; },
+    getElementById(id) { return id === 'analytics-consent' ? banner : id === 'analytics-runtime' ? { appendChild(script) { scripts.push(script); } } : main; },
     addEventListener(name, fn) { handlers[name] = fn; },
     set cookie(value) { cookies.push(value); },
   };

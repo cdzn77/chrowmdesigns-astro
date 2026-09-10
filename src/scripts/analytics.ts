@@ -45,7 +45,7 @@ function start() {
   const script = document.createElement('script');
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  document.head.appendChild(script);
+  document.getElementById('analytics-runtime')?.appendChild(script);
 }
 function referrer() {
   if (lastPage) return lastPage;
