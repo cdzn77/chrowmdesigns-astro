@@ -804,6 +804,15 @@ const skills = [
 </style>
 
 <style>
+  /* Let the browser defer offscreen section layout while keeping content in the DOM.
+     Auto remembers measured heights as each section enters the viewport. */
+  @supports (content-visibility: auto) {
+    .home-tight > :global(section:not(.hero)) {
+      content-visibility: auto;
+      contain-intrinsic-block-size: auto 800px;
+    }
+  }
+
   /* Approved compact homepage layout; shared components retain their own styles. */
   .home-tight{--home-gutter:clamp(20px,3.4vw,56px);background:white}
 
