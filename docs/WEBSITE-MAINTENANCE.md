@@ -31,9 +31,19 @@ Netlify reads `public/_headers` and `_redirects`. Only hashed Astro bundles rece
 
 Astro 7.3.2 and Vite 8.2.2 replaced the older build dependencies. The installed dependency audit returned zero known vulnerabilities on 2026-09-10. All 23 pages built successfully; a comparison found identical body text, elements and relevant attributes after explicitly preserving `compressHTML: true`. This is a point-in-time advisory check, not a promise of permanent security.
 
-## Google connections still needed
+## Google connections configured
 
-Reuse the Search Console domain property and GA4 property previously connected through Site Kit; do not create duplicates or guess IDs. Verify ownership, submit https://chrowmdesigns.com/sitemap.xml, inspect indexing and old WordPress URLs. Decide analytics and consent behavior before adding tracking. With Astro navigation, test exactly one page view per route; exclude previews/local use and all contact personal data. Count an inquiry only after Formspree confirms success.
+Search Console's existing URL-prefix property `https://chrowmdesigns.com/` is verified through the homepage meta tag. Keep that tag in place. The current sitemap was resubmitted successfully with 12 discovered pages, and the property is linked to the existing GA4 property.
+
+GA account: CDZN (`65633743`). Property: `www.chrowmdesigns.com` (`523485961`). Web stream: Chrowm Designs (`13572171353`), now using `https://chrowmdesigns.com`. Public measurement ID: `G-HP8BSKC4SC`. Existing history was preserved.
+
+Visitors choose through the consent notice or footer Analytics settings. Before opt-in there is no Google script or analytics request. Choice lasts 180 days; withdrawal disables tracking, clears the two GA cookies and reloads to unload the SDK. Advertising storage, advertising user data and personalization are denied; Google signals and ad personalization are disabled in tag configuration. Tracking is excluded from local hosts, Netlify preview hosts and noindex pages.
+
+The site sends one `page_view` per canonical route through Astro's page-load event, `file_download` for the resume, and `generate_lead` only after Formspree confirms delivery. No form values accompany the event. Query strings and fragments are excluded from page URLs; external referrers are reduced to their origin. Automatic enhanced measurement for history, forms, search, outbound links, scrolling, video and downloads is disabled to prevent duplicates and unwanted parameters. Email redaction remains enabled in GA.
+
+`generate_lead` is registered as a key event, once per event, without an invented monetary value. Existing legacy key-event definitions were preserved. Eight consent/measurement tests are available with `node --test scripts/analytics.test.mjs` (Node 24 used for validation). The Analytics SDK lives in a persisted Astro container so navigation does not remove it mid-load.
+
+Continue reviewing old WordPress URL errors in Search Console. New data and indexed pages can take time to appear; sitemap acceptance does not mean all pages are indexed.
 
 ## Future Studio Desk website health section — not built or scheduled
 
@@ -50,7 +60,7 @@ Proposed workflow:
 5. Push under the agreed deployment policy; verify the deployed revision and live behavior. Retain the last known-good deployment for rollback.
 6. Record the outcome and notify on meaningful changes. Cap retries to avoid repair loops.
 
-No recurring automation, new dashboard, Google connection or automatic repair/deploy loop has been enabled. Credentials, schedule, thresholds and the allowed repair policy belong to that future phase.
+Google Search Console and Analytics are connected as described above. No recurring automation, new dashboard or automatic repair/deploy loop has been enabled. Dashboard access credentials, schedule, thresholds and the allowed repair policy belong to that future phase.
 
 ## Search and browser agents
 
