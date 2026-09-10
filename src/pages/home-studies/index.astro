@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import cases from '../../data/cases.json';
+const studies = [
+ {id:'01',title:'Paired grid',description:'Equal project pairs, a compact results band, and four capability columns.'},
+ {id:'02',title:'Staggered grid',description:'Large and small project pairings, offset whitespace, and a capability sidebar.'},
+ {id:'03',title:'Project rows',description:'Wide image-and-title rows with a structured service catalogue.'},
+ {id:'04',title:'Wide spreads',description:'Full-width project moments alternating with pairs, followed by split capabilities.'},
+];
+---
+<BaseLayout title="Homepage layout studies" description="Four layouts with the current homepage hero, copy, colors and typography.">
+ <meta slot="head" name="robots" content="noindex, nofollow" />
+ <div class="review">
+  <header><p class="mono">ChrowmDesigns / Homepage studies / Round 02</p><h1>Same design language.<br />Four ways to arrange it.</h1><p>Each study uses the current hero, complete homepage content, Manrope headings, JetBrains Mono text, and existing black, white and red palette.</p><a href="/">View current homepage ↗</a></header>
+  <div class="choices">{studies.map(s=><a class="choice" href={`/home-studies/${s.id}/#study-content`}>
+    <div class:list={['mini',`mini--${s.id}`]} aria-hidden="true">{cases.slice(0,6).map(c=><img src={c.thumbnail} alt="" width="760" height="520" loading="lazy" />)}</div>
+    <div class="choice-title"><span class="mono">{s.id}</span><h2>{s.title}</h2><span>↗</span></div><p>{s.description}</p>
+  </a>)}</div>
+  <section class="responsive-review" aria-labelledby="responsive-title">
+   <h2 id="responsive-title">Responsive preview</h2>
+   <div class="controls"><div role="group" aria-label="Layout">{studies.map(s=><button data-study={s.id} aria-pressed={s.id==='01'}>Preview {s.id}</button>)}</div><div role="group" aria-label="Viewport"><button data-width="390" aria-pressed="true">Mobile 390</button><button data-width="768" aria-pressed="false">Tablet 768</button><button data-width="1440" aria-pressed="false">Desktop 1440</button></div></div>
+   <div class="preview-stage"><iframe title="Homepage layout responsive preview" src="/home-studies/01/#study-content" width="390" height="900" loading="lazy"></iframe></div>
+  </section>
+  <aside><p class="mono">Layout research</p><p>Project grids, image scale, captions and section pacing informed by <a href="https://www.basicagency.com/" target="_blank" rel="noopener noreferrer">BASIC/DEPT</a>, <a href="https://www.bureau-va.com/" target="_blank" rel="noopener noreferrer">Bureau for Visual Affairs</a>, <a href="https://www.reformcollective.com/" target="_blank" rel="noopener noreferrer">Reform Collective</a> and <a href="https://www.instrument.com/" target="_blank" rel="noopener noreferrer">Instrument</a>. The styling stays with the current ChrowmDesigns homepage.</p></aside>
+ </div>
+</BaseLayout>
+<script>
+function setupReview() {
+ const stage=document.querySelector<HTMLElement>('.preview-stage');
+ const frame=stage?.querySelector('iframe');
+ if(!stage||!frame||stage.dataset.ready)return;
+ stage.dataset.ready='true';
+ let width=390;
+ const fit=()=>{const scale=Math.min(1,stage.clientWidth/width);frame.style.width=width+'px';frame.style.transform='scale('+scale+')';stage.style.height=900*scale+'px';};
+ const observer=new ResizeObserver(fit);observer.observe(stage);fit();
+ document.querySelectorAll<HTMLButtonElement>('[data-study]').forEach(button=>button.addEventListener('click',()=>{
+   document.querySelectorAll('[data-study]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+   frame.src='/home-studies/'+button.dataset.study+'/#study-content';
+ }));
+ document.querySelectorAll<HTMLButtonElement>('[data-width]').forEach(button=>button.addEventListener('click',()=>{
+   document.querySelectorAll('[data-width]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+   width=Number(button.dataset.width);fit();
+ }));
+ document.addEventListener('astro:before-swap',()=>observer.disconnect(),{once:true});
+}
+setupReview();document.addEventListener('astro:page-load',setupReview);
+</script>
+<style>
+.review{background:#fff;color:#1b1b1b;padding:140px clamp(20px,4vw,64px) 64px;font-family:Manrope,sans-serif}
+.review header{max-width:900px;margin-bottom:64px}
+.mono,.review header>a,.controls button{font:12px 'JetBrains Mono',monospace;text-transform:uppercase}
+.review h1{font-size:clamp(32px,4vw,64px);line-height:1.1;font-weight:400;letter-spacing:-.02em;margin:32px 0}
+.review p{color:#555;line-height:1.6}.review a{color:inherit}.review a:hover{color:var(--color-accent)}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:64px 32px}.choice{text-decoration:none}
+.mini{height:340px;background:#f5f5f5;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px;overflow:hidden}
+.mini img{width:100%;height:100%;min-height:0;object-fit:cover}.mini--02{grid-template-columns:1.5fr 1fr}.mini--02 img:nth-child(even){transform:translateY(20px)}
+.mini--03{grid-template-columns:1fr;grid-template-rows:repeat(6,80px)}.mini--03 img{width:65%}
+.mini--04 img:nth-child(3n + 1){grid-column:1/-1}.mini--04{grid-auto-rows:90px}
+.choice-title{display:flex;align-items:center;gap:24px;margin-top:24px}.choice-title h2{font-size:24px;font-weight:400;margin:0}.choice-title>span:last-child{margin-left:auto}
+.choice>p{font:12px/1.7 'JetBrains Mono',monospace;text-transform:uppercase;max-width:56ch;margin-top:16px}
+.responsive-review,aside{margin-top:96px;border-top:1px solid #d0d0d0;padding-top:32px}.responsive-review h2{font-size:32px;font-weight:400}
+.controls{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin:24px 0}.controls>div{display:flex;gap:8px;flex-wrap:wrap}
+.controls button{border:1px solid #ccc;padding:12px;background:#fff;color:#1b1b1b;cursor:pointer}.controls button[aria-pressed="true"]{background:#1b1b1b;color:#fff;border-color:#1b1b1b}
+.preview-stage{position:relative;overflow:hidden;background:#eee;border:1px solid #ddd;height:900px}
+iframe{display:block;border:0;height:900px;transform-origin:top left;margin:0 auto}
+aside p:last-child{max-width:900px;font-size:14px}
+@media(max-width:640px){.choices{grid-template-columns:1fr}.mini{height:260px}.review{padding-top:110px}.controls button{font-size:11px}}
+</style>

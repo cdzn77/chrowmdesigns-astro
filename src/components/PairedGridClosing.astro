@@ -1,0 +1,147 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<!-- Preview-only closing. Wording and destinations preserved from Footer.astro. -->
+<section class="paired-cta" id="closing" aria-labelledby="paired-cta-title">
+  <h2 id="paired-cta-title">
+    <a href="/contact" class="paired-cta__link">
+      <span>Let's start<br />something bold</span>
+      <span class="paired-cta__arrow" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><path d="M12 52 52 12M12 12h40v40" stroke="currentColor" stroke-width="3" /></svg>
+      </span>
+    </a>
+  </h2>
+  <p class="paired-cta__tagline">CHROWM<sup>®</sup> — An independent design studio,<br />based in Central Florida.</p>
+</section>
+
+<footer class="paired-footer" role="contentinfo" aria-label="Site footer">
+  <div class="paired-footer__top">
+    <nav class="paired-footer__nav" aria-label="Footer navigation">
+      <a href="/">INDEX</a>
+      <a href="/info">INFO</a>
+      <a href="/cases">CASES</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="paired-footer__contact">
+      <a href="mailto:chile@chrowmdesigns.com">CHILE@CHROWMDESIGNS.COM</a>
+      <p>CENTRAL FLORIDA STUDIO</p>
+    </div>
+  </div>
+  <div class="paired-footer__logo">
+    <img src="/logo.svg?v=charcoal" alt="Chrowm Logo" width="200" height="34.54" loading="lazy" decoding="async" />
+  </div>
+  <div class="paired-footer__bottom">
+    <div class="paired-footer__copyright">
+      <p>©{currentYear}</p>
+      <p>COPYRIGHT CHROWMDESIGNS. ALL RIGHTS RESERVED</p>
+    </div>
+    <div class="paired-footer__social">
+      <a href="https://www.linkedin.com/in/angelomanzano/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+      <a href="https://www.behance.net/angelomanzanojr" target="_blank" rel="noopener noreferrer">BEHANCE</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .paired-cta {
+    background: #1b1b1b;
+    color: var(--color-white);
+    padding: clamp(64px, 7vw, 120px) var(--study-gutter);
+    scroll-margin-top: 90px;
+  }
+  .paired-cta h2 { margin: 0; }
+  .paired-cta__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    color: inherit;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(48px, 7vw, 112px);
+    font-weight: 400;
+    letter-spacing: -0.055em;
+    line-height: 1.08;
+  }
+  .paired-cta__arrow {
+    display: grid;
+    place-items: center;
+    flex: 0 0 clamp(80px, 10vw, 160px);
+    aspect-ratio: 1;
+    background: #333333;
+    color: var(--color-white);
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+  .paired-cta__arrow svg { width: 45%; height: 45%; transition: transform 200ms ease; }
+  .paired-cta__link:hover .paired-cta__arrow { background: var(--color-white); color: var(--color-dark); }
+  .paired-cta__link:hover svg { transform: translate(3px, -3px); }
+  .paired-cta__tagline {
+    margin: 48px 0 0;
+    font: 400 12px/1.7 'JetBrains Mono', monospace;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+  .paired-cta__tagline sup { font-size: 0.7em; }
+  .paired-footer {
+    padding: 48px var(--study-gutter) 32px;
+    background: var(--color-white);
+    color: var(--color-dark);
+    font: 400 12px/1.7 'JetBrains Mono', monospace;
+    letter-spacing: 0.03em;
+  }
+  .paired-footer p { margin: 0; }
+  .paired-footer a { color: inherit; text-decoration: none; transition: color 200ms ease; }
+  .paired-footer a:hover { color: var(--color-accent); text-decoration: underline; text-underline-offset: 5px; }
+  .paired-footer a:focus-visible, .paired-cta__link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 6px;
+  }
+  .paired-footer__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 32px;
+  }
+  .paired-footer__nav { display: flex; flex-wrap: wrap; gap: 8px 32px; }
+  .paired-footer__nav a, .paired-footer__social a { display: inline-flex; align-items: center; min-height: 44px; }
+  .paired-footer__contact { justify-self: end; text-align: right; }
+  .paired-footer__contact a { display: inline-flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+  .paired-footer__contact p { color: var(--color-secondary); }
+  .paired-footer__logo { margin: 64px 0 48px; }
+  .paired-footer__logo img { display: block; width: 100%; height: auto; }
+  .paired-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    border-top: 1px solid var(--color-dark);
+    padding-top: 24px;
+  }
+  .paired-footer__copyright { display: flex; flex-wrap: wrap; gap: 8px 24px; color: var(--color-secondary); }
+  /* Keep links clear of the site's fixed back-to-top control. */
+  .paired-footer__social { display: flex; gap: 32px; padding-right: 72px; }
+  @media (max-width: 1024px) {
+    .paired-footer__copyright { flex-direction: column; gap: 4px; }
+  }
+  @media (max-width: 640px) {
+    .paired-cta { padding-block: 64px; }
+    .paired-cta__link { font-size: clamp(36px, 8.5vw, 54px); gap: 32px; flex-wrap: wrap; align-items: flex-start; }
+    .paired-cta__link > span:first-child { flex: 1 0 100%; }
+    .paired-cta__arrow { flex-basis: 64px; }
+    .paired-cta__tagline { margin-top: 32px; max-width: 36ch; }
+    .paired-footer { padding-block: 32px 24px; }
+    .paired-footer__top { grid-template-columns: 1fr; gap: 24px; }
+    .paired-footer__nav { justify-content: space-between; gap: 8px 16px; }
+    .paired-footer__contact { justify-self: start; text-align: left; }
+    .paired-footer__logo { margin-block: 48px 32px; }
+    .paired-footer__bottom { flex-direction: column; align-items: flex-start; gap: 16px; padding-top: 24px; }
+    .paired-footer__copyright { max-width: 36ch; }
+    .paired-footer__social { padding-right: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .paired-cta__arrow, .paired-cta__arrow svg, .paired-footer a { transition: none; }
+    .paired-cta__link:hover svg { transform: none; }
+  }
+</style>

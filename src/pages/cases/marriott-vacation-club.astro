@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
+import MarriottCaseStudy from '../../components/MarriottCaseStudy.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Marriott Vacation Club | ChrowmDesigns',
+  title: 'Marriott Vacation Club',
   description: 'Resolved 47 friction points across enterprise systems. Transformed a transactional booking platform into an aspirational lifestyle ecosystem.',
 };
 ---
 
 <BaseLayout title={metadata.title} description={metadata.description}>
+  <MarriottCaseStudy />
+  <!--
   <CaseStudyEditorial
     client="Marriott International"
     projectTitle="Marriott Vacation Club"
@@ -75,7 +77,8 @@ const metadata = {
 
     section10Image="/images/marriott09.webp"
     section10ImageAlt="Marriott design system governance"
-  />
+  /> -->
   <CasePrevNext currentSlug="marriott-vacation-club" />
-  <Footer />
+
+  <Footer slot="footer" />
 </BaseLayout>

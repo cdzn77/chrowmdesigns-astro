@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
-import FullscreenMenu from '../components/FullscreenMenu.astro';
 import BackToTop from '../components/BackToTop.astro';
 import ClientRouter from 'astro/components/ClientRouter.astro';
 
@@ -76,7 +75,7 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
         position: absolute;
         top: -100%;
         left: 1rem;
-        background: #e02b10;
+        background: #1b1b1b;
         color: #ffffff;
         padding: 0.5rem 1rem;
         font-weight: 600;
@@ -95,9 +94,8 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
     <a id="skip-to-content" href="#main-content">Skip to content</a>
 
     <Nav />
-    <FullscreenMenu />
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1" aria-label={title}>
       <slot />
     </main>
 

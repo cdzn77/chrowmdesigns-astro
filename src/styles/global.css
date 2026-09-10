@@ -23,17 +23,19 @@
    ============================================================ */
 :root {
   /* ────────────────────────────────────────────────────────
-     COLOR PALETTE (React Creative Studio Design)
+     NEUTRAL STUDIO PALETTE — CHARCOAL, GRAY, WHITE
      ──────────────────────────────────────────────────────── */
-  --color-primary: #1B1B1B;
+  --color-error: #333333;
+  --color-primary: #1b1b1b;
   --color-secondary: #555555;
-  --color-accent: #e02b10;
+  --color-accent: #1b1b1b;
+  --color-accent-on-dark: #d6d6d6;
   --color-white: #FFFFFF;
-  --color-dark: #1a1a1a;
-  --color-bg: #1B1B1B;
+  --color-dark: #1b1b1b;
+  --color-bg: #1b1b1b;
   --color-text: #FFFFFF;
   --color-muted: #999999;
-  --color-hero-bg: #e02b10;
+  --color-hero-bg: #1b1b1b;
 
   /* Semantic color roles */
   --color-background: var(--color-bg);
@@ -111,11 +113,11 @@
   /* ────────────────────────────────────────────────────────
      SHADOWS & ELEVATION
      ──────────────────────────────────────────────────────── */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.25);
-  --shadow-2xl: 0 16px 40px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 8px rgba(27, 27, 27, 0.1);
+  --shadow-md: 0 4px 16px rgba(27, 27, 27, 0.15);
+  --shadow-lg: 0 8px 24px rgba(27, 27, 27, 0.15);
+  --shadow-xl: 0 12px 32px rgba(27, 27, 27, 0.25);
+  --shadow-2xl: 0 16px 40px rgba(27, 27, 27, 0.3);
 
   /* ────────────────────────────────────────────────────────
      TRANSITIONS & ANIMATIONS (motion-patterns)
@@ -307,7 +309,8 @@ a {
    Only shows for keyboard navigation (not mouse clicks)
    ============================================================ */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid #ffffff;
+  box-shadow: 0 0 0 4px #1b1b1b;
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -445,7 +448,7 @@ a {
   font-size: clamp(1.6rem, 3vw, 2.8rem);
   font-weight: 400;
   letter-spacing: normal;
-  color: #000000;
+  color: #1b1b1b;
   margin: 0 0 1.5rem;
 }
 
@@ -508,7 +511,7 @@ a {
 
 /* Results section accent treatment */
 .case-section--results .case-h2 {
-  color: #000000;
+  color: #1b1b1b;
 }
 
 .case-results {
@@ -536,7 +539,7 @@ a {
 }
 
 .case-results li strong {
-  color: #000000;
+  color: #1b1b1b;
   font-weight: 600;
 }
 
@@ -564,4 +567,41 @@ a {
 
 @media (max-width: 480px) {
   .case-grid-3  { grid-template-columns: 1fr; }
+}
+
+/* Keep anchored case sections visible beneath the persistent header. */
+[id^="case-section-"] { scroll-margin-top: 104px; }
+
+
+/* Keep keyboard and fragment destinations clear of the sticky navigation. */
+[id] { scroll-margin-top: 100px; }
+:focus-visible { scroll-margin-block: 100px 80px; }
+#main-content:focus { outline: none; }
+
+/* Text remains available when visitors increase font size or spacing. */
+main :is(h1,h2,h3,p,dt,dd){overflow-wrap:anywhere}
+
+/* Studio typography: upright sans-serif and monospace throughout. */
+i, em, cite, dfn, address { font-style: normal; }
+
+/* Site-wide heading family, including linked titles and inline heading accents.
+   This intentionally takes precedence over component and legacy inline fonts. */
+h1, h2, h3, h4, h5, h6,
+#main-content :is(h1, h2, h3, h4, h5, h6) {
+  font-family: 'Manrope', sans-serif !important;
+}
+:is(h1, h2, h3, h4, h5, h6) :is(a, span, em, strong, b, i) {
+  font-family: inherit !important;
+}
+
+/* Compact project highlights; allow wrapping when visitors enlarge text. */
+.case-meta { display: flex !important; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; }
+.case-meta .case-meta__client-short { display: none; }
+.case-meta .case-meta__highlight { white-space: nowrap; }
+.case-meta .case-meta__role { text-align: right; }
+@media (max-width: 800px) {
+  .case-meta { gap: 8px 12px; }
+  .case-meta .case-meta__client-full, .case-meta .case-meta__role { display: none !important; }
+  .case-meta .case-meta__client-short { display: block !important; }
+  .case-meta .case-meta__highlight { display: block !important; }
 }

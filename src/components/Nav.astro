@@ -6,18 +6,17 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ];
 
-const currentPath = Astro.url.pathname;
-const logoSrc = '/logo.svg?v=1';
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => currentPath === href || (href !== '/' && currentPath.startsWith(href + '/'));
+const logoSrc = '/logo.svg?v=charcoal';
 
-// Determine variant based on current page
-const isLightPage = currentPath !== '/' && !currentPath.startsWith('/cases');
-const variant = isLightPage ? 'light' : 'dark';
-const bgColor = variant === 'light' ? '#ffffff' : '#0f0f0f';
-const textColor = variant === 'light' ? '#1a1a1a' : '#ffffff';
-const borderColor = variant === 'light' ? '#f0f0f0' : '#333333';
-const btnBg = variant === 'light' ? '#000' : '#ffffff';
-const btnText = variant === 'light' ? '#fff' : '#000';
-const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
+// One white navigation treatment across every page.
+const bgColor = '#ffffff';
+const textColor = '#1b1b1b';
+const borderColor = '#f0f0f0';
+const btnBg = '#1b1b1b';
+const btnText = '#ffffff';
+const logoFilter = 'none';
 ---
 
 <nav
@@ -27,7 +26,7 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     borderBottomColor: borderColor
   }}
   role="navigation"
-  aria-label="Primary navigation"
+  aria-label={currentPath.startsWith('/home-studies/') ? 'Preview primary navigation' : 'Primary navigation'}
 >
   <!-- Logo -->
   <a href="/" class="nav-logo-link" aria-label="ChrowmDesigns home">
@@ -44,9 +43,8 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     {navLinks.map(({ label, href }) => (
       <a
         href={href}
-        class={`nav-link${currentPath === href ? ' is-active' : ''}`}
-        style={{ color: textColor }}
-        aria-current={currentPath === href ? 'page' : undefined}
+        class={`nav-link${isCurrent(href) ? ' is-active' : ''}`}
+        aria-current={isCurrent(href) ? (currentPath === href ? 'page' : 'location') : undefined}
       >
         {label}
       </a>
@@ -83,6 +81,10 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
   <div
     class="nav-mobile-menu"
     id="mobile-menu"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation menu"
+    inert
     style={{
       backgroundColor: bgColor,
       borderTopColor: borderColor
@@ -105,9 +107,8 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
       {navLinks.map(({ label, href }) => (
         <a
           href={href}
-          class={`nav-mobile-link${currentPath === href ? ' is-active' : ''}`}
-          style={{ color: textColor }}
-          aria-current={currentPath === href ? 'page' : undefined}
+          class={`nav-mobile-link${isCurrent(href) ? ' is-active' : ''}`}
+          aria-current={isCurrent(href) ? (currentPath === href ? 'page' : 'location') : undefined}
         >
           {label}
         </a>
@@ -130,11 +131,11 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
           <a href="mailto:chile@chrowmdesigns.com" class="nav-mobile-footer-link" style={{ color: textColor }}>
             EMAIL
           </a>
-          <a href="https://www.linkedin.com/in/angelomanzano" target="_blank" rel="noopener noreferrer" class="nav-mobile-footer-link" style={{ color: textColor }}>
+          <a href="https://www.linkedin.com/in/angelomanzano/" target="_blank" rel="noopener noreferrer" class="nav-mobile-footer-link" style={{ color: textColor }}>
             LINKEDIN
           </a>
-          <a href="https://chrowmdesigns.com/cv.pdf" download class="nav-mobile-footer-link" style={{ color: textColor }}>
-            RESUME
+          <a href="/resume.pdf" download class="nav-mobile-footer-link" style={{ color: textColor }}>
+            DOWNLOAD RESUME
           </a>
         </div>
 
@@ -152,33 +153,55 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
 </nav>
 
 <script>
-  const toggle = document.getElementById('mobile-menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  const closeButton = document.getElementById('mobile-menu-close');
-
-  function closeMenu() {
-    toggle.setAttribute('aria-expanded', 'false');
-    menu.classList.remove('is-open');
-  }
-
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !isExpanded);
-      menu.classList.toggle('is-open');
-    });
-
-    // Close menu when close button is clicked
-    if (closeButton) {
-      closeButton.addEventListener('click', closeMenu);
+  let cleanupMenu: (() => void) | undefined;
+  function initMenu() {
+    cleanupMenu?.();
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const close = document.getElementById('mobile-menu-close');
+    if (!toggle || !menu || !close) return;
+    const controller = new AbortController();
+    const { signal } = controller;
+    const desktop = matchMedia('(min-width: 901px)');
+    const background = [...document.querySelectorAll<HTMLElement>('main, body > footer, #back-to-top, .nav-logo-link, .nav-links, .nav-cta, #mobile-menu-toggle')];
+    const initialInert = background.map(el => el.inert);
+    let previousOverflow = '';
+    let opened = false;
+    function setOpen(open: boolean, returnFocus = true) {
+      if (open === opened) return;
+      opened = open;
+      menu!.classList.toggle('is-open', open);
+      menu!.inert = !open;
+      toggle!.setAttribute('aria-expanded', String(open));
+      if (open) {
+        previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        background.forEach(el => { el.inert = true; });
+        close!.focus();
+      } else {
+        document.body.style.overflow = previousOverflow;
+        background.forEach((el, i) => { el.inert = initialInert[i]; });
+        if (returnFocus) toggle!.focus();
+      }
     }
-
-    // Close menu when a link is clicked
-    const links = menu.querySelectorAll('a:not(.nav-mobile-menu__close)');
-    links.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+    toggle.addEventListener('click', () => setOpen(true), { signal });
+    close.addEventListener('click', () => setOpen(false), { signal });
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false, false), { signal }));
+    document.addEventListener('keydown', event => {
+      if (!opened) return;
+      if (event.key === 'Escape') { event.preventDefault(); setOpen(false); }
+      if (event.key === 'Tab') {
+        const items = [...menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')];
+        const first = items[0], last = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
+    }, { signal });
+    desktop.addEventListener('change', () => { if (desktop.matches) setOpen(false, false); }, { signal });
+    cleanupMenu = () => { setOpen(false, false); controller.abort(); };
   }
+  document.addEventListener('astro:page-load', initMenu);
+  document.addEventListener('astro:before-swap', () => cleanupMenu?.());
 </script>
 
 <style define:vars={{ bgColor, textColor, borderColor, btnBg, btnText }}>
@@ -213,6 +236,10 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
   }
 
   .nav-link {
+    color: var(--textColor);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
     font-size: 12px;
     font-weight: 400;
     text-decoration: none;
@@ -224,11 +251,15 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
   }
 
   .nav-link:hover {
-    color: #e02b10;
+    color: var(--textColor);
+    text-decoration: underline;
+    text-underline-offset: 6px;
   }
 
   .nav-link.is-active {
-    color: #e02b10;
+    color: var(--textColor);
+    text-decoration: underline;
+    text-underline-offset: 6px;
   }
 
   .nav-cta {
@@ -258,7 +289,9 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px;
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .nav-mobile-toggle__line {
@@ -342,7 +375,7 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(27, 27, 27, 0.2);
     z-index: -1;
     animation: fadeOutOverlay 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -394,10 +427,12 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     gap: 0;
     padding: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 60px) clamp(40px, 8vw, 80px) clamp(20px, 5vw, 60px);
     overflow-y: auto;
-    height: 100vh;
+    height: 100dvh;
   }
 
   .nav-mobile-link {
+    color: var(--textColor);
+    min-height: 44px;
     font-size: 14px;
     font-weight: 400;
     text-decoration: none;
@@ -407,15 +442,19 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     transition: color 0.2s ease-out;
     cursor: pointer;
     padding: 12px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(27, 27, 27, 0.1);
   }
 
   .nav-mobile-link:hover {
-    color: #e02b10;
+    color: var(--textColor);
+    text-decoration: underline;
+    text-underline-offset: 6px;
   }
 
   .nav-mobile-link.is-active {
-    color: #e02b10;
+    color: var(--textColor);
+    text-decoration: underline;
+    text-underline-offset: 6px;
   }
 
   .nav-mobile-cta {
@@ -446,7 +485,7 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     gap: clamp(40px, 8vw, 80px);
     margin-top: auto;
     padding-top: clamp(40px, 8vw, 80px);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(27, 27, 27, 0.1);
   }
 
   .nav-mobile-menu__footer-links {
@@ -467,7 +506,9 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
   }
 
   .nav-mobile-footer-link:hover {
-    color: #e02b10;
+    color: var(--textColor);
+    text-decoration: underline;
+    text-underline-offset: 6px;
   }
 
   .nav-mobile-menu__footer-logo {
@@ -479,6 +520,8 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
   .nav-mobile-menu__footer-logo img {
     height: clamp(60px, 15vw, 120px);
     width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 
   @media (max-width: 900px) {
@@ -493,5 +536,10 @@ const logoFilter = variant === 'light' ? 'none' : 'brightness(0) invert(1)';
     .nav-mobile-toggle {
       display: flex !important;
     }
+  }
+  .nav-cta, .nav-mobile-cta { min-height: 44px; align-items: center; justify-content: center; }
+  .site-nav :is(a, button):focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-mobile-menu, .nav-mobile-menu::before { animation: none; }
   }
 </style>

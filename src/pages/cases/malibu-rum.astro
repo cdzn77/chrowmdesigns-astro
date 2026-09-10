@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
+import MalibuCaseStudy from '../../components/MalibuCaseStudy.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Malibu Rum — Pernod Ricard | ChrowmDesigns',
+  title: 'Malibu Rum — Pernod Ricard',
   description: '200+ branded assets. 60M impressions. A unified creative system delivered across 101 consecutive days that set Malibu\'s brand consistency standard.',
 };
 ---
 
 <BaseLayout title={metadata.title} description={metadata.description}>
+  <MalibuCaseStudy />
+  <!--
   <CaseStudyEditorial
     client="Malibu Rum / Pernod Ricard USA"
     projectTitle="101 Days of Because Summer"
@@ -76,6 +78,8 @@ const metadata = {
     section10Image="/images/malibu01.webp"
     section10ImageAlt="Malibu Rum campaign full scope"
   />
+  -->
   <CasePrevNext currentSlug="malibu-rum" />
-  <Footer />
+
+  <Footer slot="footer" />
 </BaseLayout>

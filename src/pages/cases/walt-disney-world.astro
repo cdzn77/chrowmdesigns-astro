@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
+import DisneyCaseStudy from '../../components/DisneyCaseStudy.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Walt Disney World Public Affairs | ChrowmDesigns',
+  title: 'Walt Disney World Public Affairs',
   description: '77% bounce rate. A research-led redesign that cut exits by 44% and made Disney\'s community impact finally visible.',
 };
 ---
 
 <BaseLayout title={metadata.title} description={metadata.description}>
+  <DisneyCaseStudy />
+  <!--
   <CaseStudyEditorial
     client="Walt Disney World"
     projectTitle="Public Affairs Digital Transformation"
@@ -74,6 +76,8 @@ const metadata = {
     section10Image="/images/disney04.webp"
     section10ImageAlt="Complete IA redesign documentation"
   />
+  -->
   <CasePrevNext currentSlug="walt-disney-world" />
-  <Footer />
+
+  <Footer slot="footer" />
 </BaseLayout>

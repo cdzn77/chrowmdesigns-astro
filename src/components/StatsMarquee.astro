@@ -1,10 +1,10 @@
 ---
 const stats = [
-  { value: '44%', label: 'Decrease in\nExit Rate', description: 'Exit Rate Decrease' },
-  { value: '300%', label: 'Increase in\nRegistrations', description: 'Registration Growth' },
-  { value: '60M', label: 'Impressions\nDelivered', description: 'Total Impressions' },
-  { value: '147%', label: 'Engagement\nLift', description: 'Engagement Increase' },
-  { value: '40%', label: 'Faster Path\nto Content', description: 'Performance Gain' }
+  { value: '44%', label: 'Decrease in\nExit Rate', description: 'Walt Disney World', href: '/cases/walt-disney-world' },
+  { value: '300%', label: 'Increase in\nRegistrations', description: 'Grounded', href: '/cases/grounded' },
+  { value: '60M', label: 'Impressions\nDelivered', description: 'Malibu Rum', href: '/cases/malibu-rum' },
+  { value: '147%', label: 'Engagement\nLift', description: 'Taco Bueno', href: '/cases/taco-bueno' },
+  { value: '40%', label: 'Faster Path\nto Content', description: 'Carrabba’s', href: '/cases/carrabbas' }
 ];
 ---
 
@@ -17,7 +17,7 @@ const stats = [
             <p class="stat-label">{stat.label}</p>
           </div>
           <p class="stat-value">{stat.value}</p>
-          <p class="stat-description">{stat.description}</p>
+          <a class="stat-description" href={stat.href}>{stat.description} <span aria-hidden="true">↗</span></a>
         </div>
       ))}
     </div>
@@ -64,7 +64,7 @@ const stats = [
   .stat-label {
     font-size: 12px;
     font-weight: 500;
-    color: #1a1a1a;
+    color: #1b1b1b;
     margin: 0;
     font-family: 'JetBrains Mono', monospace;
     text-transform: uppercase;
@@ -78,7 +78,7 @@ const stats = [
   .stat-value {
     font-size: 72px;
     font-weight: 400;
-    color: #000000;
+    color: #1b1b1b;
     margin: 0 0 4px 0;
     font-family: 'Manrope', sans-serif;
     line-height: 1;
@@ -116,7 +116,11 @@ const stats = [
 
   @media (max-width: 480px) {
     .stats-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+  .stat-description { text-underline-offset: 4px; min-height: 44px; }
+  .stat-item { min-width: 0; }
+.stat-value{overflow-wrap:anywhere}
+.stat-label-wrap{height:auto;min-height:40px}
 </style>

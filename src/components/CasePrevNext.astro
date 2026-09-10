@@ -71,7 +71,7 @@ const next = idx < cases.length - 1 ? cases[idx + 1] : null;
   }
 
   .case-prevnext__link:hover {
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: rgba(255, 255, 255, 0.08);
   }
 
   .case-prevnext__link--next {
@@ -80,7 +80,10 @@ const next = idx < cases.length - 1 ? cases[idx + 1] : null;
   }
 
   .case-prevnext__link:hover .case-prevnext__title {
-    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+    color: var(--color-white);
   }
 
   .case-prevnext__dir {
@@ -96,7 +99,7 @@ const next = idx < cases.length - 1 ? cases[idx + 1] : null;
   }
 
   .case-prevnext__link:hover .case-prevnext__dir {
-    color: var(--color-accent);
+    color: var(--color-white);
   }
 
   .case-prevnext__title {

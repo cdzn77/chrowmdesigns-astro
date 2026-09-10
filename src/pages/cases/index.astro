@@ -3,206 +3,54 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CaseCard from '../../components/CaseCard.astro';
 import Footer from '../../components/Footer.astro';
 import cases from '../../data/cases.json';
-
-const allTags = ['Design', 'UX/UI', 'Strategy', 'Consulting'];
 ---
-
-<BaseLayout
-  title="Case Stories"
-  description="8 case studies across enterprise UX, brand strategy, campaign design, and mobile product — work for Marriott, Disney, P&G, Beat Games, Malibu Rum, and more."
->
-
-  <!-- Page Header -->
-  <section class="page-header" aria-labelledby="page-heading">
-    <div class="page-header__inner">
-      <h1 class="page-header__heading" id="page-heading">CASE STORIES</h1>
-      <p class="page-header__sub">
-        We will delve into the importance of UX design in creating compelling digital<br />experiences. Through carefully curated case studies, we will illustrate how<br />effective design can bridge the gap between user needs and business objectives.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- Cases Grid -->
-  <section class="cases-grid" aria-labelledby="cases-grid-heading">
-    <h2 class="visually-hidden" id="cases-grid-heading">All Case Studies</h2>
-
-    <div class="cases-grid__inner" id="cases-grid">
-      {cases.map((c, i) => (
-        <div
-          class="cases-grid__cell"
-          data-tags={c.tags.join(',')}
-          style={`--card-index: ${i}`}
-        >
-          <CaseCard
-            title={c.title}
-            category={c.category}
-            thumbnail={c.thumbnail}
-            href={c.url}
-            description={c.description}
-            offset={i % 2 === 1}
-            loading={i < 2 ? 'eager' : 'lazy'}
-          />
-        </div>
-      ))}
-    </div>
-
-    <!-- Empty state (shown when no filter matches) -->
-    <p class="cases-grid__empty" id="cases-empty" hidden>
-      No cases match that filter.
-    </p>
-  </section>
-
-  <!-- CTA Banner -->
-
-  <!-- Footer -->
-  <Footer />
-
+<BaseLayout title="Case Stories" canonicalURL="https://chrowmdesigns.com/cases" description="Case studies across enterprise UX, brand strategy, campaign design, and mobile product.">
+  <div class="cases-gallery">
+    <header class="cases-intro">
+      <h1>CASE<br />STORIES</h1>
+      <p>We will delve into the importance of UX design in creating compelling digital experiences. Through carefully curated case studies, we will illustrate how effective design can bridge the gap between user needs and business objectives.</p>
+    </header>
+    <section class="cases-work" aria-labelledby="cases-work-heading">
+      <div class="cases-work__heading"><h2 id="cases-work-heading">All Case Studies</h2><span aria-label={`${cases.length} projects`}>{String(cases.length).padStart(2,'0')}</span></div>
+      <div class="cases-work__grid">
+        {cases.map((c,i)=><div class="cases-work__cell" style={`--card-index:${i}`}><CaseCard title={c.title} category={c.category} thumbnail={c.thumbnail} href={c.url} description={c.description} loading={i<2?'eager':'lazy'} /></div>)}
+      </div>
+    </section>
+  </div>
+  <Footer slot="footer" />
 </BaseLayout>
-
-<!-- Filter interaction -->
-<script>
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-tag');
-  const cells      = document.querySelectorAll<HTMLElement>('.cases-grid__cell');
-  const empty      = document.getElementById('cases-empty');
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter ?? 'all';
-
-      // Update button state
-      filterBtns.forEach((b) => {
-        b.classList.toggle('filter-tag--active', b === btn);
-        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
-      });
-
-      // Show/hide cards
-      let visible = 0;
-      cells.forEach((cell) => {
-        const tags = (cell.dataset.tags ?? '').split(',');
-        const show = filter === 'all' || tags.includes(filter);
-        cell.classList.toggle('is-hidden', !show);
-        if (show) visible++;
-      });
-
-      // Empty state
-      if (empty) empty.hidden = visible > 0;
-    });
-  });
-</script>
-
 <style>
-  /* ── Page Header ─────────────────────────────────── */
-  .page-header {
-    padding: calc(80px + clamp(4rem, 8vw, 7rem)) clamp(1.5rem, 5vw, 5rem) clamp(3rem, 5vw, 5rem);
-    background-color: #ffffff;
-  }
-
-  .page-header__inner {
-    max-width: 900px;
-  }
-
-  .page-header__heading {
-    font-family: Manrope, sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-    letter-spacing: normal;
-    line-height: 1.2;
-    color: #000;
-    margin: 0 0 24px 0;
-  }
-
-  .page-header__sub {
-    font-size: 12px;
-    line-height: 1.6;
-    color: #666;
-    margin: 0 0 2.5rem 0;
-    max-width: 800px;
-    font-family: JetBrains Mono, monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
-
-  /* Filter tags */
-  .page-header__filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .filter-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.45rem 1.1rem;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-    background: none;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 100px;
-    cursor: pointer;
-    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-  }
-
-  .filter-tag:hover {
-    color: var(--color-white);
-    border-color: rgba(255, 255, 255, 0.35);
-  }
-
-  .filter-tag--active {
-    color: var(--color-primary);
-    background-color: var(--color-accent);
-    border-color: var(--color-accent);
-  }
-
-  .filter-tag--active:hover {
-    color: var(--color-primary);
-    background-color: #c41f0a;
-    border-color: #c41f0a;
-  }
-
-  /* ── Cases Grid ──────────────────────────────────── */
-  .cases-grid {
-    padding: var(--section-padding-y) clamp(1.5rem, 5vw, 5rem);
-    background-color: #ffffff;
-  }
-
-  .cases-grid__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(1.5rem, 3vw, 3rem);
-    align-items: start;
-  }
-
-  /* Hide/show via filter */
-  .cases-grid__cell {
-    transition: opacity 0.3s ease;
-  }
-
-  .cases-grid__cell.is-hidden {
-    display: none;
-  }
-
-  .cases-grid__empty {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 4rem 0;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-  }
-
-  @media (max-width: 640px) {
-    .cases-grid__inner {
-      grid-template-columns: 1fr;
-    }
-
-    /* Remove masonry offset on single column */
-    :global(.case-card--offset) {
-      margin-top: 0;
-    }
-  }
+ .cases-gallery{--cases-gutter:clamp(20px,4.2vw,64px);background:#fff;color:#1b1b1b;font-family:var(--font-sans)}
+ .cases-gallery :global(*){min-width:0;box-sizing:border-box}
+ .cases-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.75fr);align-items:end;gap:clamp(40px,8vw,120px);padding:64px var(--cases-gutter) 60px}
+ .cases-intro h1{font:400 clamp(64px,10.5vw,160px)/.85 var(--font-sans);letter-spacing:-.065em;margin:0;overflow-wrap:anywhere}
+ .cases-intro p{font:400 clamp(17px,1.5vw,22px)/1.5 var(--font-sans);color:#555;margin:0;max-width:46ch}
+ .cases-work{padding:0 var(--cases-gutter) 80px}
+ .cases-work__heading{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:18px 0 32px;border-top:1px solid #aaa;font:12px/1.5 'JetBrains Mono',monospace;color:#666}
+ .cases-work__heading h2{font:inherit;text-transform:uppercase;letter-spacing:.04em;margin:0;color:#555}
+ .cases-work__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px 28px}
+ .cases-gallery :global(.case-card__img-wrap){flex:none;aspect-ratio:16 / 10;width:100%;height:auto;position:relative;overflow:hidden}
+ .cases-gallery :global(.case-card__img){position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+ .cases-gallery :global(.case-card__meta){padding:22px 0 0;gap:12px;position:relative}
+ .cases-gallery :global(.case-card__title){font:400 clamp(25px,2.65vw,40px)/1.08 var(--font-sans);letter-spacing:-.035em;padding-right:30px;overflow-wrap:anywhere}
+ .cases-gallery :global(.case-card__meta)::after{content:'↗';position:absolute;right:0;top:22px;color:#1b1b1b;font:24px/1 var(--font-sans)}
+ .cases-gallery :global(.case-card__category){font:11px/1.5 'JetBrains Mono',monospace;letter-spacing:.04em;color:#666;overflow-wrap:anywhere}
+ .cases-gallery :global(.case-card__desc){font:400 16px/1.55 'JetBrains Mono',monospace;letter-spacing:0;text-transform:none;color:#555;max-width:58ch;overflow-wrap:anywhere}
+ .cases-gallery :global(.case-card__link:focus-visible){outline:2px solid #1b1b1b;outline-offset:6px}
+ .cases-gallery :global(.case-card__link:hover .case-card__title){color:#1b1b1b;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+ @media(max-width:800px){
+  .cases-intro{padding-block:40px;gap:32px}
+  .cases-intro h1{font-size:clamp(56px,10vw,90px)}
+  .cases-intro p{font-size:17px}
+  .cases-work__grid{gap:40px 20px}
+ }
+ @media(max-width:600px){
+  .cases-intro{grid-template-columns:minmax(0,1fr);gap:28px;padding-block:36px}
+  .cases-intro h1{font-size:clamp(64px,16vw,96px)}
+  .cases-work{padding-bottom:48px}
+  .cases-work__heading{padding-bottom:24px}
+  .cases-work__grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .cases-gallery :global(.case-card__title){font-size:30px}
+  .cases-gallery :global(.case-card__desc){font-size:16px}
+ }
 </style>

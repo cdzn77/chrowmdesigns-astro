@@ -1,31 +1,24 @@
 ---
 ---
 
-<section id="wave-container" style="width: 100%; height: clamp(250px, 35vw, 450px); background-color: #ffffff; position: relative; overflow: hidden;">
+<section id="wave-container" aria-hidden="true" style="width: 100%; height: clamp(250px, 35vw, 450px); background-color: #ffffff; position: relative; overflow: hidden;">
   <svg id="wave-svg" xmlns="http://www.w3.org/2000/svg" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none;"></svg>
-  <div id="zoom-ref" style="position: absolute; width: 20px; height: 20px; opacity: 0; pointer-events: none;"></div>
 </section>
 
 <script>
   function initWaveAnimation() {
     const container = document.getElementById('wave-container');
     const svgEl = document.getElementById('wave-svg');
-    const zoomRefEl = document.getElementById('zoom-ref');
 
     if (!svgEl || !container) return;
 
-    // Respect prefers-reduced-motion — disable animation for accessibility
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      svgEl.style.opacity = '0.5';
-      return;
-    }
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     // Clear any existing content
     while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
 
     // Configuration
-    const STROKE_COLOR = '#1B1B1B';
+    const STROKE_COLOR = '#1b1b1b';
     const LINE_SPACING = 0.95;
     const RESOLUTION = 0.7;
     const WAVE_AMPLITUDE = 0.4;
@@ -97,6 +90,9 @@
     let grid = [];
     let rafId = null;
     let startTime = null;
+    let resizeTimer;
+    let visible = false;
+    let disposed = false;
     const mouse = { x: -999, y: -999, lx: 0, ly: 0, sx: 0, sy: 0, v: 0, vs: 0, set: false };
 
     function buildGrid() {
@@ -136,6 +132,8 @@
     }
 
     function animateFrame(ts) {
+      rafId = null;
+      if (disposed) return;
       if (startTime === null) startTime = ts;
       const elapsed = ts - startTime;
 
@@ -191,7 +189,9 @@
         path.setAttribute('d', d.join(' '));
       }
 
-      rafId = requestAnimationFrame(animateFrame);
+      if (visible && !motionPreference.matches && !document.hidden) {
+        rafId = requestAnimationFrame(animateFrame);
+      }
     }
 
     function onMouseMove(e) {
@@ -222,42 +222,60 @@
       mouse.sy = ny;
     }
 
+    function syncAnimation() {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      rafId = null;
+      if (disposed) return;
+      if (visible && !motionPreference.matches && !document.hidden) {
+        rafId = requestAnimationFrame(animateFrame);
+      }
+    }
+
     function onResize() {
-      setTimeout(function () {
-        if (rafId) cancelAnimationFrame(rafId);
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (disposed) return;
+        if (rafId !== null) cancelAnimationFrame(rafId);
         buildGrid();
         startTime = null;
-        rafId = requestAnimationFrame(animateFrame);
+        animateFrame(0);
       }, 100);
     }
 
     buildGrid();
-    rafId = requestAnimationFrame(animateFrame);
-
+    // A still wave remains visible with reduced motion or while off screen.
+    animateFrame(0);
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      syncAnimation();
+    });
+    observer.observe(container);
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('touchmove', onTouchMove, { passive: true });
     window.addEventListener('resize', onResize);
+    document.addEventListener('visibilitychange', syncAnimation);
+    motionPreference.addEventListener('change', syncAnimation);
 
     return () => {
-      if (rafId) cancelAnimationFrame(rafId);
+      disposed = true;
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      clearTimeout(resizeTimer);
+      observer.disconnect();
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('resize', onResize);
+      document.removeEventListener('visibilitychange', syncAnimation);
+      motionPreference.removeEventListener('change', syncAnimation);
     };
   }
 
-  function setupWaveAnimation() {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initWaveAnimation);
-    } else {
-      initWaveAnimation();
-    }
-  }
-
-  setupWaveAnimation();
-
-  // Handle Astro View Transitions - reinitialize animation on page navigation
-  document.addEventListener('astro:after-swap', () => {
-    initWaveAnimation();
+  let cleanupWave;
+  document.addEventListener('astro:page-load', () => {
+    cleanupWave?.();
+    cleanupWave = initWaveAnimation();
+  });
+  document.addEventListener('astro:before-swap', () => {
+    cleanupWave?.();
+    cleanupWave = undefined;
   });
 </script>

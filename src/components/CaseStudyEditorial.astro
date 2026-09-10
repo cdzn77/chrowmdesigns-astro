@@ -4,7 +4,7 @@ export interface Props {
   client: string;
   projectTitle: string;
   projectSubtitle: string;
-  year: number;
+  highlight: string;
   role: string;
 
   // Section 1: Intro text (optional)
@@ -91,7 +91,7 @@ const {
   client,
   projectTitle,
   projectSubtitle,
-  year,
+  highlight,
   role,
   introText = undefined,
   introRightText,
@@ -172,8 +172,8 @@ const {
           <p class="case-header__meta-value">{role}</p>
         </div>
         <div class="case-header__meta-item">
-          <span class="case-header__meta-label">Year</span>
-          <p class="case-header__meta-value">{year}</p>
+          <span class="case-header__meta-label">Highlight</span>
+          <p class="case-header__meta-value">{highlight}</p>
         </div>
       </div>
 
@@ -470,7 +470,7 @@ const {
     --color-charcoal: #4A4340;
     --color-slag: #7A726C;
     --color-white: #FFFFFF;
-    --color-black: #000000;
+    --color-black: #1b1b1b;
   }
 
   /* ============================================================
@@ -669,9 +669,9 @@ const {
   }
 
   .text-section__right-gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
   }
 
   .gallery-image {
@@ -685,6 +685,21 @@ const {
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  /* Each gallery is a sequence of evidence, not a stack of interchangeable images. */
+  .text-section__right-gallery .gallery-image:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .text-section__right-gallery .gallery-image:nth-child(2) {
+    aspect-ratio: 3 / 4;
+    margin-top: 9vw;
+  }
+
+  .text-section__right-gallery .gallery-image:nth-child(3) {
+    aspect-ratio: 3 / 4;
   }
 
   .text-section__heading {
@@ -833,9 +848,23 @@ const {
   }
 
   .split-section__gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .split-section__gallery .gallery-image:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .split-section__gallery .gallery-image:nth-child(2) {
+    aspect-ratio: 3 / 4;
+  }
+
+  .split-section__gallery .gallery-image:nth-child(3) {
+    aspect-ratio: 3 / 4;
+    margin-top: 9vw;
   }
 
   .split-section--flipped .split-section__container--gallery {
@@ -859,12 +888,12 @@ const {
 
   .badges-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 24px;
+    grid-template-columns: 1.2fr .8fr .8fr;
+    gap: 18px;
   }
 
   .badge-item {
-    aspect-ratio: 1;
+    aspect-ratio: 4 / 5;
     overflow: hidden;
   }
 
@@ -873,6 +902,11 @@ const {
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  .badge-item:first-child {
+    aspect-ratio: 16 / 10;
+    align-self: end;
   }
 
   /* ============================================================
@@ -892,7 +926,7 @@ const {
   .dark-overlay-section__overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(27, 27, 27, 0.64);
     z-index: 1;
   }
 
@@ -971,9 +1005,23 @@ const {
   }
 
   .text-section-8__gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .text-section-8__gallery .gallery-image:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .text-section-8__gallery .gallery-image:nth-child(2) {
+    aspect-ratio: 3 / 4;
+    margin-top: 9vw;
+  }
+
+  .text-section-8__gallery .gallery-image:nth-child(3) {
+    aspect-ratio: 3 / 4;
   }
 
   /* ============================================================
@@ -1018,14 +1066,19 @@ const {
 
   .stacked-section__images {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 18px;
+    align-items: start;
   }
 
   .stacked-section__image {
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  .stacked-section__image:last-child {
+    margin-top: 16%;
   }
 
   /* ============================================================
@@ -1267,4 +1320,14 @@ const {
       font-size: 18px;
     }
   }
+
+.case-study-editorial :global(*){min-width:0}
+.case-header__container > div,.split-section__container > div,.split-section__columns > div{min-width:0}
+.case-header :is(h1,p),.split-section :is(h2,p){overflow-wrap:anywhere}
+@media(max-width:768px){
+ .case-header__container,.split-section__container--gallery,.split-section__columns{grid-template-columns:minmax(0,1fr)}
+ .split-section__text--sticky{position:static}
+}
+
+.quote-section__title{color:#625a54}
 </style>

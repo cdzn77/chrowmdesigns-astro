@@ -23,17 +23,19 @@
     justify-content: center;
     width: 44px;
     height: 64px;
-    background-color: #000000;
+    background-color: #1b1b1b;
     color: #ffffff;
-    border: 1px solid #000000;
+    border: 1px solid #1b1b1b;
     border-radius: 22px;
     cursor: pointer;
     opacity: 0;
     transform: translateY(12px);
     transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, backdrop-filter 0.3s ease;
     pointer-events: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(27, 27, 27, 0.15);
   }
+
+  .back-to-top[hidden] { display: none; }
 
   .back-to-top.is-visible {
     opacity: 1;
@@ -43,7 +45,7 @@
 
   .back-to-top:hover {
     background-color: #ffffff;
-    color: #000000;
+    color: #1b1b1b;
     border-color: #ffffff;
   }
 
@@ -55,7 +57,7 @@
   }
 
   .back-to-top:focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid #ffffff;
     outline-offset: 3px;
   }
 
@@ -70,25 +72,26 @@
 </style>
 
 <script>
+  let cleanupBackToTop: (() => void) | undefined;
   function initBackToTop() {
-    const btn = document.getElementById('back-to-top');
-
-    if (btn) {
-      btn.removeAttribute('hidden');
-
-      const handleScroll = () => {
-        btn.classList.toggle('is-visible', window.scrollY > 400);
-      };
-
-      const handleClick = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      };
-
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      btn.addEventListener('click', handleClick);
-    }
+    cleanupBackToTop?.();
+    const button = document.getElementById('back-to-top');
+    if (!button) return;
+    const controller = new AbortController();
+    const { signal } = controller;
+    const update = () => {
+      const visible = window.scrollY > 400;
+      button.hidden = !visible;
+      button.classList.toggle('is-visible', visible);
+    };
+    window.addEventListener('scroll', update, { passive: true, signal });
+    button.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+      document.getElementById('skip-to-content')?.focus({ preventScroll: true });
+    }, { signal });
+    update();
+    cleanupBackToTop = () => controller.abort();
   }
-
-  initBackToTop();
-  document.addEventListener('astro:after-swap', initBackToTop);
+  document.addEventListener('astro:page-load', initBackToTop);
+  document.addEventListener('astro:before-swap', () => cleanupBackToTop?.());
 </script>

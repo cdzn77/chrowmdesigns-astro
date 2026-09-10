@@ -39,7 +39,7 @@ const stats = [
 ---
 
 <BaseLayout
-  title="About — ChrowmDesigns"
+  title="About"
   description="Angelo Manzano Jr. — Senior UX Strategist with 20 years of experience building digital products for Marriott, Disney, P&G, PlayStation, and more."
 >
 
@@ -89,7 +89,7 @@ const stats = [
 
         <div class="bio__links">
           <a
-            href="https://www.linkedin.com/in/angelomanzano"
+            href="https://www.linkedin.com/in/angelomanzano/"
             class="bio__link"
             target="_blank"
             rel="noopener noreferrer"
@@ -101,13 +101,13 @@ const stats = [
             </svg>
           </a>
           <a
-            href="/resume.pdf"
+            href="/resume.pdf" download
             class="bio__link"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Download Angelo Manzano resume PDF (opens in new tab)"
           >
-            Download Resume
+            Download resume
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M6 1v7M6 8L3.5 5.5M6 8L8.5 5.5M2 10h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -216,8 +216,9 @@ const stats = [
   <!-- 8. CTA Banner -->
 
   <!-- 9. Footer -->
-  <Footer />
 
+
+  <Footer slot="footer" />
 </BaseLayout>
 
 <!-- Intersection Observer counter animation -->
@@ -294,7 +295,7 @@ const stats = [
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-accent-on-dark);
     margin-bottom: 1rem;
   }
 
@@ -357,7 +358,7 @@ const stats = [
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-accent-on-dark);
   }
 
   .bio__para {
@@ -387,7 +388,7 @@ const stats = [
   }
 
   .bio__link:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-on-dark);
   }
 
   /* Portrait */
@@ -617,14 +618,14 @@ const stats = [
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--color-primary);
-    background-color: var(--color-accent);
+    background-color: #ffffff;
     border-radius: 100px;
     text-decoration: none;
     transition: background-color 0.2s ease, transform 0.2s ease, gap 0.2s ease;
   }
 
   .collab__btn:hover {
-    background-color: #c41f0a;
+    background-color: #d6d6d6;
     transform: translateY(-2px);
     gap: 0.9rem;
   }
@@ -662,7 +663,7 @@ const stats = [
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-accent-on-dark);
   }
 
   .timeline__heading {
@@ -692,4 +693,5 @@ const stats = [
       position: static;
     }
   }
+.collab__btn { color: #1b1b1b; }
 </style>

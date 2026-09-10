@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
+import TacoBuenoCaseStudy from '../../components/TacoBuenoCaseStudy.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Taco Bueno | ChrowmDesigns',
+  title: 'Taco Bueno',
   description: 'Rebuilt a legacy Tex-Mex brand from the ground up. Real-time OOH and a viral campaign drove 147% higher engagement across test locations.',
 };
 ---
 
 <BaseLayout title={metadata.title} description={metadata.description}>
+  <TacoBuenoCaseStudy />
+  <!--
   <CaseStudyEditorial
     client="Taco Bueno Restaurants"
     projectTitle="Taco Bueno"
@@ -76,6 +78,8 @@ const metadata = {
     section10Image="/images/taco_bueno05.webp"
     section10ImageAlt="Taco Bueno — complete implementation across channels"
   />
+  -->
   <CasePrevNext currentSlug="taco-bueno" />
-  <Footer />
+
+  <Footer slot="footer" />
 </BaseLayout>

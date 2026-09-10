@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
+import ZzzquilCaseStudy from '../../components/ZzzquilCaseStudy.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'ZzzQuil — Procter & Gamble | ChrowmDesigns',
+  title: 'ZzzQuil — Procter & Gamble',
   description: 'Redesigned P&G\'s sleep brand from packaging to pixels. Native app, e-commerce site, and dark mode system for better sleep UX.',
 };
 ---
 
 <BaseLayout title={metadata.title} description={metadata.description}>
+  <ZzzquilCaseStudy />
+  <!--
   <CaseStudyEditorial
     client="Procter & Gamble — ZzzQuil"
     projectTitle="ZzzQuil Sleep App"
@@ -76,6 +78,8 @@ const metadata = {
     section10Image="/images/zzzquil01.webp"
     section10ImageAlt="ZzzQuil color system complete implementation"
   />
+  -->
   <CasePrevNext currentSlug="zzzquil" />
-  <Footer />
+
+  <Footer slot="footer" />
 </BaseLayout>

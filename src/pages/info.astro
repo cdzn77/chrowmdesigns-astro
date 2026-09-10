@@ -6,191 +6,251 @@ import StatsSection from '../components/info/StatsSection.astro';
 import ApproachSection from '../components/info/ApproachSection.astro';
 import TimelineSection from '../components/info/TimelineSection.astro';
 ---
-
-<BaseLayout title="Info — ChrowmDesigns" description="Learn about Angelo Manzano Jr., a senior UX strategist with 20+ years of experience in digital product design.">
-  <div style="width: 100%; background-color: #ffffff; overflow: hidden;">
-    {/* WAVE ANIMATION SECTION */}
-    <WaveSection />
-
-    {/* SCROLL TO EXPLORE */}
-    <section style="padding-bottom: clamp(40px, 8vw, 80px); padding-left: clamp(16px, 5vw, 60px); padding-right: clamp(16px, 5vw, 60px); text-align: right; background-color: #ffffff;">
-      <div style="font-size: 12px; color: #999; font-family: JetBrains Mono, monospace; letter-spacing: 0.5px; font-weight: 400; text-transform: uppercase;">
+<BaseLayout title="Info" canonicalURL="https://chrowmdesigns.com/info" description="Learn about Angelo Manzano Jr., a senior UX strategist with 20+ years of experience in digital product design.">
+  <div class="info-page">
+    <div class="opening">
+<WaveSection />
+<section class="scroll-note">
+      <div>
         SCROLL TO EXPLORE
       </div>
     </section>
-
-    {/* HERO SECTION */}
-    <section style="padding-top: clamp(80px, 12vw, 120px); padding-bottom: clamp(80px, 12vw, 120px); padding-left: clamp(16px, 5vw, 60px); padding-right: 40px; background-color: #ffffff; display: flex; justify-content: flex-end;">
-      <div style="max-width: 900px; text-align: right;">
-        <h1 style="font-size: 12px; font-weight: 400; color: #000; margin: 0 0 24px 0; font-family: JetBrains Mono, monospace; line-height: 1.2; letter-spacing: 0.5px; text-transform: uppercase;">
-          TWENTY YEARS. EIGHT INDUSTRIES. ONE STANDARD.
+<section class="info-intro">
+      <div>
+        <h1>
+          <span>TWENTY YEARS.</span> <span>EIGHT INDUSTRIES.</span> <span>ONE STANDARD.</span>
         </h1>
-        <p style="font-size: 12px; font-weight: 400; color: #555; margin: 0; font-family: JetBrains Mono, monospace; line-height: 1.6; letter-spacing: 0.3px; text-transform: uppercase;">
+        <p class="info-prose">
           I'm Angelo Manzano, the senior UX strategist behind ChrowmDesigns. I've spent two decades designing digital products for brands like Walt Disney World, Marriott Vacation Club, Beat Games, and Procter & Gamble, from enterprise platform overhauls to gaming interfaces used by tens of millions of people. Every project starts the same way: understanding what users actually need, then building the path that gets them there.
         </p>
       </div>
     </section>
-
-    {/* FREELANCE STRATEGIST SECTION */}
-    <section style="padding-top: clamp(60px, 10vw, 100px); padding-bottom: clamp(60px, 10vw, 100px); padding-left: 40px; padding-right: clamp(16px, 5vw, 60px); background-color: #1a1a1a;">
-      <div style="display: flex; flex-direction: column; justify-content: flex-start;">
-        <h2 style="font-size: 12px; font-weight: 400; color: #888; margin: 0 0 40px 0; font-family: JetBrains Mono, monospace; letter-spacing: 0.5px; text-transform: uppercase;">
+    </div>
+    <StatsSection />
+<section class="freelance">
+      <div>
+        <h2>
           /ABOUT
         </h2>
-        <p style="font-size: 22px; font-weight: 400; color: #ffffff; margin: 0; font-family: Manrope, sans-serif; line-height: 1.5; letter-spacing: -0.01em; max-width: 450px;">
+        <p>
           AS A FREELANCE UX STRATEGIST FOR HIRE, I OFFER TAILORED SOLUTIONS TO MEET DIVERSE CLIENT NEEDS.
         </p>
       </div>
     </section>
-
-    {/* ABOUT SECTION */}
-    <section style="padding-top: 240px; padding-bottom: 240px; padding-left: clamp(16px, 5vw, 60px); padding-right: clamp(16px, 5vw, 60px); background-color: #f8f8f8;">
-      <div style="display: grid; grid-template-columns: 1fr 3fr; gap: clamp(40px, 8vw, 80px); align-items: start; max-width: 1200px; margin: 0 auto;">
+<section class="evidence">
+      <div class="info-evidence-grid">
         <div />
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-          <p style="font-size: 12px; font-weight: 400; color: #000; margin: 0; font-family: JetBrains Mono, monospace; line-height: 1.6; letter-spacing: 0.5px; text-transform: uppercase;">
-            AS A FREELANCE UX STRATEGIST FOR HIRE, I OFFER TAILORED SOLUTIONS TO MEET DIVERSE CLIENT NEEDS.
-          </p>
-          <p style="font-size: 12px; font-weight: 400; color: #000; margin: 0; font-family: JetBrains Mono, monospace; line-height: 1.6; letter-spacing: 0.5px; text-transform: uppercase;">
+        <div>
+
+          <p class="info-prose">
             I have learned that user experience design is not just about making things look good; it's about making them work well for people. For instance, while working with Marriott Vacation Club, we implemented user feedback loops that significantly enhanced the booking experience, resulting in a 30% increase in user satisfaction scores. This type of data-driven approach is essential in crafting effective user experiences.
           </p>
         </div>
       </div>
     </section>
-
-    {/* BACKGROUND SECTION */}
-    <section style="padding-top: 0; padding-bottom: 0; padding-left: 0; padding-right: 0; margin-top: 0; margin-bottom: 0; margin-left: -60px; margin-right: 0; background-color: #ffffff; display: flex; width: calc(100% + 60px); align-items: flex-start; flex-direction: column;" class="bio-section">
-      <div style="width: 100%; height: 400px; display: flex; align-items: stretch; justify-content: stretch; padding: 0; margin: 0; overflow: hidden; flex-shrink: 0;" class="bio-image">
-        <img src="https://cdzn2026stg.wpenginepowered.com/wp-content/uploads/2026/05/bio_angelo.webp" alt="Background" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" decoding="async" width="400" height="600" />
+<section class="bio-section">
+      <div class="bio-image">
+        <img src="https://cdzn2026stg.wpenginepowered.com/wp-content/uploads/2026/05/bio_angelo.webp" alt="Background" loading="lazy" decoding="async" width="400" height="600" />
       </div>
 
-      <div style="width: 100%; padding-top: 20px; padding-bottom: clamp(60px, 10vw, 100px); padding-left: 100px; padding-right: clamp(16px, 5vw, 60px); display: flex; flex-direction: column; justify-content: space-between;" class="bio-content">
+      <div class="bio-content">
         <div>
-          <h3 style="font-size: 22px; font-weight: 400; color: #000; margin: 0 0 4px 0; font-family: Manrope, sans-serif; line-height: 1.0;">
-            ANGELO
-          </h3>
-          <h3 style="font-size: 22px; font-weight: 400; color: #000; margin: 0 0 8px 0; font-family: Manrope, sans-serif; line-height: 1.0;">
-            MANZANO JR
-          </h3>
-          <p style="font-size: 12px; font-weight: 400; color: #999; margin: 0 0 32px 0; font-family: JetBrains Mono, monospace; letter-spacing: 0.5px; text-transform: uppercase;">
+          <h2>ANGELO<br />MANZANO JR</h2>
+          <p>
             SENIOR UX STRATEGIST
           </p>
 
-          <p style="font-size: 12px; font-weight: 400; color: #424242; margin: 0 0 24px 0; font-family: JetBrains Mono, monospace; line-height: 1.6; letter-spacing: 0.5px; text-transform: uppercase;">
+          <p class="info-prose">
             Twenty years in UX leaves marks. You learn which decisions actually move products forward, and which ones just look good in a deck. Working with brands like Marriott Vacation Club, the Walt Disney Company, P&G, and PlayStation taught me that the real work happens before anyone opens a design tool. It's in the research, the stakeholder conversations, the moments where strategy and human behavior have to meet somewhere useful.
           </p>
 
-          <p style="font-size: 12px; font-weight: 400; color: #424242; margin: 0 0 20px 0; font-family: JetBrains Mono, monospace; line-height: 1.6; letter-spacing: 0.5px; text-transform: uppercase;">
+          <p class="info-prose">
             At ChrowmDesigns, I operate at the intersection of UX strategy, systems thinking, and product design. That's meant co-authoring five-year digital transformation roadmaps with C-suite leaders, rebuilding enterprise platforms from the ground up, and designing mobile experiences grounded in how people actually behave rather than how we hope they will.
           </p>
 
-          <p style="font-size: 12px; font-weight: 400; color: #424242; margin: 0 0 20px 0; font-family: JetBrains Mono, monospace; line-height: 1.6; letter-spacing: 0.5px; text-transform: uppercase;">
+          <p class="info-prose">
             I started in branding and print. That foundation shaped how I think about hierarchy, communication, and restraint. Moving through agencies and enterprise studios refined it. The past decade has been product strategy: working directly with clients, product managers, and development teams to close the gap between user needs and business outcomes.
           </p>
 
-          <p style="font-size: 12px; font-weight: 400; color: #424242; margin: 0 0 32px 0; font-family: JetBrains Mono, monospace; line-height: 1.6; letter-spacing: 0.5px; text-transform: uppercase;">
+          <p class="info-prose">
             If you need a senior UX strategist who can lead research, shape product direction, and design systems that scale, ChrowmDesigns is where that work gets done. The best results I've been part of came from close collaboration. That part hasn't changed in 20 years.
           </p>
         </div>
 
-        <a href="https://chrowmdesigns.com/cv.pdf" download style="background: #000; color: #fff; border: none; padding: 12px 28px; font-size: 12px; font-weight: 400; cursor: pointer; font-family: JetBrains Mono, monospace; letter-spacing: 0.5px; text-transform: uppercase; align-self: flex-start; display: flex; align-items: center; gap: 12px; text-decoration: none;">
-          DOWNLOAD CV
-          <svg width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="#ffffff" stroke-width="2" style="flex-shrink: 0; transition: transform 0.3s ease;">
+        <a href="/resume.pdf" download>
+          DOWNLOAD RESUME
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="#ffffff" stroke-width="2">
             <path d="M8 8L24 24M24 24V8M24 24H8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
       </div>
     </section>
-
-    {/* APPROACH SECTION */}
+    <TimelineSection />
     <ApproachSection />
-
-    {/* WHO AM I SECTION */}
-    <section style="padding-top: clamp(80px, 12vw, 140px); padding-bottom: clamp(80px, 12vw, 140px); padding-left: 40px; padding-right: clamp(16px, 5vw, 60px); background-color: #0a0a0a;">
-      <div style="max-width: 300px;">
-        <h2 style="font-size: 12px; font-weight: 400; color: #888; margin: 0 0 60px 0; font-family: JetBrains Mono, monospace; letter-spacing: 0.5px; text-transform: uppercase;">
+<section class="perspective">
+      <div>
+        <h2>
           /WHO AM I?
         </h2>
 
-        <p style="font-size: 22px; font-weight: 400; color: #ffffff; margin: 0 0 48px 0; font-family: Manrope, sans-serif; line-height: 1.4; letter-spacing: -0.01em; text-align: left;">
+        <p>
           I CREATE BOLD IDEAS<br />
           BUILT TO BREAK<br />
           THROUGH THE NOISE.
         </p>
 
-        <p style="font-size: 12px; font-weight: 400; color: #b0b0b0; margin: 0; font-family: JetBrains Mono, monospace; line-height: 1.6; letter-spacing: 0.5px; text-align: left; text-transform: uppercase;">
-          MY PHILOSOPHY CENTERS ON CRAFTING BOLD IDEAS THAT CAPTURE ATTENTION, ARTICULATE VALUE, AND DRIVE RESULTS. WHETHER BUILDING ENTERPRISE PLATFORMS OR DESIGNING MOBILE EXPERIENCES, I'VE LEARNED THAT GREAT DESIGN HAPPENS AT THE INTERSECTION OF STRATEGY AND CRAFT. IT'S NOT ABOUT MAKING THINGS LOOK GOOD—IT'S ABOUT MAKING THEM WORK BRILLIANTLY FOR REAL PEOPLE. THAT'S WHAT I'VE BUILT MY CAREER ON, AND IT'S WHAT CHROWMDESIGNS DELIVERS.
+        <p class="info-prose">
+          My work brings strategy and craft together. I design enterprise platforms and mobile experiences around what people need to do, with clear paths, useful systems, and room for a brand to be itself.
         </p>
       </div>
     </section>
 
-    {/* STATS SECTION */}
-    <StatsSection />
+<section class="clients">
+      <div>
+        <div class="clients-approach-grid">
 
-    {/* CLIENTS & APPROACH SECTION */}
-    <section style="padding-top: 0; padding-bottom: clamp(80px, 12vw, 120px); padding-left: clamp(16px, 5vw, 60px); padding-right: clamp(16px, 5vw, 60px); background-color: #0a0a0a; color: #fff;">
-      <div style="max-width: 1200px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: 3fr 1fr; gap: clamp(50px, 8vw, 100px); padding-top: clamp(80px, 10vw, 120px);" class="clients-approach-grid">
-          {/* CLIENTS SECTION */}
           <div>
-            <p style="font-size: 22px; font-weight: 400; color: #fff; margin: 0 0 48px 0; font-family: Manrope, sans-serif; line-height: 1.6;">
+            <p>
               I PARTNER WITH CLIENTS BIG AND SMALL<br />
               AROUND THE GLOBE TO SOLVE PROBLEMS<br />
               USING CREATIVE AND INSPIRING SOLUTIONS.
             </p>
-            <p style="font-size: 12px; font-weight: 400; color: #888; margin: 0; font-family: JetBrains Mono, monospace; letter-spacing: 0.5px; line-height: 1.8; max-width: 560px; text-transform: uppercase;">
+            <p class="info-prose">
               THE WALT DISNEY COMPANY, ABC NETWORK, MTV, VH1, WWE (WORLD WRESTLING ENTERTAINMENT), ESPN, CNN, C-SPAN, PLAYSTATION, BEAT GAMES / META (BEAT SABER), SQUARE ENIX, EA GAMES, MARRIOTT VACATION CLUB, PROCTER & GAMBLE (ZZZQUIL), MALIBU RUM (PERNOD RICARD), CARRABBA'S ITALIAN GRILL (BLOOMIN' BRANDS), TACO BUENO, SEAGATE, SANSA, CHERRYPAL, WARNER BROTHERS RECORDS, RHAPSODY, DJ GEORGE ACOSTA, GROUNDED CLIMATE SUMMIT, GAP, DOLCE & GABBANA (D&G), READERS DIGEST, BUDDYMEDIA
             </p>
           </div>
 
-          {/* APPROACH SECTION */}
+
           <div>
-            <p style="font-size: 22px; font-weight: 400; color: #fff; margin: 0 0 32px 0; font-family: Manrope, sans-serif; line-height: 1.6;">
+            <p>
               CRAFTING BOLD IDEAS THROUGH UX, DESIGN, AND STRATEGY.
             </p>
-            <p style="font-size: 12px; font-weight: 400; color: #888; margin: 0 0 32px 0; font-family: JetBrains Mono, monospace; letter-spacing: 0.5px; line-height: 1.8; text-transform: uppercase;">
-              AS A ONE-PERSON CREATIVE STUDIO, I OFTEN FACE THE CHALLENGE OF BALANCING MULTIPLE ROLES. THIS VERSATILITY ENABLES ME TO APPROACH PROJECTS FROM DIFFERENT ANGLES, ENSURING A HOLISTIC VIEW. FOR EXAMPLE, DURING A PROJECT FOR A STARTUP, I TOOK ON THE ROLES OF STRATEGIST AND DESIGNER, WHICH ALLOWED FOR QUICK DECISION-MAKING AND STREAMLINED COMMUNICATION. THIS ADAPTABILITY IS KEY IN A FREELANCE ENVIRONMENT, WHERE RESOURCES CAN BE LIMITED.
+            <p class="info-prose">
+              As an independent studio, I bring strategy and design into the same conversation. Working directly with clients makes decisions clearer and keeps the experience coherent from the first brief through delivery.
             </p>
-            <a href="/contact" style="padding: 12px 20px; font-size: 12px; font-weight: 400; color: #fff; background-color: transparent; border: 1px solid #fff; font-family: JetBrains Mono, monospace; cursor: pointer; display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; text-transform: uppercase; transition: background-color, color 0.3s ease; text-decoration: none; width: fit-content;">
+            <a href="/contact">
               Let's collaborate
-              <span style="transform: rotate(-45deg); display: inline-block;">↓</span>
+              <span>↓</span>
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    {/* DIGITAL EXPERIENCE / TIMELINE SECTION */}
-    <TimelineSection />
-
-    {/* FOOTER */}
-    <Footer />
   </div>
+  <Footer slot="footer" />
 </BaseLayout>
 
 <style>
-  @media (max-width: 768px) {
-    :global(.bio-section) {
-      flex-direction: column !important;
-      width: calc(100% + 20px) !important;
-      margin-left: -20px !important;
-    }
+  .info-page { --info-gutter: clamp(20px,4.2vw,64px); background: #fff; color: #1b1b1b; font-family: var(--font-sans); }
+  .info-page :global(*) { box-sizing: border-box; min-width: 0; }
+  .info-page :global(:is(p,h1,h2,h3,figure)) { margin: 0; }
+  .info-page :global(:is(h1,h2,h3,p,a,summary,dt,dd)) { overflow-wrap: anywhere; font-style: normal; }
+  .info-page :global(a:focus-visible), .info-page :global(summary:focus-visible) { outline: 2px solid currentColor; outline-offset: 5px; }
+  .info-page :global([id]), .info-page :global(:focus-visible) { scroll-margin-top: 110px; }
+  .opening :global(#wave-container) { height: clamp(160px,17vw,250px) !important; }
+  .scroll-note { padding: 14px var(--info-gutter) 0; color: #666; text-align: right; font: 10px/1.4 'JetBrains Mono',monospace; letter-spacing: .06em; }
+  .info-intro { padding: 48px var(--info-gutter) 64px; }
+  .info-intro > div { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1fr); gap: clamp(32px,8vw,120px); align-items: start; }
+  .info-intro h1 span { display: block; }
+  .info-intro h1 { font: 400 clamp(30px,3.8vw,56px)/1.03 var(--font-sans); letter-spacing: -.045em; max-width: 16ch; }
+  .info-prose { font: 400 clamp(16px,1.3vw,19px)/1.6 var(--font-sans); color: #555; max-width: 65ch; }
+  .freelance { padding: 54px var(--info-gutter); background: #1b1b1b; color: #fff; }
+  .freelance > div { display: grid; grid-template-columns: minmax(0,.45fr) minmax(0,1fr); gap: 48px; }
+  .freelance h2, .perspective h2 { color: #aaa; font: 400 12px/1.4 'JetBrains Mono',monospace; letter-spacing: .04em; }
+  .freelance p { font-size: clamp(24px,2.8vw,40px); line-height: 1.18; letter-spacing: -.035em; max-width: 38ch; }
+  .evidence { padding: 54px var(--info-gutter); background: #f5f5f5; }
+  .info-evidence-grid { display: grid; grid-template-columns: minmax(0,.45fr) minmax(0,1fr); gap: 48px; }
+  .evidence .info-prose { color: #333; }
+  .bio-section { display: grid; grid-template-columns: minmax(0,.7fr) minmax(0,1fr); gap: clamp(32px,7vw,100px); padding: 72px var(--info-gutter); align-items: start; }
+  .bio-image { position: sticky; top: 110px; }
+  .bio-image img { display: block; width: 100%; height: auto; aspect-ratio: .85; object-fit: cover; }
+  .bio-content h2 { font: 400 clamp(34px,4.2vw,62px)/.96 var(--font-sans); letter-spacing: -.05em; margin-bottom: 20px; }
+  .bio-content h2 + p { font: 12px/1.5 'JetBrains Mono',monospace; color: #666; margin-bottom: 32px; }
+  .bio-content .info-prose { margin-bottom: 24px; }
+  .bio-content > a { display: inline-flex; gap: 24px; align-items: center; padding: 14px 0; margin-top: 8px; border-bottom: 1px solid #1b1b1b; color: #1b1b1b; text-decoration: none; font: 12px/1.5 'JetBrains Mono',monospace; min-height: 44px; }
+  .bio-content > a svg { stroke: currentColor; }
+  .info-page :global(.approach-section) { padding: 72px var(--info-gutter); border-top: 1px solid #ddd; }
+  .info-page :global(.approach-layout) { padding: 0; gap: clamp(40px,8vw,120px); grid-template-columns: minmax(0,1fr) minmax(0,.7fr); }
+  .info-page :global(.approach-layout h2) { margin-bottom: 28px; }
+  .info-page :global(.approach-intro) { margin-bottom: 40px; font: 400 clamp(28px,3.5vw,50px)/1.05 var(--font-sans); letter-spacing: -.04em; }
+  .info-page :global(.approach-image img) { max-height: 470px; }
+  .perspective { padding: 64px var(--info-gutter) 32px; background: #1b1b1b; color: #fff; }
+  .perspective > div { display: grid; grid-template-columns: minmax(0,.5fr) minmax(0,1fr) minmax(0,.9fr); gap: 40px; }
+  .perspective > div > p:first-of-type { font-size: clamp(28px,3vw,44px); line-height: 1.08; letter-spacing: -.04em; }
+  .perspective .info-prose { color: #bbb; align-self: end; }
+  .info-page :global(#stats-section) { padding: 48px var(--info-gutter) 64px; }
+  .info-page :global(#stats-grid) { gap: 16px; }
+  .info-page :global(.proof-stat) { padding: 24px; min-height: 190px; gap: 20px; }
+  .info-page :global(.proof-stat:nth-child(1)) { min-height: 240px; }
+  .info-page :global(.proof-stat dd) { font-family: var(--font-sans); }
+  .clients { padding: 0 var(--info-gutter) 72px; background: #1b1b1b; color: #fff; }
+  .clients-approach-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: clamp(40px,8vw,120px); padding-top: 40px; border-top: 1px solid #555; }
+  .clients-approach-grid > div > p:first-child { font-size: clamp(22px,2.2vw,32px); line-height: 1.25; letter-spacing: -.025em; margin-bottom: 28px; }
+  .clients .info-prose { color: #aaa; font-size: 16px; }
+  .clients-approach-grid a { display: inline-flex; gap: 20px; align-items: center; margin-top: 24px; min-height: 44px; padding: 12px 0; border-bottom: 1px solid #aaa; color: #fff; text-decoration: none; font: 12px/1.5 'JetBrains Mono',monospace; }
+  .info-page :global(.experience-timeline) { padding: 64px var(--info-gutter) !important; }
+  .info-page :global(.experience-timeline > div > div:first-child) { grid-template-columns: minmax(0,.45fr) minmax(0,1fr) !important; gap: 48px !important; margin-bottom: 40px !important; }
+  .info-page :global(.experience-timeline > div > div:first-child > div:last-child) { margin: 0 !important; }
+  .info-page :global(.experience-timeline h2) { margin-bottom: 24px !important; }
+  .info-page :global(.experience-timeline h3) { font-family: var(--font-sans) !important; }
 
-    :global(.bio-image) {
-      width: 100% !important;
-      height: 300px !important;
-    }
 
-    :global(.bio-content) {
-      width: 100% !important;
-      padding-left: 20px !important;
-      padding-right: 20px !important;
-    }
+  /* 03: put the results and career record earlier in the reading order. */
+  .info-page .opening :global(#wave-container) { height: 150px !important; }
+  .info-page .info-intro { padding-block: 40px 56px; }
+  .info-page .info-intro h1 { font-size: clamp(36px,4.8vw,70px); }
+  .info-page .freelance { background: #fff; color: #1b1b1b; padding-bottom: 32px; }
+  .info-page .freelance h2 { color: #666; }
+  .info-page .evidence { background: #fff; padding-top: 0; padding-bottom: 48px; border-bottom: 1px solid #ddd; }
+  .info-page .bio-section { grid-template-columns: minmax(0,.52fr) minmax(0,1fr); }
+  .info-page .bio-content > div { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 0 32px; }
+  .info-page .bio-content h2, .info-page .bio-content h2 + p { grid-column: 1 / -1; }
+  .info-page .bio-content .info-prose { font-size: 17px; }
+  .info-page .perspective { padding-bottom: 56px; }
+  .info-page :global(#stats-grid) { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 0; border-top: 1px solid #777; }
+  .info-page :global(.proof-stat:nth-child(n)) { grid-column: auto; grid-row: auto; min-height: 180px; padding: 24px 20px; border: 0; border-right: 1px solid #555; }
+  .info-page :global(.proof-stat:first-child) { padding-left: 0; }
+  .info-page :global(.proof-stat:last-child) { border-right: 0; }
+  .info-page :global(.proof-stat:nth-child(n) dd) { font-size: clamp(36px,5vw,76px); }
+  .info-page :global(.proof-stat__corners) { display: none; }
 
-    :global(.clients-approach-grid) {
-      grid-template-columns: 1fr !important;
-      gap: 40px !important;
-      padding-top: 40px !important;
-    }
+  @media (max-width: 1000px) {
+  .info-page .bio-content > div { display: block; }
+  .info-page .bio-section { gap: 36px; }
+    .perspective > div { grid-template-columns: minmax(0,.7fr) minmax(0,1fr); }
+    .perspective h2 { grid-column: 1 / -1; }
+  .info-page :global(#stats-grid) { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  }
+  @media (max-width: 700px) {
+    .opening :global(#wave-container) { height: 160px !important; }
+    .info-intro { padding-block: 32px 40px; }
+    .info-intro > div { grid-template-columns: minmax(0,1fr); gap: 28px; }
+    .info-intro h1 { font-size: 36px; max-width: 17ch; }
+    .freelance { padding-block: 36px; }
+    .freelance > div, .info-evidence-grid { grid-template-columns: minmax(0,1fr); gap: 24px; }
+    .info-evidence-grid > :first-child:empty { display: none; }
+    .evidence { padding-block: 36px; }
+  .bio-section, .info-page .bio-section { grid-template-columns: minmax(0,1fr); gap: 32px; padding-block: 40px; }
+    .bio-image { position: static; }
+    .bio-image img { aspect-ratio: 1.15; }
+    .bio-content h2 { font-size: 42px; }
+    .info-page :global(.approach-section) { padding-block: 40px; }
+    .info-page :global(.approach-layout) { grid-template-columns: minmax(0,1fr); gap: 32px; }
+    .info-page :global(.approach-intro) { margin-bottom: 32px; }
+    .perspective, .info-page .perspective { padding-block: 40px; }
+  .perspective > div { grid-template-columns: minmax(0,1fr); gap: 24px; }
+    .info-page :global(#stats-section) { padding-block: 24px 40px; }
+  .info-page :global(#stats-grid), .info-page :global(#stats-grid) { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+    .info-page :global(.proof-stat:nth-child(n)) { grid-column: auto; grid-row: auto; min-height: 170px; padding: 20px; }
+    .info-page :global(.proof-stat:last-child) { grid-column: 1 / -1; }
+    .info-page :global(.proof-stat:nth-child(n) dd) { font-size: clamp(32px,8vw,50px); }
+  .info-page :global(.proof-stat:nth-child(n)) { border-right: 0; border-bottom: 1px solid #555; padding: 20px 0; }
+    .clients { padding-bottom: 40px; }
+    .clients-approach-grid { grid-template-columns: minmax(0,1fr); gap: 40px; padding-top: 32px; }
+    .clients br { display: none; }
+    .info-page :global(.experience-timeline) { padding-block: 40px !important; }
+    .info-page :global(.experience-timeline > div > div:first-child) { grid-template-columns: minmax(0,1fr) !important; gap: 0 !important; }
+    .info-page .info-intro h1 { font-size: 40px; }
   }
 </style>

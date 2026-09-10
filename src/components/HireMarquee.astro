@@ -10,7 +10,10 @@ const items = [
 const sep = '+';
 ---
 
-<div class="hire-marquee" aria-hidden="true">
+<section class="hire-marquee" aria-label="Studio capabilities">
+  <p class="hire-marquee__sr">{items.join('. ')}.</p>
+  <button class="hire-marquee__pause" type="button" aria-pressed="false" hidden>Pause scrolling text</button>
+  <div aria-hidden="true">
   <div class="hire-marquee__track">
     {[0, 1].map(() => (
       <div class="hire-marquee__set" role="presentation">
@@ -23,7 +26,8 @@ const sep = '+';
       </div>
     ))}
   </div>
-</div>
+  </div>
+</section>
 
 <style>
   .hire-marquee {
@@ -35,7 +39,7 @@ const sep = '+';
   .hire-marquee__track {
     display: flex;
     width: max-content;
-    animation: crd-marquee-scroll-reverse 25s linear infinite !important;
+    animation: none;
   }
 
   .hire-marquee__set {
@@ -50,7 +54,7 @@ const sep = '+';
     font-weight: 600;
     letter-spacing: 0.6px;
     text-transform: uppercase;
-    color: #000000;
+    color: #1b1b1b;
     white-space: nowrap;
     padding: 0 24px;
   }
@@ -58,7 +62,7 @@ const sep = '+';
   .hire-marquee__sep {
     font-size: 12px;
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.2);
+    color: rgba(27, 27, 27, 0.2);
     flex-shrink: 0;
   }
 
@@ -66,4 +70,28 @@ const sep = '+';
     from { transform: translate3d(-50%, 0, 0); }
     to   { transform: translate3d(0, 0, 0); }
   }
+  @media (prefers-reduced-motion: reduce) { .hire-marquee__track { animation: none !important; } }
+
+.hire-marquee{position:relative;padding-top:4rem}
+.hire-marquee__pause{position:absolute;top:8px;right:24px;min-height:44px;background:#fff;color:#1b1b1b;border:1px solid #767676;padding:8px 16px;font:12px/1.4 'JetBrains Mono',monospace;cursor:pointer}
+.hire-marquee__pause[hidden]{display:none}
+.hire-marquee__pause:focus-visible{outline:2px solid #1b1b1b;outline-offset:3px}
+.hire-marquee.is-enhanced .hire-marquee__track{animation:crd-marquee-scroll-reverse 25s linear infinite}
+.hire-marquee.is-paused .hire-marquee__track{animation-play-state:paused!important}
+.hire-marquee__sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.hire-marquee__pause{display:none}.hire-marquee{padding-top:2rem}}
 </style>
+<script>
+ let cleanupMarquees: (()=>void)|undefined;
+ function initMarquees(){
+  cleanupMarquees?.();const controller=new AbortController();
+  document.querySelectorAll<HTMLElement>('.hire-marquee').forEach(section=>{
+   const button=section.querySelector<HTMLButtonElement>('.hire-marquee__pause');if(!button)return;
+   button.hidden=false;section.classList.add('is-enhanced');
+   button.addEventListener('click',()=>{const paused=section.classList.toggle('is-paused');button.setAttribute('aria-pressed',String(paused));button.textContent=paused?'Resume scrolling text':'Pause scrolling text';},{signal:controller.signal});
+  });
+  cleanupMarquees=()=>controller.abort();
+ }
+ document.addEventListener('astro:page-load',initMarquees);
+ document.addEventListener('astro:before-swap',()=>cleanupMarquees?.());
+</script>

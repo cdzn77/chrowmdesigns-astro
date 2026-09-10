@@ -1,10 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroVideo from '../components/HeroVideo.astro';
-import StatsMarquee from '../components/StatsMarquee.astro';
-import CaseCard from '../components/CaseCard.astro';
-import HireMarquee from '../components/HireMarquee.astro';
-import Footer from '../components/Footer.astro';
+import StatsMarquee from './StatsMarquee.astro';
+import CaseCard from './CaseCard.astro';
+import HireMarquee from './HireMarquee.astro';
+import SkillCard from './SkillCard.astro';
 import cases from '../data/cases.json';
 
 // Homepage shows the first 6 cases
@@ -40,49 +38,11 @@ const skills = [
     image: '/images/digital_experiences_thumb.webp',
   },
 ];
+
+interface Props { variant: '01' | '02' | '03' | '04'; }
+const { variant } = Astro.props;
 ---
-
-<BaseLayout
-  canonicalURL="https://chrowmdesigns.com/"
-  title="ChrowmDesigns"
-  description="Angelo Manzano Jr. — Senior Product Designer with 20 years of experience crafting digital experiences that connect, engage, and inspire."
->
-
-  <!-- Organization structured data -->
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "ChrowmDesigns",
-    "alternateName": "CHRØWM Designs",
-    "url": "https://chrowmdesigns.com",
-    "logo": "https://chrowmdesigns.com/images/logo-1.webp",
-    "description": "Independent design studio specializing in UX strategy, brand design, and digital product experiences.",
-    "foundingDate": "1999",
-    "founder": {
-      "@type": "Person",
-      "name": "Angelo Manzano Jr.",
-      "jobTitle": "Senior UX Strategist & Creative Director",
-      "url": "https://chrowmdesigns.com/about"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "FL",
-      "addressCountry": "US"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "business",
-      "email": "chile@chrowmdesigns.com"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/angelomanzano/"
-    ]
-  })} />
-
-  <div class="home-tight">
-  <!-- 1. Hero -->
-  <HeroVideo />
-
+<div class:list={['home-study', `home-study--${variant}`]} id="study-content">
   <!-- 2. Stats Marquee -->
   <StatsMarquee />
 
@@ -113,11 +73,11 @@ const skills = [
   </section>
 
   <!-- 4. Case Study Section Header -->
-  <section class="cases-header work-anchor" id="layout" aria-labelledby="cases-title">
+  <section class="cases-header" aria-labelledby="cases-title">
     <div class="cases-header__title-block">
       <h2 class="cases-header__title" id="cases-title">
-        Selected work.<br />
-        Strategy through delivery.
+        Crafting digital experiences<br />
+        that connect, engage and inspire.
       </h2>
     </div>
 
@@ -267,12 +227,10 @@ const skills = [
 
   <!-- Footer -->
 
-  </div>
 
-  <Footer slot="footer" />
-</BaseLayout>
-
+</div>
 <style>
+
   /* ── Featured Image ─────────────────────────────── */
   .featured-image {
     display: none;  /* Hidden in React design */
@@ -427,13 +385,13 @@ const skills = [
   }
 
   /* Large cards: 50% width */
-  .home-tight :global(.case-card--large) {
+  .home-study :global(.case-card--large) {
     width: 50%;
     border-radius: 0;
   }
 
   /* Small cards: 25% width */
-  .home-tight :global(.case-card--small) {
+  .home-study :global(.case-card--small) {
     width: 25%;
     border-radius: 0;
   }
@@ -483,11 +441,11 @@ const skills = [
   }
 
   @media (max-width: 1024px) {
-    .home-tight :global(.case-card--large) {
+    .home-study :global(.case-card--large) {
       width: 50%;
     }
 
-    .home-tight :global(.case-card--small) {
+    .home-study :global(.case-card--small) {
       width: 50%;
     }
   }
@@ -497,13 +455,13 @@ const skills = [
       padding: 0 20px;
     }
 
-    .home-tight :global(.case-card--large),
-    .home-tight :global(.case-card--small) {
+    .home-study :global(.case-card--large),
+    .home-study :global(.case-card--small) {
       width: 100%;
     }
 
     /* Reset offset on single column */
-    .home-tight :global(.case-card--offset) {
+    .home-study :global(.case-card--offset) {
       margin-top: 0;
     }
 
@@ -799,21 +757,163 @@ const skills = [
       height: 200px;
     }
   }
-</style>
 
-<style>
-  /* Approved compact homepage layout; shared components retain their own styles. */
-  .home-tight{--home-gutter:clamp(20px,3.4vw,56px);background:white}
 
-  .work-anchor{scroll-margin-top:144px}.home-tight .cases-header,.home-tight .cases-grid,.home-tight .about-studio,.home-tight .editorial{padding-left:var(--home-gutter);padding-right:var(--home-gutter)}
-  .home-tight .cases-header__title-block{margin-bottom:48px}.home-tight .cases-header__title{margin:0;font-size:clamp(32px,3.4vw,52px);line-height:1.16}.home-tight .cases-header__descriptions{margin:0;padding:0;gap:48px}.home-tight .cases-header__description-left,.home-tight .cases-header__description-right{flex:1;min-width:0;max-width:none}.home-tight .cases-header__index{margin-top:32px;color:#555}
-  .home-tight .cases-grid__inner{gap:48px 24px;align-items:flex-start}.home-tight :global(.case-card){height:auto;margin-top:0}.home-tight :global(.case-card__link){height:auto}.home-tight :global(.case-card__img-wrap){flex:none;aspect-ratio:760/520}.home-tight :global(.case-card__img){position:absolute;inset:0;width:100%;height:100%}.home-tight :global(.case-card__meta){padding:20px 0 0}.home-tight :global(.case-card__link:focus-visible){outline:2px solid #1b1b1b;outline-offset:6px;scroll-margin:152px 0 32px}
-  .home-tight .cases-grid__footer{padding:48px 0}.home-tight .cases-grid__all-link{min-height:44px}.home-tight :global(.stats-section){padding:64px var(--home-gutter)}.home-tight :global(.stats-container){max-width:none}.home-tight :global(.stats-grid){gap:32px}.home-tight :global(.stat-label-wrap){height:auto;min-height:56px}.home-tight :global(.stat-value){font-size:clamp(48px,4.8vw,72px)}.home-tight :global(.stat-description){min-height:44px;display:inline-flex;align-items:center}
-  .home-tight .about-studio{padding-block:80px}.home-tight .about-studio__label{color:#555;margin-bottom:32px}.home-tight .skills__container{padding-inline:var(--home-gutter)}.home-tight .skills__info-link{min-height:44px}.home-tight .skills__grid{margin-bottom:64px}.home-tight .skills__categories{margin-top:64px}.home-tight .category-row{cursor:default}.home-tight .editorial__quote p{max-width:40ch}.home-tight .editorial__quote--left,.home-tight .editorial__quote--right{padding:0}.home-tight .editorial__image{max-width:100%}
-  /* Two large cards and four smaller cards, with compact section spacing. */
-  .home-tight .cases-header{padding-top:64px;padding-bottom:48px}.home-tight .cases-header__title-block{text-align:left}.home-tight .cases-header__descriptions{margin-left:25%}.home-tight :global(.case-card--large){width:calc(50% - 12px)}.home-tight :global(.case-card--small){width:calc(25% - 18px)}.home-tight .about-studio__inner{display:flex;align-items:start;gap:8%}.home-tight .about-studio__label{width:17%;flex-shrink:0}.home-tight .about-studio__text{flex:1}.home-tight .skills__grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}.home-tight .skills__categories{display:flex;flex-wrap:wrap;gap:0 32px}.home-tight .category-row{width:calc(50% - 16px);padding-block:24px}
+  /* All four studies reuse the homepage markup, copy and typography above.
+     Only geometry changes. These rules never target the hero or global nav. */
+  .home-study { --study-gutter: clamp(20px, 3.4vw, 64px); background: #fff; }
+  .home-study :global(*) { box-sizing: border-box; min-width: 0; }
+  .home-study .cases-header, .home-study .cases-grid, .home-study .about-studio,
+  .home-study .editorial { padding-left: var(--study-gutter); padding-right: var(--study-gutter); }
+  .home-study .cases-header br, .home-study .about-studio br { display: none; }
+  .home-study .cases-header__title { max-width: 620px; text-wrap: balance; }
+  .home-study .cases-header__title-block { margin: 0; text-align: left; }
+  .home-study .cases-header__title { margin: 0; }
+  .home-study .cases-header__descriptions { margin: 0; padding: 0; gap: 32px; }
+  .home-study .cases-header__description-left, .home-study .cases-header__description-right {
+    flex: 1; max-width: none; text-align: left;
+  }
+  .home-study .cases-header__text { max-width: 48ch; }
+  .home-study .cases-header__index { margin: 0; }
+  .home-study .cases-grid__inner { display: grid; gap: 56px 24px; }
+  .home-study :global(.case-card) { width: 100%; height: auto; margin: 0; align-self: start; }
+  .home-study :global(.case-card__link) { height: auto; }
+  .home-study :global(.case-card__img-wrap) { flex: none; aspect-ratio: 760 / 520; }
+  .home-study :global(.case-card__img) { position: absolute; inset: 0; }
+  .home-study :global(.case-card__meta) { padding: 20px 0 0; }
+  .home-study :global(.case-card__link:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: 6px; }
+  .home-study .cases-grid__footer { padding: 48px 0 0; }
+  .home-study .about-studio { border-top: 1px solid #e0e0e0; margin-top: 80px; }
+  .home-study .about-studio__inner { display: grid; grid-template-columns: 1fr 3fr; gap: 40px; }
+  .home-study .about-studio__label { margin: 0; }
+  .home-study .about-studio__text { max-width: 1100px; }
+  .home-study .skills__container { padding-left: var(--study-gutter); padding-right: var(--study-gutter); }
+  .home-study .skills__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 64px; gap: 32px; }
+  .home-study .skills__categories { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
+  .home-study .category-row { padding-block: 24px; cursor: default; }
+  .home-study .editorial__grid { grid-template-columns: 1fr 1.25fr 1fr; gap: 48px; }
+  .home-study .editorial__quote--left, .home-study .editorial__quote--right { padding: 0; }
+  .home-study .editorial__quote p { max-width: 42ch; text-align: left; }
+  .home-study .editorial__image { width: 100%; height: auto; aspect-ratio: 760 / 520; }
+  .home-study :global(.stats-section) { padding: 64px var(--study-gutter); }
+  .home-study :global(.stats-container) { max-width: none; }
+  .home-study :global(.stats-grid) { gap: 32px; }
+  .home-study :global(.stat-label-wrap) { height: auto; min-height: 56px; }
+  .home-study :global(.stat-value) { font-size: clamp(48px, 4.8vw, 72px); }
+  .home-study :global(.stat-item) { gap: 20px; }
 
-  @media(max-width:1024px){.home-tight :global(.stats-grid){grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}.home-tight :global(.case-card--small){width:calc(50% - 12px)}.home-tight .cases-header__descriptions{margin-left:0}.home-tight .skills__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-tight .editorial__grid{grid-template-columns:1fr 1fr;gap:32px}.home-tight .editorial__image-wrap{grid-column:1;grid-row:1/3}.home-tight .editorial__quote{grid-column:2;align-self:start}.home-tight .editorial__quote p{text-align:left;max-width:none}.home-tight .editorial__image{width:100%;height:auto;aspect-ratio:1}}
-  @media(max-width:640px){.home-tight .cases-header{display:block;padding-block:48px 32px}.home-tight .cases-header__title-block{width:100%;margin-bottom:32px}.home-tight .cases-header__title{font-size:32px;text-align:left}.home-tight .cases-header__descriptions{width:100%;display:block}.home-tight .cases-header__description-right{margin-top:24px;text-align:left}.home-tight .cases-header__text{font-size:12px;overflow-wrap:break-word}.home-tight .cases-header__index{margin-top:32px}.home-tight .cases-grid__inner{gap:40px}.home-tight :global(.case-card:nth-child(n)){width:100%;margin:0}.home-tight :global(.case-card:nth-child(n) .case-card__img-wrap){aspect-ratio:760/520}.home-tight :global(.case-card__meta){flex-direction:column;gap:8px}.home-tight :global(.case-card__category){max-width:none;text-align:left}.home-tight .cases-grid__footer{align-items:start;padding-block:32px;gap:24px}.home-tight :global(.stats-section){padding-block:48px}.home-tight :global(.stats-grid){grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px}.home-tight :global(.stat-value){font-size:48px}.home-tight .about-studio{padding-block:56px}.home-tight .about-studio__inner{display:block;max-width:none;margin:0}.home-tight .about-studio__label{width:auto;margin-bottom:24px}.home-tight .about-studio__text{font-size:20px}.home-tight .skills{padding-block:56px}.home-tight .skills__grid{grid-template-columns:1fr;margin-bottom:48px}.home-tight .skill-item{display:block;padding-block:24px}.home-tight .skill-item__number{margin-bottom:16px}.home-tight .skill-item__title{margin-bottom:20px}.home-tight .skills__categories{display:block;margin-top:48px}.home-tight .category-row{width:100%}.home-tight .editorial{padding-block:56px}.home-tight .editorial__grid{display:flex;flex-direction:column;gap:32px}.home-tight .editorial__quote{width:100%}.home-tight .editorial__image{max-width:100%;width:100%;height:auto;aspect-ratio:760/520}.home-tight :global(.footer-top-section){grid-template-columns:1fr}}
-  @media(prefers-reduced-motion:reduce){.home-tight :global(.case-card){animation:none}.home-tight :global(.case-card__img){transition:none}}
+  /* 01 — paired work, compact results band, capabilities in four columns. */
+  .home-study--01 .cases-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px 48px; padding-top: 100px; padding-bottom: 40px; }
+  .home-study--01 .cases-header__index { grid-column: 1 / -1; }
+  .home-study--01 .cases-grid__inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-study--01 :global(.stats-section) { border-bottom: 1px solid #e0e0e0; }
+
+  /* 02 — staggered work with an offset text column and a services sidebar. */
+  .home-study--02 .cases-header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-block: 96px 48px; }
+  .home-study--02 .cases-header__descriptions { display: grid; grid-template-columns: 1fr; gap: 32px; padding-left: 12%; }
+  .home-study--02 .cases-header__index { grid-column: 1 / -1; }
+  .home-study--02 .cases-grid__inner { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 80px 24px; align-items: start; }
+  .home-study--02 :global(.case-card:nth-child(odd)) { grid-column: 1 / 8; }
+  .home-study--02 :global(.case-card:nth-child(even)) { grid-column: 9 / 13; margin-top: 160px; }
+  .home-study--02 :global(.case-card:nth-child(even) .case-card__img-wrap) { aspect-ratio: 1; }
+  .home-study--02 .about-studio__inner { grid-template-columns: 1fr 1fr; }
+  .home-study--02 .skills__container { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; }
+  .home-study--02 .skills__header { display: block; grid-row: span 2; }
+  .home-study--02 .skills__info-link { margin-top: 40px; }
+  .home-study--02 .skills__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; row-gap: 56px; }
+  .home-study--02 .skills__categories { grid-column: 2; }
+  .home-study--02 .editorial__grid { grid-template-columns: 1fr 1fr; gap: 48px 12%; }
+  .home-study--02 .editorial__image-wrap { grid-column: 1; grid-row: 1 / 3; }
+  .home-study--02 .editorial__quote { grid-column: 2; align-self: start; }
+  .home-study--02 .editorial__image { aspect-ratio: 1; }
+
+  /* 03 — orderly project rows; a compact service catalogue. */
+  .home-study--03 .cases-header { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; padding-block: 96px 40px; }
+  .home-study--03 .cases-header__index { grid-column: 1 / -1; }
+  .home-study--03 .cases-grid__inner { grid-template-columns: 1fr; gap: 0; }
+  .home-study--03 :global(.case-card) { border-top: 1px solid #d0d0d0; padding-block: 32px; }
+  .home-study--03 :global(.case-card__link) { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 8%; align-items: center; }
+  .home-study--03 :global(.case-card__meta) { padding: 0; max-width: 420px; }
+  .home-study--03 :global(.case-card__img-wrap) { aspect-ratio: 1.9; }
+  .home-study--03 .skills__grid { grid-template-columns: 1fr; gap: 0; }
+  .home-study--03 .skill-item { display: grid; grid-template-columns: .25fr 1fr 1.25fr; gap: 40px; padding-block: 32px; }
+  .home-study--03 .skill-item__number, .home-study--03 .skill-item__title { margin: 0; }
+  .home-study--03 .skills__categories { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 24px; }
+  .home-study--03 .editorial__grid { grid-template-columns: 1.2fr 1fr; gap: 40px 10%; }
+  .home-study--03 .editorial__image-wrap { grid-column: 2; grid-row: 1 / 3; }
+  .home-study--03 .editorial__quote { grid-column: 1; align-self: start; }
+  .home-study--03 .editorial__quote p { max-width: 56ch; }
+  .home-study--03 :global(.stats-grid) { gap: 0; }
+  .home-study--03 :global(.stat-item) { padding-inline: 24px; border-left: 1px solid #d0d0d0; }
+  .home-study--03 :global(.stat-item:first-child) { border-left: 0; padding-left: 0; }
+
+  /* 04 — broad project spreads alternating with pairs. */
+  .home-study--04 .cases-header { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; padding-block: 100px 40px; }
+  .home-study--04 .cases-header__index { grid-column: 1 / -1; }
+  .home-study--04 .cases-grid__inner { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 80px 32px; }
+  .home-study--04 :global(.case-card:nth-child(3n + 1)) { grid-column: 1 / -1; }
+  .home-study--04 :global(.case-card:nth-child(3n + 1) .case-card__img-wrap) { aspect-ratio: 2.15; }
+  .home-study--04 :global(.case-card__meta) { flex-direction: row; justify-content: space-between; gap: 24px; align-items: baseline; }
+  .home-study--04 :global(.case-card__category) { text-align: right; max-width: 45%; }
+  .home-study--04 .about-studio__inner { grid-template-columns: .5fr 1.5fr; gap: 80px; }
+  .home-study--04 .skills__container { display: grid; grid-template-columns: 2fr 1fr; gap: 64px; }
+  .home-study--04 .skills__header { grid-column: 1 / -1; margin-bottom: 0; }
+  .home-study--04 .skills__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; }
+  .home-study--04 .skills__categories { grid-template-columns: 1fr; }
+  .home-study--04 .category-row { padding-block: 16px; }
+  .home-study--04 .editorial__grid { grid-template-columns: 1fr 1.5fr 1fr; gap: 32px; }
+  .home-study--04 .editorial__quote { align-self: center; }
+
+  @media (max-width: 1024px) {
+    .home-study :global(.stats-grid) { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+    .home-study--03 :global(.stat-item) { padding: 0; border: 0; }
+    .home-study .cases-header { grid-template-columns: 1fr; gap: 40px; }
+    .home-study--02 .cases-header__descriptions { padding: 0; grid-template-columns: 1fr 1fr; }
+    .home-study .cases-header__descriptions { max-width: none; }
+    .home-study .skills__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .home-study--03 .skills__grid { grid-template-columns: 1fr; }
+    .home-study--03 .skills__categories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .home-study .editorial__grid { gap: 32px; }
+    .home-study .editorial__quote p { text-align: left; }
+    .home-study--01 .editorial__grid, .home-study--04 .editorial__grid { grid-template-columns: 1fr 1fr; }
+    .home-study--01 .editorial__image-wrap, .home-study--04 .editorial__image-wrap { grid-row: 1 / 3; grid-column: 2; }
+    .home-study--01 .editorial__quote, .home-study--04 .editorial__quote { grid-column: 1; }
+  }
+  @media (max-width: 640px) {
+    .home-study :global(.stats-section) { padding-block: 48px; }
+    .home-study :global(.stats-grid) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 20px; }
+    .home-study .cases-header { padding-top: 56px; }
+    .home-study .cases-header__descriptions { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .home-study .cases-grid__inner { grid-template-columns: 1fr; gap: 40px; }
+    .home-study :global(.case-card:nth-child(n)) { grid-column: auto; margin: 0; }
+    .home-study :global(.case-card:nth-child(n) .case-card__img-wrap) { aspect-ratio: 760 / 520; }
+    .home-study--03 :global(.case-card__link) { display: flex; gap: 20px; }
+    .home-study--03 :global(.case-card) { padding-block: 24px 0; }
+    .home-study--04 :global(.case-card__meta) { flex-direction: column; gap: 8px; }
+    .home-study--04 :global(.case-card__category) { max-width: none; text-align: left; }
+    .home-study .cases-grid__footer { align-items: flex-start; padding-top: 40px; }
+    .home-study .about-studio { margin-top: 56px; padding-block: 56px; }
+    .home-study .about-studio__inner { grid-template-columns: 1fr; gap: 24px; }
+    .home-study .skills { padding-block: 56px; }
+    .home-study .skills__container { display: block; }
+    .home-study .skills__header { margin-bottom: 40px; }
+    .home-study .skills__grid { grid-template-columns: 1fr; margin-bottom: 48px; }
+    .home-study .skill-item { display: block; padding-block: 24px; }
+    .home-study .skill-item__number { margin-bottom: 16px; }
+    .home-study .skill-item__title { margin-bottom: 20px; }
+    .home-study .skills__categories { grid-template-columns: 1fr; }
+    .home-study .editorial { padding-block: 56px; }
+    .home-study .editorial__grid { display: flex; flex-direction: column; align-items: stretch; gap: 32px; }
+    .home-study .editorial__quote { width: 100%; }
+    .home-study .editorial__image { aspect-ratio: 760 / 520; }
+    .home-study :global(.footer-top-section) { grid-template-columns: 1fr; }
+    .home-study :global(.footer-info-grid) { gap: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .home-study :global(.hire-marquee__track) { animation: none !important; }
+    .home-study :global(.case-card) { animation: none; }
+    .home-study :global(.case-card__img) { transition: none; }
+  }
+
+.cases-header__index,.about-studio__label{color:#666}
 </style>

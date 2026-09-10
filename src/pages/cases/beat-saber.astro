@@ -1,81 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
+import BeatSaberCaseStudy from '../../components/BeatSaberCaseStudy.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Beat Saber — Beat Games | ChrowmDesigns',
+  title: 'Beat Saber — Beat Games',
   description: '3 global VR launches. One scalable visual system that honored Britney, Metallica, and Monstercat without losing a single pixel of Beat Saber\'s DNA.',
 };
 ---
 
 <BaseLayout title={metadata.title} description={metadata.description}>
-  <CaseStudyEditorial
-    client="Beat Games / Meta Reality Labs"
-    projectTitle="Beat Saber"
-    projectSubtitle="Creative Systems & Brand Strategy"
-    year={2022}
-    introRightText="3 global VR music pack launches featuring Britney Spears, Metallica, and Monstercat. A scalable visual system honored each artist's authentic brand while preserving Beat Saber's core gameplay requirements, proving artist authenticity could coexist with functional design constraints."
-    role="Senior UX Strategist"
-
-    heroImage="/images/beat_saber_hero.webp"
-    heroImageAlt="Beat Saber VR environment — neon visual design"
-
-    section3Title="Research & Brand Architecture"
-    section3LeftText="I reviewed documented player feedback from three prior Music Pack launches to understand which environmental decisions correlated with positive play experience versus complaints. The consistent success factors: strong spatial contrast between note objects and background surfaces, lighting that moved in sync with musical tempo rather than independently, and environmental storytelling that communicated genre before the first note was hit."
-    section3RightText="I developed a flexible visual system organized around three dimensions: Artist Authenticity, Beat Saber DNA, and Gameplay Readability. The system established what was fixed across all packs—the red/blue saber color system, note contrast requirements, and spatial depth standards—and what was variable: artist-specific palettes, materials, environmental narrative, and lighting choreography."
-    section3Image1="/images/beat_saber_britney06.webp"
-    section3Image1Alt="Britney Spears pack — full environment render"
-    section3Image2="/images/beat_saber_monster06.webp"
-    section3Image2Alt="Monstercat pack — full environment render"
-    section3Image3="/images/beat_saber_metallica06.webp"
-    section3Image3Alt="Metallica pack — full environment render"
-
-    section4Image="/images/beat_saber_intro.webp"
-    section4ImageAlt="Beat Saber brand architecture overview"
-
-    section5Title="Britney Spears Music Pack: Pop Nostalgia Meets Neon Euphoria"
-    section5LeftText="A luminous 3D heart represented both literal emotion and metaphorical meaning as the 'heart' of the Beat Saber experience. Magenta-to-blue gradients evoked nightclub energy and emotional resonance, bridging 2000s club culture with contemporary design. The radiant, euphoric environment enhanced the emotional accessibility of Britney's music while preserving gameplay clarity."
-    section5RightText="Players described feeling 'inside the music' rather than simply playing to it. The visual strategy balanced vibrant neon elements with functional contrast requirements, maintaining spatial depth cues necessary for VR gameplay while delivering authentic Britney brand expression."
-    section5Image1="/images/beat_saber_britney02.webp"
-    section5Image1Alt="Britney Spears pack — neon heart element"
-    section5Image2="/images/beat_saber_britney04.webp"
-    section5Image2Alt="Britney pack — environment lighting"
-    section5Image3="/images/beat_saber_britney05.webp"
-    section5Image3Alt="Britney pack — spatial design"
-
-    section6Items={[
-      { image: '/images/beat_saber_monster01.webp', alt: 'Monstercat pack — mascot sculpture' },
-      { image: '/images/beat_saber_monster03.webp', alt: 'Monstercat pack — material palette' },
-      { image: '/images/beat_saber_metallica01.webp', alt: 'Metallica pack — industrial storm field' },
-    ]}
-
-    section7Image="/images/beat_saber_monster06.webp"
-    section7ImageAlt="Monstercat pack — full environment render"
-    section7Text="Monstercat: Genre Fluidity Through Sonic Architecture"
-
-    section8Title="Monstercat & Metallica: Multi-Genre Visual Systems"
-    section8LeftText="Monstercat embodies genre fluidity in electronic music with a brand that thrives on evolution and cross-genre experimentation. Its visual identity was reimagined as a high-gloss metallic sculpture, with a high-energy corridor featuring reactive columns and volumetric laser beams. Dynamic beams mirrored the rhythm of gameplay, producing visual echoes of bass drops and transitions."
-    section8RightText="Metallica introduced its established audience to VR gaming, requiring translation of the band's raw, analog energy into Beat Saber's clean, digital style. A grid of metallic cubes represented rhythm blocks, each charged with a blue energy core, within an industrial storm field where electricity was visible, tangible, and rhythmic. Metallica's lightning bolt logo was unified with Beat Saber's red and blue mark, establishing co-branded visual language."
-    section8Image1="/images/beat_saber_monster02.webp"
-    section8Image1Alt="Monstercat pack — laser corridor"
-    section8Image2="/images/beat_saber_monster04.webp"
-    section8Image2Alt="Monstercat pack — corridor detail"
-    section8Image3="/images/beat_saber_metallica02.webp"
-    section8Image3Alt="Metallica pack — metallic cube grid"
-
-    section9Title="Results & Visual System Impact"
-    section9LeftText="4M+ active players at time of engagement across all three pack launches. 3 global simultaneous launches with full asset delivery across all platforms, zero timeline slips. Britney pack feedback consistently cited feeling 'inside the music' rather than simply playing to it."
-    section9RightText="The visual system was adopted as reusable architecture for subsequent Music Pack releases. A scalable component library was delivered for future pack development without starting from scratch, establishing a sustainable co-branding framework that honored artist authenticity while preserving Beat Saber's core gameplay requirements."
-    section9Image1="/images/beat_saber_metallica03.webp"
-    section9Image1Alt="Metallica pack — steel material detail"
-    section9Image2="/images/beat_saber_metallica04.webp"
-    section9Image2Alt="Metallica pack — lightning arc"
-
-    section10Image="/images/beat_saber_metallica03.webp"
-    section10ImageAlt="Metallica pack — steel material detail"
-  />
+  <BeatSaberCaseStudy />
   <CasePrevNext currentSlug="beat-saber" />
-  <Footer />
+
+  <Footer slot="footer" />
 </BaseLayout>

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
+import CarrabbasCaseStudy from '../../components/CarrabbasCaseStudy.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
@@ -11,6 +11,8 @@ const metadata = {
 ---
 
 <BaseLayout title={metadata.title} description={metadata.description}>
+  <CarrabbasCaseStudy />
+  <!--
   <CaseStudyEditorial
     client="Carrabba's Italian Grill (Bloomin' Brands)"
     projectTitle="Carrabba's Kitchen"
@@ -73,7 +75,8 @@ const metadata = {
 
     section10Image="/images/carrabbas_hero.webp"
     section10ImageAlt="Carrabba's culinary platform final implementation"
-  />
+  /> -->
   <CasePrevNext currentSlug="carrabbas" />
-  <Footer />
+
+  <Footer slot="footer" />
 </BaseLayout>

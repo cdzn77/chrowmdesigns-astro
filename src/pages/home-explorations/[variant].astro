@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroVideo from '../../components/HeroVideo.astro';
+import Footer from '../../components/Footer.astro';
+import HomeExplorer from '../../components/HomeExplorer.astro';
+export function getStaticPaths() { return ['editorial', 'index', 'manifesto', 'atlas'].map((variant) => ({ params: { variant } })); }
+const { variant } = Astro.params;
+---
+<BaseLayout title={`Homepage exploration — ${variant} | ChrowmDesigns`} description="ChrowmDesigns homepage layout exploration">
+  <HeroVideo />
+  <HomeExplorer variant={variant} />
+  <Footer slot="footer" />
+</BaseLayout>

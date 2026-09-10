@@ -1,0 +1,176 @@
+---
+import CaseContents from "./CaseContents.astro";
+const releases = [
+  {
+    name: 'Britney Spears',
+    discipline: 'Pop nostalgia / neon euphoria',
+    image: '/images/beat_saber_britney03.webp',
+    alt: 'Britney Spears Beat Saber music pack art featuring a glowing heart',
+    detail: '/images/beat_saber_britney02.webp',
+    detailAlt: 'Blue heart pattern from the Britney Spears Beat Saber visual system',
+    commerce: '/images/beat_saber_britney01.webp',
+    commerceAlt: 'Britney Spears music pack shown on the PlayStation store',
+  },
+  {
+    name: 'Monstercat',
+    discipline: 'Genre fluidity / sonic architecture',
+    image: '/images/beat_saber_monster03.webp',
+    alt: 'Monstercat Mix Tape 2 art featuring the Monstercat mascot in a laser corridor',
+    detail: '/images/beat_saber_monster02.webp',
+    detailAlt: 'Monstercat mascot sculpture detail',
+    commerce: '/images/beat_saber_monster01.webp',
+    commerceAlt: 'Monstercat Mix Tape 2 shown on the PlayStation store',
+  },
+  {
+    name: 'Metallica',
+    discipline: 'Analog force / digital precision',
+    image: '/images/beat_saber_metallica03.webp',
+    alt: 'Metallica Beat Saber music pack art featuring lightning and metallic cubes',
+    detail: '/images/beat_saber_metallica02.webp',
+    detailAlt: 'Metallic rhythm-block field from the Metallica Beat Saber visual system',
+    commerce: '/images/beat_saber_metallica01.webp',
+    commerceAlt: 'Metallica music pack shown on the PlayStation store',
+  },
+];
+---
+
+<article class="beat-case">
+  <header class="case-intro">
+    <div class="case-intro__topline case-meta"><p class="case-meta__client-full">Beat Games / Meta Reality Labs</p><p class="case-meta__client-short">Beat Games</p><p class="case-meta__highlight">3 VR launches</p></div>
+    <div class="case-intro__grid">
+      <div>
+        <p class="case-intro__kicker">Creative systems &amp; brand strategy</p>
+        <h1>Beat<br />Saber</h1>
+      </div>
+      <div class="case-intro__summary">
+        <p>Three global VR music pack launches. One visual system that made room for Britney, Metallica, and Monstercat—without compromising Beat Saber’s gameplay language.</p>
+        <dl>
+          <div><dt>Role</dt><dd>Senior UX Strategist</dd></div>
+          <div><dt>Scope</dt><dd>Brand systems, art direction, launch design</dd></div>
+        </dl>
+      </div>
+    </div>
+  </header>
+  <CaseContents links={[{"href": "#case-section-1", "label": "The brief"}, {"href": "#case-section-2", "label": "The system"}, {"href": "#case-section-3", "label": "Britney Spears"}, {"href": "#case-section-4", "label": "Monstercat & Metallica"}, {"href": "#case-section-5", "label": "Outcome"}]} />
+
+  <figure class="hero-art">
+    <img src="/images/beat_saber_hero.webp" alt="Person in a VR headset under red and blue Beat Saber neon" loading="eager" decoding="async" />
+  </figure>
+
+  <section class="premise" aria-labelledby="premise-title" id="case-section-1" tabindex="-1">
+    <div class="premise__heading">
+      <p class="section-index">01 / The brief</p>
+      <h2 id="premise-title">One game.<br />Three unmistakable worlds.</h2>
+    </div>
+    <div class="premise__copy">
+      <p>Each launch needed the cultural voltage of its artist while staying instantly playable: the red-and-blue saber system, readable note contrast, and spatial depth had to remain intact.</p>
+      <p>The work was not three campaigns. It was a visual operating system that could flex without losing the game beneath it.</p>
+    </div>
+  </section>
+
+  <figure class="release-lineup">
+    <img src="/images/beat_saber_intro.webp" alt="Britney Spears, Monstercat, and Metallica Beat Saber music pack releases together" loading="lazy" decoding="async" />
+    <figcaption>Three launches, one visual framework</figcaption>
+  </figure>
+
+  <section class="system" aria-labelledby="system-title" id="case-section-2" tabindex="-1">
+    <div class="system__copy">
+      <p class="section-index">02 / The system</p>
+      <h2 id="system-title">A visual system built for play, not just promotion.</h2>
+      <div class="system__body">
+        <p>I reviewed player feedback from three earlier Music Pack launches to isolate what protected the play experience: strong separation between notes and environment, lighting that followed tempo, and worlds that announced genre before the first note landed.</p>
+        <p>The resulting framework made three things non-negotiable—saber colors, note contrast, and spatial depth—then deliberately left palette, materials, environmental narrative, and lighting choreography open to each artist.</p>
+      </div>
+    </div>
+    <ol class="principles">
+      <li><span>01</span><strong>Readability</strong><p>Notes remain the highest-contrast signal in every world.</p></li>
+      <li><span>02</span><strong>Rhythm</strong><p>Light moves with the music, never against the player.</p></li>
+      <li><span>03</span><strong>Identity</strong><p>Every environment makes its artist legible before play begins.</p></li>
+    </ol>
+  </section>
+
+  <section class="artist artist--britney" aria-labelledby="britney-title" id="case-section-3" tabindex="-1">
+    <div class="artist__label"><span>03 / Release one</span><span>Britney Spears</span></div>
+    <div class="artist__heading">
+      <h2 id="britney-title">Pop nostalgia<br />meets neon euphoria.</h2>
+      <p>A luminous heart became both a literal object and the emotional center of the experience—bridging 2000s club culture with contemporary VR.</p>
+    </div>
+    <figure class="artist__hero"><img src={releases[0].image} alt={releases[0].alt} loading="lazy" decoding="async" /></figure>
+    <div class="artist__evidence">
+      <figure><img src={releases[0].detail} alt={releases[0].detailAlt} loading="lazy" decoding="async" /></figure>
+      <div class="artist__quote"><p>“Inside the music,” not simply playing to it.</p><span>Player feedback</span></div>
+      <figure><img src={releases[0].commerce} alt={releases[0].commerceAlt} loading="lazy" decoding="async" /></figure>
+    </div>
+    <p class="artist__closing">Magenta-to-blue light supplied the euphoria; functional contrast and spatial depth kept the experience playable.</p>
+  </section>
+
+  <section class="duo" aria-labelledby="duo-title" id="case-section-4" tabindex="-1">
+    <div class="duo__intro">
+      <p class="section-index">04 / Release two &amp; three</p>
+      <h2 id="duo-title">A system with range.</h2>
+      <p>Monstercat and Metallica demanded opposite visual languages. The framework made that contrast a proof point rather than a compromise.</p>
+    </div>
+    <div class="duo__panels">
+      {releases.slice(1).map((release) => (
+        <article class="release-panel">
+          <figure><img src={release.image} alt={release.alt} loading="lazy" decoding="async" /></figure>
+          <div class="release-panel__caption"><p>{release.name}</p><span>{release.discipline}</span></div>
+          <div class="release-panel__detail">
+            <img src={release.detail} alt={release.detailAlt} loading="lazy" decoding="async" />
+            <p>{release.name === 'Monstercat'
+              ? 'A high-gloss mascot, reactive columns, and volumetric lasers turned bass drops into spatial events.'
+              : 'Metallic rhythm blocks and visible electricity translated raw analog force into Beat Saber’s precise digital vocabulary.'}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="proof" aria-labelledby="proof-title" id="case-section-5" tabindex="-1">
+    <div class="proof__title">
+      <p class="section-index">05 / Outcome</p>
+      <h2 id="proof-title">Designed to scale<br />beyond the launch.</h2>
+    </div>
+    <div class="proof__numbers">
+      <div><strong>4M+</strong><span>active players at the time of engagement</span></div>
+      <div><strong>3</strong><span>global launches delivered across platforms</span></div>
+      <div><strong>0</strong><span>timeline slips across the release program</span></div>
+    </div>
+    <div class="proof__closing">
+      <p>The framework became reusable architecture for future Music Packs: a component library that gave teams a starting point, while preserving artist authenticity and the gameplay rules players trusted.</p>
+      <div class="proof__commerce">
+        {releases.map((release) => <img src={release.commerce} alt={release.commerceAlt} loading="lazy" decoding="async" />)}
+      </div>
+    </div>
+  </section>
+</article>
+
+<style>
+  .beat-case { --ink:#f2f6ff; --muted:#9ba6b8; --night:#1b1b1b; --line:rgba(213,225,255,.18); --red:#ff324f; --blue:#51d5ff; --violet:#743cff; background:var(--night); color:var(--ink); overflow:hidden; font-family:Manrope, Arial, sans-serif; }
+  .beat-case :global(*) { box-sizing:border-box; }
+  .beat-case figure, .beat-case p, .beat-case h1, .beat-case h2 { margin:0; }
+  .beat-case img { display:block; width:100%; height:100%; object-fit:cover; }
+  .case-intro { padding:28px 4vw 88px; }
+  .case-intro__topline, .artist__label { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid var(--line); color:var(--muted); font-size:11px; letter-spacing:.08em; padding-bottom:15px; text-transform:uppercase; }
+  .case-intro__grid { display:grid; grid-template-columns:1.2fr .8fr; gap:8vw; align-items:end; padding-top:74px; }
+  .case-intro__kicker, .section-index { color:var(--blue); font-size:12px; letter-spacing:.07em; text-transform:uppercase; }
+  .case-intro h1 { font-size:clamp(78px,14vw,210px); font-weight:500; letter-spacing:-.085em; line-height:.78; margin-top:24px; }
+  .case-intro__summary { max-width:510px; padding-bottom:8px; }
+  .case-intro__summary > p { font-size:clamp(19px,2.1vw,30px); line-height:1.22; letter-spacing:-.035em; }
+  .case-intro dl { border-top:1px solid var(--line); display:grid; gap:12px; margin:48px 0 0; padding-top:14px; }
+  .case-intro dl div { display:flex; justify-content:space-between; gap:20px; font-size:12px; }
+  .case-intro dt { color:var(--muted); } .case-intro dd { margin:0; text-align:right; }
+  .hero-art { height:min(58vw,850px); min-height:430px; } .hero-art img { object-position:center; }
+  .premise { display:grid; grid-template-columns:1fr 1fr; gap:8vw; padding:140px max(4vw,48px); }
+  .premise h2, .system h2, .duo h2, .proof h2 { font-size:clamp(42px,6.1vw,98px); font-weight:500; letter-spacing:-.07em; line-height:.92; margin-top:24px; }
+  .premise__copy { align-self:end; display:grid; gap:30px; max-width:570px; font-size:clamp(18px,1.7vw,25px); line-height:1.32; }
+  .premise__copy p:last-child { color:var(--muted); }
+  .release-lineup { margin:0 4vw; position:relative; } .release-lineup img { aspect-ratio:2.25; } .release-lineup figcaption { color:var(--muted); font-size:12px; margin-top:12px; }
+  .system { padding:160px 4vw; } .system__copy { display:grid; grid-template-columns:1fr 1fr; gap:8vw; } .system__body { align-self:end; display:grid; gap:22px; max-width:560px; color:var(--muted); font-size:17px; line-height:1.5; }
+  .principles { border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(3,1fr); list-style:none; margin:88px 0 0; padding:0; } .principles li { border-right:1px solid var(--line); min-height:184px; padding:20px 22px 0 0; } .principles li + li { padding-left:22px; } .principles li:last-child { border:0; } .principles span { color:var(--blue); font-size:12px; } .principles strong { display:block; font-size:25px; font-weight:500; letter-spacing:-.04em; margin-top:58px; } .principles p { color:var(--muted); font-size:14px; line-height:1.4; margin-top:9px; max-width:260px; }
+  .artist { padding:30px 4vw 150px; } .artist--britney { background:linear-gradient(155deg,#16004a 0%,#4d158a 38%,#1b1b1b 78%); } .artist__heading { display:grid; grid-template-columns:1.15fr .55fr; gap:8vw; padding:85px 0 56px; } .artist__heading h2 { font-size:clamp(46px,7.5vw,118px); font-weight:500; letter-spacing:-.08em; line-height:.88; } .artist__heading p { align-self:end; color:#f5dfff; font-size:18px; line-height:1.45; max-width:380px; }
+  .artist__hero { height:min(49vw,770px); } .artist__evidence { display:grid; grid-template-columns:.55fr .9fr .75fr; gap:20px; align-items:start; margin:22px 8vw 0; } .artist__evidence figure:first-child { aspect-ratio:.72; margin-top:110px; } .artist__evidence figure:last-child { aspect-ratio:1.46; margin-top:42px; } .artist__quote { padding:52px 10% 0; } .artist__quote p { font-size:clamp(27px,3.2vw,53px); letter-spacing:-.055em; line-height:.98; } .artist__quote span { color:#ffaee8; display:block; font-size:11px; letter-spacing:.08em; margin-top:20px; text-transform:uppercase; } .artist__closing { color:#f5dfff; font-size:19px; line-height:1.4; margin:66px 0 0 45%; max-width:460px; }
+  .duo { padding:150px 4vw; } .duo__intro { display:grid; grid-template-columns:1fr 1fr; gap:8vw; margin-bottom:82px; } .duo__intro > p:last-child { align-self:end; color:var(--muted); font-size:18px; line-height:1.45; max-width:390px; } .duo__panels { display:grid; grid-template-columns:1fr 1fr; gap:22px; } .release-panel { border-top:1px solid var(--line); padding-top:16px; } .release-panel figure { aspect-ratio:2.02; } .release-panel__caption { display:flex; justify-content:space-between; gap:20px; padding:17px 0 38px; } .release-panel__caption p { font-size:27px; letter-spacing:-.05em; } .release-panel__caption span { color:var(--muted); font-size:11px; max-width:130px; text-align:right; text-transform:uppercase; } .release-panel__detail { align-items:center; display:grid; grid-template-columns:.42fr .58fr; gap:30px; } .release-panel__detail img { aspect-ratio:.72; } .release-panel__detail p { color:var(--muted); font-size:16px; line-height:1.5; }
+  .proof { background:#edf4ff; color:#07101e; padding:140px 4vw 0; } .proof .section-index { color:#244cff; } .proof__numbers { border-top:1px solid #b8c6d9; display:grid; grid-template-columns:repeat(3,1fr); margin-top:90px; } .proof__numbers div { border-right:1px solid #b8c6d9; padding:20px 20px 48px 0; } .proof__numbers div + div { padding-left:20px; } .proof__numbers div:last-child { border:0; } .proof__numbers strong { display:block; font-size:clamp(58px,8vw,126px); font-weight:500; letter-spacing:-.09em; line-height:.8; } .proof__numbers span { display:block; font-size:13px; line-height:1.3; margin-top:20px; max-width:135px; } .proof__closing { display:grid; grid-template-columns:.7fr 1.3fr; gap:8vw; margin-top:110px; } .proof__closing > p { font-size:clamp(20px,2.1vw,30px); letter-spacing:-.035em; line-height:1.24; } .proof__commerce { align-items:end; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; } .proof__commerce img { aspect-ratio:1.46; object-fit:cover; object-position:center; }
+  @media (max-width:800px) { .case-intro { padding-bottom:52px; } .case-intro__grid, .premise, .system__copy, .artist__heading, .duo__intro, .proof__closing { grid-template-columns:1fr; gap:34px; } .case-intro__grid { padding-top:48px; } .case-intro h1 { font-size:clamp(72px,23vw,130px); } .hero-art { height:52vw; min-height:280px; } .premise, .system, .duo, .proof { padding-top:84px; padding-bottom:84px; } .release-lineup { margin:0; } .release-lineup figcaption { margin-left:4vw; } .principles, .duo__panels { grid-template-columns:1fr; margin-top:52px; } .principles li, .principles li + li { border-bottom:1px solid var(--line); border-right:0; min-height:0; padding:18px 0 30px; } .principles strong { margin-top:32px; } .artist { padding-bottom:84px; } .artist__heading { padding:56px 0 35px; } .artist__evidence { grid-template-columns:1fr 1fr; margin:14px 0 0; } .artist__evidence figure:first-child { margin-top:0; } .artist__evidence figure:last-child { grid-column:span 2; margin-top:0; } .artist__quote { padding:25px 8%; } .artist__closing { margin:42px 0 0; } .release-panel__detail { grid-template-columns:.45fr .55fr; } .proof__numbers { grid-template-columns:1fr; margin-top:54px; } .proof__numbers div, .proof__numbers div + div { border-bottom:1px solid #b8c6d9; border-right:0; padding:20px 0 30px; } .proof__commerce { margin-top:0; } }
+</style>

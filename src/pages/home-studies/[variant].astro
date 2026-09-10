@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroVideo from '../../components/HeroVideo.astro';
+import Footer from '../../components/Footer.astro';
+import PairedGridClosing from '../../components/PairedGridClosing.astro';
+import HomeLayoutStudy from '../../components/HomeLayoutStudy.astro';
+
+export function getStaticPaths() {
+  return ['01', '02', '03', '04'].map(variant => ({ params: { variant } }));
+}
+const variant = Astro.params.variant as '01' | '02' | '03' | '04';
+const options = [
+  { id: '01', name: 'Paired grid' },
+  { id: '02', name: 'Staggered grid' },
+  { id: '03', name: 'Project rows' },
+  { id: '04', name: 'Wide spreads' },
+];
+---
+<BaseLayout title={`Homepage study ${variant} | ChrowmDesigns`} description="Four layout studies using the current ChrowmDesigns homepage content and visual system.">
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+  <HeroVideo />
+  <nav class="study-switch" aria-label="Homepage layout studies">
+    <a href="/home-studies/">Compare layouts</a>
+    <div>{options.map(option => <a href={`/home-studies/${option.id}/#study-content`} aria-current={option.id === variant ? 'page' : undefined}>{option.id}<span> — {option.name}</span></a>)}</div>
+    <a href="/">Current homepage ↗</a>
+  </nav>
+  <HomeLayoutStudy variant={variant} />
+  <div slot="footer" style="--study-gutter:clamp(20px,3.4vw,64px)">{variant === '01' ? <PairedGridClosing /> : <Footer />}</div>
+</BaseLayout>
+<style>
+.study-switch { display:flex; justify-content:space-between; align-items:center; gap:24px; padding:20px clamp(20px,3.4vw,64px); background:#fff; border-bottom:1px solid #d0d0d0; font:11px 'JetBrains Mono', monospace; text-transform:uppercase; }
+.study-switch div { display:flex; gap:24px; }
+.study-switch a { color:#555; text-decoration:none; padding-block:10px; }
+.study-switch a[aria-current] { color:var(--color-accent); }
+.study-switch a:hover { color:var(--color-accent); }
+:global(#study-content) { scroll-margin-top:90px; }
+ :global(#cases-title) { scroll-margin-top:100px; }
+@media(max-width:1000px) { .study-switch { flex-wrap:wrap; gap:10px; } .study-switch div { order:3; flex:1 0 100%; justify-content:space-between; gap:12px; } }
+@media(max-width:640px) { .study-switch span { display:none; } .study-switch div a { flex:1; text-align:center; border-top:1px solid #d0d0d0; } }
+</style>

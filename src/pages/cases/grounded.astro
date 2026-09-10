@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseStudyEditorial from '../../components/CaseStudyEditorial.astro';
+import GroundedCaseStudy from '../../components/GroundedCaseStudy.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Grounded Climate Solutions Summit | ChrowmDesigns',
+  title: 'Grounded Climate Solutions Summit',
   description: 'Turned climate anxiety into a community. 300% increase in webinar registrations and 10x content engagement driven entirely by strategic visual storytelling.',
 };
 ---
 
 <BaseLayout title={metadata.title} description={metadata.description}>
+  <GroundedCaseStudy />
+  <!--
   <CaseStudyEditorial
     client="Grounded"
     projectTitle="Grounded Climate Solutions"
@@ -74,6 +76,8 @@ const metadata = {
     section10Image="/images/grounded_01.webp"
     section10ImageAlt="Grounded visual language system"
   />
+  -->
   <CasePrevNext currentSlug="grounded" />
-  <Footer />
+
+  <Footer slot="footer" />
 </BaseLayout>
