@@ -31,6 +31,9 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Discover page-specific hero preloads before font downloads. -->
+    <slot name="head" />
+
     <!-- First-paint typography is hosted with the site. -->
     <link rel="preload" href="/fonts/optimized/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/optimized/jetbrainsmono-latin.woff2" as="font" type="font/woff2" crossorigin />
@@ -65,9 +68,6 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
 
     <!-- View Transitions (Astro client-side router) -->
     <ClientRouter />
-
-    <!-- Per-page head extensions (schema, preloads, etc.) -->
-    <slot name="head" />
 
     <!-- Skip to content (accessibility) -->
     <!-- rendered as inline style to avoid FOUC -->
