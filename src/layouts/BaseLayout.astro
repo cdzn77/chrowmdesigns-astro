@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import BackToTop from '../components/BackToTop.astro';
 import ClientRouter from 'astro/components/ClientRouter.astro';
+import { SITE_URL, normalizePath, canonicalFor, caseForPath, isIndexable, structuredData } from '../lib/site-seo';
 
 export interface Props {
   title: string;
@@ -15,13 +16,20 @@ export interface Props {
 const {
   title,
   description = 'Angelo Manzano Jr. — Senior Product Designer with 20 years of experience crafting digital experiences that connect, engage, and inspire.',
-  ogImage = '/images/og-default.webp',
+  ogImage,
   ogType = 'website',
-  canonicalURL = Astro.url.href,
+  canonicalURL: requestedCanonical,
 } = Astro.props;
 
 const siteName = 'ChrowmDesigns';
-const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
+const path = normalizePath(Astro.url.pathname);
+const fullTitle = title === siteName ? `Angelo Manzano Jr. — Senior UX Strategist | ${siteName}` : `${title} — ${siteName}`;
+const canonicalURL = canonicalFor(new URL(requestedCanonical ?? path, SITE_URL).pathname);
+const indexable = isIndexable(path);
+const project = caseForPath(path);
+const socialImage = new URL(ogImage ?? project?.thumbnail ?? '/hero-poster.jpg', SITE_URL).href;
+const socialImageAlt = project ? `${project.title} — ChrowmDesigns portfolio` : 'Selected design work from ChrowmDesigns';
+const schema = structuredData(path, fullTitle, description, socialImage);
 ---
 
 <!doctype html>
@@ -49,6 +57,9 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content={indexable ? 'index, follow, max-image-preview:large' : 'noindex, follow'} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    {indexable && <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />}
 
     <!-- Open Graph -->
     <meta property="og:site_name" content={siteName} />
@@ -56,15 +67,16 @@ const fullTitle = title === siteName ? title : `${title} — ${siteName}`;
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site ?? Astro.url.origin).href} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={socialImageAlt} />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site ?? Astro.url.origin).href} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
 
     <!-- View Transitions (Astro client-side router) -->
     <ClientRouter />

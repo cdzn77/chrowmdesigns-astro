@@ -1,0 +1,6 @@
+# Consolidate the old biography route into the approved Info page.
+/about /info/ 301!
+/about/ /info/ 301!
+# Preserve common WordPress/Rank Math sitemap entry points.
+/sitemap_index.xml /sitemap.xml 301
+/wp-sitemap.xml /sitemap.xml 301
