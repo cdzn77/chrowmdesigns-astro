@@ -152,7 +152,10 @@ const subjectOptions = [
   </div>
 
   <div class="contact-form__verification">
-    <div data-netlify-recaptcha="true"></div>
+    <!-- Netlify supplies its widget inside this inert template at deploy time. -->
+    <template id="cf-verification-template"><div data-netlify-recaptcha="true"></div></template>
+    <div id="cf-verification" tabindex="-1" role="group" aria-label="Security check"></div>
+    <button type="button" id="cf-verification-load" class="contact-form__verification-load">Load security check</button>
     <noscript><p>JavaScript is needed for the security check. You can also <a href="mailto:chile@chrowmdesigns.com">email me directly</a>.</p></noscript>
   </div>
 
@@ -176,6 +179,14 @@ const subjectOptions = [
 </form>
 
 <style>
+  .contact-form__verification { min-height: 78px; }
+  .contact-form__verification-load {
+    color: #1b1b1b; background: #f3f3f3; border: 1px solid #777;
+    padding: 0.75rem 1rem; font: inherit; font-size: 12px; cursor: pointer;
+  }
+  .contact-form__verification-load:focus-visible { outline: 2px solid #1b1b1b; outline-offset: 4px; }
+  .contact-form__verification-load:disabled { cursor: wait; }
+  .contact-form__verification-load[hidden] { display: none; }
   .contact-form__honeypot {
     display: none !important;
   }
@@ -397,13 +408,16 @@ const subjectOptions = [
 </style>
 
 <script>
+  import { setupContactVerification } from '../lib/contact-verification';
+  let activeForm: HTMLFormElement | null = null;
   let cleanupForm: (() => void) | undefined;
   function initContactForm() {
-    cleanupForm?.();
     const form = document.getElementById('contact-form') as HTMLFormElement | null;
     const submit = document.getElementById('cf-submit') as HTMLButtonElement | null;
     const status = document.getElementById('cf-status');
-    if (!form || !submit || !status) return;
+    if (!form || !submit || !status || activeForm === form) return;
+    cleanupForm?.();
+    activeForm = form;
     const controller = new AbortController();
     const { signal } = controller;
     const fields = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input.contact-form__input, textarea.contact-form__textarea')];
@@ -437,6 +451,7 @@ const subjectOptions = [
       status!.className = 'contact-form__status contact-form__status--' + type;
       status!.hidden = false;
     }
+    const verification = setupContactVerification(form, signal, () => showStatus('The security check could not load. Try again or', 'error', true));
     form.addEventListener('submit', async event => {
       event.preventDefault();
       if (submit.disabled) return;
@@ -450,10 +465,13 @@ const subjectOptions = [
       }
       // UX hint only; Netlify independently requires a valid CAPTCHA token.
       const formData = new FormData(form);
-      if (!String(formData.get('g-recaptcha-response') || '').trim()) {
+      const captchaResponse = verification.response();
+      if (!captchaResponse) {
+        void verification.ensure();
         showStatus('Please complete the security check before sending, or', 'error', true);
         return;
       }
+      formData.set('g-recaptcha-response', captchaResponse);
       submit.disabled = true;
       form.setAttribute('aria-busy', 'true');
       const label = submit.querySelector('.contact-form__submit-text');
@@ -482,7 +500,7 @@ const subjectOptions = [
       } finally {
         window.clearTimeout(timer);
         signal.removeEventListener('abort', abortRequest);
-        if (!signal.aborted) (window as Window & { grecaptcha?: { reset: () => void } }).grecaptcha?.reset();
+        if (!signal.aborted) verification.reset();
         if (!signal.aborted) {
           submit.disabled = false;
           form.removeAttribute('aria-busy');
@@ -492,6 +510,7 @@ const subjectOptions = [
     }, { signal });
     cleanupForm = () => {
       controller.abort();
+      activeForm = null;
     };
   }
   initContactForm();
