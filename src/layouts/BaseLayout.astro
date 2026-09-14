@@ -79,6 +79,21 @@ const schema = structuredData(path, fullTitle, description, socialImage);
     <meta name="twitter:image" content={socialImage} />
     <meta name="twitter:image:alt" content={socialImageAlt} />
 
+    <!-- Netlify injects the CAPTCHA at deploy time. Enter contact through a full
+         navigation so its provider script initializes once on a fresh document. -->
+    <script>
+      function prepareContactLinks() {
+        document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(link => {
+          const url = new URL(link.href, location.href);
+          if (url.origin === location.origin && url.pathname.replace(/\/$/, '') === '/contact') {
+            link.setAttribute('data-astro-reload', '');
+          }
+        });
+      }
+      prepareContactLinks();
+      document.addEventListener('astro:page-load', prepareContactLinks);
+    </script>
+
     <!-- View Transitions (Astro client-side router) -->
     <ClientRouter />
 

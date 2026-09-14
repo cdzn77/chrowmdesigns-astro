@@ -1,10 +1,5 @@
 ---
-// Existing studio inquiry endpoint.
-const FORMSPREE_ID = 'xzdlzplo';
-const action = `https://formspree.io/f/${FORMSPREE_ID}`;
-// Public site key only. The secret belongs in Formspree's CAPTCHA settings.
-const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY?.trim() || '0x4AAAAAAEulPu3wmfVT0G7O';
-
+// Netlify detects this form during deployment and validates its CAPTCHA server-side.
 const budgetOptions = [
   { value: '',                label: 'Select a range…' },
   { value: 'under-5k',        label: 'Under $5,000' },
@@ -28,13 +23,18 @@ const subjectOptions = [
 <form
   id="contact-form"
   class="contact-form"
-  action={action}
+  name="studio-inquiry"
+  action="/contact/"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  data-netlify-recaptcha="true"
+  data-astro-reload
   method="POST"
   aria-label="Contact form"
-  data-turnstile-site-key={turnstileSiteKey}
 >
-  <!-- Formspree honeypot — leave empty, bots fill it -->
-  <input type="text" name="_gotcha" class="contact-form__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <input type="hidden" name="form-name" value="studio-inquiry" />
+  <!-- Hidden bot trap; Netlify rejects submissions with this field filled. -->
+  <input type="text" name="bot-field" class="contact-form__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
   <!-- Row 1: Full Name + Email -->
   <div class="contact-form__row">
@@ -151,12 +151,10 @@ const subjectOptions = [
       <span class="contact-form__error" id="cf-message-error" hidden></span>
   </div>
 
-  {turnstileSiteKey && (
-    <div class="contact-form__verification">
-      <div id="cf-verification"></div>
-      <noscript><p>JavaScript is needed for the security check. You can also <a href="mailto:chile@chrowmdesigns.com">email me directly</a>.</p></noscript>
-    </div>
-  )}
+  <div class="contact-form__verification">
+    <div data-netlify-recaptcha="true"></div>
+    <noscript><p>JavaScript is needed for the security check. You can also <a href="mailto:chile@chrowmdesigns.com">email me directly</a>.</p></noscript>
+  </div>
 
   <!-- Submit -->
   <div class="contact-form__footer">
@@ -399,37 +397,6 @@ const subjectOptions = [
 </style>
 
 <script>
-  type TurnstileApi = {
-    render: (container: HTMLElement, options: Record<string, unknown>) => string;
-    reset: (id: string) => void;
-    remove: (id: string) => void;
-    getResponse: (id: string) => string;
-  };
-  const turnstileWindow = window as Window & { turnstile?: TurnstileApi };
-  let turnstileLoad: Promise<TurnstileApi> | undefined;
-  function loadTurnstile(): Promise<TurnstileApi> {
-    if (turnstileWindow.turnstile) return Promise.resolve(turnstileWindow.turnstile);
-    if (turnstileLoad) return turnstileLoad;
-    turnstileLoad = new Promise<TurnstileApi>((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-      script.async = true;
-      const timer = window.setTimeout(() => fail(), 15000);
-      function fail() {
-        window.clearTimeout(timer);
-        script.remove();
-        reject(new Error('verification-unavailable'));
-      }
-      script.onload = () => {
-        window.clearTimeout(timer);
-        if (turnstileWindow.turnstile) resolve(turnstileWindow.turnstile);
-        else fail();
-      };
-      script.onerror = fail;
-      document.head.append(script);
-    }).catch(error => { turnstileLoad = undefined; throw error; });
-    return turnstileLoad;
-  }
   let cleanupForm: (() => void) | undefined;
   function initContactForm() {
     cleanupForm?.();
@@ -439,10 +406,7 @@ const subjectOptions = [
     if (!form || !submit || !status) return;
     const controller = new AbortController();
     const { signal } = controller;
-    const fields = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input:not([name="_gotcha"]):not([type="hidden"]), textarea')];
-    const siteKey = form.dataset.turnstileSiteKey;
-    let widgetId: string | undefined;
-    let verificationLoading = false;
+    const fields = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input.contact-form__input, textarea.contact-form__textarea')];
     let attempted = false;
     form.noValidate = true;
     function validate(field: HTMLInputElement | HTMLTextAreaElement) {
@@ -473,40 +437,6 @@ const subjectOptions = [
       status!.className = 'contact-form__status contact-form__status--' + type;
       status!.hidden = false;
     }
-    async function initVerification() {
-      if (!siteKey || verificationLoading || widgetId !== undefined) return;
-      const container = document.getElementById('cf-verification');
-      if (!container) return;
-      verificationLoading = true;
-      form!.dataset.verificationState = 'pending';
-      try {
-        const api = await loadTurnstile();
-        if (signal.aborted) return;
-        widgetId = api.render(container, {
-          sitekey: siteKey,
-          theme: 'light',
-          size: 'compact',
-          appearance: 'interaction-only',
-          action: 'contact',
-          callback: () => { form!.dataset.verificationState = 'ready'; },
-          'expired-callback': () => { form!.dataset.verificationState = 'expired'; },
-          'error-callback': (code: string) => {
-            form!.dataset.verificationState = 'error';
-            form!.dataset.verificationError = code;
-            showStatus('The security check could not finish. Try again or', 'error', true);
-          },
-          'timeout-callback': () => {
-            form!.dataset.verificationState = 'expired';
-            showStatus('The security check timed out. Try again or', 'error', true);
-          },
-        });
-      } catch {
-        if (!signal.aborted) showStatus('The security check could not load. Try again or', 'error', true);
-      } finally {
-        verificationLoading = false;
-      }
-    }
-    void initVerification();
     form.addEventListener('submit', async event => {
       event.preventDefault();
       if (submit.disabled) return;
@@ -518,11 +448,10 @@ const subjectOptions = [
         fields.find(field => !field.validity.valid)?.focus();
         return;
       }
-      // UX gate only: Formspree must require and verify the token server-side.
-      if (siteKey && (widgetId === undefined || !turnstileWindow.turnstile?.getResponse(widgetId))) {
-        showStatus('The security check is still pending. Give it a moment, then try again, or', 'error', true);
-        if (widgetId === undefined) void initVerification();
-        else turnstileWindow.turnstile?.reset(widgetId);
+      // UX hint only; Netlify independently requires a valid CAPTCHA token.
+      const formData = new FormData(form);
+      if (!String(formData.get('g-recaptcha-response') || '').trim()) {
+        showStatus('Please complete the security check before sending, or', 'error', true);
         return;
       }
       submit.disabled = true;
@@ -535,11 +464,11 @@ const subjectOptions = [
       signal.addEventListener('abort', abortRequest, { once: true });
       const timer = window.setTimeout(() => request.abort(), 30000);
       try {
-        const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }, signal: request.signal });
+        const body = new URLSearchParams();
+        formData.forEach((value, key) => { if (typeof value === 'string') body.append(key, value); });
+        const response = await fetch('/', { method: 'POST', body: body.toString(), headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, redirect: 'error', signal: request.signal });
         if (response.status === 429) throw new Error('rate-limit');
         if (!response.ok) throw new Error('delivery');
-        const result = await response.json();
-        if (result.ok !== true) throw new Error('delivery');
         form.reset();
         attempted = false;
         fields.forEach(field => { field.removeAttribute('aria-invalid'); field.removeAttribute('aria-describedby'); });
@@ -553,7 +482,7 @@ const subjectOptions = [
       } finally {
         window.clearTimeout(timer);
         signal.removeEventListener('abort', abortRequest);
-        if (!signal.aborted && widgetId !== undefined) turnstileWindow.turnstile?.reset(widgetId);
+        if (!signal.aborted) (window as Window & { grecaptcha?: { reset: () => void } }).grecaptcha?.reset();
         if (!signal.aborted) {
           submit.disabled = false;
           form.removeAttribute('aria-busy');
@@ -563,9 +492,9 @@ const subjectOptions = [
     }, { signal });
     cleanupForm = () => {
       controller.abort();
-      if (widgetId !== undefined) turnstileWindow.turnstile?.remove(widgetId);
     };
   }
+  initContactForm();
   document.addEventListener('astro:page-load', initContactForm);
   document.addEventListener('astro:before-swap', () => cleanupForm?.());
 </script>
