@@ -62,6 +62,7 @@ export function setupContactVerification(form: HTMLFormElement, signal: AbortSig
     const sitekey = template?.content.querySelector<HTMLElement>('.g-recaptcha')?.dataset.sitekey;
     if (!sitekey || !target) { showRetry(); return; }
     pending = true;
+    const activatedFromButton = document.activeElement === button;
     target.setAttribute('aria-busy', 'true');
     if (button) { button.disabled = true; button.textContent = 'Loading security check…'; }
     try {
@@ -73,7 +74,7 @@ export function setupContactVerification(form: HTMLFormElement, signal: AbortSig
         size: target.clientWidth < 304 ? 'compact' : 'normal',
         'error-callback': showRetry,
       });
-      if (button && document.activeElement === button) target.focus();
+      if (activatedFromButton && (document.activeElement === button || document.activeElement === document.body)) target.focus();
       if (button) button.hidden = true;
       target.removeAttribute('aria-busy');
     } catch { showRetry(); }

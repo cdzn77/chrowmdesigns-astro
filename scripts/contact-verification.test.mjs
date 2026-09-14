@@ -11,7 +11,7 @@ function fixture({ key = 'public-test-key', width = 320 } = {}) {
   let errors = 0, token = '';
   const controller = new AbortController();
   const document = {
-    activeElement: null,
+    activeElement: null, body: {},
     createElement: () => ({ remove() { this.removed = true; } }),
     head: { append(script) { scripts.push(script); } },
   };
@@ -71,7 +71,7 @@ test('leaving the page during loading does not render into its old form', async 
   assert.equal(f.renders.length, 0); assert.equal(f.errors, 0);
 });
 test('keyboard activation transfers focus before hiding its button; typing focus is preserved', async () => {
-  const f = fixture(); f.click(); f.ready(); await tick(); assert.equal(f.document.activeElement, f.target);
+  const f = fixture(); f.click(); f.document.activeElement = f.document.body; f.ready(); await tick(); assert.equal(f.document.activeElement, f.target);
   const typed = fixture(); const field = {}; typed.document.activeElement = field;
   typed.event('input'); typed.ready(); await tick(); assert.equal(typed.document.activeElement, field);
 });
