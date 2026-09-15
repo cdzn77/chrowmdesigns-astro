@@ -5,3 +5,26 @@
 /sitemap_index.xml /sitemap.xml 301
 /wp-sitemap.xml /sitemap.xml 301
 /page-sitemap.xml /sitemap.xml 301
+
+# Preserve portfolio URLs confirmed in Search Console on 2026-09-15.
+# Keep each project linked to its matching case, including trailing-slash visits.
+/about-freelance-ux-strategist-for-hire /info/ 301
+/about-freelance-ux-strategist-for-hire/ /info/ 301
+/ux-case-studies /cases/ 301
+/ux-case-studies/ /cases/ 301
+/ux-case-studies/beat-saber-ux-design /cases/beat-saber/ 301
+/ux-case-studies/beat-saber-ux-design/ /cases/beat-saber/ 301
+/ux-case-studies/carrabbas-content-platform-ux-design /cases/carrabbas/ 301
+/ux-case-studies/carrabbas-content-platform-ux-design/ /cases/carrabbas/ 301
+/ux-case-studies/disney-public-affairs-ux-redesign /cases/walt-disney-world/ 301
+/ux-case-studies/disney-public-affairs-ux-redesign/ /cases/walt-disney-world/ 301
+/ux-case-studies/grounded-climate-summit-ux-design /cases/grounded/ 301
+/ux-case-studies/grounded-climate-summit-ux-design/ /cases/grounded/ 301
+/ux-case-studies/malibu-rum-ux-design /cases/malibu-rum/ 301
+/ux-case-studies/malibu-rum-ux-design/ /cases/malibu-rum/ 301
+/ux-case-studies/marriott-vacation-club-ux-redesign /cases/marriott-vacation-club/ 301
+/ux-case-studies/marriott-vacation-club-ux-redesign/ /cases/marriott-vacation-club/ 301
+/ux-case-studies/taco-bueno-brand-ux-strategy /cases/taco-bueno/ 301
+/ux-case-studies/taco-bueno-brand-ux-strategy/ /cases/taco-bueno/ 301
+/ux-case-studies/zzzquil-sleep-app-ux-design /cases/zzzquil/ 301
+/ux-case-studies/zzzquil-sleep-app-ux-design/ /cases/zzzquil/ 301

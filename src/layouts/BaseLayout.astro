@@ -39,6 +39,7 @@ const schema = structuredData(path, fullTitle, description, socialImage);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    {path === '/' && <meta name="msvalidate.01" content="A5F4DD76AEBF4275E6AC35ADEA94E506" />}
 
     <!-- Discover page-specific hero preloads before font downloads. -->
     <slot name="head" />
