@@ -8,6 +8,7 @@ import { SITE_URL, normalizePath, canonicalFor, caseForPath, isIndexable, struct
 
 export interface Props {
   title: string;
+  contentLabel?: string;
   description?: string;
   ogImage?: string;
   ogType?: string;
@@ -16,6 +17,7 @@ export interface Props {
 
 const {
   title,
+  contentLabel = title,
   description = 'Angelo Manzano Jr. — Senior Product Designer with 20 years of experience crafting digital experiences that connect, engage, and inspire.',
   ogImage,
   ogType = 'website',
@@ -125,7 +127,7 @@ const schema = structuredData(path, fullTitle, description, socialImage);
 
     <Nav />
 
-    <main id="main-content" tabindex="-1" aria-label={title}>
+    <main id="main-content" tabindex="-1" aria-label={contentLabel}>
       <slot />
     </main>
 
