@@ -28,3 +28,13 @@
 /ux-case-studies/taco-bueno-brand-ux-strategy/ /cases/taco-bueno/ 301
 /ux-case-studies/zzzquil-sleep-app-ux-design /cases/zzzquil/ 301
 /ux-case-studies/zzzquil-sleep-app-ux-design/ /cases/zzzquil/ 301
+
+# Preserve additional legacy ZzzQuil URLs reported by Search Console on 2026-09-16.
+/cases/zzzquil-sleep-app-ux-design /cases/zzzquil/ 301
+/cases/zzzquil-sleep-app-ux-design/ /cases/zzzquil/ 301
+/cases/zzzquil-sleep-app /cases/zzzquil/ 301
+/cases/zzzquil-sleep-app/ /cases/zzzquil/ 301
+
+# Preserve the original Marriott portfolio address.
+/ux-design-case-studies-portfolio-chrowm-designs/marriott-vacation-club-ux-redesign /cases/marriott-vacation-club/ 301
+/ux-design-case-studies-portfolio-chrowm-designs/marriott-vacation-club-ux-redesign/ /cases/marriott-vacation-club/ 301

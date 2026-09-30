@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MalibuCaseStudy from '../../components/MalibuCaseStudy.astro';
+import CaseCredits from '../../components/CaseCredits.astro';
+import CaseInquiry from '../../components/CaseInquiry.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Malibu Rum — Pernod Ricard',
+  title: 'Malibu Rum: Campaign Strategy & Creative Systems',
   description: '200+ branded assets. 60M impressions. A unified creative system delivered across 101 consecutive days that set Malibu\'s brand consistency standard.',
 };
 ---
@@ -79,6 +81,8 @@ const metadata = {
     section10ImageAlt="Malibu Rum campaign full scope"
   />
   -->
+  <CaseCredits slug="malibu-rum" />
+  <CaseInquiry project="Malibu Rum 101 Days Campaign Design" />
   <CasePrevNext currentSlug="malibu-rum" />
 
   <Footer slot="footer" />

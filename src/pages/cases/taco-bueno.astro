@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TacoBuenoCaseStudy from '../../components/TacoBuenoCaseStudy.astro';
+import CaseCredits from '../../components/CaseCredits.astro';
+import CaseInquiry from '../../components/CaseInquiry.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Taco Bueno',
-  description: 'Rebuilt a legacy Tex-Mex brand from the ground up. Real-time OOH and a viral campaign drove 147% higher engagement across test locations.',
+  title: 'Taco Bueno: Brand Strategy & Campaign UX Design',
+  description: 'Taco Bueno case study: customer research, the Bueno Means Better brand platform, Bean Cam, and integrated digital campaign UX through Pocket Made.',
 };
 ---
 
@@ -79,6 +81,8 @@ const metadata = {
     section10ImageAlt="Taco Bueno — complete implementation across channels"
   />
   -->
+  <CaseCredits slug="taco-bueno" />
+  <CaseInquiry project="Taco Bueno Brand & UX Strategy" />
   <CasePrevNext currentSlug="taco-bueno" />
 
   <Footer slot="footer" />

@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ZzzquilCaseStudy from '../../components/ZzzquilCaseStudy.astro';
+import CaseCredits from '../../components/CaseCredits.astro';
+import CaseInquiry from '../../components/CaseInquiry.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'ZzzQuil — Procter & Gamble',
-  description: 'Redesigned P&G\'s sleep brand from packaging to pixels. Native app, e-commerce site, and dark mode system for better sleep UX.',
+  title: 'ZzzQuil Sleepmate: UX Strategy & App Design',
+  description: 'Explore the color system, soundscape controls, and cross-platform design behind Angelo Manzano Jr.’s UX work for ZzzQuil Sleepmate and its companion website.',
 };
 ---
 
@@ -79,6 +81,8 @@ const metadata = {
     section10ImageAlt="ZzzQuil color system complete implementation"
   />
   -->
+  <CaseCredits slug="zzzquil" />
+  <CaseInquiry project="ZzzQuil Sleep App UX Design" />
   <CasePrevNext currentSlug="zzzquil" />
 
   <Footer slot="footer" />

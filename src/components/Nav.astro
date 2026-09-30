@@ -3,6 +3,7 @@ const navLinks = [
   { label: 'Index',   href: '/' },
   { label: 'Info',    href: '/info' },
   { label: 'Cases',   href: '/cases' },
+  { label: 'Services', href: '/services' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -546,4 +547,9 @@ const logoFilter = 'none';
   @media (prefers-reduced-motion: reduce) {
     .nav-mobile-menu, .nav-mobile-menu::before { animation: none; }
   }
+
+.nav-mobile-footer-link{min-height:44px;display:flex;align-items:center}
+.nav-mobile-menu__inner{padding-bottom:max(40px,env(safe-area-inset-bottom));overscroll-behavior:contain}
+
+.nav-logo-link{min-height:44px}
 </style>

@@ -11,8 +11,11 @@ const budgetOptions = [
 ];
 
 const subjectOptions = [
-  { value: '',              label: 'Select a subject…' },
-  { value: 'ux-design',     label: 'UX Design' },
+  { value: '',              label: 'Select a project type…' },
+  { value: 'ux-design',     label: 'Website or product design' },
+  { value: 'ux-audit', label: 'UX audit or strategy' },
+  { value: 'design-system', label: 'Design system or prototype' },
+  { value: 'agency-support', label: 'Agency contract support' },
   { value: 'brand-strategy',label: 'Brand Strategy' },
   { value: 'campaign',      label: 'Campaign Design' },
   { value: 'consulting',    label: 'Consulting' },
@@ -100,6 +103,36 @@ const subjectOptions = [
     </div>
   </div>
 
+  <div class="contact-form__row">
+    <div class="contact-form__field">
+      <label class="contact-form__label" for="cf-relationship">I’m reaching out as</label>
+      <div class="contact-form__select-wrap">
+        <select class="contact-form__select" id="cf-relationship" name="relationship">
+          <option value="">Select an option…</option>
+          <option value="agency">An agency / studio</option>
+          <option value="in-house">An in-house team / business</option>
+          <option value="individual">An individual / founder</option>
+          <option value="other">Something else</option>
+        </select>
+        <span class="contact-form__select-arrow" aria-hidden="true">⌄</span>
+      </div>
+    </div>
+    <div class="contact-form__field">
+      <label class="contact-form__label" for="cf-timeline">When would you like to start?</label>
+      <div class="contact-form__select-wrap">
+        <select class="contact-form__select" id="cf-timeline" name="timeline">
+          <option value="">Select a timeframe…</option>
+          <option value="asap">As soon as possible</option>
+          <option value="within-month">Within a month</option>
+          <option value="1-3-months">In 1–3 months</option>
+          <option value="3-plus-months">More than 3 months away</option>
+          <option value="exploring">Exploring / flexible</option>
+        </select>
+        <span class="contact-form__select-arrow" aria-hidden="true">⌄</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Row 3: Budget + Subject -->
   <div class="contact-form__row">
     <div class="contact-form__field">
@@ -118,7 +151,7 @@ const subjectOptions = [
       </div>
     </div>
     <div class="contact-form__field">
-      <label class="contact-form__label" for="cf-subject">Subject</label>
+      <label class="contact-form__label" for="cf-subject">Project Type</label>
       <div class="contact-form__select-wrap">
         <select class="contact-form__select" id="cf-subject" name="subject">
           {subjectOptions.map(({ value, label }) => (
@@ -137,13 +170,14 @@ const subjectOptions = [
   <!-- Message -->
   <div class="contact-form__field contact-form__field--full">
     <label class="contact-form__label" for="cf-message">
-      Your Message <span class="contact-form__req" aria-hidden="true">*</span>
+      About Your Project <span class="contact-form__req" aria-hidden="true">*</span>
     </label>
     <textarea
       class="contact-form__textarea"
       id="cf-message"
       name="message"
       maxlength="10000"
+      placeholder="What are you working on, where do you need help, and are there any important deadlines?"
       rows="6"
       required
       aria-required="true"
@@ -405,6 +439,17 @@ const subjectOptions = [
   .contact-form__error { font-size: var(--font-size-sm); color: var(--color-error); line-height: 1.5; }
   .contact-form__error[hidden] { display: none; }
   .contact-form__status { font-family: var(--font-sans); font-size: var(--font-size-md); text-transform: none; }
+
+@media(max-width:900px){
+ .contact-form__input,.contact-form__textarea,.contact-form__select{font-size:16px;min-width:0}
+ .contact-form__field,.contact-form__select-wrap{min-width:0}
+}
+
+
+.contact-form__input::placeholder,.contact-form__textarea::placeholder{color:#666;opacity:1}
+@media(forced-colors:active){
+ .contact-form__input:focus-visible,.contact-form__textarea:focus-visible,.contact-form__select:focus-visible{outline:2px solid Highlight;outline-offset:3px}
+}
 </style>
 
 <script>

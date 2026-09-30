@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GroundedCaseStudy from '../../components/GroundedCaseStudy.astro';
+import CaseCredits from '../../components/CaseCredits.astro';
+import CaseInquiry from '../../components/CaseInquiry.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Grounded Climate Solutions Summit',
-  description: 'Turned climate anxiety into a community. 300% increase in webinar registrations and 10x content engagement driven entirely by strategic visual storytelling.',
+  title: 'Grounded: Climate Platform UX Strategy & Design',
+  description: 'Grounded climate platform case study: UX strategy, editorial design, event registration, and a WordPress content system built for a small publishing team.',
 };
 ---
 
@@ -77,6 +79,8 @@ const metadata = {
     section10ImageAlt="Grounded visual language system"
   />
   -->
+  <CaseCredits slug="grounded" />
+  <CaseInquiry project="Grounded Climate Summit UX Design" />
   <CasePrevNext currentSlug="grounded" />
 
   <Footer slot="footer" />

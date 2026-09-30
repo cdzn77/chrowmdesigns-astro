@@ -1,0 +1,17 @@
+---
+import credits from '../data/case-credits.json';
+interface Props { slug: keyof typeof credits; }
+const { slug } = Astro.props;
+const [role, collaborator, contribution] = credits[slug];
+---
+<section class="case-credits" aria-label="Project credits and contribution">
+  <p class="case-credits__label">/PROJECT CREDITS</p>
+  <dl><div><dt>My role</dt><dd>{role}</dd></div><div><dt>{slug === 'beat-saber' ? 'Technical collaboration' : 'Agency partner'}</dt><dd>{collaborator}</dd></div></dl>
+  <div><h2>My contribution</h2><p>{contribution}</p></div>
+</section>
+<style>
+.case-credits{display:grid;grid-template-columns:minmax(0,.45fr) minmax(0,.8fr) minmax(0,1fr);gap:40px;padding:48px clamp(20px,4.2vw,64px);background:#fff;color:#1b1b1b;border-top:1px solid #ddd;font-family:var(--font-sans)}
+.case-credits__label,.case-credits dt,.case-credits h2{font:400 11px/1.5 'JetBrains Mono',monospace;letter-spacing:.04em;text-transform:uppercase;color:#666;margin:0 0 16px}
+.case-credits dl{margin:0}.case-credits dl>div+div{margin-top:24px}.case-credits dd,.case-credits div>p{font:400 clamp(16px,1.3vw,17px)/1.6 var(--font-sans);margin:0}.case-credits div>p{color:#555}
+@media(max-width:800px){.case-credits{grid-template-columns:1fr 1fr;gap:28px}.case-credits__label{grid-column:1/-1;margin:0}}@media(max-width:560px){.case-credits{grid-template-columns:1fr;padding-block:36px}}
+</style>

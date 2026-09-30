@@ -13,30 +13,30 @@ const featuredCases = cases.slice(0, 6);
 const skills = [
   {
     number: '001',
-    title: 'Strategic Approach',
+    title: 'UX Strategy & Audits',
     description:
-      'I align design with your brand, audience, and business goals to create strategic, user-focused digital experiences that deliver measurable results.',
+      'Find friction in your customer journey, clarify priorities, and turn business goals into a practical direction for design.',
     image: '/images/strategic_approach_thumb.webp',
   },
   {
     number: '002',
-    title: 'User Experience',
+    title: 'Digital Product Design',
     description:
-      'Delivering excellent user experiences is essential for building trust and is central to my approach, which focuses on intuitive functionality, simplicity, and delight.',
+      'Map user flows, explore wireframes, and design interfaces for websites and digital products across desktop and mobile.',
     image: '/images/user_experience_thumb.webp',
   },
   {
     number: '003',
-    title: 'Interactive Design',
+    title: 'Prototypes & Design Systems',
     description:
-      'Design is central to my work, where I combine creativity and expertise to achieve outstanding results.',
+      'Make ideas tangible with interactive prototypes and reusable interface components that help teams build consistently.',
     image: '/images/interactive_design_thumb.webp',
   },
   {
     number: '004',
-    title: 'Digital Experiences',
+    title: 'Agency Contract Support',
     description:
-      'I design end-to-end product journeys that balance usability, emotional impact, and brand expression across web and digital platforms.',
+      'Bring senior UX and design support into a client project, from early discovery through detailed design and developer handoff.',
     image: '/images/digital_experiences_thumb.webp',
   },
 ];
@@ -135,7 +135,7 @@ const skills = [
       ))}
     </div>
     <div class="cases-grid__footer">
-      <p class="cases-grid__tagline">Florida-based, freelance, multidisciplinary designer studio</p>
+      <p class="cases-grid__tagline">Palm Bay, Florida · Working remotely with agencies and teams nationwide</p>
       <a href="/cases" class="cases-grid__all-link">
         Explore more work
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -170,11 +170,11 @@ const skills = [
             Skills to Pay the Bills
           </h2>
           <p class="skills__description">
-            Building thoughtful, enduring brands through design and intention.
+            Senior design support for a defined project, a product challenge, or your next agency engagement.
           </p>
         </div>
-        <a href="/info" class="skills__info-link">
-          Info.page
+        <a href="/services/" class="skills__info-link">
+          Explore services
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1">
             <path d="M8 24L24 8M24 8H8M24 8V24" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -191,6 +191,8 @@ const skills = [
           </div>
         ))}
       </div>
+
+      <p class="skills__agency-link"><a href="/for-agencies/">See how agency partnerships work ↗</a></p>
 
       <!-- Categories list -->
       <div class="skills__categories">
@@ -245,6 +247,7 @@ const skills = [
 </BaseLayout>
 
 <style>
+   .skills__agency-link a { display:inline-flex; align-items:center; min-height:44px; color:#1b1b1b; text-decoration:underline; text-underline-offset:5px; }
   /* ── Featured Image ─────────────────────────────── */
   .featured-image {
     display: none;  /* Hidden in React design */

@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DisneyCaseStudy from '../../components/DisneyCaseStudy.astro';
+import CaseCredits from '../../components/CaseCredits.astro';
+import CaseInquiry from '../../components/CaseInquiry.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Walt Disney World Public Affairs',
-  description: '77% bounce rate. A research-led redesign that cut exits by 44% and made Disney\'s community impact finally visible.',
+  title: 'Disney Public Affairs: UX Research & Website Redesign',
+  description: 'Walt Disney World Public Affairs case study: usability research, information architecture, donation request flows, and responsive interface design.',
 };
 ---
 
@@ -77,6 +79,8 @@ const metadata = {
     section10ImageAlt="Complete IA redesign documentation"
   />
   -->
+  <CaseCredits slug="walt-disney-world" />
+  <CaseInquiry project="Disney Public Affairs UX Redesign" />
   <CasePrevNext currentSlug="walt-disney-world" />
 
   <Footer slot="footer" />

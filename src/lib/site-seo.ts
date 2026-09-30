@@ -1,7 +1,7 @@
 import cases from '../data/cases.json';
 
 export const SITE_URL = 'https://chrowmdesigns.com';
-export const publicPaths = ['/', '/info/', '/cases/', '/contact/', ...cases.map(item => `${item.url}/`)];
+export const publicPaths = ['/', '/info/', '/cases/', '/contact/', '/services/', '/for-agencies/', ...cases.map(item => `${item.url}/`)];
 export const normalizePath = (path: string) => path === '/' ? '/' : `${path.replace(/\/+$/, '')}/`;
 // Publishing a new page is explicit; design explorations stay out of search by default.
 export const isIndexable = (path: string) => publicPaths.includes(normalizePath(path));
@@ -27,7 +27,8 @@ export function structuredData(path: string, name: string, description: string, 
       url: `${SITE_URL}/info/`, jobTitle: 'Senior UX Strategist',
       sameAs: ['https://www.linkedin.com/in/angelomanzano/', 'https://www.behance.net/angelomanzanojr'] },
     { '@type': 'Organization', '@id': studioId, name: 'ChrowmDesigns', url: `${SITE_URL}/`,
-      logo: `${SITE_URL}/logo.svg`, founder: { '@id': personId }, email: 'chile@chrowmdesigns.com' },
+      logo: `${SITE_URL}/logo.svg`, founder: { '@id': personId }, email: 'chile@chrowmdesigns.com', foundingDate: '1999-01-01',
+      location: { '@type': 'Place', name: 'Palm Bay, Florida' } },
     { '@type': 'WebSite', '@id': websiteId, name: 'ChrowmDesigns', url: `${SITE_URL}/`,
       inLanguage: 'en', publisher: { '@id': studioId } },
     { '@type': pageType, '@id': `${url}#webpage`, url, name, description, inLanguage: 'en',

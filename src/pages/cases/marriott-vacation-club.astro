@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MarriottCaseStudy from '../../components/MarriottCaseStudy.astro';
+import CaseCredits from '../../components/CaseCredits.astro';
+import CaseInquiry from '../../components/CaseInquiry.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Marriott Vacation Club',
-  description: 'Resolved 47 friction points across enterprise systems. Transformed a transactional booking platform into an aspirational lifestyle ecosystem.',
+  title: 'Marriott Vacation Club: UX Strategy & Design',
+  description: 'Explore the UX research, task-based navigation, and shared design system behind Angelo Manzano Jr.’s work on Marriott Vacation Club.',
 };
 ---
 
@@ -78,6 +80,8 @@ const metadata = {
     section10Image="/images/marriott09.webp"
     section10ImageAlt="Marriott design system governance"
   /> -->
+  <CaseCredits slug="marriott-vacation-club" />
+  <CaseInquiry project="Marriott Vacation Club UX Redesign" />
   <CasePrevNext currentSlug="marriott-vacation-club" />
 
   <Footer slot="footer" />

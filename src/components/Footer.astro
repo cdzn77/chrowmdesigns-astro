@@ -1,7 +1,7 @@
 ---
 interface Props { showCTA?: boolean; }
 const { showCTA = true } = Astro.props;
-const pages = [['/','INDEX'],['/info','INFO'],['/cases','CASES'],['/contact','CONTACT']];
+const pages = [['/','INDEX'],['/info','INFO'],['/cases','CASES'],['/services','SERVICES'],['/for-agencies','FOR AGENCIES'],['/contact','CONTACT']];
 const currentYear = new Date().getFullYear();
 ---
 
@@ -85,4 +85,11 @@ const currentYear = new Date().getFullYear();
   .masthead-footer--no-cta .masthead-footer__body{grid-template-areas:"navigation contact" "navigation social"}
   @media(max-width:600px){.masthead-footer--no-cta .masthead-footer__body{grid-template-areas:"navigation" "contact" "social"}}
 .masthead-footer h2 a{overflow-wrap:anywhere}
+
+/* Let footer grid tracks shrink to a narrow phone without widening the page. */
+.masthead-footer__body>*{min-width:0}
+.masthead-footer .masthead-footer__navigation{grid-template-columns:repeat(2,minmax(0,1fr))}
+.masthead-footer__navigation a>span:first-child{min-width:0;overflow-wrap:anywhere}
+@media(max-width:600px){.masthead-footer .masthead-footer__body{grid-template-columns:minmax(0,1fr)}.masthead-footer .masthead-footer__navigation{column-gap:20px}.masthead-footer .masthead-footer__navigation a{font-size:clamp(20px,5.5vw,24px)}}
+
 </style>

@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CarrabbasCaseStudy from '../../components/CarrabbasCaseStudy.astro';
+import CaseCredits from '../../components/CaseCredits.astro';
+import CaseInquiry from '../../components/CaseInquiry.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Carrabba\'s Italian Grill | ChrowmDesigns',
-  description: 'Reduced recipe access time by 40% and grew mobile engagement 28%. A content platform that taught cooking instead of selling reservations.',
+  title: 'Carrabba’s Tableside: Content Strategy & UX Design',
+  description: 'Carrabba’s Tableside case study: usability research, recipe discovery, mobile reading, and editorial guidelines for a WordPress culinary content platform.',
 };
 ---
 
@@ -76,6 +78,8 @@ const metadata = {
     section10Image="/images/carrabbas_hero.webp"
     section10ImageAlt="Carrabba's culinary platform final implementation"
   /> -->
+  <CaseCredits slug="carrabbas" />
+  <CaseInquiry project="Carrabba's Italian Grill Content UX Design" />
   <CasePrevNext currentSlug="carrabbas" />
 
   <Footer slot="footer" />

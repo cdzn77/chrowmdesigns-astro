@@ -1,17 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BeatSaberCaseStudy from '../../components/BeatSaberCaseStudy.astro';
+import CaseCredits from '../../components/CaseCredits.astro';
+import CaseInquiry from '../../components/CaseInquiry.astro';
 import CasePrevNext from '../../components/CasePrevNext.astro';
 import Footer from '../../components/Footer.astro';
 
 const metadata = {
-  title: 'Beat Saber — Beat Games',
-  description: '3 global VR launches. One scalable visual system that honored Britney, Metallica, and Monstercat without losing a single pixel of Beat Saber\'s DNA.',
+  title: 'Beat Saber Music Packs: UX Strategy & Art Direction',
+  description: 'Explore Angelo Manzano Jr.’s UX strategy and art direction for Britney Spears, Monstercat, and Metallica Beat Saber Music Packs, from research to handoff.',
 };
 ---
 
 <BaseLayout title={metadata.title} description={metadata.description}>
   <BeatSaberCaseStudy />
+  <CaseCredits slug="beat-saber" />
+  <CaseInquiry project="Beat Saber Music Pack UX Design" />
   <CasePrevNext currentSlug="beat-saber" />
 
   <Footer slot="footer" />
