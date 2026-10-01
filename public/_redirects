@@ -38,3 +38,10 @@
 # Preserve the original Marriott portfolio address.
 /ux-design-case-studies-portfolio-chrowm-designs/marriott-vacation-club-ux-redesign /cases/marriott-vacation-club/ 301
 /ux-design-case-studies-portfolio-chrowm-designs/marriott-vacation-club-ux-redesign/ /cases/marriott-vacation-club/ 301
+
+# Branded client entry; keep the existing PMS authentication origin.
+/portal https://chrowmdesigns-pms.netlify.app/ 302
+/portal/ https://chrowmdesigns-pms.netlify.app/ 302
+# Shareable presentation route.
+/scrum /scrum.html 200
+/scrum/ /scrum.html 200
