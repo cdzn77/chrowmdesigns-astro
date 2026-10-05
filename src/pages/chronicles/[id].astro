@@ -1,0 +1,21 @@
+---
+import { render } from 'astro:content';
+import ChroniclesLayout from '../../layouts/ChroniclesLayout.astro';
+import { publishedChronicles, readingMinutes, filedDate } from '../../lib/chronicles';
+import { SITE_URL } from '../../lib/site-seo';
+export async function getStaticPaths(){const posts=await publishedChronicles();return posts.map((post,i)=>({params:{id:post.id},props:{post,newer:posts[i-1],older:posts[i+1]}}));}
+const {post,newer,older}=Astro.props;
+const {Content}=await render(post);
+const data=post.data;
+const schema={'@context':'https://schema.org','@type':'BlogPosting',headline:data.title,description:data.description,datePublished:data.publishedAt.toISOString(),...(data.updatedAt?{dateModified:data.updatedAt.toISOString()}:{}),image:new URL(data.image,SITE_URL).href,author:{'@type':'Organization',name:'ChrowmDesigns',url:SITE_URL},publisher:{'@type':'Organization',name:'ChrowmDesigns',logo:{'@type':'ImageObject',url:new URL('/logo.svg',SITE_URL).href}},mainEntityOfPage:new URL(`/chronicles/${post.id}/`,SITE_URL).href};
+---
+<ChroniclesLayout title={data.title} description={data.description} image={data.image} imageAlt={data.imageAlt} article>
+<script slot="head" type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>
+<a class="article-back" href="/chronicles/">← Back to overview</a>
+<header class="article-header"><h1>{data.title}</h1><dl class="article-meta"><div><dt>Author</dt><dd>{data.author}</dd></div><div><dt>Published</dt><dd>{filedDate(data.publishedAt)}</dd></div>{data.coverageWeek && <div><dt>Coverage</dt><dd>Week of {filedDate(data.coverageWeek)}</dd></div>}<div><dt>Length</dt><dd>{readingMinutes(post.body)} min</dd></div><div><dt>Subject</dt><dd>{data.category}</dd></div><div><dt>Place</dt><dd>Palm Bay, FL</dd></div></dl></header>
+{data.coverageWeek && <p class="retrospective-note">Retrospective edition for the week of {filedDate(data.coverageWeek)}. Written and published {filedDate(data.publishedAt)}.</p>}
+<figure class="article-hero"><div class="article-art"><img src={data.image} alt={data.imageAlt} width="1536" height="1024" fetchpriority="high"/><span class="art-brand"><img src="/logo.svg" alt="ChrowmDesigns" width="100" height="30"/></span></div><figcaption>Original AI-generated artwork for ChrowmDesigns.</figcaption></figure>
+<article class="chronicles-prose"><Content/></article>
+<aside class="article-notes"><p>Sources and practical examples inform each article; hypothetical examples are identified in the text.</p><h2 class="mono">Sources & further reading</h2><ul>{data.sources.map(source=><li><a href={source.url}>{source.title}</a></li>)}</ul><p>Explore <a href="/services/">ChrowmDesigns services</a> or <a href="/for-agencies/">design support for agency teams</a>.</p></aside>
+<nav class="keep-reading" aria-label="Keep reading">{newer?<a href={`/chronicles/${newer.id}/`}><span class="mono">Newer entry</span>{newer.data.title}</a>:<a href="/chronicles/">← All Chronicles</a>}{older&&<a href={`/chronicles/${older.id}/`}><span class="mono">Older entry</span>{older.data.title}</a>}</nav>
+</ChroniclesLayout>
