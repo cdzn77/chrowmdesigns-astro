@@ -41,7 +41,7 @@ test('published articles have schema, source notes, a real image and return navi
  for(const dir of dirs.filter(d=>d.isDirectory())){
   const doc=new JSDOM(await read(`dist/chronicles/${dir.name}/index.html`)).window.document;
   const schema=JSON.parse(doc.querySelector('script[type="application/ld+json"]').textContent);assert.equal(schema['@type'],'BlogPosting');assert.ok(doc.querySelector('.chronicles-prose').textContent.trim());
-  const img=doc.querySelector('.article-hero img');assert.ok(img.alt.length>=15);await access(new URL(`../public${img.getAttribute('src')}`,import.meta.url));assert.ok(doc.querySelector('.article-back[href="/chronicles/"]'));assert.match(doc.querySelector('.article-notes').textContent,/Produced with AI/);
+  const img=doc.querySelector('.article-hero img');assert.ok(img.alt.length>=15);await access(new URL(`../public${img.getAttribute('src')}`,import.meta.url));assert.ok(doc.querySelector('.article-back[href="/chronicles/"]'));assert.ok(doc.querySelector('.article-notes a[href^="https://"]'));assert.ok(!doc.querySelector('.article-notes').textContent.includes('Produced with AI for Chronicles by ChrowmDesigns'));
  }
 });
 test('retrospective batch has twenty weekly coverage dates separate from publication dates',async()=>{

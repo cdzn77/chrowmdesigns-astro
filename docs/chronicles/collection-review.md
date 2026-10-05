@@ -13,7 +13,7 @@ The complete final copy is in the 20 Markdown files under articles/ in the outpu
 - Lexical: pass after cleanup; no em dashes or canned transition vocabulary in public article prose.
 - Structural: pass for these concise essays; each addresses one practical design question.
 - Rhythm: pass after collection edit; no preview-and-summary scaffolding or generic engagement closers.
-- Brand: pass with the user's educational-content exception; AI production disclosure and accurate date labeling remain visible.
+- Brand: pass with the user's educational-content exception; Source notes and accurate date labeling remain visible; the user-requested removal of the AI production byline is applied.
 
 ## Artwork review
 All 20 v2 covers were visually inspected. The rejected eight v1 covers are excluded. The approved collection alternates photographic terrain, portraiture, flat collage, graphic abstraction and material studies. Original SVG branding is a separate page layer, preserving exact logo geometry. Downloaded raw WebP files do not contain the logo. The 12-reference foundation remains a vocabulary rather than a checklist of objects to repeat.
