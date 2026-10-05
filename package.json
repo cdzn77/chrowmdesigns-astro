@@ -9,10 +9,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:leads": "node --test scripts/analytics.test.mjs scripts/contact-verification.test.mjs scripts/lead-flow.test.mjs"
   },
   "dependencies": {
     "astro": "7.3.2",
     "vite": "8.2.2"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
   }
 }
