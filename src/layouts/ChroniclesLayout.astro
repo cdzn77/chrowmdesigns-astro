@@ -1,0 +1,23 @@
+---
+import '../styles/global.css';
+import '../styles/chronicles.css';
+import AnalyticsConsent from '../components/AnalyticsConsent.astro';
+import { SITE_URL } from '../lib/site-seo';
+interface Props { title?: string; description?: string; image?: string; imageAlt?: string; article?: boolean; }
+const {title='Chronicles', description='Notes on UX strategy, product design and visual craft from ChrowmDesigns.', image='/hero-poster.jpg', imageAlt='ChrowmDesigns', article=false}=Astro.props;
+const canonical=new URL(Astro.url.pathname, SITE_URL).href;
+---
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{title} | ChrowmDesigns</title><meta name="description" content={description}/>
+<link rel="canonical" href={canonical}/><meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="icon" href="/favicon.svg"/><link rel="alternate" type="application/rss+xml" title="Chronicles" href="/chronicles/feed.xml"/>
+<meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content={article?'article':'website'}/><meta property="og:url" content={canonical}/><meta property="og:image" content={new URL(image,SITE_URL).href}/><meta property="og:image:alt" content={imageAlt}/><meta name="twitter:card" content="summary_large_image"/>
+<slot name="head"/>
+</head><body class="chronicles-body">
+<a href="#chronicles-main" class="chronicles-skip">Skip to content</a>
+<div class="chronicles-top"><a href="/" aria-label="ChrowmDesigns portfolio"><img src="/logo.svg" alt="chrowm." width="110" height="19"/></a><a href="/" class="mono">Back to portfolio ↗</a></div>
+<main id="chronicles-main"><slot/></main>
+<footer class="chronicles-footer"><img src="/logo.svg" alt="chrowm." width="130" height="23"/><p>CHROWMDESIGNS · PALM BAY, FLORIDA<br/>CHRONICLES: NOTES ON DESIGN AND CREATIVE PRACTICE.</p><a href="/chronicles/feed.xml">RSS feed ↗</a></footer>
+<AnalyticsConsent/>
+</body></html>

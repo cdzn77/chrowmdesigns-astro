@@ -1,7 +1,7 @@
 import cases from '../data/cases.json';
 
 export const SITE_URL = 'https://chrowmdesigns.com';
-export const publicPaths = ['/', '/info/', '/cases/', '/contact/', '/services/', '/for-agencies/', ...cases.map(item => `${item.url}/`)];
+export const publicPaths = ['/', '/info/', '/cases/', '/contact/', '/services/', '/for-agencies/', '/chronicles/', ...cases.map(item => `${item.url}/`)];
 export const normalizePath = (path: string) => path === '/' ? '/' : `${path.replace(/\/+$/, '')}/`;
 // Publishing a new page is explicit; design explorations stay out of search by default.
 export const isIndexable = (path: string) => publicPaths.includes(normalizePath(path));

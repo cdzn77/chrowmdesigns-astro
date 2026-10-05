@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test:leads": "node --test scripts/analytics.test.mjs scripts/contact-verification.test.mjs scripts/lead-flow.test.mjs"
+    "test:leads": "node --test scripts/analytics.test.mjs scripts/contact-verification.test.mjs scripts/lead-flow.test.mjs",
+    "test:chronicles": "node --test scripts/chronicles.test.mjs"
   },
   "dependencies": {
     "astro": "7.3.2",

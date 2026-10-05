@@ -1,0 +1,29 @@
+---
+import ChroniclesLayout from '../../layouts/ChroniclesLayout.astro';
+import { publishedChronicles, categories, readingMinutes, filedDate } from '../../lib/chronicles';
+const posts=await publishedChronicles();
+---
+<ChroniclesLayout>
+<header class="chronicles-masthead"><div class="masthead-kicker">FROM THE STUDIO <span></span></div><h1>Chronicles</h1><div class="masthead-signoff"><span></span><em>by</em> CHROWMDESIGNS</div></header>
+<div class="chronicles-register">
+<aside class="chronicles-aside"><p class="chronicles-intro">A closer look at digital design, visual craft, and the decisions behind useful work.</p><p class="chronicles-aside-note">Ideas worth examining.<br/>New perspectives, every week.</p>
+{posts.length>0 && <button id="random-essay" type="button">Feeling curious? ↗</button>}
+<div class="subject-list"><p class="mono">By subject</p>{categories.map(category=><button type="button" class="subject-filter" data-category={category} aria-pressed="false">{category}<sup>{posts.filter(p=>p.data.category===category).length}</sup></button>)}</div>
+</aside>
+<section class="chronicles-archive" aria-label="Article archive">
+<div class="archive-tools"><span class="mono" id="archive-count">{posts.length} entries</span><label><span class="sr-only">Search Chronicles</span><input type="search" id="archive-search" placeholder="Search the archive" autocomplete="off"/></label></div>
+{posts.some(p=>p.data.coverageWeek) && <p class="archive-date-note">Retrospective editions follow a weekly calendar. Coverage dates appear below; each article shows its actual publication date.</p>}
+<div class="register-head mono"><span>No.</span><span>Title</span><span>Edition</span><span>Length</span></div>
+<div id="archive-rows">{posts.map((post,i)=><a class:list={["register-row", {"is-latest": i===0}]} href={`/chronicles/${post.id}/`} data-category={post.data.category} data-search={`${post.data.title} ${post.data.description} ${post.data.category}`.toLowerCase()}><span class="entry-number">{String(posts.length-i).padStart(3,'0')}</span><div class="entry-title"><span class="entry-preview" aria-hidden="true"><img src={post.data.image} alt="" loading="lazy" decoding="async" width="108" height="72"/></span><div class="entry-title-text">{i===0 && <span class="latest mono">Latest entry</span>}<h2>{post.data.title}</h2></div></div><time datetime={(post.data.coverageWeek ?? post.data.publishedAt).toISOString()}>{filedDate(post.data.coverageWeek ?? post.data.publishedAt)}</time><span class="entry-length">{readingMinutes(post.body)} min</span></a>)}</div>
+<div id="archive-empty" class="archive-empty"><p>{posts.length?'No entries match your search.':'The first chapter is still ahead.'}</p><span>{posts.length?'Try another subject or a shorter search.':'Notes on design, art, and making things that matter. Coming soon.'}</span></div>
+<div class="archive-pagination" hidden><button id="newer" type="button">← Newer entries</button><span id="page-status" class="mono" aria-live="polite"></span><button id="older" type="button">Earlier entries →</button></div>
+</section></div>
+<script>
+const rows=Array.from(document.querySelectorAll<HTMLAnchorElement>('.register-row'));
+const search=document.querySelector<HTMLInputElement>('#archive-search')!;
+const filters=Array.from(document.querySelectorAll<HTMLButtonElement>('.subject-filter'));
+let category='',page=0;const pageSize=20;
+function update(){const query=search.value.toLowerCase().trim();const matches=rows.filter(r=>(!category||r.dataset.category===category)&&r.dataset.search!.includes(query));const pages=Math.max(1,Math.ceil(matches.length/pageSize));page=Math.min(page,pages-1);rows.forEach(r=>r.hidden=true);matches.slice(page*pageSize,(page+1)*pageSize).forEach(r=>r.hidden=false);document.querySelector<HTMLElement>('#archive-empty')!.hidden=matches.length>0;document.querySelector<HTMLElement>('.archive-pagination')!.hidden=matches.length<=pageSize;document.querySelector('#page-status')!.textContent=`Page ${page+1} of ${pages}`;document.querySelector<HTMLButtonElement>('#newer')!.disabled=page===0;document.querySelector<HTMLButtonElement>('#older')!.disabled=page>=pages-1;document.querySelector('#archive-count')!.textContent=`${matches.length} ${matches.length===1?'entry':'entries'}`;filters.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===category)));}
+search.addEventListener('input',()=>{page=0;update()});filters.forEach(b=>b.addEventListener('click',()=>{category=category===b.dataset.category?'':b.dataset.category!;page=0;update()}));document.querySelector('#newer')!.addEventListener('click',()=>{page--;update()});document.querySelector('#older')!.addEventListener('click',()=>{page++;update()});document.querySelector('#random-essay')?.addEventListener('click',()=>{if(rows.length)location.href=rows[Math.floor(Math.random()*rows.length)].href});update();
+</script>
+</ChroniclesLayout>

@@ -1,0 +1,4 @@
+import { publishedChronicles } from '../../lib/chronicles';
+import { SITE_URL } from '../../lib/site-seo';
+const escape = (s:string) => s.replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&apos;'}[c]!));
+export async function GET(){const posts=await publishedChronicles();return new Response(`<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Chronicles by ChrowmDesigns</title><link>${SITE_URL}/chronicles/</link><description>Notes on UX strategy, product design and visual craft.</description><language>en-us</language>${posts.map(p=>`<item><title>${escape(p.data.title)}</title><link>${SITE_URL}/chronicles/${p.id}/</link><guid>${SITE_URL}/chronicles/${p.id}/</guid><pubDate>${p.data.publishedAt.toUTCString()}</pubDate><description>${escape(p.data.description)}</description></item>`).join('')}</channel></rss>`,{headers:{'Content-Type':'application/rss+xml; charset=utf-8'}});}

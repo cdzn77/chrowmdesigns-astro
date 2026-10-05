@@ -604,3 +604,15 @@ h1, h2, h3, h4, h5, h6,
   .case-meta .case-meta__client-short { display: block !important; }
   .case-meta .case-meta__highlight { display: block !important; }
 }
+
+/* Chronicles editorial palette. Mint is reserved for dark surfaces. */
+:root {
+  --chronicles-paper: #f5f4ef;
+  --chronicles-ink: #1b1b1b;
+  --chronicles-muted: #62625b;
+  --chronicles-rule: #b9b9b0;
+  --chronicles-hover: #e8e7df;
+  --chronicles-serif: 'Source Serif 4', Georgia, serif;
+  --chronicles-sans: 'Manrope', Helvetica, Arial, sans-serif;
+  --chronicles-mono: 'JetBrains Mono', monospace;
+}
