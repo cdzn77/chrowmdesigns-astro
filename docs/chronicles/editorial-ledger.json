@@ -245,7 +245,7 @@
     "isoWeek": "2026-W41",
     "batch": "scheduled-weekly",
     "publishedAt": "2026-10-07T14:16:07.156447+00:00",
-    "status": "validated-awaiting-pr",
+    "status": "published",
     "category": "Product design",
     "primaryQuestion": "What can a success message truthfully promise when receipt and completion are different states?",
     "sources": [
@@ -259,9 +259,14 @@
     "palette": "Aubergine, copper, amber",
     "imagePrompt": "Create one high-end editorial cover photograph for ChrowmDesigns Chronicles article 'A confirmation screen is a promise'. Landscape 3:2. A bent copper rod suspended on extremely fine nearly invisible wire, viewed low at an oblique angle, forms an incomplete angular zigzag in real three-dimensional space. Its crisp cast shadow on a saturated deep aubergine wall resolves into a large complete checkmark. The physical object and the reassuring shadow visibly disagree. One precise warm white hard studio light from the upper left reveals scratched brushed copper, narrow amber highlights, and subtly grainy plum plaster. Asymmetrical group on the right with generous dark plum negative space left, clean editorial crop, tactile but immaculate art direction, no text or logos. Meaning: an interface's promise of completion must match physical reality. The shared twelve-reference foundation contributes impossible spatial gesture, sculptural material against simple geometry, luminous reflection, powerful cropped hierarchy, poster clarity, quiet spacing, jagged organic texture, radical color remapping, restrained rhythm, deliberate scale mismatch, reflection/representation as conceptual contrast, and directional light energy. These are principles, not objects to combine. Avoid any hand, stone, arch, sphere, dune, mountain, mirrored doorway, fabric, paper collage, UI screenshot, keyboard, decorative chart or generic tech imagery. NOT the earlier beige/teal scenes. Use copper/aubergine/amber, not cobalt/lime/orange as the dominant scene. One sculpture and its shadow only. Photographic realism, controlled shadows, premium conceptual studio still life.\n",
     "publicationUrl": "https://chrowmdesigns.com/chronicles/confirmation-is-a-promise/",
-    "commit": null,
-    "deploymentStatus": "pending",
-    "deploymentId": null,
-    "validation": "Production build, 6 Chronicles and 25 lead checks passed; desktop/mobile visually inspected."
+    "commit": "a2f9c8bcdf4f9487689ba014801b99be26042fff",
+    "deploymentStatus": "production-verified",
+    "deploymentId": "6ac655ad01631c0007632395",
+    "validation": "Production build, 6 Chronicles and 25 lead checks passed; desktop/mobile visually inspected.",
+    "deployedAt": "2026-10-07T14:22:51.440Z",
+    "verifiedAt": "2026-10-07T14:31:22.207905+00:00",
+    "pullRequest": "https://github.com/cdzn77/chrowmdesigns-astro/pull/4",
+    "productionChecks": "Article, artwork, archive, RSS, sitemap.xml and sitemap_index.xml HTTP 200; article listed in each discovery surface. Exact SVG logo loaded.",
+    "cacheRefresh": "Targeted Cloudflare purge for feed.xml, sitemap.xml and sitemap_index.xml; security settings unchanged."
   }
 ]
