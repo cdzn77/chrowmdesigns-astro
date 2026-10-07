@@ -38,3 +38,8 @@ Generated result inspected: no text, invented logo or anatomy; wires intentional
 ## Validation and deployment
 
 Production build passed (47 routes). Chronicles checks 6/6 passed; lead checks 25/25 passed. Desktop at 1440 pixels and narrow responsive layout inspected, hero and exact SVG logo loaded, no horizontal overflow. Mobile emulation also inspected. Only article, cover, review and ledger changed. PR checks and production verification remain pending. Dependency audit reports five existing transitive advisories (four high, one moderate); lockfile unchanged. This is a static output publication, with no dependency or runtime-code changes. Dependency remediation is separate work.
+
+
+## Production verification
+
+PR #4 merged after CodeQL and both Netlify previews passed. Production commit a2f9c8bcdf4f9487689ba014801b99be26042fff. Netlify cdzn deploy 6ac655ad01631c0007632395 is ready and published at 2026-10-07T14:22:51.440Z. Article, cover and archive verified HTTP 200. RSS and both sitemap URLs verified HTTP 200 with the new route after an exact-URL Cloudflare cache purge. Command-line requests receive 403; normal browser requests work. No hosting security controls changed. No LinkedIn/Medium posts.
