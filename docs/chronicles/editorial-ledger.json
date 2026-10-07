@@ -238,5 +238,30 @@
     "imageConcept": "Pure graphic modular composition, flat screenprint aesthetic: eight differently shaped interlocking navy forms occupy the right two-thirds of a pale lime sheet; one cobalt shape sits separately at left aligned by a thin violet rule. Strong irregular geometry, no 3D volume, no ceramic or marble. Concept shared format still requires design judgment.",
     "source": "https://www.designtokens.org/tr/2025.10/format/",
     "batch": "retrospective-20"
+  },
+  {
+    "slug": "confirmation-is-a-promise",
+    "title": "A confirmation screen is a promise",
+    "isoWeek": "2026-W41",
+    "batch": "scheduled-weekly",
+    "publishedAt": "2026-10-07T14:16:07.156447+00:00",
+    "status": "validated-awaiting-pr",
+    "category": "Product design",
+    "primaryQuestion": "What can a success message truthfully promise when receipt and completion are different states?",
+    "sources": [
+      "https://design-system.service.gov.uk/patterns/confirmation-pages/",
+      "https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html"
+    ],
+    "image": "/images/chronicles/confirmation-is-a-promise.webp",
+    "imageConcept": "A crooked copper rod casts a complete checkmark: representation disagrees with reality.",
+    "composition": "Oblique studio photograph, object upper right, shadow lower right, negative space left",
+    "material": "Scratched copper, fine suspension wires, grainy plaster",
+    "palette": "Aubergine, copper, amber",
+    "imagePrompt": "Create one high-end editorial cover photograph for ChrowmDesigns Chronicles article 'A confirmation screen is a promise'. Landscape 3:2. A bent copper rod suspended on extremely fine nearly invisible wire, viewed low at an oblique angle, forms an incomplete angular zigzag in real three-dimensional space. Its crisp cast shadow on a saturated deep aubergine wall resolves into a large complete checkmark. The physical object and the reassuring shadow visibly disagree. One precise warm white hard studio light from the upper left reveals scratched brushed copper, narrow amber highlights, and subtly grainy plum plaster. Asymmetrical group on the right with generous dark plum negative space left, clean editorial crop, tactile but immaculate art direction, no text or logos. Meaning: an interface's promise of completion must match physical reality. The shared twelve-reference foundation contributes impossible spatial gesture, sculptural material against simple geometry, luminous reflection, powerful cropped hierarchy, poster clarity, quiet spacing, jagged organic texture, radical color remapping, restrained rhythm, deliberate scale mismatch, reflection/representation as conceptual contrast, and directional light energy. These are principles, not objects to combine. Avoid any hand, stone, arch, sphere, dune, mountain, mirrored doorway, fabric, paper collage, UI screenshot, keyboard, decorative chart or generic tech imagery. NOT the earlier beige/teal scenes. Use copper/aubergine/amber, not cobalt/lime/orange as the dominant scene. One sculpture and its shadow only. Photographic realism, controlled shadows, premium conceptual studio still life.\n",
+    "publicationUrl": "https://chrowmdesigns.com/chronicles/confirmation-is-a-promise/",
+    "commit": null,
+    "deploymentStatus": "pending",
+    "deploymentId": null,
+    "validation": "Production build, 6 Chronicles and 25 lead checks passed; desktop/mobile visually inspected."
   }
 ]
