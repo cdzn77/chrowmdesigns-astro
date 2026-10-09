@@ -5,7 +5,7 @@
     "client": "Beat Games / Meta Reality Labs",
     "category": "Creative Systems & Brand Strategy",
     "tags": ["Design", "Strategy"],
-    "description": "Developed VR brand environments for 3 artist packs reaching 4M+ Beat Saber players, with a visual system adopted as the template for all future Music Pack releases",
+    "description": "Developed visual direction for three Beat Saber Music Packs, balancing artist recognition with familiar gameplay cues and providing a framework for later releases.",
     "thumbnail": "/images/beat_saber-case_thumb.webp",
     "url": "/cases/beat-saber"
   },
@@ -15,7 +15,7 @@
     "client": "Marriott Vacation Club (Marriott International)",
     "category": "Enterprise UX & Digital Transformation",
     "tags": ["UX/UI", "Strategy"],
-    "description": "Led UX transformation of a Fortune 500 vacation ownership platform, targeting a 40% mobile conversion gap across a multi-brand system reaching millions of members",
+    "description": "Reorganized twelve navigation categories into three member paths and established shared design patterns across four vacation ownership brands.",
     "thumbnail": "/images/mvc-case_thumb.webp",
     "url": "/cases/marriott-vacation-club"
   },
@@ -25,7 +25,7 @@
     "client": "Procter & Gamble",
     "category": "Product Strategy & Mobile UX",
     "tags": ["UX/UI", "Strategy"],
-    "description": "Redesigned a P&G sleep app's color system so the brand's iconic purple palette functioned effectively on screens at 11pm, not just on pharmacy shelves",
+    "description": "Adapted ZzzQuil's color system, navigation, and listening controls across the Sleepmate app and companion shopping website, with readability as a design goal.",
     "thumbnail": "/images/zzzquil-case_thumb.webp",
     "url": "/cases/zzzquil"
   },
@@ -35,7 +35,7 @@
     "client": "Grounded (climate solutions organization)",
     "category": "UX Strategy & Behavioral Design",
     "tags": ["UX/UI", "Strategy"],
-    "description": "Applied behavioral research on emotional regulation to redesign a climate platform's communication architecture, driving a 300% increase in webinar registrations",
+    "description": "Redesigned a climate platform around readable stories, event registration, and independent publishing; the project account reports 300% more first-quarter webinar registrations.",
     "thumbnail": "/images/grounded-case_thumb.webp",
     "url": "/cases/grounded"
   },
@@ -45,7 +45,7 @@
     "client": "Malibu Rum (Pernod Ricard USA)",
     "category": "Creative Systems & Campaign Design",
     "tags": ["Design", "Strategy"],
-    "description": "Built the creative system for a 101-day, 60M-impression Malibu Rum campaign across multiple agencies, three platforms, and 4 international markets",
+    "description": "Built the creative system for 101 days of Malibu content across three platforms; the project account reports adoption in four markets and 60 million campaign impressions.",
     "thumbnail": "/images/malibu-case_thumb.webp",
     "url": "/cases/malibu-rum"
   },
@@ -55,7 +55,7 @@
     "client": "Carrabba's Italian Grill (Bloomin' Brands)",
     "category": "Content Strategy & UX Architecture",
     "tags": ["UX/UI", "Consulting"],
-    "description": "Designed a culinary content platform for a national restaurant chain that reduced time-to-recipe by 40% and grew mobile session depth 28%",
+    "description": "Built a culinary content platform around discovery and cooking tasks; the project account reports 40% faster content access in timed sessions with twelve participants.",
     "thumbnail": "/images/carrabbas-case_thumb.webp",
     "url": "/cases/carrabbas"
   },
@@ -65,7 +65,7 @@
     "client": "Walt Disney World Public Affairs",
     "category": "Research-Led UX & Information Architecture",
     "tags": ["UX/UI", "Strategy"],
-    "description": "Redesigned Walt Disney World's Public Affairs digital platform, cutting site-wide exit rates 44% and reducing a failing 5-step donation flow to 2 steps with 100% post-launch task success",
+    "description": "Shortened the donation request path from more than five interactions to two; all five returning participants completed the task on their first follow-up attempt.",
     "thumbnail": "/images/disney_case_thumb.webp",
     "url": "/cases/walt-disney-world"
   },
@@ -75,7 +75,7 @@
     "client": "Taco Bueno Restaurants",
     "category": "Brand Strategy & Integrated Campaign UX",
     "tags": ["Design", "Strategy", "Consulting"],
-    "description": "Built 'Bueno Means Better' from a single user research insight into a fully integrated brand platform that drove 147% higher social engagement and measurable perception gains in 3 test markets",
+    "description": "Developed Bueno Means Better around fresh-daily preparation across digital and restaurant touchpoints; the project account reports 147% higher campaign social engagement.",
     "thumbnail": "/images/taco_bueno-case_thumb.webp",
     "url": "/cases/taco-bueno"
   }

@@ -43,7 +43,7 @@ const releases = [
         <h1>Beat<br />Saber</h1>
       </div>
       <div class="case-intro__summary">
-        <p>Britney Spears, Monstercat, and Metallica each needed a distinct identity within Beat Saber. I developed the visual direction across their Music Pack launches, keeping the game’s familiar cues in place.</p>
+        <p>Three artist identities built around familiar Beat Saber gameplay cues.</p>
         <dl>
           <div><dt>Role</dt><dd>Senior UX Strategist and Art Director</dd></div>
           <div><dt>Scope</dt><dd>Brand systems, art direction, launch design</dd></div>
@@ -63,9 +63,9 @@ const releases = [
       <h2 id="premise-title">One game.<br />Three unmistakable worlds.</h2>
     </div>
     <div class="premise__copy">
-      <p>Beat Games engaged ChrowmDesigns across the Britney Spears, Monstercat Mixtape Vol. 2, and Metallica Music Pack launches. My role was Senior UX Strategist and Art Director, shaping the brand framework and visual direction across the releases. Beat Games’ technical team handled the 3D modeling and rendering from my references, specifications, and art direction.</p>
-      <p>The artist’s identity had to be clear without competing with the notes players needed to follow. Saber colors and spatial depth were practical constraints on the art direction.</p>
-      <p>The challenge was balancing two audiences: artist fans encountering Beat Saber and existing players with expectations about its visual language. The design needed to make each artist recognizable while preserving the contrast and spatial cues that supported play.</p>
+      <p>As ChrowmDesigns' Senior UX Strategist and Art Director, I developed the brand framework and visual direction for Britney Spears, Monstercat Mixtape Vol. 2, and Metallica Music Packs, balancing artist recognition with familiar gameplay cues. Beat Games' technical team handled 3D modeling and rendering from my references and specifications.</p>
+
+
     </div>
   </section>
 
@@ -79,15 +79,15 @@ const releases = [
       <p class="section-index">02 / The system</p>
       <h2 id="system-title">Keeping the game readable.</h2>
       <div class="system__body">
-        <p>Player feedback from earlier Music Packs helped establish the design criteria. Notes needed to stand apart from their surroundings. Lighting that followed the music and recognizable artist references also informed the direction.</p>
-        <p>The artist audits covered album artwork and stage design, along with merchandise and fan aesthetics. Early-2000s club references shaped the Britney direction. Metallica called for heavier industrial textures, while Monstercat offered more room for movement and changing genre cues.</p>
-        <p>I separated the fixed game cues from the choices we could change. Saber colors stayed consistent, and each direction had to preserve note contrast and depth. Materials, background palettes, and lighting treatments could then vary by artist.</p>
+        <p>Feedback from earlier packs informed note contrast, spatial depth, music-responsive lighting, and recognizable artist references as design criteria. Audits of album artwork, stage design, merchandise, and fan aesthetics supplied each artist's direction.</p>
+
+        <p>I kept red-and-blue saber cues fixed while varying materials, palettes, and lighting to distinguish the artists without competing with play. That boundary served artist fans discovering the game and existing players expecting familiar cues.</p>
       </div>
     </div>
     <ol class="principles">
-      <li><span>01</span><strong>Gameplay readability</strong><p>Protect note contrast and spatial depth so the environment supports the player’s next action.</p></li>
-      <li><span>02</span><strong>Beat Saber identity</strong><p>Keep the red-and-blue saber language and coherent visual rules across all three artist directions.</p></li>
-      <li><span>03</span><strong>Artist authenticity</strong><p>Use palette, materials, and imagery to make each artist recognizable within the shared framework.</p></li>
+      <li><span>01</span><strong>Gameplay readability</strong><p>Protect note contrast and spatial depth.</p></li>
+      <li><span>02</span><strong>Beat Saber identity</strong><p>Keep the red-and-blue saber cues.</p></li>
+      <li><span>03</span><strong>Artist authenticity</strong><p>Vary palettes, materials, and lighting.</p></li>
     </ol>
   </section>
 
@@ -95,12 +95,12 @@ const releases = [
     <div class="artist__label"><span>03 / Release one</span><span>Britney Spears</span></div>
     <div class="artist__heading">
       <h2 id="britney-title">Britney’s club-era<br />references in VR.</h2>
-      <p>A glowing heart gave the Britney environment a recognizable focal point. Its color and lighting drew on early-2000s club references.</p>
+      <p>Britney's glowing heart, magenta-to-blue gradients, and typography connected early-2000s club references with Beat Saber's neon identity.</p>
     </div>
     <figure class="artist__hero"><img src={releases[0].image} alt={releases[0].alt} loading="lazy" decoding="async" /></figure>
     <div class="artist__evidence">
       <figure><img src={releases[0].detail} alt={releases[0].detailAlt} loading="lazy" decoding="async" /></figure>
-      <div class="artist__quote"><span>Art direction</span><h3>The heart anchors the scene.</h3><p class="artist__closing">Magenta-to-blue gradients carried the nightclub reference into the environment. The typography connected Britney’s pop identity with Beat Saber’s existing neon treatment. Contrast and depth remained part of the review: the heart could draw attention without obscuring the rest of the scene.</p></div>
+      <div class="artist__quote"><span>Art direction</span><h3>The heart anchors the scene.</h3><p class="artist__closing">Contrast and depth remained review criteria so the focal point would not obscure the scene.</p></div>
       <figure><img src={releases[0].commerce} alt={releases[0].commerceAlt} loading="lazy" decoding="async" /></figure>
     </div>
 
@@ -110,7 +110,7 @@ const releases = [
     <div class="duo__intro">
       <p class="section-index">04 / Release two &amp; three</p>
       <h2 id="duo-title">A system with range.</h2>
-      <p>Monstercat’s polished surfaces and Metallica’s industrial textures took the design in different directions. Both still had to fit the same game.</p>
+      <p>Monstercat and Metallica applied the framework through different materials and lighting.</p>
     </div>
     <div class="duo__panels">
       {releases.slice(1).map((release) => (
@@ -120,8 +120,8 @@ const releases = [
           <div class="release-panel__detail">
             <img src={release.detail} alt={release.detailAlt} loading="lazy" decoding="async" />
             <p>{release.name === 'Monstercat'
-              ? 'Monstercat’s mascot became a glossy 3D focal point surrounded by reactive columns and lasers. The violet and blue surfaces contrasted with brighter red accents to keep the composition readable. Those references gave the technical team a direction for expressing the brand’s association with movement.'
-              : 'Metallica’s direction used metallic forms and lightning against an industrial background. Combining the lightning-bolt mark with Beat Saber’s red-and-blue identity required discussion with the brand stakeholders. I made the case for the visual choices and prepared references for the technical team.'}</p>
+              ? "Monstercat's glossy mascot, reactive columns, and lasers expressed movement, with violet-blue surfaces and brighter red accents supporting readability."
+              : "Metallica's metallic forms, lightning-bolt mark, and industrial background required discussion with brand stakeholders to fit the game's red-and-blue identity; I prepared the references for technical production."}</p>
           </div>
         </article>
       ))}
@@ -139,11 +139,11 @@ const releases = [
       <div><strong>0</strong><span>timeline slips across the release program</span></div>
     </div>
     <div class="proof__handoff">
-      <div><h3>What I handed over</h3><p>Beat Games received the visual framework and the references for each artist, supported by asset specifications. I owned the design direction. Their technical team handled the 3D modeling and rendering.</p></div>
-      <div><h3>What I would improve</h3><p>I would review prototypes in the headset earlier. Lighting and depth can read differently in VR than in a flat reference image. Reviewing them while the direction is still flexible would leave more room to adjust.</p></div>
+      <div><h3>What I handed over</h3><p>The release program delivered three global launches across platforms with no timeline slips, supported by an artist framework, references, and asset specifications. Beat Saber's reported audience at engagement was more than four million active players, a context figure rather than measured reach for these packs.</p></div>
+      <div><h3>What I would improve</h3><p>I would review prototypes in-headset earlier, while lighting and depth remain easier to adjust than after the direction is fixed.</p></div>
     </div>
     <div class="proof__closing">
-      <p>The component library gave the team a starting point for later Music Packs. The store images show how each artist’s direction carried through to the release.</p>
+      <p>The component library provided a starting point for later packs, while store images show the directions carried into release.</p>
       <div class="proof__commerce">
         {releases.map((release) => <img src={release.commerce} alt={release.commerceAlt} loading="lazy" decoding="async" />)}
       </div>
