@@ -6,6 +6,7 @@ const { title, description, label, heading, intro } = Astro.props;
 const agency = Astro.url.pathname.includes("for-agencies");
 ---
 <BaseLayout title={title} description={description} contentLabel={title}>
+  <slot name="head" slot="head" />
   <article class="service-page">
     <header class="service-page__hero">
       <div class="service-page__title">

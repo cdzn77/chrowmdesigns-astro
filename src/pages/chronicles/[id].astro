@@ -7,7 +7,7 @@ export async function getStaticPaths(){const posts=await publishedChronicles();r
 const {post,newer,older}=Astro.props;
 const {Content}=await render(post);
 const data=post.data;
-const schema={'@context':'https://schema.org','@type':'BlogPosting',headline:data.title,description:data.description,datePublished:data.publishedAt.toISOString(),...(data.updatedAt?{dateModified:data.updatedAt.toISOString()}:{}),image:new URL(data.image,SITE_URL).href,author:{'@type':'Organization',name:'ChrowmDesigns',url:SITE_URL},publisher:{'@type':'Organization',name:'ChrowmDesigns',logo:{'@type':'ImageObject',url:new URL('/logo.svg',SITE_URL).href}},mainEntityOfPage:new URL(`/chronicles/${post.id}/`,SITE_URL).href};
+const schema={'@context':'https://schema.org','@type':'BlogPosting','@id':new URL(`/chronicles/${post.id}/`,SITE_URL).href,isPartOf:{'@id':`${SITE_URL}/chronicles/#blog`},headline:data.title,description:data.description,datePublished:data.publishedAt.toISOString(),...(data.updatedAt?{dateModified:data.updatedAt.toISOString()}:{}),image:new URL(data.image,SITE_URL).href,author:{'@type':'Organization','@id':`${SITE_URL}/#studio`,name:'ChrowmDesigns',url:SITE_URL},publisher:{'@type':'Organization','@id':`${SITE_URL}/#studio`,name:'ChrowmDesigns',logo:{'@type':'ImageObject',url:new URL('/logo.svg',SITE_URL).href}},mainEntityOfPage:new URL(`/chronicles/${post.id}/`,SITE_URL).href};
 ---
 <ChroniclesLayout title={data.title} description={data.description} image={data.image} imageAlt={data.imageAlt} article>
 <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>

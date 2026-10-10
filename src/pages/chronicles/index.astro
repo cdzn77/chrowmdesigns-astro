@@ -1,9 +1,29 @@
 ---
 import ChroniclesLayout from '../../layouts/ChroniclesLayout.astro';
 import { publishedChronicles, categories, readingMinutes, filedDate } from '../../lib/chronicles';
+import { SITE_URL, structuredData } from '../../lib/site-seo';
 const posts=await publishedChronicles();
+const title = 'Chronicles: UX Strategy & Design Notes';
+const description = 'A closer look at digital design, visual craft, and the decisions behind useful work.';
+const archiveURL = `${SITE_URL}/chronicles/`;
+const blogId = `${archiveURL}#blog`;
+const baseSchema = structuredData('/chronicles/', title, description, `${SITE_URL}/hero-poster.jpg`);
+const archiveSchema = { ...baseSchema, '@graph': [
+  ...baseSchema['@graph'].map(node => '@type' in node && node['@type'] === 'WebPage'
+    ? { ...node, '@type': 'CollectionPage', mainEntity: { '@id': blogId } } : node),
+  { '@type': 'Blog', '@id': blogId, name: 'Chronicles', url: archiveURL, description,
+    publisher: { '@id': `${SITE_URL}/#studio` }, mainEntity: { '@id': `${archiveURL}#entries` },
+    blogPost: posts.map(post => ({ '@id': `${archiveURL}${post.id}/` })),
+  },
+  { '@type': 'ItemList', '@id': `${archiveURL}#entries`, name: 'Chronicles article archive',
+    itemListElement: posts.map((post, index) => ({
+      '@type': 'ListItem', position: index + 1, name: post.data.title, url: `${archiveURL}${post.id}/`,
+    })),
+  },
+] };
 ---
-<ChroniclesLayout>
+<ChroniclesLayout title={title} description={description}>
+<script slot="head" type="application/ld+json" set:html={JSON.stringify(archiveSchema).replace(/</g, '\\u003c')} />
 <header class="chronicles-masthead"><div class="masthead-kicker">FROM THE STUDIO <span></span></div><h1>Chronicles</h1><div class="masthead-signoff"><span></span><em>by</em> CHROWMDESIGNS</div></header>
 <div class="chronicles-register">
 <aside class="chronicles-aside"><p class="chronicles-intro">A closer look at digital design, visual craft, and the decisions behind useful work.</p><p class="chronicles-aside-note">Ideas worth examining.<br/>New perspectives, every week.</p>

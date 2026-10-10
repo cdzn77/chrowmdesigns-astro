@@ -1,0 +1,22 @@
+# ChrowmDesigns
+
+> ChrowmDesigns (Chrowm Designs) is Angelo Manzano Jr.'s independent UX strategy and product design studio in Palm Bay, Florida, working remotely with agencies and in-house teams nationwide.
+
+## Studio and services
+
+- [Portfolio](https://chrowmdesigns.com/): Studio overview and selected work.
+- [About Angelo Manzano Jr.](https://chrowmdesigns.com/info/): Experience, approach, and professional background.
+- [Design services](https://chrowmdesigns.com/services/): UX audits, digital product design, prototypes, design systems, and service questions.
+- [For agencies](https://chrowmdesigns.com/for-agencies/): Senior UX consulting and contract design support, scope, collaboration, and engagement questions.
+- [Contact](https://chrowmdesigns.com/contact/): Discuss a project and availability.
+
+## Project evidence
+
+- [Case studies](https://chrowmdesigns.com/cases/): Eight projects with roles, design decisions, and project-reported outcomes. Outcome figures do not establish the effect of any individual design change.
+- [Marriott Vacation Club](https://chrowmdesigns.com/cases/marriott-vacation-club/): Navigation and shared design patterns across four vacation ownership brands.
+- [Disney Public Affairs](https://chrowmdesigns.com/cases/walt-disney-world/): Research, information architecture, and donation-request navigation.
+- [Beat Saber](https://chrowmdesigns.com/cases/beat-saber/): Visual direction for three Music Packs and a framework for later releases.
+
+## Studio publication
+
+- [Chronicles](https://chrowmdesigns.com/chronicles/): Notes on UX strategy, product design, and visual craft. Individual articles include publication dates and source notes; retrospective coverage dates are identified separately.

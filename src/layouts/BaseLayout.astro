@@ -26,7 +26,7 @@ const {
 
 const siteName = 'ChrowmDesigns';
 const path = normalizePath(Astro.url.pathname);
-const fullTitle = title === siteName ? `Angelo Manzano Jr. — Senior UX Strategist | ${siteName}` : `${title} — ${siteName}`;
+const fullTitle = title === siteName ? `Angelo Manzano Jr.: Senior UX Strategist | ${siteName}` : `${title} | ${siteName}`;
 const canonicalURL = canonicalFor(new URL(requestedCanonical ?? path, SITE_URL).pathname);
 const indexable = isIndexable(path);
 const project = caseForPath(path);

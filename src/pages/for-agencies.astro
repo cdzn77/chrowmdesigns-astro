@@ -1,14 +1,46 @@
 ---
 import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { SITE_URL } from '../lib/site-seo';
+const faqs = [
+  {
+    "id": "faq-existing-project",
+    "question": "Can we bring you into an existing project?",
+    "answer": "Yes. Share the current designs, constraints, and the gap you need covered. We can identify a focused role and agree on how I'll work with your team."
+  },
+  {
+    "id": "faq-agency-location",
+    "question": "Do you work with agencies outside Florida?",
+    "answer": "Yes. I'm based in Palm Bay, Florida, and work remotely with agencies and teams nationwide. Meeting schedules and collaboration expectations are agreed at the start."
+  },
+  {
+    "id": "faq-estimate",
+    "question": "What should we send for an estimate?",
+    "answer": "A short brief, the expected deliverables, your target dates, and an indication of budget. If those are still taking shape, tell me what is known and what needs defining."
+  },
+  {
+    "id": "faq-confidentiality",
+    "question": "How are client communication and confidentiality handled?",
+    "answer": "We discuss your agency's requirements before the engagement and agree on communication, access, confidentiality, and how the work may be credited or shared."
+  }
+];
+const faqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  '@id': `${SITE_URL}/for-agencies/#faq`, url: `${SITE_URL}/for-agencies/#agency-questions`,
+  mainEntity: faqs.map(faq => ({
+    '@type': 'Question', '@id': `${SITE_URL}/for-agencies/#${faq.id}`, name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
 ---
-<ServiceLayout title="Freelance UX & Design Support for Agencies" description="Senior freelance UX strategy and product design for agency client projects. Work directly with Angelo Manzano Jr. on discovery, interfaces and design systems." label="ChrowmDesigns / For agencies" heading="A senior design partner for your next client project." intro="When your agency needs experienced UX and product design support, I can join the project with a defined role and a clear scope. Work directly with Angelo Manzano Jr., from the first conversation through design delivery.">
-  <section class="service-section" aria-labelledby="agency-support"><h2 id="agency-support">Bring me in where the work needs it.</h2><div class="service-grid">
+<ServiceLayout title="UX Consulting & Contract Design for Agencies" description="Senior freelance UX strategy and product design for agency client projects. Work directly with Angelo Manzano Jr. on discovery, interfaces and design systems." label="ChrowmDesigns / For agencies" heading="A senior design partner for your next client project." intro="I'm Angelo Manzano Jr., an independent senior UX consultant and product designer. I join agency projects with a defined role and scope, working directly from the first conversation through design delivery.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema).replace(/</g, '\\u003c')} />
+  <section class="service-section" aria-labelledby="agency-support"><h2 id="agency-support">UX consulting for agencies</h2><div class="service-grid">
     <div><h3>Shape the direction</h3><p>Get support with discovery, experience reviews, information architecture, and user flows. Useful when a client brief needs to become a clear design plan before production begins.</p></div>
     <div><h3>Move the design forward</h3><p>Add senior design capacity for a website, digital product, or campaign experience. The engagement can cover wireframes, responsive interfaces, and interactive prototypes.</p></div>
     <div><h3>Connect the system</h3><p>Bring consistency to a growing set of screens and components. I can work within an existing visual direction or help define reusable patterns for the project.</p></div>
     <div><h3>Support the handoff</h3><p>Help your team communicate design intent through interface states, component guidance, and implementation discussions. We agree on the handoff and support required as part of the scope.</p></div>
   </div><a href="/services/">Explore the design services ↗</a></section>
-  <section class="service-section" aria-labelledby="agency-process"><h2 id="agency-process">A clear working arrangement</h2><ol>
+  <section class="service-section" aria-labelledby="agency-process"><h2 id="agency-process">Senior UX design on contract</h2><ol>
     <li><strong>Share the brief.</strong> Send the client challenge, project stage, expected timeline, and the role you need filled.</li>
     <li><strong>Agree on the scope.</strong> We define deliverables, responsibilities, review points, budget, and availability before work begins.</li>
     <li><strong>Work with your team.</strong> We establish how design decisions, feedback, and client communication will be handled.</li>
@@ -19,10 +51,7 @@ import ServiceLayout from '../layouts/ServiceLayout.astro';
     <div class="service-proof"><a class="service-proof__image-link" href="/cases/beat-saber/" aria-label="View case study: Beat Saber Music Pack visual design"><img src="/images/beat_saber-case_thumb.webp" alt="Beat Saber Music Pack visual design" width="760" height="520" loading="lazy" /></a><h3>Beat Saber</h3><p>Brand expression and creative systems for a digital entertainment experience.</p><a href="/cases/beat-saber/">Explore the Beat Saber case study ↗</a></div>
   </div></section>
   <section class="service-section" aria-labelledby="agency-questions"><h2 id="agency-questions">Before we start</h2>
-    <details><summary>Can we bring you into an existing project?</summary><p>Yes. Share the current designs, constraints, and the gap you need covered. We can identify a focused role and agree on how I’ll work with your team.</p></details>
-    <details><summary>Do you work with agencies outside Florida?</summary><p>Yes. I’m based in Palm Bay, Florida, and work remotely with agencies and teams nationwide. Meeting schedules and collaboration expectations are agreed at the start.</p></details>
-    <details><summary>What should we send for an estimate?</summary><p>A short brief, the expected deliverables, your target dates, and an indication of budget. If those are still taking shape, tell me what is known and what needs defining.</p></details>
-    <details><summary>How are client communication and confidentiality handled?</summary><p>We discuss your agency’s requirements before the engagement and agree on communication, access, confidentiality, and how the work may be credited or shared.</p></details>
+    {faqs.map(faq => <details id={faq.id}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}
   </section>
-  <section class="service-section"><h2>Have a project in mind?</h2><p>Tell me what your team is taking on and where you need support. I’ll help you assess scope and fit.</p><a href="/contact/">Discuss your agency project ↗</a></section>
+  <section class="service-section"><h2>Have a project in mind?</h2><p>Tell me what your team is taking on and where you need support. I'll help you assess scope and fit.</p><a href="/contact/">Discuss your agency project ↗</a></section>
 </ServiceLayout>

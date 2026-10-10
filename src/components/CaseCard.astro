@@ -11,6 +11,8 @@ export interface Props {
   offset?: boolean;
   size?: 'large' | 'small';
   loading?: 'lazy' | 'eager';
+  /** Image fetch priority: high for first card, auto for rest */
+  fetchpriority?: 'high' | 'low' | 'auto';
 }
 
 const {
@@ -22,6 +24,7 @@ const {
   offset = false,
   size = 'large',
   loading = 'lazy',
+  fetchpriority = 'auto',
 } = Astro.props;
 // Only known local case thumbnails have generated responsive variants.
 const responsiveStem = cases.some((item) => item.thumbnail === thumbnail)
@@ -47,6 +50,7 @@ const thumbnailSizes = `(max-width: 640px) calc(100vw - 40px), (max-width: 1024p
         alt={title}
         class="case-card__img"
         loading={loading}
+        fetchpriority={fetchpriority}
         decoding="async"
         width="760"
         height="520"
