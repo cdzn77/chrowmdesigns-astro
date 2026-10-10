@@ -8,3 +8,58 @@
 # Only hashed Astro bundles receive immutable browser caching.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Revalidate page HTML across deployments. Netlify invalidates its own edge cache,
+# but an upstream Cloudflare cache otherwise can retain old page titles and copy.
+# Scope these rules to pages so image/font and hashed-bundle caching stays intact.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/info
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/info/
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/services
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/services/
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/for-agencies
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/for-agencies/
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/cases
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/cases/*
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/chronicles
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/chronicles/*
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/contact
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
+
+/contact/
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: no-cache
