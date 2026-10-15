@@ -276,7 +276,7 @@
     "batch": "scheduled-weekly",
     "publishedAt": "2026-10-14T14:00:00Z",
     "dateBasis": "Original scheduled edition date explicitly requested October 15; actual deployment recorded separately",
-    "status": "validated-local",
+    "status": "published",
     "category": "Product design",
     "primaryQuestion": "How can a cancellation flow make its outcome clear without obstructing the decision?",
     "sources": [
@@ -290,6 +290,13 @@
     "palette": "Black, off-white and fluorescent orange",
     "publicationUrl": "https://chrowmdesigns.com/chronicles/cancellation-is-a-task/",
     "generation": "Codex in ChrowmDesigns tone; clean-ai-writing Mode A; imagegen artwork. No JoyFox.",
-    "validation": "Production build, 6 Chronicles checks and 25 lead checks passed. Desktop 1440px and mobile 390px inspected; no horizontal overflow, all article images loaded."
+    "validation": "Production build, 6 Chronicles checks and 25 lead checks passed. Desktop 1440px and mobile 390px inspected; no horizontal overflow, all article images loaded.",
+    "deploymentStatus": "production-verified",
+    "commit": "359b9cdd9f7bbeb803bf4550b1d3e16d998cd665",
+    "deploymentId": "6ad1360da6b2bf2faf7dc9bf",
+    "deployedAt": "2026-10-15T20:22:52.941Z",
+    "verifiedAt": "2026-10-15T20:25:49.558996+00:00",
+    "pullRequest": "https://github.com/cdzn77/chrowmdesigns-astro/pull/8",
+    "productionChecks": "Live browser: article and artwork loaded, October 14 date shown. Archive, RSS, sitemap.xml and sitemap_index.xml HTTP 200 and include new slug. Direct CLI requests returned 403; no security configuration changed."
   }
 ]
