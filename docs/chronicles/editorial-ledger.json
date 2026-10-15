@@ -268,5 +268,28 @@
     "pullRequest": "https://github.com/cdzn77/chrowmdesigns-astro/pull/4",
     "productionChecks": "Article, artwork, archive, RSS, sitemap.xml and sitemap_index.xml HTTP 200; article listed in each discovery surface. Exact SVG logo loaded.",
     "cacheRefresh": "Targeted Cloudflare purge for feed.xml, sitemap.xml and sitemap_index.xml; security settings unchanged."
+  },
+  {
+    "slug": "cancellation-is-a-task",
+    "title": "Cancellation is a task worth designing well",
+    "isoWeek": "2026-W42",
+    "batch": "scheduled-weekly",
+    "publishedAt": "2026-10-14T14:00:00Z",
+    "dateBasis": "Original scheduled edition date explicitly requested October 15; actual deployment recorded separately",
+    "status": "validated-local",
+    "category": "Product design",
+    "primaryQuestion": "How can a cancellation flow make its outcome clear without obstructing the decision?",
+    "sources": [
+      "https://www.nngroup.com/articles/user-control-and-freedom/",
+      "https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html"
+    ],
+    "image": "/images/chronicles/cancellation-is-a-task.webp",
+    "imageConcept": "A fluorescent-orange diagonal exit crosses a complicated off-white maze on black",
+    "composition": "Top-down flat paper collage, maze right and negative space left",
+    "material": "Cut paper and screenprint texture",
+    "palette": "Black, off-white and fluorescent orange",
+    "publicationUrl": "https://chrowmdesigns.com/chronicles/cancellation-is-a-task/",
+    "generation": "Codex in ChrowmDesigns tone; clean-ai-writing Mode A; imagegen artwork. No JoyFox.",
+    "validation": "Production build, 6 Chronicles checks and 25 lead checks passed. Desktop 1440px and mobile 390px inspected; no horizontal overflow, all article images loaded."
   }
 ]
