@@ -298,5 +298,22 @@
     "verifiedAt": "2026-10-15T20:25:49.558996+00:00",
     "pullRequest": "https://github.com/cdzn77/chrowmdesigns-astro/pull/8",
     "productionChecks": "Live browser: article and artwork loaded, October 14 date shown. Archive, RSS, sitemap.xml and sitemap_index.xml HTTP 200 and include new slug. Direct CLI requests returned 403; no security configuration changed."
+  },
+  {
+    "slug": "review-content-before-layout",
+    "title": "Review the content before approving the layout",
+    "batch": "manual-cross-publication",
+    "publishedAt": "2026-10-12T13:00:00Z",
+    "dateBasis": "User requested original scheduled dates; adapted October 15 from October 12 Revision Cult edition.",
+    "status": "validated-local",
+    "category": "Product design",
+    "primaryQuestion": "How should representative content change layout approval?",
+    "sources": [
+      "https://www.gov.uk/service-manual/design/making-prototypes"
+    ],
+    "image": "/images/chronicles/cancellation-is-a-task.webp",
+    "imageConcept": "User explicitly selected existing dark maze with orange exit; intentional reuse overrides fresh-image guideline.",
+    "publicationUrl": "https://chrowmdesigns.com/chronicles/review-content-before-layout/",
+    "generation": "Codex, ChrowmDesigns tone, clean-ai-writing Mode A; no JoyFox."
   }
 ]
