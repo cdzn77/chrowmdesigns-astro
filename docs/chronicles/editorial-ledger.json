@@ -315,5 +315,28 @@
     "imageConcept": "User explicitly selected existing dark maze with orange exit; intentional reuse overrides fresh-image guideline.",
     "publicationUrl": "https://chrowmdesigns.com/chronicles/review-content-before-layout/",
     "generation": "Codex, ChrowmDesigns tone, clean-ai-writing Mode A; no JoyFox."
+  },
+  {
+    "slug": "empty-is-not-unavailable",
+    "title": "An empty list is not the same as unavailable data",
+    "isoWeek": "2026-W43",
+    "batch": "scheduled-weekly",
+    "publishedAt": "2026-10-21T15:55:56.686007+00:00",
+    "status": "validated-local",
+    "category": "Design systems",
+    "primaryQuestion": "How should empty states distinguish no records from unavailable records?",
+    "sources": [
+      "https://www.carbondesignsystem.com/building-blocks/core/patterns/empty-states",
+      "https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html"
+    ],
+    "image": "/images/chronicles/empty-is-not-unavailable.webp",
+    "imageConcept": "Yellow flower obscured by frosted cobalt glass, revealed through a clear patch; concealment is not absence.",
+    "composition": "Frontal extreme macro, flower right, negative space left",
+    "material": "Condensation and frosted glass with real petals",
+    "palette": "Cobalt blue and sunflower yellow",
+    "publicationUrl": "https://chrowmdesigns.com/chronicles/empty-is-not-unavailable/",
+    "deploymentStatus": "pending",
+    "validation": "Production build passed; Chronicles 6/6; leads 25/25. Desktop and 390px mobile visually inspected; all images loaded, no horizontal overflow.",
+    "writingAudit": "Mode A review; text-hygiene low density (0.1225), no suspicious Unicode; hypothetical example identified."
   }
 ]
