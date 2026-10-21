@@ -322,7 +322,7 @@
     "isoWeek": "2026-W43",
     "batch": "scheduled-weekly",
     "publishedAt": "2026-10-21T15:55:56.686007+00:00",
-    "status": "validated-local",
+    "status": "published",
     "category": "Design systems",
     "primaryQuestion": "How should empty states distinguish no records from unavailable records?",
     "sources": [
@@ -335,8 +335,14 @@
     "material": "Condensation and frosted glass with real petals",
     "palette": "Cobalt blue and sunflower yellow",
     "publicationUrl": "https://chrowmdesigns.com/chronicles/empty-is-not-unavailable/",
-    "deploymentStatus": "pending",
+    "deploymentStatus": "verified-production",
     "validation": "Production build passed; Chronicles 6/6; leads 25/25. Desktop and 390px mobile visually inspected; all images loaded, no horizontal overflow.",
-    "writingAudit": "Mode A review; text-hygiene low density (0.1225), no suspicious Unicode; hypothetical example identified."
+    "writingAudit": "Mode A review; text-hygiene low density (0.1225), no suspicious Unicode; hypothetical example identified.",
+    "commit": "fc3ab6a5a7eeed1bfc26a6276203c80de9b42efb",
+    "deploymentId": "6ad8f57b2ac0e338f07fdf65",
+    "deployedAt": "2026-10-21T17:25:32.948Z",
+    "verifiedAt": "2026-10-21T17:27:59.981816+00:00",
+    "pullRequest": "https://github.com/cdzn77/chrowmdesigns-astro/pull/11",
+    "productionChecks": "Browser verified live article and loaded artwork; archive, RSS, sitemap.xml and sitemap_index.xml contain slug. CLI requests returned 403; security settings unchanged."
   }
 ]
