@@ -311,10 +311,16 @@
     "sources": [
       "https://www.gov.uk/service-manual/design/making-prototypes"
     ],
-    "image": "/images/chronicles/cancellation-is-a-task.webp",
-    "imageConcept": "User explicitly selected existing dark maze with orange exit; intentional reuse overrides fresh-image guideline.",
+    "image": "/images/chronicles/review-content-before-layout.webp",
+    "imageConcept": "Physical type spills beyond its composing frame; real content changes the container.",
     "publicationUrl": "https://chrowmdesigns.com/chronicles/review-content-before-layout/",
-    "generation": "Codex, ChrowmDesigns tone, clean-ai-writing Mode A; no JoyFox."
+    "generation": "Codex, ChrowmDesigns tone, clean-ai-writing Mode A; no JoyFox.",
+    "imagePrompt": "Create a new 3:2 landscape editorial photograph for ChrowmDesigns article 'Review the content before approving the layout'. Extreme oblique overhead view of a real letterpress composing tray: one thin rectangular black metal frame rests diagonally on saturated mint-green matte paper, filled with densely packed irregular silver metal movable type blocks. A handful of the type blocks push beyond the frame at one corner, making the frame visibly unable to contain them. Type faces are abstract worn impressions, no legible words or brand names. Macro tactile oxidized metal, precise hard afternoon shadows cast toward bottom right, a small hot-magenta printer's ink smear on two blocks only. Left third mostly open mint paper. Sophisticated physical metaphor: real content changes the container. Editorial art direction with one focal intervention, selective sharpness and surreal scale, faithful materials, no people. Apply the complete twelve-reference ChrowmDesigns foundation as deliberate color, texture, clear visual hierarchy, negative space and unexpected physical relationship, not reference objects. Distinct from existing orange maze, blue glass flower, lavender engraved ear, landscapes, hands, paper folds. No maze, arrows, portals, arches, beige stone, collage, browser screenshots, logos, readable text or watermarks.",
+    "artUpdatedAt": "2026-10-28",
+    "artUpdateReason": "User requested replacing duplicated artwork on entries 22 and 23.",
+    "composition": "Oblique overhead diagonal tray; open mint field left",
+    "material": "Oxidized movable metal type, matte paper, printer ink",
+    "palette": "Mint, silver, black, small magenta accents"
   },
   {
     "slug": "empty-is-not-unavailable",
