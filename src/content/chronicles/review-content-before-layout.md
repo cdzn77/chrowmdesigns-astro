@@ -4,9 +4,9 @@ description: Representative copy reveals design decisions that placeholder text 
 publishedAt: 2026-10-12T13:00:00Z
 draft: false
 category: Product design
-image: /images/chronicles/cancellation-is-a-task.webp
-imageAlt: An orange diagonal path cuts across an off-white paper maze on a black background.
-imageConcept: A direct orange route through a dark paper maze, selected by the user for this adaptation.
+image: /images/chronicles/review-content-before-layout.webp
+imageAlt: Metal letterpress blocks spill beyond a black composing frame on mint-green paper, with small magenta ink marks.
+imageConcept: Physical type spills beyond its composing frame: representative content changes the container.
 author: ChrowmDesigns
 sources:
   - title: Making prototypes, GOV.UK Service Manual
