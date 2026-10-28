@@ -9,6 +9,10 @@
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Self-hosted fonts rarely change: cache for a year. Ship a changed font under a new filename.
+/fonts/*
+  Cache-Control: public, max-age=31536000
+
 # Revalidate page HTML across deployments. Netlify invalidates its own edge cache,
 # but an upstream Cloudflare cache otherwise can retain old page titles and copy.
 # Scope these rules to pages so image/font and hashed-bundle caching stays intact.
