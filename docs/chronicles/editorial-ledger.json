@@ -344,5 +344,28 @@
     "verifiedAt": "2026-10-21T17:27:59.981816+00:00",
     "pullRequest": "https://github.com/cdzn77/chrowmdesigns-astro/pull/11",
     "productionChecks": "Browser verified live article and loaded artwork; archive, RSS, sitemap.xml and sitemap_index.xml contain slug. CLI requests returned 403; security settings unchanged."
+  },
+  {
+    "slug": "feedback-needs-a-question",
+    "title": "Useful design feedback starts with a question",
+    "isoWeek": "2026-W44",
+    "batch": "scheduled-weekly",
+    "publishedAt": "2026-10-28T14:04:38.554075+00:00",
+    "status": "validated-local",
+    "category": "Creative practice",
+    "primaryQuestion": "How can design reviews turn vague reactions into actionable decisions?",
+    "sources": [
+      "https://design.education.gov.uk/content-design/quality-and-assurance",
+      "https://digital.gov/guides/hcd/design-concepts/feedback"
+    ],
+    "image": "/images/chronicles/feedback-needs-a-question.webp",
+    "imageConcept": "An engraved ear receives a clear orange thread from tangled black comments.",
+    "composition": "Large cropped ear right; tangled marks left; open lavender upper field",
+    "material": "Drypoint etching and orange monoprint on rag paper",
+    "palette": "Lavender, graphite black, vermilion orange",
+    "publicationUrl": "https://chrowmdesigns.com/chronicles/feedback-needs-a-question/",
+    "deploymentStatus": "pending",
+    "imagePrompt": "Original 3:2 landscape editorial illustration for ChrowmDesigns Chronicles about turning vague design feedback into a precise useful observation. Hand-pulled drypoint etching and orange monoprint on pale lavender rag paper, visible plate pressure and fine uneven ink. A single large ear rendered as an elegant anatomical line engraving occupies the right third, partly cropped; a dense agitated cloud of graphite-black looping lines approaches it from the left and resolves into one lucid vermilion-orange continuous thread just before reaching the ear. Sophisticated strange editorial metaphor, spare, quiet asymmetry, enormous lavender negative space upper left. No text, no numbers, no logo. Interpret the twelve-reference foundation through human presence, impossible interaction, purposeful graphic hierarchy, tactile grain, radical color separation, selective directional energy and negative space, not literal reference objects. No collage cutouts, no stock-tech symbols, no stone, arches, spheres, flowers, glass, copper checkmarks, paper maze, or 3D studio props. Not a diagram; a collectible contemporary print with delicate etched lines and one bold warm-orange stroke.",
+    "validation": "Build passed; Chronicles 6/6; leads 25/25. Desktop and 390px mobile visually inspected: images loaded, no horizontal overflow."
   }
 ]
