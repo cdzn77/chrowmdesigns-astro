@@ -6,7 +6,7 @@ draft: false
 category: Product design
 image: /images/chronicles/review-content-before-layout.webp
 imageAlt: Metal letterpress blocks spill beyond a black composing frame on mint-green paper, with small magenta ink marks.
-imageConcept: Physical type spills beyond its composing frame: representative content changes the container.
+imageConcept: Physical type spills beyond its composing frame; representative content changes the container.
 author: ChrowmDesigns
 sources:
   - title: Making prototypes, GOV.UK Service Manual
