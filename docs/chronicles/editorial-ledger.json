@@ -351,7 +351,7 @@
     "isoWeek": "2026-W44",
     "batch": "scheduled-weekly",
     "publishedAt": "2026-10-28T14:04:38.554075+00:00",
-    "status": "validated-local",
+    "status": "published",
     "category": "Creative practice",
     "primaryQuestion": "How can design reviews turn vague reactions into actionable decisions?",
     "sources": [
@@ -364,8 +364,14 @@
     "material": "Drypoint etching and orange monoprint on rag paper",
     "palette": "Lavender, graphite black, vermilion orange",
     "publicationUrl": "https://chrowmdesigns.com/chronicles/feedback-needs-a-question/",
-    "deploymentStatus": "pending",
+    "deploymentStatus": "verified-production",
     "imagePrompt": "Original 3:2 landscape editorial illustration for ChrowmDesigns Chronicles about turning vague design feedback into a precise useful observation. Hand-pulled drypoint etching and orange monoprint on pale lavender rag paper, visible plate pressure and fine uneven ink. A single large ear rendered as an elegant anatomical line engraving occupies the right third, partly cropped; a dense agitated cloud of graphite-black looping lines approaches it from the left and resolves into one lucid vermilion-orange continuous thread just before reaching the ear. Sophisticated strange editorial metaphor, spare, quiet asymmetry, enormous lavender negative space upper left. No text, no numbers, no logo. Interpret the twelve-reference foundation through human presence, impossible interaction, purposeful graphic hierarchy, tactile grain, radical color separation, selective directional energy and negative space, not literal reference objects. No collage cutouts, no stock-tech symbols, no stone, arches, spheres, flowers, glass, copper checkmarks, paper maze, or 3D studio props. Not a diagram; a collectible contemporary print with delicate etched lines and one bold warm-orange stroke.",
-    "validation": "Build passed; Chronicles 6/6; leads 25/25. Desktop and 390px mobile visually inspected: images loaded, no horizontal overflow."
+    "validation": "Build passed; Chronicles 6/6; leads 25/25. Desktop and 390px mobile visually inspected: images loaded, no horizontal overflow.",
+    "commit": "99f919fba89195f6d8a8d24beaa5f957b5180b3e",
+    "deploymentId": "6ae201f82f94c71a6df669fe",
+    "deployedAt": "2026-10-28T14:09:14.316Z",
+    "verifiedAt": "2026-10-28T14:12:20.166825+00:00",
+    "pullRequest": "https://github.com/cdzn77/chrowmdesigns-astro/pull/13",
+    "productionChecks": "Live browser verified article, artwork and separate SVG logo; archive, RSS, sitemap.xml and sitemap_index.xml include slug. Hosting security unchanged."
   }
 ]
